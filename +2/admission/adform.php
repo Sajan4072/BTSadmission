@@ -142,7 +142,7 @@
             </div>
           </div>
           <div class="admission-form col-lg-12 col-sm-12 col-md-12">
-            <form action="insert.php" method="POST">
+            <form action="insert.php" method="POST"  enctype="multipart/form-data">
               <h5>Personal Details</h5>
               <div class="form-row">
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -161,7 +161,7 @@
                     type="text"
                     class="form-control"
                     placeholder="Middle name"
-                    name="middle name"
+                    name="middlename"
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -170,7 +170,7 @@
                     type="text"
                     class="form-control"
                     placeholder="Last name"
-                    name="last name"
+                    name="lastname"
                   />
                 </div>
               </div>
@@ -193,10 +193,10 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="male"
-                      id="exampleRadios1"
-                      value="option1"
-                      checked
+                      name="gender"
+                      
+                      value="male"
+                      
                     />
                     <label class="form-check-label" for="exampleRadios1">
                       Male
@@ -206,9 +206,9 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="Female"
-                      id="exampleRadios2"
-                      value="option2"
+                      name="gender"
+                      
+                      value="female"
                     />
                     <label class="form-check-label" for="exampleRadios2">
                       Female
@@ -221,11 +221,10 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="dalit"
+                      name="caste"
                       id="exampleRadios1"
-                      value="option1"
-                      checked
-                    />
+                      value="dalit"
+                     />
                     <label class="form-check-label" for="exampleRadios1">
                       Dalit
                     </label>
@@ -234,9 +233,9 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="janjati"
+                      name="caste"
                       id="exampleRadios2"
-                      value="option2"
+                      value="janjati"
                     />
                     <label class="form-check-label" for="exampleRadios2">
                       Janajati
@@ -246,9 +245,9 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="Brahmin/Chhetri"
+                      name="caste"
                       id="exampleRadios2"
-                      value="option2"
+                      value="brahmin"
                     />
                     <label class="form-check-label" for="exampleRadios2">
                       Brahmin/Chhetri
@@ -258,9 +257,9 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="others"
+                      name="caste"
                       id="exampleRadios2"
-                      value="option2"
+                      value="others"
                     />
                     <label class="form-check-label" for="exampleRadios2">
                       Others
@@ -361,7 +360,7 @@
                     type="text"
                     class="form-control"
                     placeholder="Municipality/Rural Municipality"
-                    name="municiipality"
+                    name="municipality"
                   />
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-12">
@@ -426,7 +425,7 @@
                     type="text"
                     class="form-control"
                     placeholder="Ward No."
-                    name="warno1"
+                    name="wardno1"
                   />
                 </div>
               </div>
@@ -609,10 +608,10 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="business"
+                      name="elective"
                       id="exampleRadios1"
-                      value="option1"
-                      checked
+                      value="business"
+                      
                     />
                     <label class="form-check-label" for="exampleRadios1">
                       Business Studies
@@ -622,9 +621,9 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="Hotel"
+                      name="elective"
                       id="exampleRadios2"
-                      value="option2"
+                      value="hotel"
                     />
                     <label class="form-check-label" for="exampleRadios2">
                       Hotel Management 
@@ -634,9 +633,9 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="computer"
+                      name="elective"
                       id="exampleRadios2"
-                      value="option2"
+                      value="computer"
                     />
                     <label class="form-check-label" for="exampleRadios2">
                       Computer Science 
@@ -652,11 +651,10 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="business1"
+                      name="elective2"
                       id="exampleRadios1"
-                      value="option1"
-                      checked
-                    />
+                      value="business1"
+                     />
                     <label class="form-check-label" for="exampleRadios1">
                       Business Studies
                     </label>
@@ -665,9 +663,9 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="hotel1"
+                      name="elective2"
                       id="exampleRadios2"
-                      value="option2"
+                      value="hotel1"
                     />
                     <label class="form-check-label" for="exampleRadios2">
                       Hotel Management 
@@ -677,9 +675,9 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="computer1"
+                      name="elctive2"
                       id="exampleRadios2"
-                      value="option2"
+                      value="computer1"
                     />
                     <label class="form-check-label" for="exampleRadios2">
                       Computer Science 
@@ -695,9 +693,9 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="businessmath"
+                      name="elective3"
                       id="exampleRadios1"
-                      value="option1"
+                      value="businessmath"
                       checked
                     />
                     <label class="form-check-label" for="exampleRadios1">
@@ -708,9 +706,9 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="marketing"
+                      name="elective3"
                       id="exampleRadios2"
-                      value="option2"
+                      value="marketing"
                     />
                     <label class="form-check-label" for="exampleRadios2">
                       Marketing 
@@ -757,7 +755,7 @@
                 </div>
               </div>
               <div class="text-center">
-                <button type="button" class="btn btn-warning">Submit</button>
+                <button type="submit" name="submit" class="btn btn-warning">Submit</button>
               </div>
             </form>
           </div>
