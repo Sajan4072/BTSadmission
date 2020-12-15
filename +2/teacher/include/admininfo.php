@@ -1,6 +1,6 @@
 <?php 
 
-  $uname=$_SESSION['username'];
+  $uname=$_SESSION['teacher_user'];
 
 
 

@@ -91,10 +91,7 @@ session_start();?>
              <li class="nav-item center-menu">
               <a class="nav-link" href="./results/results.php">Results</a>
             </li>
-            <li class="nav-item center-menu">
-              <a class="nav-link" href="contact/contact.php">Contact Us</a>
-
-            </li>
+           
            <li class="nav-item dropdown" >
                 <a class="nav-link right-link dropdown-toggle"
                 id="navbarDropdown"
@@ -104,10 +101,14 @@ session_start();?>
                 aria-expanded="false" >Admission Form</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="admission/adform.php">Management</a>
-                <a class="dropdown-item" href="admission/adform1.php">Humanities/education/law</a>
+                
                 
               </div>
               </li>
+               <li class="nav-item center-menu">
+              <a class="nav-link" href="contact/contact.php">Contact Us</a>
+
+            </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <ul class="navbar-nav mr-5" >

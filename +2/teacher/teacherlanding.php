@@ -22,7 +22,7 @@ include('include/connection.php');
 </body>
 <?php 
 include('include/admininfo.php');
-include('include/check_login.php');
+// include('include/check_login.php');
 if (empty($uname)) { 
     header("location:index.php");; 
 } 

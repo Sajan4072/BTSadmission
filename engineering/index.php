@@ -92,6 +92,10 @@ session_start();
              <li class="nav-item center-menu">
               <a class="nav-link" href="results/reuslts.php">Results</a>
             </li>
+             </li>
+             <li class="nav-item center-menu">
+              <a class="nav-link" href="admission/adform.php">Admission Form</a>
+            </li>
             <li class="nav-item center-menu">
               <a class="nav-link" href="contact/contact.php">Contact Us</a>
             </li>
