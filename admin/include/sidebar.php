@@ -7,6 +7,7 @@
            <li><a href="events.php"><i class="fa fa-calendar"  ></i>EVENTS</a></li>
             
             <li><a href="gallery1.php"><i class="fa fa-picture-o"  ></i>GALARY UPDATE</a></li>
+            <li><a href="admision_table.php"><i class="fa fa-picture-o"  ></i>Admision Form</a></li>
             
             
           </ul>
