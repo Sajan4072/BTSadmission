@@ -2,6 +2,10 @@
 session_start();
 include('include/connection.php');
 
+$sql="select *from admission order by id desc ";
+$admission=[];
+$result=mysqli_query($db,$sql);
+
 
 ?>
 <!DOCTYPE html>
@@ -50,18 +54,33 @@ include('include/check_login.php');
                                         <th>Action</th>
                                     </tr>
                                 </thead>
+
+                                <?php 
+                                 $x=1;
+                                 while($admission=mysqli_fetch_array($result))
+                             {
+
+                                 ?>
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td> </td>
+                                   <td><?php echo htmlentities($x); ?></td>
+                                    <td><?php echo  htmlentities($admission['firstname']); echo  htmlentities($admission['lastname']); ?> </td>
                                    
-                                    <td> </td>
+                                    <td> <?php echo htmlentities($admission['municipality'])."-"; echo htmlentities($admission['wardno'])."-";echo htmlentities($admission['district']); ?></td>
                                    
-                                    <td></td>
+                                    <td><?php echo htmlentities($admission['email']); ?> </td>
+                                   
+                                    <td><?php echo htmlentities($admission['mobilenumber']); ?></td>
                                     <td>
-                                        <a href="admision_form.php" class="btn btn-danger">View</a>
+                                        <a href="admision_form.php?id=<?php echo $admission['id']; ?>" class="btn btn-danger">View</a>
                                     </td>
                                 </tr>
+
+                              <?php 
+                              $x++;
+                            }
+
+                              
+                              ?>
                             </table>
                         </div>
                     </div>

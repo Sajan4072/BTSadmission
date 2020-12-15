@@ -4,6 +4,14 @@ include('include/connection.php');
 
 include('include/check_login.php');
 
+$id=$_GET['id'];
+
+
+$sql="select * from admission where id='$id' limit 1";
+$result=mysqli_query($db,$sql);
+$admission=mysqli_fetch_assoc($result);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,14 +35,30 @@ include('include/check_login.php');
 
     <!-- title icon -->
     <link rel="shortcut icon" href="images/logo.png" />
+
+    <style>
+      @media print{
+       body *{
+        visibility: hidden;
+       }
+       .area-to-print, .area-to-print *{
+        visibility: visible;
+       }
+    </style>
   </head>
   <body>
   
-   
+     
+     <div class="container">
+          <button class="btn btn-primary mt-3" href="javascript:void(0);"  onclick="window.print()">print</button>
+     </div>
 
     <!-- form -->
+
+    <div class="area-to-print">
     <div class="title">
       <h4>Amission Form for XI XII</h4>
+
     </div>
     <div class="container">
       <div class="form-container">
@@ -57,6 +81,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="First name"
                     name="firstname"
+                    value="<?php echo htmlentities($admission['firstname']); ?>"
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -66,6 +91,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Middle name"
                     name="middle name"
+                    value="<?php echo htmlentities($admission['middlename']); ?>"
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -75,6 +101,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Last name"
                     name="last name"
+                    value="<?php echo htmlentities($admission['lastname']); ?>"
                   />
                 </div>
               </div>
@@ -87,6 +114,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="DD-MM-YYYY"
                     name="DOB"
+                    value="<?php echo htmlentities($admission['DOB']); ?>"
                   />
                 </div>
               </div>
@@ -97,10 +125,15 @@ include('include/check_login.php');
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="male"
+                      name="gender"
                       id="exampleRadios1"
                       value="option1"
-                      checked
+                      <?php if ($admission['gender']=="male")
+                      {
+
+                             echo"checked";
+                      }
+                        ?>
                     />
                     <label class="form-check-label" for="exampleRadios1">
                       Male
@@ -110,9 +143,15 @@ include('include/check_login.php');
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="Female"
+                      name="gender"
                       id="exampleRadios2"
                       value="option2"
+                       <?php if ($admission['gender']=="Female")
+                       {
+
+                             echo"checked";
+                        }
+                        ?>
                     />
                     <label class="form-check-label" for="exampleRadios2">
                       Female
@@ -125,10 +164,16 @@ include('include/check_login.php');
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="dalit"
+                      name="caste"
                       id="exampleRadios1"
-                      value="option1"
-                      checked
+                      value="dalit"
+                     <?php if ($admission['caste']=="dalit")
+                       {
+
+                             echo"checked";
+                        }
+                        ?> 
+
                     />
                     <label class="form-check-label" for="exampleRadios1">
                       Dalit
@@ -138,9 +183,15 @@ include('include/check_login.php');
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="janjati"
+                      name="caste"
                       id="exampleRadios2"
-                      value="option2"
+                      value="janjati"
+                         <?php if ($admission['caste']=="janjati")
+                       {
+
+                             echo"checked";
+                        }
+                        ?>
                     />
                     <label class="form-check-label" for="exampleRadios2">
                       Janajati
@@ -150,9 +201,15 @@ include('include/check_login.php');
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="Brahmin/Chhetri"
+                      name="caste"
                       id="exampleRadios2"
-                      value="option2"
+                      value="brahmin"
+                         <?php if ($admission['caste']=="brahmin")
+                       {
+
+                             echo"checked";
+                        }
+                        ?>
                     />
                     <label class="form-check-label" for="exampleRadios2">
                       Brahmin/Chhetri
@@ -162,9 +219,15 @@ include('include/check_login.php');
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="others"
+                      name="caste"
                       id="exampleRadios2"
-                      value="option2"
+                      value="others"
+                         <?php if ($admission['caste']=="others")
+                       {
+
+                             echo"checked";
+                        }
+                        ?>
                     />
                     <label class="form-check-label" for="exampleRadios2">
                       Others
@@ -181,6 +244,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Nationality"
                     name="nationality"
+                    value="<?php echo htmlentities($admission['nationality'])?>"
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -191,6 +255,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Religion"
                     name="religion"
+                    value="<?php echo htmlentities($admission['religion']) ?>"
                   />
                 </div>
               </div>
@@ -203,6 +268,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Mobile No."
                     name="mobilenumber"
+                    value="<?php echo htmlentities($admission['mobilenumber']) ?>"
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -212,6 +278,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="example@email.com"
                     name="email"
+                    value="<?php echo htmlentities($admission['email']) ?>"
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -221,6 +288,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Facebook Account"
                     name="facebook"
+                    value="<?php echo htmlentities($admission['facebook']) ?>"
                   />
                 </div>
               </div>
@@ -234,6 +302,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Province"
                     name="zone"
+                    value="<?php echo htmlentities($admission['zone']) ?>"
                   />
                 </div> 
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -244,6 +313,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Province"
                     name="province"
+                    value="<?php echo htmlentities($admission['province']) ?>"
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -254,6 +324,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="District"
                     name="district"
+                    value="<?php echo htmlentities($admission['district']) ?>"
                   />
                 </div>
               </div>
@@ -266,6 +337,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Municipality/Rural Municipality"
                     name="municiipality"
+                    value="<?php echo htmlentities($admission['municipality']) ?>"
                   />
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-12">
@@ -276,6 +348,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Ward No."
                     name="wardno"
+                    value="<?php echo htmlentities($admission['wardno']) ?>"
                   />
                 </div>
               </div>
@@ -289,6 +362,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Province"
                     name="zone1"
+                    value="<?php echo htmlentities($admission['zone1']) ?>"
                   />
                 </div> 
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -299,6 +373,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Province"
                     name="province1"
+                    value="<?php echo htmlentities($admission['province1']) ?>"
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -309,6 +384,8 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="District"
                     name="district1"
+                    value="<?php echo htmlentities($admission['district1']) ?>"
+ 
                   />
                 </div>
               </div>
@@ -321,6 +398,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Municipality/Rural Municipality"
                     name="municipality1"
+                    value="<?php echo htmlentities($admission['municipality1']) ?>"
                   />
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-12">
@@ -331,6 +409,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Ward No."
                     name="warno1"
+                    value="<?php echo htmlentities($admission['wardno1']) ?>"
                   />
                 </div>
               </div>
@@ -344,6 +423,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Father's name"
                     name="pfirst"
+                    value="<?php echo htmlentities($admission['pfirst']) ?>"
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -353,6 +433,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Contact No."
                     name="contact"
+                    value="<?php echo htmlentities($admission['contact']) ?>"
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -362,6 +443,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Occupation"
                     name="occupation"
+                    value="<?php echo htmlentities($admission['occupation']) ?>"
                   />
                 </div>
               </div>
@@ -374,6 +456,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Mother's name"
                     name="mname"
+                    value="<?php echo htmlentities($admission['mname']) ?>"
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -383,6 +466,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Contact No."
                     name="mcontact"
+                    value="<?php echo htmlentities($admission['mcontact']) ?>"
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -392,6 +476,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Occupation"
                     name="occupation1"
+                    value="<?php echo htmlentities($admission['ocuupation1']) ?>"
                   />
                 </div>
               </div>
@@ -404,6 +489,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Guardian's name"
                     name="gname"
+                    value="<?php echo htmlentities($admission['gname']) ?>"
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -413,6 +499,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Contact No."
                     name="gcontact"
+                    value="<?php echo htmlentities($admission['gcontact']) ?>"
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -422,6 +509,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Occupation"
                     name="goccupation"
+                    value="<?php echo htmlentities($admission['goccupation']) ?>"
                   />
                 </div>
               </div>
@@ -435,6 +523,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="School name"
                     name="sname"
+                    value="<?php echo htmlentities($admission['sname']) ?>"
                   />
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12">
@@ -444,6 +533,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Passed Year"
                     name="passed"
+                    value="<?php echo htmlentities($admission['passed']) ?>"
                   />
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12">
@@ -453,6 +543,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="GPA Point"
                     name="GPA"
+                    value="<?php echo htmlentities($admission['GPA']) ?>"
                   />
                 </div>
               </div>
@@ -466,6 +557,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Nepali"
                     name="nepali"
+                    value="<?php echo htmlentities($admission['nepali']) ?>"
                   />
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2">
@@ -475,6 +567,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="English"
                     name="english"
+                    value="<?php echo htmlentities($admission['english']) ?>"
                   />
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2">
@@ -484,6 +577,7 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Social Std."
                     name="social"
+                    value="<?php echo htmlentities($admission['social']) ?>"
                   />
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2">
@@ -494,15 +588,16 @@ include('include/check_login.php');
                     class="form-control"
                     placeholder="Science"
                     name="science"
+                    value="<?php echo htmlentities($admission['science']) ?>"
                   />
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2">
                   <label for="middleName">Maths</label>
-                  <input type="text" class="form-control" placeholder="Maths" name="math"/>
+                  <input type="text" class="form-control" placeholder="Maths" name="math" value="<?php echo htmlentities($admission['math']) ?>"/>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2">
                   <label for="lastName">EPH</label>
-                  <input type="text" class="form-control" placeholder="EPH" name="eph" />
+                  <input type="text" class="form-control" placeholder="EPH" name="eph" value="<?php echo htmlentities($admission['eph']) ?>"/>
                 </div>
               </div>
               <h5>ELECTIVE SUBJECTS XI</h5>
@@ -513,10 +608,15 @@ include('include/check_login.php');
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="business"
+                      name="elective"
                       id="exampleRadios1"
-                      value="option1"
-                      checked
+                       value="business"
+                      <?php if ($admission['elective']=="business")
+                       {
+
+                             echo"checked";
+                        }
+                        ?>
                     />
                     <label class="form-check-label" for="exampleRadios1">
                       Business Studies
@@ -526,9 +626,15 @@ include('include/check_login.php');
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="Hotel"
+                         name="elective"
                       id="exampleRadios2"
-                      value="option2"
+                     value="hotel"
+                      <?php if ($admission['elective']=="hotel")
+                       {
+
+                             echo"checked";
+                        }
+                        ?>
                     />
                     <label class="form-check-label" for="exampleRadios2">
                       Hotel Management 
@@ -538,9 +644,15 @@ include('include/check_login.php');
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="computer"
+                        name="elective"
                       id="exampleRadios2"
-                      value="option2"
+                       value="computer"
+                      <?php if ($admission['elective']=="computer")
+                       {
+
+                             echo"checked";
+                        }
+                        ?>
                     />
                     <label class="form-check-label" for="exampleRadios2">
                       Computer Science 
@@ -556,10 +668,15 @@ include('include/check_login.php');
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="business1"
+                      name="elective2"
                       id="exampleRadios1"
-                      value="option1"
-                      checked
+                      value="business1"
+                        <?php if ($admission['elective2']=="business1")
+                       {
+
+                             echo"checked";
+                        }
+                        ?>
                     />
                     <label class="form-check-label" for="exampleRadios1">
                       Business Studies
@@ -569,9 +686,15 @@ include('include/check_login.php');
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="hotel1"
+                     name="elective2"
                       id="exampleRadios2"
-                      value="option2"
+                       value="hotel1"
+                         <?php if ($admission['elective2']=="hotel1")
+                       {
+
+                             echo"checked";
+                        }
+                        ?>
                     />
                     <label class="form-check-label" for="exampleRadios2">
                       Hotel Management 
@@ -581,9 +704,15 @@ include('include/check_login.php');
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="computer1"
+                     name="elective2"
                       id="exampleRadios2"
-                      value="option2"
+                      value="computer1"
+                        <?php if ($admission['elective2']=="computer1")
+                       {
+
+                             echo"checked";
+                        }
+                        ?>
                     />
                     <label class="form-check-label" for="exampleRadios2">
                       Computer Science 
@@ -599,10 +728,16 @@ include('include/check_login.php');
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="businessmath"
+                      name="elective3"
+                     
                       id="exampleRadios1"
-                      value="option1"
-                      checked
+                       value="businessmath"
+                            <?php if ($admission['elective3']=="businessmath")
+                       {
+
+                             echo"checked";
+                        }
+                        ?>
                     />
                     <label class="form-check-label" for="exampleRadios1">
                       Business Math
@@ -612,9 +747,16 @@ include('include/check_login.php');
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="marketing"
+                      name="elective3"
+                     
                       id="exampleRadios2"
-                      value="option2"
+                      value="marketing"
+                          <?php if ($admission['elective3']=="marketing")
+                       {
+
+                             echo"checked";
+                        }
+                        ?>
                     />
                     <label class="form-check-label" for="exampleRadios2">
                       Marketing 
@@ -650,6 +792,7 @@ include('include/check_login.php');
           </div>
         </div>
       </div>
+    </div>
     </div>
 
     <!-- javascripts -->
