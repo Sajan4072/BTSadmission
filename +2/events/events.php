@@ -13,11 +13,11 @@ session_start();
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="./events.css">
 </head>
-<body>
+<body style="background-color: #d5d8de;">
   
 
 <!-- top banner -->
-    <div class="container-fluid ">
+    <div class="container-fluid " style="background-color: #d5d8de;">
       <div class="row top-banner p-2">
         <div class="col-lg-8 col-md-8 col-sm-12">
           <div class="row">
@@ -79,6 +79,9 @@ session_start();
              <li class="nav-item center-menu">
               <a class="nav-link" href="../../engineering/index.php">Engineering</a>
             </li>-->
+            <li class="nav-item center-menu">
+              <a class="nav-link" href="../index.php">Home</a>
+            </li>
             <li class="nav-item center-menu">
               <a class="nav-link" href="../galary/gallery.php">Gallery</a>
             </li>
@@ -178,28 +181,31 @@ session_start();
     </div>
   <?php
 }?>
-    
+   
 
-   <!-- message section -->
-<div class="container-fluid">
-  
-          <div class="row" style="background-color: green; height: 40px; color: white;justify-content: center;">
+<div class="row" style="background-color: green; height: 40px; color: white;justify-content: center;">
             <h4> COLLEGE EVENTS </h4>
-          </div>
-           <?php 
+          </div>  
+           <div class="container-fluid" style="background-color: #d5d8de;">         
+<?php 
+    $limit = 3;  
+if (isset($_GET["page"])) {
+  $page  = $_GET["page"]; 
+  } 
+  else{ 
+  $page=1;
+  };  
+$start_from = ($page-1) * $limit;  
 
-                      
-                       
-                         
-                                              
-                      $sql="select *from news_and_event WHERE plus2=1 ORDER BY id DESC";
+                                 
+                      $sql="select *from news_and_event WHERE plus2=1 ORDER BY id DESC LIMIT $start_from, $limit";
                       $query=mysqli_query($db,$sql);
                       while($row=mysqli_fetch_array($query))
                         {
 ?>
 
-          <div class="row" style="background-color: #fae19d; padding: 20px; margin-top: 10px;">
-            <div class="col-lg-2 col-sm-12 col-md-2 datecol">
+        <div class="row row-image" style="margin-top: 50px; background-color: #fae19d; justify-content: center; ">
+           <div class="col-lg-2 col-sm-12 col-md-2 datecol">
               <div class="date">
                 <h5><?php echo $row['date']; ?></h5>
               </div>
@@ -215,13 +221,61 @@ session_start();
      <img src="../frontpage/images/founder.jpg" alt="Not Available!" />
       </div>
     </div>
-  </div>
-<?php }
-?>
-  </div>
+        </div>
+          <?php
+          }?>
+            
+        </div>                 
+                      
    
 
+ <nav aria-label="Page navigation example" style="background-color: #d5d8de; margin-top: 5px;" >
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+     <?php if($page>=2){  
+        ?><li class='page-item'> 
+          <?php 
+            echo "<a class='page-link' href='events.php?page=".($page-1)."'>  Prev </a>";   
+        ?>
+        </li>
+        <?php 
+        }  ?> 
+      </li>
+    <li class="page-item">
+      <?php  
+$result_db = mysqli_query($db,"SELECT COUNT(id) FROM college_resource"); 
+$row_db = mysqli_fetch_row($result_db);  
+$total_records = $row_db[0];  
+$total_pages = ceil($total_records / $limit); 
+/* echo  $total_pages; */
+$pagLink = "<ul class='pagination'>"; 
+for ($i=1; $i<=$total_pages; $i++) {
+$pagLink .= "<li class='page-item'><a class='page-link' class ='active' href='events.php?page=".$i."' >".$i."</a></li>"; 
+}
+echo $pagLink . "</ul>";  
+?>
+</li>
+ <li class="page-item">
+<?php 
+  if($page<$total_pages){
+        ?>
+        <li class='page-item'>
+        <?php   
+            echo "<a class='page-link' href='events.php?page=".($page+1)."'>  Next </a>"; ?>
+            </li>
+            <?php  
+        }   
+  ?>
+    </li>
+  </ul>
+</nav><br>
+
     
+
+   <!-- message section -->
+
+  
+          
 
     <!-- footer -->
     <div class="container-fluid">

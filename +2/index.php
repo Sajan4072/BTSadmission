@@ -83,7 +83,7 @@ session_start();?>
               <a class="nav-link" href="./events/events.php">Events</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./resources/resources.php">Resources</a>
+              <a class="nav-link" href="./resources/resource.php">Resources</a>
             </li>
             <li class="nav-item center-menu">
               <a class="nav-link" href="./ourteam/ourteam.php">Our Team</a>

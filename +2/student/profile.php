@@ -78,23 +78,23 @@ session_start();
              <li class="nav-item center-menu">
               <a class="nav-link" href="../../engineering/index.php">Engineering</a>
             </li>-->
-            <li class="nav-item center-menu">
-              <a class="nav-link " href="../../+2/index.php">+2</a>
+           <li class="nav-item center-menu">
+              <a class="nav-link" href="../index.php">Home</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="../../galary/galary.html">Gallery</a>
+              <a class="nav-link" href="../galary/gallery.php">Gallery</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="../../events/events.html">Events</a>
+              <a class="nav-link" href="../events/events.php">Events</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./resources/resources.html">Resources</a>
+              <a class="nav-link" href="../resources/resource.php">Resources</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./ourteam/ourteam.html">Our Team</a>
+              <a class="nav-link" href="./ourteam/ourteam.php">Our Team</a>
             </li>
              <li class="nav-item center-menu">
-              <a class="nav-link" href="./results/results.html">Results</a>
+              <a class="nav-link" href="./results/results.php">Results</a>
             </li>
             <li class="nav-item center-menu">
               <a class="nav-link" href="../contact/contact.php">Contact Us</a>
@@ -135,24 +135,24 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item center-menu">
-              <a class="nav-link " href="../../+2/index.php">+2</a>
+              <a class="nav-link " href="../+2/index.php">+2</a>
             </li>
              <li class="nav-item center-menu">
               <a class="nav-link" href="../../engineering/index.php">Engineering</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="../../galary/galary.html">Gallery</a>
+              <a class="nav-link" href="../galary/galary.php">Gallery</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./events/events.html">Events</a>
+              <a class="nav-link" href="./events/events.php">Events</a>
             </li>
             
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./ourteam/ourteam.html">Our Team</a>
+              <a class="nav-link" href="./ourteam/ourteam.php">Our Team</a>
             </li>
              
             <li class="nav-item center-menu">
-              <a class="nav-link" href="../../contact/contact.php">Contact Us</a>
+              <a class="nav-link" href="../contact/contact.php">Contact Us</a>
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
@@ -232,6 +232,9 @@ session_start();
       <th scope="col">Date of Birth</th>
       <td scope="col"><?php echo $row['dob'];?></td>
     </tr>
+    <tr>
+      <td><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Change Password</button></td>
+    </tr>
   </tbody>
 </table>
         
@@ -285,6 +288,74 @@ session_start();
       </div>
     </div>
 
+
+
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          
+          <h4 class="modal-title">Change Password</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+           <form action="" method="post" enctype="multipart/form-data">
+  
+  <div class="form-group">
+    <label for="password"> Type New Password:</label>
+    <input type="text" class="form-control" name="password">
+  </div>
+  
+   <input type="submit" value="Save" name ="submit" class="submit" id ="btn btn-primary" style="background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;">
+              
+</form> 
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+<?php
+
+    
+
+        if(isset($_POST['submit']))
+    {
+      
+      $name= $_SESSION['login_user'];
+          $password= $_POST['password'];
+         $sql= ("UPDATE college SET `password` = '$password' WHERE `firstname`='$name'");
+     
+
+      if(mysqli_query($db,$sql))
+      {
+        ?>
+          <script type="text/javascript">
+            alert("Saved Successfully.");
+            
+          </script>
+        <?php
+      }
+    }
+  ?>
     <!-- js setup -->
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

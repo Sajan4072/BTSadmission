@@ -78,13 +78,16 @@ session_start();
               <a class="nav-link" href="../engineering/index.php">Engineering</a>
             </li>-->
             <li class="nav-item center-menu">
+              <a class="nav-link" href="../index.php">Home</a>
+            </li>
+            <li class="nav-item center-menu">
               <a class="nav-link active" href="">Gallery</a>
             </li>
             <li class="nav-item center-menu">
               <a class="nav-link" href="../events/events.php">Events</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="../resources/resources.php">Resources</a>
+              <a class="nav-link" href="../resources/resource.php">Resources</a>
             </li>
             <li class="nav-item center-menu">
               <a class="nav-link" href="../ourteam/ourteam.php">Our Team</a>
@@ -179,18 +182,28 @@ session_start();
 
 
     <!-- photos of galary -->
-
+<div class="row" style="background-color: green; height: 40px; color: white;justify-content: center;">
+            <h4> PHOTO GALLARY </h4>
+          </div> 
      
     <div class="container">
 
       <div class="row row-image">
         <?php 
 
-                      include("../connection.php");
+include("../connection.php");
                        
-                         
+            
+    $limit = 6;  
+if (isset($_GET["page"])) {
+  $page  = $_GET["page"]; 
+  } 
+  else{ 
+  $page=1;
+  };  
+$start_from = ($page-1) * $limit;               
                                               
-                      $sql="select * from photos WHERE plus2=1 ORDER BY id DESC";
+                    $sql="select * from photos WHERE plus2=1 ORDER BY id DESC LIMIT $start_from, $limit"; 
                       $query=mysqli_query($db,$sql);
                       while($row=mysqli_fetch_array($query))
                         {
@@ -212,25 +225,49 @@ session_start();
 
 
 
-    <nav aria-label="Page navigation example" style="background-color: #d5d8de;">
+
+ <nav aria-label="Page navigation example" style="background-color: #d5d8de; margin-top: 25px;">
   <ul class="pagination justify-content-center">
     <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">4</a></li>
-    <li class="page-item"><a class="page-link" href="#">5</a></li>
+     <?php if($page>=2){  
+        ?><li class='page-item'> 
+          <?php 
+            echo "<a class='page-link' href='gallery.php?page=".($page-1)."'>  Prev </a>";   
+        ?>
+        </li>
+        <?php 
+        }  ?> 
+      </li>
     <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
+      <?php  
+$result_db = mysqli_query($db,"SELECT COUNT(id) FROM college_resource"); 
+$row_db = mysqli_fetch_row($result_db);  
+$total_records = $row_db[0];  
+$total_pages = ceil($total_records / $limit); 
+/* echo  $total_pages; */
+$pagLink = "<ul class='pagination'>"; 
+for ($i=1; $i<=$total_pages; $i++) {
+$pagLink .= "<li class='page-item'><a class='page-link' class ='active' href='gallery.php?page=".$i."' >".$i."</a></li>"; 
+}
+echo $pagLink . "</ul>";  
+?>
+</li>
+ <li class="page-item">
+<?php 
+  if($page<$total_pages){
+        ?>
+        <li class='page-item'>
+        <?php   
+            echo "<a class='page-link' href='gallery.php?page=".($page+1)."'>  Next </a>"; ?>
+            </li>
+            <?php  
+        }   
+  ?>
     </li>
   </ul>
 </nav><br>
+
+    
 
 
    

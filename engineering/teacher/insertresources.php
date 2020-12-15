@@ -4,12 +4,13 @@ include('include/connection.php');
 	
   if(isset($_POST['submit']))
    {
-   	
-	$caption=$_POST['caption'];
-	$class=$_POST['class'];
-	
 
-	 
+   	$caption = $_POST['caption'];
+   	$year = $_POST['year'];
+   	$subject = $_POST['subject'];
+   	$semister =$_POST['semister'];
+   	$faculty = $_POST['faculty'];
+
 	 $image=$_FILES['image']['name'];
 	
 
@@ -25,16 +26,12 @@ include('include/connection.php');
  	 $dir1="pdf/".$pdf;
  	 move_uploaded_file($temp1, $dir1);
 	
-	 
+	 $sql ="insert into engineering_resource(image,pdf,year,subject,semister,faculty) values('$image','$pdf','$year','$subject','$semister','$faculty')";
+	 $query= mysqli_query($db,$sql);
 
-	 $sql="insert into school_resource(image,pdf,class,caption)
-	    values('$image','$pdf',$class,'$caption')";
-	    $query=mysqli_query($db,$sql);
-	   
 $_SESSION['message']="POSTED";
 	
  }
-
 
 ?>
 <!DOCTYPE html>
@@ -66,7 +63,3 @@ $_SESSION['message']="POSTED";
 
 </body>
 </html>
-
-
-
-

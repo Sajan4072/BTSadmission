@@ -15,7 +15,7 @@ session_start();
   <link rel="stylesheet" type="text/css" href="gal.css">
 </head>
 <body>
-</body>
+
 <!-- top banner -->
     
     <div class="container-fluid">
@@ -36,7 +36,7 @@ session_start();
                 </div>
                         <div class="col-lg-2 col-md-2 col-12">
                           <div class="row" style="margin-top: 60px; margin-right: 2px;">
-                            <div class="col-6"><h5><i style="margin-right: 5px; margin-top: 10px;" class="fa fa-user" aria-hidden="true"></i><a href="../profile.php" style="text-decoration: none; color: black;"><?php echo $_SESSION['teacher_user']; ?></a></h5></div>
+                            <div class="col-6"><h5><i style="margin-right: 5px; margin-top: 10px;" class="fa fa-user" aria-hidden="true"></i><a href="profile.php" style="text-decoration: none; color: black;"><?php echo $_SESSION['teacher_user']; ?></a></h5></div>
                             <div class="col-6">
                                <a href="logout.php"> <button type="submit" class="btn btn-primary" style="background-color: #224a8f; border: none; float: left; border-radius: 20px;">LOGOUT</button></a>
                             </div>
@@ -53,11 +53,13 @@ session_start();
       <div class="container sidebar">
         <div class="row">
           <ul class="unstyled" >
-       
+        <li><a href="../news and events/index.html" class="active"><i class="fa fa-newspaper-o" ></i>NEWS AND EVENTS</a></li>
+           <li><a href="../notices/index.html"><i class="fa fa-bars" ></i>NOTICES</a></li>
+           <li><a href="../events/index.html"><i class="fa fa-calendar"  ></i>EVENTS</a></li>
             <li><a href="#"><i class="fa fa-file"  ></i>RESOURCES </a></li>
-           
-            <li><a href="results.php"><i class="fa fa-file" ></i>RESULTS</a></li>
-          
+            <li><a href="../galary update/index.html"><i class="fa fa-picture-o"  ></i>GALARY UPDATE</a></li>
+            <li><a href="../results/index.html"><i class="fa fa-file" ></i>RESULTS</a></li>
+            <li><a href="../calender events/index.html"><i class="fa fa-calendar" ></i>CALENDER EVENTS</a></li>
           </ul>
         </div>
       </div>
@@ -75,6 +77,7 @@ session_start();
           <div class="row">
             <textarea name="caption" style="height: 50px;"></textarea>
           </div>
+
           <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-4" style="margin-top: 10px">
               Choose images
@@ -82,9 +85,8 @@ session_start();
               
             </div>
           </div>
-
           <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-4" style="margin-top: 10px">
+            <div class="col-lg-3 col-md-4 col-sm-4" style="margin-top: 10px;">
               Choose pdf file
               <input type="file" name="pdf" > 
               
@@ -95,38 +97,47 @@ session_start();
 
           <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-4" style="margin-top: 10px">
-              Choose class
-              <input type="number" name="class" > 
+              Choose Year
+              <input type="text" name="year" > 
+              <option>first/second/third</option>
+              
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-4" style="margin-top: 10px; margin-left: 75px;">
+              Choose Sem
+              <input type="text" name="semister" > 
+              <option>first/second</option>
+              
               
             </div>
           </div>
 
-
-
-
-            
-            <div class="col-4"><p style="float: right;">
-            <div class="col-4"></div>
-           
-              
+          <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-4" style="margin-top: 10px;">
+              Choose Subject
+              <input type="text" name="subject" > 
             </div>
+          
+        
+           <div class="col-lg-3 col-md-4 col-sm-4" style="margin-top: 10px; margin-left: 75px;">
+              Choose <br>Faculty
+              <input type="text" name="faculty" >
+              <option>civil/computer</option> 
+            </div>
+          </div>
+
+
             <div class="col-lg-6 col-md-4 col-sm-4"><p style=" margin-left: 280px;">
             <button type="submit" name="submit" class="btn btn-success" style="border: none; border-radius: 20px; margin-top: 5px; margin-left: 159px;">POST</button>
 
             </p></div>
-</form>
+          </div></div></form>
 
-          </div>
 
-        </div>
-        
-      </div>
-    </div>
-  </div>
+          
 
 </div>
-
-
+</div></div>
+</body>
 
 <script src="script.js"></script>
 
