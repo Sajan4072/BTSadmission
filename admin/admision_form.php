@@ -517,7 +517,17 @@ $engineering='set';
                     class="form-control"
                     placeholder="Occupation"
                     name="occupation1"
-                    value="<?php echo htmlentities($admission['moccupation']) ?>"
+                    value="<?php
+                     if(isset($management))
+                     {
+                     echo htmlentities($admission['ocuupation1']);
+                     }
+                     if(isset($engineering))
+                     {
+                       echo htmlentities($admission['moccupation']);
+                     }
+
+                      ?>"
                   />
                 </div>
               </div>
@@ -954,9 +964,91 @@ $engineering='set';
               
               <h5>Important Documents</h5>
               <div class="form-row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                  <a class="btn-secondary btn center">download  <i class="fa fa-download"></i> </a>
+               
+                 <?php 
+                     if(isset($engineering))
+                     {
+                 ?>
+                   <div class="col-lg-4 col-md-4 col-sm-12">
+                     <label for="file" class="file-label"
+                    >SEE/SLC Gradesheet</label
+                  ><br>
+                  <a class="btn-secondary btn center" href="download.php?id=<?php echo $admission['id'] ?>&&faculty=engineering&&type=slcgradesheet">download  <i class="fa fa-download"></i> </a>
+                   </div>
+
+                   <div class="col-lg-4 col-md-4 col-sm-12">
+                     <label for="file" class="file-label"
+                    >SEE/SLC Character Certificate</label
+                  >
+                  <br>
+                  <a class="btn-secondary btn center" href="download.php?id=<?php echo $admission['id'] ?>&&faculty=engineering&&type=slccharacter">download  <i class="fa fa-download"></i> </a>
+                   </div>
+
+                   <div class="col-lg-4 col-md-4 col-sm-12">
+                     <label for="file" class="file-label"
+                    >Birth Certificate/Citizenship</label
+                  ><br>
+                  <a class="btn-secondary btn center" href="download.php?id=<?php echo $admission['id'] ?>&&faculty=engineering&&type=citizenship">download  <i class="fa fa-download"></i> </a>
+                   </div>
+
+                   <div class="col-lg-4 col-md-4 col-sm-12">
+                     <label for="file" class="file-label"
+                    >Entrance Admit Card</label
+                  ><br>
+                  <a class="btn-secondary btn center" href="download.php?id=<?php echo $admission['id'] ?>&&faculty=engineering&&type=admit_card">download  <i class="fa fa-download"></i> </a>
+                   </div>
+
+                   <div class="col-lg-4 col-md-4 col-sm-12">
+                     <label for="file" class="file-label"
+                    >Recommendation Letter from Entrance appearing School</label
+                  ><br>
+                  <a class="btn-secondary btn center" href="download.php?id=<?php echo $admission['id'] ?>&&faculty=engineering&&type=letter">download  <i class="fa fa-download"></i> </a>
+                   </div>
+
+                   <div class="col-lg-4 col-md-4 col-sm-12">
+                     <label for="file" class="file-label"
+                    >Result Copy</label
+                  ><br>
+                  <a class="btn-secondary btn center" href="download.php?id=<?php echo $admission['id'] ?>&&faculty=engineering&&type=result_copy">download  <i class="fa fa-download"></i> </a>
+                   </div>
+
+                   <div class="col-lg-4 col-md-4 col-sm-12">
+                     <label for="file" class="file-label"
+                    >Recent PP size Photo</label
+                  ><br>
+                  <a class="btn-secondary btn center" href="download.php?id=<?php echo $admission['id'] ?>&&faculty=engineering&&type=pp">download  <i class="fa fa-download"></i> </a>
+                   </div>
+
+                <?php }?>
+
+                <?php 
+                     if(isset($management))
+                     {
+                 ?>
+                 <div class="col-lg-4 col-md-4 col-sm-12">
+                    <label for="file" class="file-label"
+                    >SEE/SLC Gradesheet</label
+                  ><BR>
+                  <a class="btn-secondary btn center file-upload" href="download.php?id=<?php echo $admission['id'] ?>&&faculty=management&&type=slcgradesheet">download  <i class="fa fa-download"></i> </a>
                 </div>
+                  <div class="col-lg-4 col-md-4 col-sm-12">
+                    <label for="file" class="file-label"
+                    >SEE/SLC Character Certificate</label
+                  >
+                  <BR>  
+                  <a class="btn-secondary btn center file-upload" href="download.php?id=<?php echo $admission['id'] ?>&&faculty=management&&type=slccharacter">download  <i class="fa fa-download"></i> </a>
+                </div>
+              
+                 <div class="col-lg-4 col-md-4 col-sm-12">
+                  <label for="file" class="file-label"
+                    >Recent PP size Photo</label
+                  ><br>
+                  <a class="btn-secondary btn center file-upload" href="download.php?id=<?php echo $admission['id'] ?>&&faculty=management&&type=pp">download  <i class="fa fa-download"></i> </a>
+                </div>
+              
+              
+                <?php }?>
+               
             
                
               </div>
