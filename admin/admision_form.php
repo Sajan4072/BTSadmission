@@ -5,12 +5,27 @@ include('include/connection.php');
 include('include/check_login.php');
 
 $id=$_GET['id'];
+$faculty=$_GET['faculty'];
 
 
+
+if($faculty=='management')
+{
 $sql="select * from admission where id='$id' limit 1";
 $result=mysqli_query($db,$sql);
 $admission=mysqli_fetch_assoc($result);
+ $management='set';
+}
 
+elseif ($faculty=='engineering') 
+{
+ $sql="select * from engineeringadmission where id='$id' limit 1";
+$result=mysqli_query($db,$sql);
+$admission=mysqli_fetch_assoc($result);
+$engineering='set';
+
+}
+ 
 
 ?>
 <!DOCTYPE html>
@@ -75,40 +90,45 @@ $admission=mysqli_fetch_assoc($result);
               <div class="form-row">
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="firstName">First Name</label>
-                  <input
+                  <input disabled
                     id="firstName"
                     type="text"
                     class="form-control"
                     placeholder="First name"
                     name="firstname"
-                    value="<?php echo htmlentities($admission['firstname']); ?>"
+                    value="<?php if(isset($management)){ echo htmlentities($admission['firstname']); }
+                          if(isset($engineering)){ echo htmlentities($admission['sname']);}
+                     ?>"
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="middleName">Middle Name</label>
-                  <input
+                  <input disabled
                     type="text"
                     class="form-control"
                     placeholder="Middle name"
                     name="middle name"
-                    value="<?php echo htmlentities($admission['middlename']); ?>"
+                    
+                      value="<?php if(isset($management)){ echo htmlentities($admission['middlename']); }
+                          if(isset($engineering)){ echo htmlentities($admission['mname']);}
+                     ?>"
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="lastName">Last Name</label>
-                  <input
+                  <input disabled
                     type="text"
                     class="form-control"
                     placeholder="Last name"
                     name="last name"
-                    value="<?php echo htmlentities($admission['lastname']); ?>"
-                  />
+                     value="<?php if(isset($management)){ echo htmlentities($admission['lastname']); }
+                          if(isset($engineering)){ echo htmlentities($admission['lname']);} ?>"                  />
                 </div>
               </div>
               <div class="form-row">
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="dob">Date of Birth</label>
-                  <input
+                  <input disabled
                     id="dob"
                     type="date"
                     class="form-control"
@@ -122,7 +142,7 @@ $admission=mysqli_fetch_assoc($result);
                 <div class="col-sm-4">
                   <label for="gender">Gender: </label>
                   <div class="form-check-inline">
-                    <input
+                    <input disabled
                       class="form-check-input"
                       type="radio"
                       name="gender"
@@ -140,13 +160,13 @@ $admission=mysqli_fetch_assoc($result);
                     </label>
                   </div>
                   <div class="form-check-inline">
-                    <input
+                    <input disabled
                       class="form-check-input"
                       type="radio"
                       name="gender"
                       id="exampleRadios2"
                       value="option2"
-                       <?php if ($admission['gender']=="Female")
+                       <?php if ($admission['gender']=="female")
                        {
 
                              echo"checked";
@@ -158,10 +178,11 @@ $admission=mysqli_fetch_assoc($result);
                     </label>
                   </div>
                 </div>
+                <?php  if(isset($management)) { ?>
                 <div class="col-sm-8">
                   <label for="gender">Caste: </label>
                   <div class="form-check-inline">
-                    <input
+                    <input disabled
                       class="form-check-input"
                       type="radio"
                       name="caste"
@@ -180,7 +201,7 @@ $admission=mysqli_fetch_assoc($result);
                     </label>
                   </div>
                   <div class="form-check-inline">
-                    <input
+                    <input disabled
                       class="form-check-input"
                       type="radio"
                       name="caste"
@@ -198,7 +219,7 @@ $admission=mysqli_fetch_assoc($result);
                     </label>
                   </div>
                   <div class="form-check-inline">
-                    <input
+                    <input disabled
                       class="form-check-input"
                       type="radio"
                       name="caste"
@@ -216,7 +237,7 @@ $admission=mysqli_fetch_assoc($result);
                     </label>
                   </div>
                   <div class="form-check-inline">
-                    <input
+                    <input disabled
                       class="form-check-input"
                       type="radio"
                       name="caste"
@@ -234,11 +255,12 @@ $admission=mysqli_fetch_assoc($result);
                     </label>
                   </div>
                 </div>
+              <?php } ?>
               </div>
               <div class="form-row">
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="dob">Nationality</label>
-                  <input
+                  <input disabled
                     id="dob"
                     type="text"
                     class="form-control"
@@ -247,22 +269,10 @@ $admission=mysqli_fetch_assoc($result);
                     value="<?php echo htmlentities($admission['nationality'])?>"
                   />
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                  <label for="dob">Religion</label>
-                  <input
-                    id="dob"
-                    type="text"
-                    class="form-control"
-                    placeholder="Religion"
-                    name="religion"
-                    value="<?php echo htmlentities($admission['religion']) ?>"
-                  />
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="col-lg-4 col-md-4 col-sm-12">
+
+                   <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="firstName">Mobile No.</label>
-                  <input
+                  <input disabled
                     id="firstName"
                     type="text"
                     class="form-control"
@@ -271,7 +281,8 @@ $admission=mysqli_fetch_assoc($result);
                     value="<?php echo htmlentities($admission['mobilenumber']) ?>"
                   />
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-12">
+
+                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="middleName">E-mail</label>
                   <input
                     type="text"
@@ -281,9 +292,26 @@ $admission=mysqli_fetch_assoc($result);
                     value="<?php echo htmlentities($admission['email']) ?>"
                   />
                 </div>
+                
+              </div>
+             <?php if(isset($management)) { ?>
+              <div class="form-row">
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                  <label for="dob">Religion</label>
+                  <input disabled
+                    id="dob"
+                    type="text"
+                    class="form-control"
+                    placeholder="Religion"
+                    name="religion"
+                    value="<?php echo htmlentities($admission['religion']) ?>"
+                  />
+                </div>
+             
+               
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="lastName">Facebook Account</label>
-                  <input
+                  <input disabled
                     type="text"
                     class="form-control"
                     placeholder="Facebook Account"
@@ -292,11 +320,14 @@ $admission=mysqli_fetch_assoc($result);
                   />
                 </div>
               </div>
+
+            <?php } ?>
+
               <h5>Permanent Address</h5>
               <div class="form-row">
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="dob">Zone</label>
-                  <input
+                  <input disabled
                     id="dob"
                     type="text"
                     class="form-control"
@@ -307,7 +338,7 @@ $admission=mysqli_fetch_assoc($result);
                 </div> 
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="dob">Province</label>
-                  <input
+                  <input disabled
                     id="dob"
                     type="text"
                     class="form-control"
@@ -318,7 +349,7 @@ $admission=mysqli_fetch_assoc($result);
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="dob">District</label>
-                  <input
+                  <input disabled
                     id="dob"
                     type="text"
                     class="form-control"
@@ -331,7 +362,7 @@ $admission=mysqli_fetch_assoc($result);
               <div class="form-row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
                   <label for="dob">Municipality/Rural Municipality</label>
-                  <input
+                  <input disabled
                     id="dob"
                     type="text"
                     class="form-control"
@@ -342,7 +373,7 @@ $admission=mysqli_fetch_assoc($result);
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-12">
                   <label for="dob">Ward No.</label>
-                  <input
+                  <input disabled
                     id="dob"
                     type="text"
                     class="form-control"
@@ -356,7 +387,7 @@ $admission=mysqli_fetch_assoc($result);
               <div class="form-row">
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="dob">Zone</label>
-                  <input
+                  <input disabled
                     id="dob"
                     type="text"
                     class="form-control"
@@ -367,7 +398,7 @@ $admission=mysqli_fetch_assoc($result);
                 </div> 
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="dob">Province</label>
-                  <input
+                  <input disabled
                     id="dob"
                     type="text"
                     class="form-control"
@@ -378,7 +409,8 @@ $admission=mysqli_fetch_assoc($result);
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="dob">District</label>
-                  <input
+                  <input disabled disabled
+                  disabled
                     id="dob"
                     type="text"
                     class="form-control"
@@ -392,7 +424,8 @@ $admission=mysqli_fetch_assoc($result);
               <div class="form-row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
                   <label for="dob">Municipality/Rural Municipality</label>
-                  <input
+                  <input 
+                  disabled
                     id="dob"
                     type="text"
                     class="form-control"
@@ -403,7 +436,8 @@ $admission=mysqli_fetch_assoc($result);
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-12">
                   <label for="dob">Ward No.</label>
-                  <input
+                  <input 
+                  disabled
                     id="dob"
                     type="text"
                     class="form-control"
@@ -418,17 +452,24 @@ $admission=mysqli_fetch_assoc($result);
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="firstName">Father's Name</label>
                   <input
+                  disabled
                     id="firstName"
                     type="text"
                     class="form-control"
                     placeholder="Father's name"
                     name="pfirst"
-                    value="<?php echo htmlentities($admission['pfirst']) ?>"
+                    value="<?php if(isset($management))
+                               {echo htmlentities($admission['pfirst']);
+                               } 
+                               if(isset($engineering))
+                               {echo htmlentities($admission['fname']);
+
+                               }  ?>"
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="middleName">Contact No.</label>
-                  <input
+                  <input disabled
                     type="text"
                     class="form-control"
                     placeholder="Contact No."
@@ -438,7 +479,7 @@ $admission=mysqli_fetch_assoc($result);
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="lastName">Occupation</label>
-                  <input
+                  <input disabled
                     type="text"
                     class="form-control"
                     placeholder="Occupation"
@@ -450,7 +491,7 @@ $admission=mysqli_fetch_assoc($result);
               <div class="form-row">
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="firstName">Mother's Name</label>
-                  <input
+                  <input disabled
                     id="firstName"
                     type="text"
                     class="form-control"
@@ -461,7 +502,7 @@ $admission=mysqli_fetch_assoc($result);
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="middleName">Contact No.</label>
-                  <input
+                  <input disabled
                     type="text"
                     class="form-control"
                     placeholder="Contact No."
@@ -471,19 +512,19 @@ $admission=mysqli_fetch_assoc($result);
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="lastName">Occupation</label>
-                  <input
+                  <input disabled
                     type="text"
                     class="form-control"
                     placeholder="Occupation"
                     name="occupation1"
-                    value="<?php echo htmlentities($admission['ocuupation1']) ?>"
+                    value="<?php echo htmlentities($admission['moccupation']) ?>"
                   />
                 </div>
               </div>
               <div class="form-row">
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="firstName">Guardian's Name</label>
-                  <input
+                  <input disabled
                     id="firstName"
                     type="text"
                     class="form-control"
@@ -494,7 +535,7 @@ $admission=mysqli_fetch_assoc($result);
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="middleName">Contact No.</label>
-                  <input
+                  <input disabled
                     type="text"
                     class="form-control"
                     placeholder="Contact No."
@@ -504,7 +545,7 @@ $admission=mysqli_fetch_assoc($result);
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="lastName">Occupation</label>
-                  <input
+                  <input disabled
                     type="text"
                     class="form-control"
                     placeholder="Occupation"
@@ -517,7 +558,7 @@ $admission=mysqli_fetch_assoc($result);
               <div class="form-row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
                   <label for="firstName">School Name</label>
-                  <input
+                  <input disabled
                     id="firstName"
                     type="text"
                     class="form-control"
@@ -528,7 +569,7 @@ $admission=mysqli_fetch_assoc($result);
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12">
                   <label for="middleName">Passed Year</label>
-                  <input
+                  <input disabled
                     type="text"
                     class="form-control"
                     placeholder="Passed Year"
@@ -538,7 +579,7 @@ $admission=mysqli_fetch_assoc($result);
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12">
                   <label for="lastName">SEE GPA Point</label>
-                  <input
+                  <input disabled
                     type="text"
                     class="form-control"
                     placeholder="GPA Point"
@@ -549,9 +590,11 @@ $admission=mysqli_fetch_assoc($result);
               </div>
               <h6>Marks / Grades In</h6>
               <div class="form-row">
+                <?php if(isset($management))
+                {?>
                 <div class="col-lg-2 col-md-2 col-sm-2">
                   <label for="firstName">Nepali</label>
-                  <input
+                  <input disabled
                     id="firstName"
                     type="text"
                     class="form-control"
@@ -560,19 +603,24 @@ $admission=mysqli_fetch_assoc($result);
                     value="<?php echo htmlentities($admission['nepali']) ?>"
                   />
                 </div>
+              <?php }?>
                 <div class="col-lg-2 col-md-2 col-sm-2">
                   <label for="middleName">English</label>
-                  <input
+                  <input disabled
                     type="text"
                     class="form-control"
                     placeholder="English"
                     name="english"
-                    value="<?php echo htmlentities($admission['english']) ?>"
+                    value="<?php if(isset($management)){echo htmlentities($admission['english']);}
+                                 if(isset($engineering)){echo htmlentities($admission['English']);}
+                      ?>"
                   />
                 </div>
+                <?php if(isset($management))
+                {?>
                 <div class="col-lg-2 col-md-2 col-sm-2">
                   <label for="lastName">Social Std.</label>
-                  <input
+                  <input disabled
                     type="text"
                     class="form-control"
                     placeholder="Social Std."
@@ -580,32 +628,46 @@ $admission=mysqli_fetch_assoc($result);
                     value="<?php echo htmlentities($admission['social']) ?>"
                   />
                 </div>
+              <?php }?>
                 <div class="col-lg-2 col-md-2 col-sm-2">
                   <label for="firstName">Science</label>
-                  <input
+                  <input disabled
                     id="firstName"
                     type="text"
                     class="form-control"
                     placeholder="Science"
                     name="science"
-                    value="<?php echo htmlentities($admission['science']) ?>"
+                     value="<?php if(isset($management)){echo htmlentities($admission['science']);}
+                                 if(isset($engineering)){echo htmlentities($admission['Science']);}
+                      ?>"
                   />
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2">
                   <label for="middleName">Maths</label>
-                  <input type="text" class="form-control" placeholder="Maths" name="math" value="<?php echo htmlentities($admission['math']) ?>"/>
+                  <input disabled type="text" class="form-control" placeholder="Maths" name="math" 
+                     value="<?php if(isset($management)){echo htmlentities($admission['math']);}
+                                 if(isset($engineering)){echo htmlentities($admission['Math']);}
+                      ?>"
+
+                  />
                 </div>
+                <?php if(isset($management))
+                {?>
                 <div class="col-lg-2 col-md-2 col-sm-2">
                   <label for="lastName">EPH</label>
-                  <input type="text" class="form-control" placeholder="EPH" name="eph" value="<?php echo htmlentities($admission['eph']) ?>"/>
+                  <input disabled type="text" class="form-control" placeholder="EPH" name="eph" value="<?php echo htmlentities($admission['eph']) ?>"/>
                 </div>
+                <?php  }
+                ?>
               </div>
+
+              <?php  if(isset($management)){ ?>
               <h5>ELECTIVE SUBJECTS XI</h5>
               <div class="form-row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                   <label for="gender"><h4>Elective</h4></label><br>
                   <div class="form-check-inline">
-                    <input
+                    <input disabled
                       class="form-check-input"
                       type="radio"
                       name="elective"
@@ -623,7 +685,7 @@ $admission=mysqli_fetch_assoc($result);
                     </label>
                   </div>
                   <div class="form-check-inline">
-                    <input
+                    <input disabled
                       class="form-check-input"
                       type="radio"
                          name="elective"
@@ -641,7 +703,7 @@ $admission=mysqli_fetch_assoc($result);
                     </label>
                   </div>
                   <div class="form-check-inline">
-                    <input
+                    <input disabled
                       class="form-check-input"
                       type="radio"
                         name="elective"
@@ -665,7 +727,7 @@ $admission=mysqli_fetch_assoc($result);
                 <div class="col-lg-12 col-md-12 col-sm-12">
                   <label for="gender"><h4>Elective I</h4></label><br>
                   <div class="form-check-inline">
-                    <input
+                    <input disabled
                       class="form-check-input"
                       type="radio"
                       name="elective2"
@@ -683,7 +745,7 @@ $admission=mysqli_fetch_assoc($result);
                     </label>
                   </div>
                   <div class="form-check-inline">
-                    <input
+                    <input disabled
                       class="form-check-input"
                       type="radio"
                      name="elective2"
@@ -701,7 +763,7 @@ $admission=mysqli_fetch_assoc($result);
                     </label>
                   </div>
                   <div class="form-check-inline">
-                    <input
+                    <input disabled
                       class="form-check-input"
                       type="radio"
                      name="elective2"
@@ -725,7 +787,7 @@ $admission=mysqli_fetch_assoc($result);
                 <div class="col-lg-12 col-md-12 col-sm-12">
                   <label for="gender"><h4>Elective II</h4></label><br>
                   <div class="form-check-inline">
-                    <input
+                    <input disabled
                       class="form-check-input"
                       type="radio"
                       name="elective3"
@@ -744,7 +806,7 @@ $admission=mysqli_fetch_assoc($result);
                     </label>
                   </div>
                   <div class="form-check-inline">
-                    <input
+                    <input disabled
                       class="form-check-input"
                       type="radio"
                       name="elective3"
@@ -764,27 +826,139 @@ $admission=mysqli_fetch_assoc($result);
                   </div>
                 </div>
                 </div>
+              <?php } ?>
+
+              <?php if(isset($engineering)){ ?>
+              <h5>Type of School</h5>
+              <div class="form-row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="form-check-inline">
+                    <input disabled
+                      class="form-check-input"
+                      type="radio"
+                      name="schooltype"
+                      id="exampleRadios1"
+                      value="government"
+                      <?php
+                        if($admission['schooltype']=='government')
+                          echo "checked";
+
+                      ?>
+                    />
+                    <label class="form-check-label" for="exampleRadios1">
+                      Government
+                    </label>
+                  </div>
+                  <div class="form-check-inline">
+                    <input disabled
+                      class="form-check-input"
+                      type="radio"
+                      name="schooltype"
+                      id="exampleRadios2"
+                      value="community"
+                       <?php
+                        if($admission['schooltype']=='community')
+                          echo "checked";
+
+                      ?>
+                    />
+                    <label class="form-check-label" for="exampleRadios2">
+                      Community
+                    </label>
+                  </div>
+                  <div class="form-check-inline">
+                    <input disabled
+                      class="form-check-input"
+                      type="radio"
+                      name="schooltype"
+                      id="exampleRadios2"
+                      value="private"
+                       <?php
+                        if($admission['schooltype']=='private')
+                          echo "checked";
+
+                      ?>
+                    />
+                    <label class="form-check-label" for="exampleRadios2">
+                      Private 
+                    </label>
+                  </div>
+                </div>
+                </div>
+
+
+               <div class="form-row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <label for="firstName">School Name</label>
+                  <input disabled
+                    id="firstName"
+                    type="text"
+                    class="form-control"
+                    placeholder="School name"
+                    name="school1"
+                    value="<?php echo htmlentities($admission['school1']); ?>" 
+                  />
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                  <label for="middleName">Passed Year</label>
+                  <input disabled
+                    type="text"
+                    class="form-control"
+                    placeholder="Passed Year"
+                    name="passed1"
+                    value="<?php echo htmlentities($admission['passed1']); ?>"
+                  />
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                  <label for="lastName">TSLC</label>
+                  <input disabled
+                    type="text"
+                    class="form-control"
+                    placeholder="GPA Point or %"
+                    name="GPA1"
+                    value="<?php echo htmlentities($admission['GPA1']); ?>"
+                  />
+                </div>
+              </div>
+              <h6>Marks / Grades In</h6>
+              <div class="form-row">
+                 <div class="col-lg-4 col-md-4 col-sm-4">
+                  <label for="middleName">English</label>
+                  <input disabled
+                    type="text"
+                    class="form-control"
+                    placeholder="English"
+                    name="english1"
+                    value="<?php echo htmlentities($admission['english1']); ?>"
+                  />
+                </div>
+               
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <label for="firstName">Science</label>
+                  <input disabled
+                    id="firstName"
+                    type="text"
+                    class="form-control"
+                    placeholder="Science"
+                    name="science1"
+                    value="<?php echo htmlentities($admission['science1']); ?>"
+                  />
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <label for="middleName">Maths</label>
+                  <input disabled type="text" class="form-control" placeholder="Maths" name="math1" value="<?php echo htmlentities($admission['math1']); ?>"/>
+                </div>
+              </div>
+
+              <?php } ?> 
               
               <h5>Important Documents</h5>
               <div class="form-row">
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                  <label for="file" class="file-label"
-                    >SEE/SLC Gradesheet</label
-                  >
-                  <input type="file" name="slcgrade" class="form-control file-upload" />
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <a class="btn-secondary btn center">download  <i class="fa fa-download"></i> </a>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                  <label for="file" class="file-label"
-                    >SEE/SLC Character Certificate</label
-                  >
-                  <input type="file" name="slccharacter" class="form-control file-upload" />
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                  <label for="file" class="file-label"
-                    >Recent PP size Photo</label
-                  >
-                  <input type="file" name="pp" class="form-control file-upload" />
-                </div>
+            
+               
               </div>
          
             

@@ -127,7 +127,7 @@ $GPA1=$_POST['GPA1'];
 
 
 
-      $sql="insert into engineeringadmission (sname, mname, lname, DOB ,gender,  nationality ,mobilenumber , email ,zone,  province , district,  municipality , wardno , zone1 ,privince1, district1 ,municipality1 ,wardno1, fname ,contact, moname,  mcontact , moccupation, occupation , gname, gcontact , goccupation ,school , passed, GPA ,English, Science, Math , schooltype,  school1, passed1, GPA1 , english1 , science1,  math1, slcgrade,  slccharacter , birthcert, entrance,  resultcopy , pp,recommendation)
+      $sql="insert into engineeringadmission (sname, mname, lname, DOB ,gender,  nationality ,mobilenumber , email ,zone,  province , district,  municipality , wardno , zone1 ,province1, district1 ,municipality1 ,wardno1, fname ,contact, moname,  mcontact , moccupation, occupation , gname, gcontact , goccupation ,school , passed, GPA ,English, Science, Math , schooltype,  school1, passed1, GPA1 , english1 , science1,  math1, slcgrade,  slccharacter , birthcert, entrance,  resultcopy , pp,recommendation)
                          values('$firstname' , '$middlename',  '$lastname' , '$DOB' ,'$gender', '$nationality',  
                          '$mobilenumber',  '$email',  '$zone' , '$province',  '$district',  '$municipality',  $wardno,  '$zone1' ,'$province1' ,'$district1', '$municipality1' ,'$wardno1' ,'$fname',  '$contact' ,'$occupation' , '$mname' ,'$mcontact',  '$moccupation' ,'$gname', '$gcontact',  '$goccupation', '$school', 
                          '$passed',  '$GPA' ,  '$english' ,  '$science', '$math', '$schooltype','$school1','$passed1','$GPA1','$english1','$science1','$math1','$slcgrade',  '$slccharacter' ,'$birthcert','$entrance' ,'$resultcopy','$pp','$recommendation') ";

@@ -101,7 +101,7 @@
                       type="radio"
                       name="gender"
                       id="female"
-                      value="option2"
+                      value="female"
                     />
                     <label class="form-check-label" for="exampleRadios2">
                       Female
