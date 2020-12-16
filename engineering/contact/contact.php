@@ -154,7 +154,7 @@ function input_data($data) {
               <a class="nav-link" href="../ourteam/ourteam.php">Our Team</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="../results/results.php">Results</a>
+              <a class="nav-link" href="../results/reuslts.php">Results</a>
             </li>
             <li class="nav-item center-menu">
               <a class="nav-link active" href="">Contact Us</a>

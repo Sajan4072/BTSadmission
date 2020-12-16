@@ -274,7 +274,7 @@ $code=$_SESSION['code'];
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12">
                         <h6>PERCENTAGE:<span id="percentage"></span>%</h6>
-                        <h6>DIVISION:FIRST</h6>
+                        <h6>DIVISION:</h6>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-12">
                         <h6>PRINCIPAL:</h6>

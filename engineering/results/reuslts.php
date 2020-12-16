@@ -68,7 +68,7 @@ $code=$_SESSION['code'];
               <a class="nav-link" href="./engineering/index.php">Engineering</a>
             </li>-->
             <li class="nav-item center-menu">
-              <a class="nav-link active" href="">Gallery</a>
+              <a class="nav-link " href="../galary/gallery.php">Gallery</a>
             </li>
             <li class="nav-item center-menu">
               <a class="nav-link" href="../events/events.php">Events</a>
@@ -80,7 +80,7 @@ $code=$_SESSION['code'];
               <a class="nav-link" href="../ourteam/ourteam.php">Our Team</a>
             </li>
              <li class="nav-item center-menu">
-              <a class="nav-link" href="../results/results.php">Results</a>
+              <a class="nav-link active" href="../results/results.php">Results</a>
             </li>
             <li class="nav-item center-menu">
               <a class="nav-link" href="../contact/contact.php">Contact Us</a>
@@ -275,7 +275,7 @@ $code=$_SESSION['code'];
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12">
                         <h6 >PERCENTAGE:<span id="percentage"></span>%</h6>
-                        <h6>DIVISION:FIRST</h6>
+                        <h6>DIVISION:</h6>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-12">
                         <h6>PRINCIPAL:</h6>
