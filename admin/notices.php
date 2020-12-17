@@ -78,7 +78,7 @@ include('include/check_login.php');
             <div class="col-4"></div>
 
 
-            <button type="submit" name="NewsAndEventSubmit" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-top: 5px; margin-left: 240px;">POST</button>
+            <button type="submit" name="submit" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-top: 5px; margin-left: 240px;">POST</button>
 
             </p></div>
 
