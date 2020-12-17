@@ -281,7 +281,7 @@ session_start();?>
 
 
             <li class="nav-item">
-              <a class="nav-link" href="#"><p class="date-marker" style="width:90%; height: 60px; margin-top: 7px;"><?php echo $row['date']; ?><br />><?php echo $row['event']; ?></p>
+              <a class="nav-link" href="#"><p class="date-marker" style="width:90%; height: 60px; margin-top: 7px;"><?php echo $row['date']; ?><br /><?php echo $row['event']; ?></p>
               </a>
             </li>
           <?php } ?>
