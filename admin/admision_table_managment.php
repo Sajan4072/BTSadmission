@@ -22,6 +22,13 @@ $result=mysqli_query($db,$sql);
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="landing.css">
 </head>
+   <style>
+
+    .blue{
+        background-color:#000071;
+        color: white; 
+    }
+    </style>
 
 <body>
     <?php 
@@ -44,7 +51,7 @@ include('include/check_login.php');
                     <div class="col-12">
                         <div class="row justify-content-center">
                             <table class="table">
-                                <thead>
+                                <thead class="blue">
                                     <tr>
                                         <TH>ID</TH>
                                         <th>Name</th>

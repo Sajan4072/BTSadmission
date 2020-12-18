@@ -146,6 +146,9 @@ session_start();
             <li class="nav-item center-menu">
               <a class="nav-link" href="./ourteam/ourteam.php">Our Team</a>
             </li>
+            <li class="nav-item center-menu">
+              <a class="nav-link" href="./admssion/index.php">Admision form</a>
+            </li>
              
             <li class="nav-item center-menu">
               <a class="nav-link" href="./contact/contact.php">Contact Us</a>

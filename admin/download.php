@@ -83,7 +83,7 @@ include('include/check_login.php');
     $file4=$admission['recommendation'];
     $file5=$admission['resultcopy'];
     $file6=$admission['pp'];
-    echo $file6;
+ 
 
       $path='../engineering/admission/Photo/'.$file;
       $path1='../engineering/admission/Photo/'.$file1;
@@ -198,4 +198,6 @@ include('include/check_login.php');
 
 
   }
+
+  echo "Woops!!! Something went wrong file uploaded by student is currupted";
 ?>
