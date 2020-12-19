@@ -2,7 +2,12 @@
 
  session_start();
 
+
+
   $db = mysqli_connect("localhost","root", "", "bts" );  
+
+
+    
 
   if(isset($_POST['school_form']))
   { 
@@ -78,48 +83,53 @@
          $birth_certificate=$_FILES['birth_certificate']['name'];
 
          include('old_data.php');
+         include('validate.php');
          
         
 
 
-        $prev_class_gradesheet=$_FILES['prev_class_gradesheet']['name'];
+        $name=$_FILES['prev_class_gradesheet']['name'];
+        $prev_class_gradesheet=time().$name;
         $temp=$_FILES['prev_class_gradesheet']['tmp_name'];
         $dir="file/".$prev_class_gradesheet;
         move_uploaded_file($temp, $dir);
 
 
-        $pp=$_FILES['pp']['name'];
-        $temp=$_FILES['pp']['tmp_name'];
-        $dir="file/".$pp;
+        $name=$_FILES['birth_certificate']['name'];
+         $birth_certificate=time().$name;
+        $temp=$_FILES['birth_certificate']['tmp_name'];
+        $dir="file/".$birth_certificate;
         move_uploaded_file($temp, $dir);
 
 
 
-        $pp=$_FILES['pp']['name'];
+        $name=$_FILES['pp']['name'];
+        $pp=time().$name;
         $temp=$_FILES['pp']['tmp_name'];
         $dir="file/".$pp;
         move_uploaded_file($temp, $dir);
 
-         header('location:./index.php');
+       
+        $sql=" insert into admission_school 
+               (f_name,m_name,l_name,dob,gender,caste,nationality,religion,mobile_no,email,facebook_account,check_computer,check_connection,check_mobile,check_connectivity,check_tv,check_cable,check_radio,per_zone,per_province,per_district,per_municipality,per_wardno,temp_zone,temp_province, temp_district,temp_municipality,temp_wardno,father_name,father_contact,father_occupation,mother_name,mother_contact,mother_occupation,guardian_name,guardian_contact,guardian_occupation,bro_sis_name1,bro_sis_class1,bro_sis_name2,bro_sis_class2,bro_sis_name3,bro_sis_class3,prev_school_details,health_issues,prev_class_gradesheet,birth_certificate,pp)
+              values('$f_name','$m_name','$l_name','$dob','$gender','$caste','$nationality','$religion','$mobile_no','$email','$facebook_account','$check_computer','$check_connection','$check_mobile','$check_connectivity','$check_tv','$check_cable','$check_radio','$per_zone','$per_province','$per_district','$per_municipality','$per_wardno','$temp_zone','$temp_province','$temp_district','$temp_municipality','$temp_wardno','$father_name','$father_contact','$father_occupation','$mother_name','$mother_contact','$mother_occupation','$guardian_name','$guardian_contact','$guardian_occupation','$bro_sis_name1','$bro_sis_class1','$bro_sis_name2','$bro_sis_class2','$bro_sis_name3','$bro_sis_class3','$prev_school_details','$health_issues','$prev_class_gradesheet','$birth_certificate','$pp')";
 
-      //   $sql=" insert into admission_school 
-      //          (f_name,m_name,l_name,dob,gender,caste,nationality,religion,mobile_no,email,facebook_account,check_computer,check_connection,check_mobile,check_connectivity,check_tv,check_cable,check_radio,per_zone,per_province,per_district,per_municipality,per_wardno,temp_zone,temp_province, temp_district,temp_municipality,temp_wardno,father_name,father_contact,father_occupation,mother_name,mother_contact,mother_occupation,guardian_name,guardian_contact,guardian_occupation,bro_sis_name1,bro_sis_class1,bro_sis_name2,bro_sis_class2,bro_sis_name3,bro_sis_class3,prev_school_details,health_issues,prev_class_gradesheet,birth_certificate,pp)
-      //         values('$f_name','$m_name','$l_name','$dob','$gender','$caste','$nationality','$religion','$mobile_no','$email','$facebook_account','$check_computer','$check_connection','$check_mobile','$check_connectivity','$check_tv','$check_cable','$check_radio','$per_zone','$per_province','$per_district','$per_municipality','$per_wardno','$temp_zone','$temp_province','$temp_district','$temp_municipality','$temp_wardno','$father_name','$father_contact','$father_occupation','$mother_name','$mother_contact','$mother_occupation','$guardian_name','$guardian_contact','$guardian_occupation','$bro_sis_name1','$bro_sis_class1','$bro_sis_name2','$bro_sis_class2','$bro_sis_name3','$bro_sis_class3','$prev_school_details','$health_issues','$prev_class_gradesheet','$birth_certificate','$pp')";
-
-      // if(mysqli_query($db,$sql))
-      // {
-      //   $_SESSION['success']='Event and post has been successfully posted';
+      if(mysqli_query($db,$sql))
+      {
+        $_SESSION['success']='We have received your  form !! plz visit school for further details';
           
-      //   header('location:./index.php');
+          include('reset_old_data.php');
+        header('location:../admission/index.php');
      
-      // }
-      // else
-      //  {
-      //   $_SESSION['success']='!Opps somthing wrong in posting event and news';
+      }
+      else
+       {
+        $_SESSION['error']='!Opps somthing wrong in wrong plz check data again';
+        header('location:../admission/index.php');
               
      
 
-      // }
+      }
 
 
 

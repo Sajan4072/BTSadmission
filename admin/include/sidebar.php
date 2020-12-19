@@ -7,8 +7,9 @@
            <li><a href="events.php"><i class="fa fa-calendar"  ></i>EVENTS</a></li>
             
             <li><a href="gallery1.php"><i class="fa fa-picture-o"  ></i>GALARY UPDATE</a></li>
-            <li><a href="admision_table_managment.php"><i class="fa fa-picture-o"  ></i>Admision Form Managment</a></li>
-            <li><a href="admision_table_engineering.php"><i class="fa fa-picture-o"  ></i>Admision Form Engineering</a></li>
+            <li><a href="admission_table_managment.php"><i class="fa fa-picture-o"  ></i>Admision Form Managment</a></li>
+            <li><a href="admission_table_engineering.php"><i class="fa fa-picture-o"  ></i>Admision Form Engineering</a></li>
+            <li><a href="admission_table_school.php"><i class="fa fa-picture-o"  ></i>Admision Form school</a></li>
             <li><a href="Schoolteacher.php"><i class="fa fa-picture-o"  ></i>Teacher Registration</a></li>
             <li><a href="Registration.php"><i class="fa fa-picture-o"  ></i>Student Registration</a></li>
          

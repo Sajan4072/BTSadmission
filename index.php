@@ -147,7 +147,7 @@ session_start();
               <a class="nav-link" href="./ourteam/ourteam.php">Our Team</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./admssion/index.php">Admision form</a>
+              <a class="nav-link" href="./admission/index.php">Admision form</a>
             </li>
              
             <li class="nav-item center-menu">
