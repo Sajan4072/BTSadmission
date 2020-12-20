@@ -136,7 +136,7 @@ session_start();?>
               <a class="nav-link " href="../index.php">School</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link active" href="../index.php">+2</a>
+              <a class="nav-link active" href="">+2</a>
             </li>
              <li class="nav-item center-menu">
               <a class="nav-link" href="../engineering/index.php">Engineering</a>

@@ -131,6 +131,9 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item center-menu">
+              <a class="nav-link active " href="">School</a>
+            </li>
+            <li class="nav-item center-menu">
               <a class="nav-link " href="./+2/index.php">+2</a>
             </li>
              <li class="nav-item center-menu">
@@ -213,7 +216,7 @@ session_start();
             </li>
             <?php }?>
             <li class="nav-item">
-              <a class="nav-link" href="#"
+              <a class="nav-link" href="school/View/news.php"
                 ><button type="button" class="btn btn-success">
                   View More
                 </button></a
@@ -244,7 +247,7 @@ session_start();
             </li>
                <?php }?>
             <li class="nav-item">
-              <a class="nav-link" href="#"
+              <a class="nav-link" href="school/View/notice.php"
                 ><button type="button" class="btn btn-success">
                   View More
                 </button></a
