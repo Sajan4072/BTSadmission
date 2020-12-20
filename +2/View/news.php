@@ -1,6 +1,7 @@
 <?php
-include"connection.php";
-session_start();?>
+include "connection.php";
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,9 +10,9 @@ session_start();?>
     <title>BTS</title>
 
     <!-- css  -->
-    <link rel="stylesheet" type="text/css" href="frontpage/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="frontpage/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="frontpage/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../frontpage/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../frontpage/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../../frontpage/css/style.css" />
   </head>
   <body>
     <!-- top banner -->
@@ -21,7 +22,7 @@ session_start();?>
           <div class="row">
             <div class="col-lg-2 col-sm-6 col-md-4">
               <div class="logo">
-                <img src="frontpage/images/logo.jpg" style="margin-top: 20px;" alt="Not Available!" />
+                <img src="../../frontpage/images/logo.jpg" style="margin-top: 20px;" alt="Not Available!" />
               </div>
             </div>
             <div class="col-sm-8">
@@ -51,7 +52,7 @@ session_start();?>
     </div>
 
     <!-- navbar -->
-    <?php
+   <?php
       if(isset($_SESSION['login_user'])){
       ?>
     <div>
@@ -133,23 +134,23 @@ session_start();?>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item center-menu">
-              <a class="nav-link " href="../index.php">School</a>
+              <a class="nav-link " href="../../index.php">School</a>
             </li>
             <li class="nav-item center-menu">
               <a class="nav-link active" href="">+2</a>
             </li>
              <li class="nav-item center-menu">
-              <a class="nav-link" href="../engineering/index.php">Engineering</a>
+              <a class="nav-link" href="../../engineering/index.php">Engineering</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="galary/gallery.php">Gallery</a>
+              <a class="nav-link" href="../galary/gallery.php">Gallery</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="events/events.php">Events</a>
+              <a class="nav-link" href="../events/events.php">Events</a>
             </li>
             
             <li class="nav-item center-menu">
-              <a class="nav-link" href="ourteam/ourteam.php">Our Team</a>
+              <a class="nav-link" href="../ourteam/ourteam.php">Our Team</a>
             </li>
             <li class="nav-item dropdown" >
                 <a class="nav-link right-link dropdown-toggle"
@@ -159,14 +160,14 @@ session_start();?>
                 aria-haspopup="true"
                 aria-expanded="false" >Admission Form</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="admission/adform.php">Management</a>
+                <a class="dropdown-item" href="../admission/adform.php">Management</a>
                 
                 
               </div>
               </li>
              
             <li class="nav-item center-menu">
-              <a class="nav-link" href="contact/contact.php">Contact Us</a>
+              <a class="nav-link" href="../contact/contact.php">Contact Us</a>
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
@@ -179,8 +180,8 @@ session_start();?>
                 aria-haspopup="true"
                 aria-expanded="false" >Login</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="login/login.php">Student</a>
-                <a class="dropdown-item" href="login/teacherlogin.php">Teacher</a>
+                <a class="dropdown-item" href="../login/login.php">Student</a>
+                <a class="dropdown-item" href="../login/teacherlogin.php">Teacher</a>
                 
               </div>
               </li>
@@ -192,178 +193,111 @@ session_start();?>
   <?php
 }?>
 
-    <!-- home image -->
-    <div class="row p-0">
-      <div class="col-lg-12 col-md-12 col-sm-12">
-        <div>
-          <img src="frontpage/images/banner-img.jpg" class="img-fluid" alt="Not Available!" />
-        </div>
-      </div>
-    </div>
 
-    <!-- announcement section -->
-    <div class="container-fluid">
-      <div class="row announcement pt-5">
-        <div class="col-lg-4 ">
-          <ul class="nav flex-column" style="margin-bottom: 15px;">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">NEWS AND ANNOUNCEMENT</a>
-            </li>
-             <?php 
+
+
+
+
+
+
+<div class="container-fluid">
+      <div class="row" style="justify-content: center;color: white; background-color: #1a237e;"><h5>NEWS AND ANNOUNCEMENT</h5></div>
+      <?php 
+
 
                         
                       include("connection.php");
+                        $limit = 6;  
+if (isset($_GET["page"])) {
+  $page  = $_GET["page"]; 
+  } 
+  else{ 
+  $page=1;
+  };  
+$start_from = ($page-1) * $limit; 
                        
                          
                                               
-                      $sql="select *from news_and_event WHERE plus2=1 ORDER BY id DESC LIMIT 5";
+                      $sql="select *from news_and_event WHERE plus2=1 ORDER BY id DESC LIMIT $start_from, $limit ";
                       $query=mysqli_query($db,$sql);
                       while($row=mysqli_fetch_array($query))
                         {
               ?>
 
-
-
-            <li class="nav-item">
-              <a class="nav-link" href="#"
-                ><i class="fa fa-circle"></i><?php echo $row['post']; ?></a
-              >
-            </li>
-            <?php } ?>
-            <li class="nav-item">
-              <a class="nav-link" href="View/news.php"
-                ><button type="button" class="btn btn-success">
-                  View More
-                </button></a
-              >
-            </li>
-          </ul>
-        </div>
-        <div class="col-lg-4">
-          <ul class="nav flex-column"  style="margin-bottom: 15px;">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">NOTICE BOARD</a>
-            </li>
-            <?php                  
-                      $sql="select *from notice WHERE plus2=1 ORDER BY id DESC LIMIT 5";
-                      $query=mysqli_query($db,$sql);
-                      while($row=mysqli_fetch_array($query))
-                        {
-              ?>
-
-            <li class="nav-item">
-              <a class="nav-link" href="#"
-                ><i class="fa fa-circle"></i></i><?php echo $row['notice']; ?></a
-              >
-            </li>
-           <?php } ?>
-
-            <li class="nav-item">
-              <a class="nav-link" href="View/notice.php"
-                ><button type="button" class="btn btn-success">
-                  View More
-                </button></a
-              >
-            </li>
-          </ul>
-        </div>
-        <div class="col-lg-4">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">CALENDAR EVENTS</a>
-            </li>
-            <?php                  
-                      $sql="select *from calender WHERE plus2=1 ORDER BY id DESC LIMIT 2";
-                      $query=mysqli_query($db,$sql);
-                      while($row=mysqli_fetch_array($query))
-                        {
-              ?>
-
-
-            <li class="nav-item">
-              <a class="nav-link" href="#"><p class="date-marker" style="width:90%; height: 60px; margin-top: 7px;"><?php echo $row['date']; ?><br /><?php echo $row['event']; ?></p>
-              </a>
-            </li>
-          <?php } ?>
-
-            <li class="nav-item">
-              <a class="nav-link" href="View/cal.php"
-                ><button type="button" class="btn btn-success">
-                  View More
-                </button></a
-              >
-            </li>
-           
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- about us banner -->
-    <div class="row p-0">
-      <div class="col-lg-12">
-        <div class="about-img">
-          <img src="frontpage/images/banner-img.jpg" alt="Not Available!" />
-          <div class="title">
-            <form class="form-inline my-2 my-lg-0">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <a class="nav-link right-link" href="./description/description.php"><h1>ABOUT US</h1></a>
-              </li>
-            </ul>
-          </form>
+      <div class="row viewmore bg-light">
+        <div class="col-lg-2 col-md-2 col-sm-12 rounddate">
+          <div class="circle" style="transform: translateX(-8px);">
+            
+            <div class="day ml-3"><?php echo $row['date']; ?></div>
           </div>
         </div>
+        <div class="col-lg-10 col-md-2 col-sm-12 pt-3"><?php echo $row['post']; ?></div>
       </div>
+      <?php } ?>
     </div>
+     
 
-    <!-- message section -->
-    <div class="container-fluid">
-      <div class="row message p-5">
-        <div class="col-lg-6 col-sm-12 col-md-6" >
-          <div class="introduction"  style="margin-bottom: 20px;">
-            <h4>INTRODUCTION</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reprehenderit ad saepe facilis doloremque. Id asperiores nam
-              incidunt, ipsum minima suscipit magnam, repudiandae vitae at
-              deleniti cupiditate dicta! Quos nobis sed, recusandae, aut
-              perferendis a molestias omnis iste repellat commodi error harum
-              aliquam cumque eligendi eum asperiores voluptas magnam. Pariatur,
-              recusandae! Lorem ipsum dolor sit amet consectetur, adipisicing
-              elit. Asperiores nobis magni cupiditate unde aliquid modi quas
-              aperiam quod eligendi, beatae tempore corporis laborum
-              exercitationem nesciunt repellendus ipsam. Cupiditate incidunt, ad
-              alias quaerat labore asperiores hic nobis quidem excepturi
-              assumenda saepe itaque consequuntur vel quibusdam? Fugiat expedita
-              beatae sapiente atque sint.<br />
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni
-              tenetur enim, nobis natus sunt vitae culpa, quae earum obcaecati
-              magnam perferendis veniam fuga molestias maiores.
-            </p>
-            <button type="button" class="btn btn-success">View More</button>
-          </div>
-        </div>
-        <div class="col-lg-6 col-sm-12 col-md-6">
-          <div class="introduction"  style="margin-bottom: 20px;">
-            <h4>MESSAGE FROM THE CHIEF</h4>
-            <div class="chief-img">
-              <img src="frontpage/images/founder.jpg" alt="Not Available!" />
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reprehenderit ad saepe facilis doloremque. Id asperiores nam
-              incidunt, ipsum minima suscipit magnam, repudiandae vitae at
-              deleniti cupiditate dicta! Quos nobis sed, recusandae, aut
-              perferendis a molestias omnis iste repellat commodi error harum
-              aliquam csuids xnxsaw witye hdhe repeltu hu powioer heui Lorem
-              ipsum dolor sit amet Lorem ipsum dolor sit amet.
-            </p>
-            <button type="button" class="btn btn-success">View More</button>
-          </div>
-        </div>
-      </div>
-    </div>
+
+    <!--body part -->
+   <nav aria-label="Page navigation example" style="background-color: #d5d8de; margin-top: 10px;" >
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+     <?php if($page>=2){  
+        ?><li class='page-item'> 
+          <?php 
+            echo "<a class='page-link' href='news.php?page=".($page-1)."'>  Prev </a>";   
+        ?>
+        </li>
+        <?php 
+        }  ?> 
+      </li>
+    <li class="page-item">
+      <?php  
+$result_db = mysqli_query($db,"SELECT COUNT(id) FROM news_and_event"); 
+$row_db = mysqli_fetch_row($result_db);  
+$total_records = $row_db[0];  
+$total_pages = ceil($total_records / $limit); 
+/* echo  $total_pages; */
+$pagLink = "<ul class='pagination'>"; 
+for ($i=1; $i<=$total_pages; $i++) {
+$pagLink .= "<li class='page-item'><a class='page-link' class ='active' href='news.php?page=".$i."' >".$i."</a></li>"; 
+}
+echo $pagLink . "</ul>";  
+?>
+</li>
+ <li class="page-item">
+<?php 
+  if($page<$total_pages){
+        ?>
+        <li class='page-item'>
+        <?php   
+            echo "<a class='page-link' href='news.php?page=".($page+1)."'>  Next </a>"; ?>
+            </li>
+            <?php  
+        }   
+  ?>
+    </li>
+  </ul>
+</nav><br>
+
+<script>   
+   
+    function go2Page()   
+    {   
+        var page = document.getElementById("page").value;   
+        page = ((page><?php echo $total_pages; ?>)?<?php echo $total_pages; ?>:((page<1)?1:page));   
+        window.location.href = 'news.php?page='+page;   
+    }   
+  </script>
+
+
+<script src="script.js"></script>
+
+
+
+   
+
+    
 
     <!-- footer -->
     <div class="container-fluid">
