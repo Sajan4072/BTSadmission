@@ -2,7 +2,7 @@
       <div class="container sidebar">
         <div class="row">
           <ul class="unstyled" >
-          <li><a href="news_&_event.php" class="active"><i class="fa fa-newspaper-o" ></i>NEWS AND EVENTS</a></li>
+          <li><a href="news and events_table.php" class="active"><i class="fa fa-newspaper-o" ></i>NEWS AND EVENTS</a></li>
            <li><a href="notices.php"><i class="fa fa-bars" ></i>NOTICES</a></li>
            <li><a href="events.php"><i class="fa fa-calendar"  ></i>EVENTS</a></li>
             

@@ -2,13 +2,32 @@
 session_start();
 include('include/connection.php');
 
+$type=$_GET['type'];
+
+if($type=='insert')
+{
+  $insert='set';
+}
+else
+{
+   $id=$_GET['id'];
+   $edit='set';
+
+ $sql="select * from news_and_event where id='$id' limit 1";
+ $result=mysqli_query($db,$sql);
+ $news_and_event=mysqli_fetch_assoc($result);
+ 
+
+
+}
+
 
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BTS</title>
+  <title><?php if(isset($insert)){echo "insert news and event";} else {echo "edit news and event ";}  ?></title>
   <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
@@ -53,19 +72,24 @@ include('include/check_login.php');
           <div class="col-1">
              <i class="fa fa-user"  style="color: #224a8f" aria-hidden="true"></i>
           </div>
-          <div class="col-11">Post News And Events</div>
+          <div class="col-11"><?php if(isset($insert)){echo "Post";} else {echo "Edit";}  ?> News And Events</div>
           </div>
           <form method="post" action="insert.php">
+         <?php if(isset($edit)) { ?>
+           <input type="hidden" name="id" value="<?php echo $news_and_event['id']; ?>">
+
+
+
+       <?php }?>
+
           <div class="row">
             <div class="col-5" style="margin-right: 50px;"> 
               <label for="vehicle1">TITLE</label>
-              <input type="text" name="title" style=" border-radius: 5px; background-color: #DEDBD5; border : 1px #DEDBD5; height: 40px; width: 250px;"></div>
+              <input type="text" name="title" style=" border-radius: 5px; background-color: #DEDBD5; border : 1px #DEDBD5; height: 40px; width: 250px;" value="<?php if(isset($edit)){ echo htmlentities($news_and_event['post']); } ?>"></div>
               <div class="col-4"> 
               <label for="vehicle1">DATE</label>
-              <input type="date" name="date" style=" border-radius: 5px; background-color: #DEDBD5; border : 1px #DEDBD5; height: 40px; width: 250px;"></div>
-             <textarea name="NewsAndEvent" placeholder="description"> 
-
-             </textarea>
+              <input type="date" name="date" style=" border-radius: 5px; background-color: #DEDBD5; border : 1px #DEDBD5; height: 40px; width: 250px;"value="<?php if(isset($edit)){ echo htmlentities($news_and_event['date']); } ?>" ></div>
+             <textarea name="NewsAndEvent" placeholder="description">  <?php if(isset($edit)){ echo htmlentities($news_and_event['post']); } ?></textarea>
           </div>
           
              
@@ -73,20 +97,26 @@ include('include/check_login.php');
            
 <div class="check" style="margin-top: 10px; margin-left: 7px; color: #224a8f;">
             <div class="col-4"></div>
-              <input type="checkbox" name="school" value="Yes">
+              <input type="checkbox" name="school" value="Yes" <?php if(isset($edit)) { if($news_and_event['school']==1 ) {echo "checked"; }   }    ?> >
             <label for="vehicle1">School</label>
 
-             <input type="checkbox" name="plus2" value="Yes">
+             <input type="checkbox" name="plus2" value="Yes" <?php if(isset($edit)){ if($news_and_event['plus2']==1 ) {echo "checked"; }   }    ?>>
             <label for="vehicle1">plus2</label>
 
-             <input type="checkbox" name="engineering" value="Yes">
+             <input type="checkbox" name="engineering" value="Yes" <?php if(isset($edit)){ if($news_and_event['engineering']==1 ) {echo "checked"; }   }    ?>>
             <label for="vehicle1">Engineering</label>
           </div>
             <div class="col-4"><p style="float: right;">
             <div class="col-4"></div>
 
+            <?php if( isset($insert)){ ?>
+            <button type="submit" name="news_and_event_insert" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-top: 5px; margin-left: 240px;">POST</button>
+               <?php }
+               else {
+                ?>
+               <button type="submit" name="news_and_event_edit" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-top: 5px; margin-left: 240px;">update</button>
 
-            <button type="submit" name="NewsAndEventSubmit" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-top: 5px; margin-left: 240px;">POST</button>
+             <?php } ?>
 
 
             </p></div>
