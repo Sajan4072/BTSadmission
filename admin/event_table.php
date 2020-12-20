@@ -76,8 +76,8 @@ include('include/check_login.php');
                     <div class="col-12">
                         <div class="row justify-content-center">
                             <table class="table">
-                                <thead class="blue">
-                                    <tr>
+                                <thead class="blue " >
+                                    <tr >
                                         <TH>SN</TH>
                                         <th>Event</th>
                                         <th>DATE</th>

@@ -9,17 +9,38 @@
     <link rel="stylesheet" href="../frontpage/css/style.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="./Registration.css">
+  <style>
+   .error{
+     color: red;
+   }
+  </style>
 </head>
 <body>
 
 <?php  
 // define variables to empty values 
 include "../connection.php"; 
+session_start();
+
+if(isset($_GET['type']))
+{
+  $id=$_GET['id'];
+  $edit='set';
+  $sql="select * from school where uniquecode='$id' limit 1 ";
+  $result=mysqli_query($db,$sql);
+  $student=mysqli_fetch_assoc($result);
+
+}
+
+
 $fnameErr = $lnameErr = $addressErr = $fathernameErr  = $passwordErr = $uniquecodeErr= $dobErr = $contactErr = "";  
 $fname = $lname = $address = $contact = $fathername = $password = $uniquecode = $dob = "";  
   
 //Input fields validation  
 if ($_SERVER["REQUEST_METHOD"] == "POST") {  
+
+ 
+
       
 //String Validation  
     if (empty($_POST["fname"])) {  
@@ -63,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }      
     }  
     if (empty($_POST["contact"])) {  
-        $contactErr = " Parent's name is required";  
+        $contactErr = " Parent's contact is required";  
     } else {  
             $contact = input_data($_POST["contact"]);  
             // check if URL address syntax is valid  
@@ -87,18 +108,37 @@ if(!$uppercase || !$lowercase || !$number ||  strlen($password) < 8)
                 $passwordErr = "Invalid Password";  
             }      
     }  
-
+ 
+  if(!isset($edit))
+  {
  if (empty($_POST["uniquecode"])) {  
         $uniquecodeErr = " What is your Unique Login Code?";  
     } else {  
-            $uniquecode = input_data($_POST["uniquecode"]);  
+            $uniquecodeS = input_data($_POST["uniquecode"]);  
             // check if URL address syntax is valid  
-            if (!preg_match("/^(CLS)|[0-9]|(-)|[0-9]*$/",$uniquecode)) {
+            if (!preg_match("/^(CLS)|[0-9]|(-)|[0-9]*$/",$uniquecodeS)) {
                 $uniquecodeErr = "Only alphabets and white space are allowed";  
-            }      
+            }
+
+           
+            $sql="select *from school where uniquecode='$uniquecodeS' ";
+            $result=mysqli_query($db,$sql);
+
+            $check=mysqli_num_rows($result);
+            echo $check;
+            if($check>0)
+             {  
+                echo "yes";
+                $stu=mysqli_fetch_assoc($result);
+                $uniquecodeErr = "uniquecode is already assigned to student name".$stu['firstname']." ".$stu['lastname'];  
+             } 
+             
+
+
     } 
+  }
 if (empty($_POST["dob"])) {  
-        $fathernameErr = " Enter your Date of Birth";  
+        $dobErr = " Enter your Date of Birth";  
     } else {  
             $dob = input_data($_POST["dob"]);  
              
@@ -113,39 +153,79 @@ function input_data($data) {
 }  
 ?>  
   <div class="container">
+
         <div class="row formtitle">
             <h5>STUDENT REGISTRATION FORM</h5>
         </div>
         <div class="row form body">
             <div class="col-lg-7 col-md-12 col-sm-12 bodycol">
  
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" >    
+<form method="post" >    
      <div class="form-row">
+      
     <div class="form-group col-md-6">
       <label for="inputName">FIRST NAME</label>  
-    <input type="text" name="fname" class="form-control" id="inputName" placeholder="Name" autocomplete="off">  
+    <input type="text" name="fname" class="form-control" id="inputName" placeholder="Name" autocomplete="off" value="<?php
+      if(isset($edit))
+      {
+        echo($student['firstname']);
+      }
+      
+    else
+    {    
+     if(isset($_POST['fname'])){ echo $_POST['fname'];} 
+     }  ?>">  
     <span class="error"><?php echo $fnameErr; ?> </span>  
       </div>
    <div class="form-group col-md-6">
       <label for="inputName">LAST NAME</label>  
-    <input type="text" name="lname" class="form-control" id="inputName" placeholder="Last Name" autocomplete="off">  
+    <input type="text" name="lname" class="form-control" id="inputName" placeholder="Last Name" autocomplete="off" value="<?php
+     if(isset($edit))
+      {
+        echo($student['lastname']);
+      }
+      else
+      {
+     if(isset($_POST['lname'])){ echo $_POST['lname']; }}?>">  
     <span class="error"><?php echo $lnameErr; ?> </span>  
     </div>  
 </div>
 <div class="form-row">
     <div class="form-group col-md-12">
       <label for="inputEmail">ADDRESS</label>   
-    <input type="text" name="address" class="form-control" id="inputAddress" placeholder="Address" autocomplete="off">  
+    <input type="text" name="address" class="form-control" id="inputAddress" placeholder="Address" autocomplete="off" value="<?php 
+   if(isset($edit))
+      {
+        echo($student['address']);
+      }
+      else
+    if(isset($_POST['address'])){ echo $_POST['address']; }?>">  
     <span class="error"><?php echo $addressErr; ?> </span>  
     </div> 
    <div class="form-group col-md-12">
       <label for="inputEmail">FATHER'S NAME</label>
-    <input type="text" name="fathername" class="form-control" id="inputFathername" placeholder=" Father's Name" autocomplete="off">  
+    <input type="text" name="fathername" class="form-control" id="inputFathername" placeholder=" Father's Name" autocomplete="off"
+         value="<?php 
+             if(isset($edit))
+      {
+        echo($student['fathername']);
+      }
+      else
+         if(isset($_POST['fathername'])){ echo $_POST['fathername']; }?>" 
+     >  
     <span class="error"><?php echo $fathernameErr; ?> </span>  
     </div>
     <div class="form-group col-md-12">
       <label for="inputEmail">PARENT'S CONTACT</label>
-    <input type="text" name="contact" class="form-control" id="inputFathername" placeholder=" Parent's contact" autocomplete="off">  
+    <input type="text" name="contact" class="form-control" id="inputFathername" placeholder=" Parent's contact" autocomplete="off"
+         value="<?php 
+              if(isset($edit))
+      {
+        echo($student['contact']);
+      }
+      else
+          if(isset($_POST['lname'])){ echo $_POST['contact']; }?>" 
+    >  
     <span class="error"><?php echo $contactErr; ?> </span>  
     </div>
 </div>
@@ -153,38 +233,96 @@ function input_data($data) {
         <div class="form-row">
     <div class="form-group col-md-12">
       <label for="inputEmail">PASSWORD</label>
-    <input type="password" name="password" class="form-control" id="inputEmail" placeholder=" Password" autocomplete="off">  
+    <input <?php if(isset($edit)){ ?>type="text" <?php } else {?>type="password" <?php } ?>  name="password" class="form-control" id="inputEmail" placeholder=" Password" autocomplete="off" value="<?php
+         if(isset($edit))
+      {
+        echo($student['password']);
+      }
+      
+
+    ?>">  
     <span class="error"><?php echo $passwordErr; ?> </span>  
     </div>
 
     
     <div class="form-group col-md-6">
       <label for="inputEmail">UNIQUE CODE</label>
-    <input type="text" name="uniquecode" class="form-control" id="inputEmail" placeholder=" Unique code" autocomplete="off">  
+    <input type="text" name="uniquecode" class="form-control" id="inputEmail" placeholder=" Unique code" autocomplete="off"
+    value="<?php 
+             if(isset($edit))
+      {
+        echo($student['uniquecode']);
+      }
+       else
+
+    if(isset($_POST['uniquecode'])){ echo $_POST['uniquecode']; }?>" 
+
+    <?php if(isset($edit))
+    {
+      echo "disabled";
+    } 
+    ?>
+    >  
     <span class="error"><?php echo $uniquecodeErr; ?> </span>  
     </div>
     
     <div class="form-group col-md-6">
       <label for="inputEmail">DATE OF BIRTH</label>
-    <input type="date" name="dob" class="form-control" id="inputEmail" placeholder=" Password" autocomplete="off">  
+    <input type="date" name="dob" class="form-control" id="inputEmail" placeholder=" Password" autocomplete="off"
+       value="<?php 
+         
+             if(isset($edit))
+      {
+        echo($student['dob']);
+      }
+       else
+       if(isset($_POST['dob']))      
+
+        echo $_POST['dob']; ?>" 
+    >  
     <span class="error"><?php echo $dobErr; ?> </span>  
     </div>
     
 </div>
         <div class="form-row">
-    <div class="form-group col-md-12" style="text-align: center;">                       
-    <input type="submit" name="submit" value="REGISTER" class="btn btn-primary" style="background-color: #224a8f; border: none;">   
+    <div class="form-group col-md-12" style="text-align: center;">  
+    <?php if(!isset($edit)) 
+    {
+    ?>                     
+    <input type="submit" name="insert" value="REGISTER" class="btn btn-primary" style="background-color: #224a8f; border: none;">  
+    <?php }  else {?>
+    <input type="submit" name="edit" value="update" class="btn btn-primary" style="background-color: #224a8f; border: none;">  
+
+  <?php } ?>
+
     </div></div>                             
 </form>  
   </div>
-  <div class="col-lg-5 col-md-12 col-sm-12 textcol" style="background-color: #224a8f; opacity: 60%; padding-top: 100px; text-align: center; color: white;">
+  <div class="col-lg-5 col-md-12 col-sm-12 textcol" style="background-color: black;  text-align: center; color: white;">
+               
+
                 <h1>WELCOME</h1>
                 <h4 style="padding-top: 50px;">REGISTER TO<br> CONTINUE ACCESS<br> PAGE</h4>
+                <br>
+                <br>
+                <h4 class="error"><?php if(isset($_SESSION['error'])) {echo $_SESSION['error']; unset($_SESSION['error']); } ?></h4>
+                <br>
+                <a href="school_stu_registration_table.php" class="btn-primary btn btn-sm">Click to go previous page</a>
+                <br>
+                <?php if(!isset($edit)) {?>
+                 <form style="margin-top: 25px;"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                   <input method='post' name="reset" type="submit" class="btn-primary btn-sm btn" value="reset form data">
+                </form>
+              <?php } ?>
             </div>
 
             
         </div>
     </div>
+
+
+
+    
 
  
 
@@ -200,36 +338,27 @@ function input_data($data) {
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
 <?php  
-    if(isset($_POST['submit'])) {  
-    
-       $count=0;
-       
+    if(isset($_POST['insert'])) {  
 
-        $sql="SELECT uniquecode from `school`";
-        $res=mysqli_query($db,$sql);
-
-        while($row=mysqli_fetch_assoc($res))
+       echo "string";
+      
+          if($fnameErr == "" && $lnameErr == "" && $addressErr == "" && $fathernameErr == "" && $passwordErr == "" && $contactErr =="" && $uniquecodeErr == "" && $dobErr == "" ) 
         {
-          if($row['uniquecode']==$uniquecode)
-          {
-            $count=$count+1;
-          }
-        }
-        if($count==0)
-        {
-          if($fnameErr == "" && $lnameErr == "" && $addressErr == "" && $fathernameErr == "" && $passwordErr == "" && $contactErr =="" && $uniquecodeErr == "" && $dobErr == "" ) {
+          
+           // $sql="INSERT into schoo (firstname,lastname,address,fathername,contact,password,uniquecode,dob)  "
         
-    mysqli_query($db,"INSERT INTO school(firstname,lastname,address,fathername,contact,password,uniquecode,dob,) VALUES('$fname', '$lname', '$address', '$fathername', $contact, '$password','$uniquecode','$dob',);"); 
+    mysqli_query($db,"INSERT INTO school(firstname,lastname,address,fathername,contact,password,uniquecode,dob) VALUES('$fname', '$lname', '$address', '$fathername', $contact, '$password','$uniquecodeS','$dob')"); 
 
          
-    } else {  
-        echo "<h3> <b>You didn't filled up the form correctly.</b> </h3>";  
+    } 
+
+    else 
+    {  
+         $_SESSION['error']="you didn't fill the form correctly";
     }  
-    } 
-    else{
-      echo" already reistered";
-    } 
-  }
+     
+}
+  
 ?>  
   
 </body>  
