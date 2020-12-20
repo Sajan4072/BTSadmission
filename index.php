@@ -1,8 +1,8 @@
-<?php
+
+<!DOCTYPE html><?php
 include "connection.php";
 session_start();
 ?>
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -273,11 +273,11 @@ session_start();
             </li>
             <?php } ?>
              <li class="nav-item">
-              <a class="nav-link" href="#"
-                ><button type="button" class="btn btn-success">
+              <a class="nav-link" href="school/View/cal.php">
+                <button type="button" class="btn btn-success">
                   View More
-                </button></a
-              >
+                </button></a>
+              
             </li>
 
           </ul>
