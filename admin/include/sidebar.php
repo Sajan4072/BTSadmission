@@ -3,8 +3,8 @@
         <div class="row">
           <ul class="unstyled" >
           <li><a href="news and events_table.php" class="active"><i class="fa fa-newspaper-o" ></i>NEWS AND EVENTS</a></li>
-           <li><a href="notices.php"><i class="fa fa-bars" ></i>NOTICES</a></li>
-           <li><a href="events.php"><i class="fa fa-calendar"  ></i>EVENTS</a></li>
+           <li><a href="notice_table.php"><i class="fa fa-bars" ></i>NOTICES</a></li>
+           <li><a href="event_table.php"><i class="fa fa-calendar"  ></i>EVENTS</a></li>
             
             <li><a href="gallery1.php"><i class="fa fa-picture-o"  ></i>GALARY UPDATE</a></li>
             <li><a href="admission_table_managment.php"><i class="fa fa-picture-o"  ></i>Admision Form Managment</a></li>

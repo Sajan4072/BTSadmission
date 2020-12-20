@@ -1,6 +1,25 @@
 <?php
 session_start();
 include('include/connection.php');
+$type=$_GET['type'];
+
+if($type=='insert')
+{
+  $insert='set';
+}
+else
+{
+
+   $id=$_GET['id'];
+   $edit='set';
+
+ $sql="select * from notice where id='$id' limit 1";
+ $result=mysqli_query($db,$sql);
+ $notice=mysqli_fetch_assoc($result);
+ 
+
+
+}
 
 
 ?>
@@ -53,32 +72,54 @@ include('include/check_login.php');
           <div class="col-1">
              <i class="fa fa-user"  style="color: #224a8f" aria-hidden="true"></i>
           </div>
-          <div class="col-11">Post Notice</div>
+          <div class="col-11"><?php if(isset($insert)){echo "Post";} else {echo "Edit";}?> Notice</div>
           </div>
           <form method="post" action="insertnotice.php">
-          <div class="row">
-             <textarea name="notice"> 
+            <?php 
+            if(isset($edit))
+            {
+            ?>
 
-             </textarea>
+            <input type="hidden" name="id" value="<?php echo $notice['id']; ?>">
+           <?php } ?>
+             
+          <div class="row">
+             <textarea name="notice">  <?php if(isset($edit)){echo htmlspecialchars($notice['notice']); } ?></textarea>
           </div>
           <div class="row">
            
        <div class="check" style="margin-top: 10px; margin-left: 7px; color: #224a8f;">
             <div class="col-4"></div>
-              <input type="checkbox" name="school" value="Yes">
+              <input type="checkbox" name="school" value="Yes"  <?php if(isset($edit)){ if($notice['school']==1 ) {echo "checked"; }   }    ?>>
             <label for="vehicle1">School</label>
 
-             <input type="checkbox" name="plus2" value="Yes">
+             <input type="checkbox" name="plus2" value="Yes"  <?php if(isset($edit)){ if($notice['plus2']==1 ) {echo "checked"; }   }    ?> >
             <label for="vehicle1">plus2</label>
 
-             <input type="checkbox" name="engineering" value="Yes">
+             <input type="checkbox" name="engineering" value="Yes"  <?php if(isset($edit)){ if($notice['engineering']==1 ) {echo "checked"; }   }    ?>>
             <label for="vehicle1">Engineering</label>
           </div>
             <div class="col-4"><p style="float: right;">
             <div class="col-4"></div>
 
 
-            <button type="submit" name="submit" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-top: 5px; margin-left: 240px;">POST</button>
+            
+             <?php 
+            if(isset($insert))
+            {
+            ?>
+
+           <button type="submit" name="notice_insert" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-top: 5px; margin-left: 240px;">POST</button>
+           <?php } 
+
+             else   
+                      {
+            ?>
+
+           <button type="submit" name="notice_update" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-top: 5px; margin-left: 240px;">Update</button>
+           <?php } ?>
+
+
 
             </p></div>
 

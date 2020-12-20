@@ -1,6 +1,25 @@
 <?php
 session_start();
 include('include/connection.php');
+$type=$_GET['type'];
+
+if($type=='insert')
+{
+  $insert='set';
+}
+else
+{
+   $id=$_GET['id'];
+   $edit='set';
+
+ $sql="select * from calender where id='$id' limit 1";
+ $result=mysqli_query($db,$sql);
+ $calender=mysqli_fetch_assoc($result);
+ 
+
+
+}
+
 
 
 ?>
@@ -8,7 +27,7 @@ include('include/connection.php');
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BTS</title>
+  <title><?php if(isset($edit)){echo "Edit"; }else {echo "Insert";} ?>Calender EVent</title>
   <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
@@ -53,14 +72,21 @@ include('include/check_login.php');
           <div class="col-1">
              <i class="fa fa-user"  style="color: #224a8f" aria-hidden="true"></i>
           </div>
-          <div class="col-11">Post Event</div>
+          <div class="col-11"><?php if(isset($edit)){echo "Edit"; }else {echo "Insert";} ?> Event</div>
           </div>
           <form method="post" action="insertevent.php">
+            <?php 
+       if(isset($edit)){
+
+             ?>
+             <input type="hidden" name="id" value="<?php echo $calender['id']; ?>">
+
+           <?php } ?>
           <div class="row">
               <div class="form-row">
                  <div class="form-group col-md-12">
                    EVENT
-                   <input type="text" name="event" class="form-control">  
+                   <input type="text" name="event" class="form-control" value="<?php if(isset($edit)){ echo $calender['event']; }?>">  
      
                  </div>
 
@@ -69,7 +95,7 @@ include('include/check_login.php');
     
                  <div class="form-group col-md-6">
                <label for="inputEmail">DATE </label>
-               <input type="date" name="date" class="form-control" >  
+               <input type="date" name="date" class="form-control" value="<?php if(isset($edit)){echo $calender['date'];} ?>" >  
     
               </div>
               </div>
@@ -78,20 +104,27 @@ include('include/check_login.php');
            
                 <div class="check" style="margin-left: 20px;">
                   <div class="col-4"></div>
-                    <input type="checkbox" name="school" value="Yes">
+                    <input type="checkbox" name="school" value="Yes"  <?php if(isset($edit)){ if($calender['school']==1 ) {echo "checked"; }   }    ?>>
                   <label for="vehicle1">School</label>
 
-                   <input type="checkbox" name="plus2" value="Yes">
+                   <input type="checkbox" name="plus2" value="Yes"  <?php if(isset($edit)){ if($calender['plus2']==1 ) {echo "checked"; }   }    ?>>
                   <label for="vehicle1">plus2</label>
 
-                   <input type="checkbox" name="engineering" value="Yes">
+                   <input type="checkbox" name="engineering" value="Yes"  <?php if(isset($edit)){ if($calender['engineering']==1 ) {echo "checked"; }   }    ?>>
                   <label for="vehicle1">Engineering</label>
                 </div>
                   <div class="col-4"><p style="float: right;">
                   <div class="col-4"></div>
 
+              <?php if(isset($insert)) {?>
+            <button type="submit" name="insert_event" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-top: 5px;">POST</button>
+          <?php } ?>
 
-            <button type="submit" name="submit" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-top: 5px;">POST</button>
+           <?php if(isset($edit)){ ?>
+
+            <button type="submit" name="update_event" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-top: 5px;">Update</button>
+
+          <?php } ?>
 
 
             </p></div>

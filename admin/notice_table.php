@@ -2,11 +2,24 @@
 session_start();
 include('include/connection.php');
 
-$sql="select *from news_and_event order by id desc ";
+$sql="select *from notice order by id desc ";
 $result=mysqli_query($db,$sql);
 
-// $date=now();
-// echo $date;
+function short_notice($text)
+{
+$string = strip_tags($text);
+if (strlen($string) > 25) {
+
+    // truncate string
+    $stringCut = substr($string, 0, 25);
+    $endPoint = strrpos($stringCut, ' ');
+
+    //if the string doesn't contain any space then it will cut without word basis.
+    $string = $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+    $string .= '..';
+}
+return  $string;
+}
 
 
 ?>
@@ -72,14 +85,14 @@ include('include/check_login.php');
                   </div>
 
                  <?php } ?>
-                    <a  href="news_&_event.php?type=insert" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; margin-left: 500px;">ADD</a>
+                    <a  href="notices.php?type=insert" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; margin-left: 500px;">ADD</a>
                     <div class="col-12">
                         <div class="row justify-content-center">
                             <table class="table">
                                 <thead class="blue">
                                     <tr>
-                                        <TH>ID</TH>
-                                        <th>POST</th>
+                                        <TH>SN</TH>
+                                        <th>NOTICE</th>
                                         <th>DATE</th>
                                         <th>SCHOOL</th>
                                         <th>+2</th>
@@ -90,18 +103,18 @@ include('include/check_login.php');
 
                                 <?php 
                                  $x=1;
-                                 while($event=mysqli_fetch_array($result))
+                                 while($notice=mysqli_fetch_array($result))
                              {
 
                                  ?>
                                 <tr>
                                    <td><?php echo htmlentities($x); ?></td>
-                                    <td><?php echo  htmlentities($event['post']);?></td>
+                                    <td><?php echo  short_notice($notice['notice']);?> </td>
                                    
-                                    <td> <?php echo htmlentities($event['date']); ?> </td>
+                                    <td><?php echo htmlentities($notice['created_at']); ?></td>
                                    
                                     <td><?php 
-                                             if($event['school']==1)
+                                             if($notice['school']==1)
                                               {
                                                 ?>
                                             <i class="fa fa-check"></i>
@@ -111,7 +124,7 @@ include('include/check_login.php');
                                     </td>
                                    
                                     <td><?php 
-                                             if($event['plus2']==1)
+                                             if($notice['plus2']==1)
                                               {
                                                 ?>
                                             <i class="fa fa-check"></i>
@@ -121,7 +134,7 @@ include('include/check_login.php');
                                     </td>
 
                                     <td><?php 
-                                             if($event['engineering']==1)
+                                             if($notice['engineering']==1)
                                               {
                                                 ?>
                                             <i class="fa fa-check"></i>
@@ -131,8 +144,8 @@ include('include/check_login.php');
                                     </td>
                                     </td>
                                     <td>
-                                        <a href="news_&_event.php?type=edit&&id=<?php echo $event['id']; ?>"><i class="fa fa-edit"> </i></a>
-                                        <a href="delete.php?id=<?php echo $event['id']; ?>&&type=news_and_event"><i class="fa fa-trash"> </i></a>
+                                        <a href="notices.php?type=edit&&id=<?php echo $notice['id']; ?>"><i class="fa fa-edit"> </i></a>
+                                        <a href="delete.php?id=<?php echo $notice['id']; ?>&&type=notice"><i class="fa fa-trash"> </i></a>
                                     </td>
                                 </tr>
 
