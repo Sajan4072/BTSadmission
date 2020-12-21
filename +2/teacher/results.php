@@ -36,7 +36,7 @@ session_start();
                 </div>
                         <div class="col-lg-2 col-md-2 col-12">
                           <div class="row" style="margin-top: 60px; margin-right: 2px;">
-                            <div class="col-6"><h5><i style="margin-right: 5px; margin-top: 10px;" class="fa fa-user" aria-hidden="true"></i><a href="../profile.php" style="text-decoration: none; color: black;"><?php echo $_SESSION['login_user']; ?></a></h5></div>
+                            <div class="col-6"><h5><i style="margin-right: 5px; margin-top: 10px;" class="fa fa-user" aria-hidden="true"></i><a href="../profile.php" style="text-decoration: none; color: black;"><?php echo $_SESSION['teacher_user']; ?></a></h5></div>
                             <div class="col-6">
                                <a href="logout.php"> <button type="submit" class="btn btn-primary" style="background-color: #224a8f; border: none; float: left; border-radius: 20px;">LOGOUT</button></a>
                             </div>
@@ -53,13 +53,11 @@ session_start();
       <div class="container sidebar">
         <div class="row">
           <ul class="unstyled" >
-        <li><a href="../news and events/index.html" class="active"><i class="fa fa-newspaper-o" ></i>NEWS AND EVENTS</a></li>
-           <li><a href="../notices/index.html"><i class="fa fa-bars" ></i>NOTICES</a></li>
-           <li><a href="../events/index.html"><i class="fa fa-calendar"  ></i>EVENTS</a></li>
-            <li><a href="#"><i class="fa fa-file"  ></i>RESOURCES </a></li>
-            <li><a href="../galary update/index.html"><i class="fa fa-picture-o"  ></i>GALARY UPDATE</a></li>
-            <li><a href="../results/index.html"><i class="fa fa-file" ></i>RESULTS</a></li>
-            <li><a href="../calender events/index.html"><i class="fa fa-calendar" ></i>CALENDER EVENTS</a></li>
+       
+            <li><a href="resources.php"><i class="fa fa-file"  ></i>RESOURCES </a></li>
+           
+            <li><a href="#"><i class="fa fa-file" ></i>RESULTS</a></li>
+          
           </ul>
         </div>
       </div>
