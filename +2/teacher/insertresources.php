@@ -12,31 +12,14 @@ include('include/connection.php');
 	$caption=$_POST['caption'];
 	$class=$_POST['class'];
 	$subject=$_POST['subject'];
-	 if($_POST['law']=='Yes'){
-         $law=1;
-        }
-        else{
-         $law=0;
-        }
-        if($_POST['education']=='Yes'){
-         $education=1;
-        }
-        else{
-         $education=0;
-        }
+	 
         if($_POST['management']=='Yes'){
          $management=1;
         }
         else{
          $management=0;
         }
-        if($_POST['humanities']=='Yes'){
-         $humanities=1;
-        }
-        else{
-         $humanities=0;
-        }
-
+       
 	
 
 	 
@@ -57,8 +40,8 @@ include('include/connection.php');
 	
 	 
 
-	 $sql="insert into college_resource(image,pdf,class,caption,subject,science,management,humanities)
-	    values('$image','$pdf',$class,'$caption','$subject','$science','$management','$humanities')";
+	 $sql="insert into college_resource(image,pdf,class,caption,subject,management)
+	    values('$image','$pdf',$class,'$caption','$subject','$management')";
 	    $query=mysqli_query($db,$sql);
 	   
 $_SESSION['message']="POSTED";

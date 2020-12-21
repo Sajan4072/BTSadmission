@@ -206,46 +206,7 @@ ul#menu li {
   
 </div>
   </li>
-  <li>
-    
-  <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    LAW
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="../class11law.php">Class 11</a>
-    <a class="dropdown-item" href="../class12law.php">Class 12</a>
-    
   
-</div>
-  </li>
-  <li>
-    
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    EDUCATION
-    </button>
-  
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="../class11edu.php">Class 11</a>
-    <a class="dropdown-item" href="../class12edu.php">Class 12</a>
-    
-  
-</div>
-
-  </li>
-  
-  <li>
-    
-  <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    HUMANITIES
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="../class11hum.php">Class 11</a>
-    <a class="dropdown-item" href="../class12hum.php">Class 12</a>
-    
-  
-</div>
-
-</li>
   
 </ul> 
 </div>      

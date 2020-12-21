@@ -114,16 +114,11 @@ session_start();
           <div class="row">
             <div class="check" style="margin-top: 10px; margin-left: 7px; color: #224a8f;">
             <div class="col-4"></div>
-              <input type="checkbox" name="law" value="Yes">
-            <label for="vehicle1">Law</label>
-            <input type="checkbox" name="education" value="Yes">
-            <label for="vehicle1">Education</label>
-
+            
              <input type="checkbox" name="management" value="Yes">
             <label for="vehicle1">Management</label>
 
-             <input type="checkbox" name="humanities" value="Yes">
-            <label for="vehicle1">Humanities</label>
+            
           </div>
           </div>
 
