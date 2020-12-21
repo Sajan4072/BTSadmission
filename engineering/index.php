@@ -222,7 +222,7 @@ session_start();
             </li>
             <?php } ?>
             <li class="nav-item">
-              <a class="nav-link" href="#"
+              <a class="nav-link" href="View/news.php"
                 ><button type="button" class="btn btn-success">
                   View More
                 </button></a
@@ -250,7 +250,7 @@ session_start();
            <?php } ?>
 
             <li class="nav-item">
-              <a class="nav-link" href="#"
+              <a class="nav-link" href="View/notice.php"
                 ><button type="button" class="btn btn-success">
                   View More
                 </button></a
@@ -278,7 +278,7 @@ session_start();
           <?php } ?>
 
             <li class="nav-item">
-              <a class="nav-link" href="#"
+              <a class="nav-link" href="View/cal.php"
                 ><button type="button" class="btn btn-success">
                   View More
                 </button></a

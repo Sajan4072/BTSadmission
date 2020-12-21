@@ -137,10 +137,10 @@ session_start();
               <a class="nav-link " href="../../index.php">School</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link active" href="../index.php">+2</a>
+              <a class="nav-link " href="../../+2/index.php">+2</a>
             </li>
              <li class="nav-item center-menu">
-              <a class="nav-link" href="../../engineering/index.php">Engineering</a>
+              <a class="nav-link active" href="../index.php">Engineering</a>
             </li>
             <li class="nav-item center-menu">
               <a class="nav-link" href="../galary/gallery.php">Gallery</a>
@@ -218,7 +218,7 @@ $start_from = ($page-1) * $limit;
                        
                          
                                               
-                      $sql="select *from news_and_event WHERE plus2=1 ORDER BY id DESC LIMIT $start_from, $limit ";
+                      $sql="select *from news_and_event WHERE engineering=1 ORDER BY id DESC LIMIT $start_from, $limit ";
                       $query=mysqli_query($db,$sql);
                       while($row=mysqli_fetch_array($query))
                         {

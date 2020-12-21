@@ -137,10 +137,10 @@ session_start();
               <a class="nav-link " href="../../index.php">School</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link active" href="../index.php">+2</a>
+              <a class="nav-link " href="../../+2/index.php">+2</a>
             </li>
              <li class="nav-item center-menu">
-              <a class="nav-link" href="../../engineering/index.php">Engineering</a>
+              <a class="nav-link active" href="../index.php">Engineering</a>
             </li>
             <li class="nav-item center-menu">
               <a class="nav-link" href="../galary/gallery.php">Gallery</a>
@@ -201,7 +201,7 @@ session_start();
 
 
 <div class="container-fluid">
-      <div class="row" style="justify-content: center;color: white; background-color: #1a237e;"><h5>NEWS AND ANNOUNCEMENT</h5></div>
+      <div class="row" style="justify-content: center;color: white; background-color: #1a237e;"><h5>Notices</h5></div>
       <?php 
 
 
@@ -218,7 +218,7 @@ $start_from = ($page-1) * $limit;
                        
                          
                                               
-                      $sql="select *from news_and_event WHERE plus2=1 ORDER BY id DESC LIMIT $start_from, $limit ";
+                      $sql="select *from notice WHERE engineering=1 ORDER BY id DESC LIMIT $start_from, $limit ";
                       $query=mysqli_query($db,$sql);
                       while($row=mysqli_fetch_array($query))
                         {
@@ -226,12 +226,9 @@ $start_from = ($page-1) * $limit;
 
       <div class="row viewmore bg-light">
         <div class="col-lg-2 col-md-2 col-sm-12 rounddate">
-          <div class="circle" style="transform: translateX(-8px);">
-            
-            <div class="day ml-3"><?php echo $row['date']; ?></div>
-          </div>
+         
         </div>
-        <div class="col-lg-10 col-md-2 col-sm-12 pt-3"><?php echo $row['post']; ?></div>
+        <div class="col-lg-10 col-md-2 col-sm-12 pt-3"><?php echo $row['notice']; ?></div>
       </div>
       <?php } ?>
     </div>
@@ -245,7 +242,7 @@ $start_from = ($page-1) * $limit;
      <?php if($page>=2){  
         ?><li class='page-item'> 
           <?php 
-            echo "<a class='page-link' href='news.php?page=".($page-1)."'>  Prev </a>";   
+            echo "<a class='page-link' href='notice.php?page=".($page-1)."'>  Prev </a>";   
         ?>
         </li>
         <?php 
@@ -253,14 +250,14 @@ $start_from = ($page-1) * $limit;
       </li>
     <li class="page-item">
       <?php  
-$result_db = mysqli_query($db,"SELECT COUNT(id) FROM news_and_event"); 
+$result_db = mysqli_query($db,"SELECT COUNT(id) FROM notice"); 
 $row_db = mysqli_fetch_row($result_db);  
 $total_records = $row_db[0];  
 $total_pages = ceil($total_records / $limit); 
 /* echo  $total_pages; */
 $pagLink = "<ul class='pagination'>"; 
 for ($i=1; $i<=$total_pages; $i++) {
-$pagLink .= "<li class='page-item'><a class='page-link' class ='active' href='news.php?page=".$i."' >".$i."</a></li>"; 
+$pagLink .= "<li class='page-item'><a class='page-link' class ='active' href='notice.php?page=".$i."' >".$i."</a></li>"; 
 }
 echo $pagLink . "</ul>";  
 ?>
@@ -271,7 +268,7 @@ echo $pagLink . "</ul>";
         ?>
         <li class='page-item'>
         <?php   
-            echo "<a class='page-link' href='news.php?page=".($page+1)."'>  Next </a>"; ?>
+            echo "<a class='page-link' href='notice.php?page=".($page+1)."'>  Next </a>"; ?>
             </li>
             <?php  
         }   
@@ -286,7 +283,7 @@ echo $pagLink . "</ul>";
     {   
         var page = document.getElementById("page").value;   
         page = ((page><?php echo $total_pages; ?>)?<?php echo $total_pages; ?>:((page<1)?1:page));   
-        window.location.href = 'news.php?page='+page;   
+        window.location.href = 'notice.php?page='+page;   
     }   
   </script>
 
