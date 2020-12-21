@@ -218,9 +218,7 @@ $start_from = ($page-1) * $limit;
              </div>
 
     <div class="col-lg-4 col-sm-12 col-md-4" style="text-align: center;">
-      <div class="resourceimage">
-     <img src="../frontpage/images/founder.jpg" alt="Not Available!" />
-      </div>
+      
     </div>
         </div>
           <?php
