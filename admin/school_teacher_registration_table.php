@@ -2,7 +2,7 @@
 session_start();
 include('include/connection.php');
 
-$sql="select *from school limit 4 ";
+$sql="select *from school_teacher limit 5 ";
 $result=mysqli_query($db,$sql);
 
 // $date=now();
@@ -14,7 +14,7 @@ $result=mysqli_query($db,$sql);
 <html>
 
 <head>
-    <title>School Student Table</title>
+    <title>school Teacher  Table</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -77,7 +77,7 @@ include('include/check_login.php');
                         <input type="text" name="search" placeholder=" search " onkeyup="search"  id='search' style="border-radius:5px;border: blue;  "><i class='fa fa-search' style="margin-left: px; margin-top: 4px;"> </i>
                     </p>
                     <p style="display: inline-flex;">
-                        <a href="school_stu_registration.php" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; margin-left: 250px">register</a>
+                        <a href="school_teacher_registration.php" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; margin-left: 250px">register</a>
                     </p>
                     <div class="col-12">
                         <div class="row justify-content-center">
@@ -85,8 +85,8 @@ include('include/check_login.php');
                                 <thead class="blue ">
                                     <tr>
                                         <TH>SN</TH>
-                                        <th>UNIQUECODE</th>
                                         <th>Name</th>
+                                        <th>EMAIL</th>
                                         <th>ACTION</th>
                                        
                                     </tr>
@@ -94,7 +94,7 @@ include('include/check_login.php');
                                 <tbody id="tbody">
                                 <?php 
                                  $x=1;
-                                 while($student=mysqli_fetch_array($result))
+                                 while($teacher=mysqli_fetch_array($result))
                              {
 
                                  ?>
@@ -103,19 +103,19 @@ include('include/check_login.php');
                                         <?php echo htmlentities($x); ?>
                                     </td>
                                     <td>
-                                        <?php echo  htmlentities($student['firstname']);  echo  htmlentities($student['lastname']);?>
+                                        <?php echo  htmlentities($teacher['firstname']); echo " "; echo  htmlentities($teacher['lastname']);?>
                                     </td>
                                     <td>
-                                        <?php echo htmlentities($student['uniquecode']); ?>
+                                        <?php echo htmlentities($teacher['email']); ?>
                                     </td>
                                     <td>
-                                        <a href="school_stu_registration.php?type=edit&&id=<?php echo htmlentities($student['uniquecode']); ?>"><i class="fa fa-edit"> </i></a>
+                                        <a href="school_teacher_registration.php?type=edit&&id=<?php echo htmlentities($teacher['id']); ?>"><i class="fa fa-edit"> </i></a>
 
-                                        <a  href=""  data-toggle="modal" data-target="#exampleModalLong-<?php echo htmlentities($student['uniquecode']);?>">
+                                        <a  href=""  data-toggle="modal" data-target="#exampleModalLong-<?php echo htmlentities($teacher['id']);?>">
                                           <i class="fa fa-trash"> </i>
                                         </a>
                                     </td>
-                                     <div class="modal fade" id="exampleModalLong-<?php echo htmlentities($student['uniquecode']); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                    <div class="modal fade" id="exampleModalLong-<?php echo htmlentities($teacher['id']); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -125,16 +125,16 @@ include('include/check_login.php');
         </button>
       </div>
       <div class="modal-body">
-      Student <b><?php echo htmlentities($student['firstname']);echo htmlentities($student['lastname']); ?></b> is going to be delete
+     Teacher  <b> <?php echo htmlentities($teacher['firstname']); echo " "; echo htmlentities($teacher['lastname']); ?></b> is going to be delete
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a class="btn btn-danger" href="delete.php?type=student&&id=<?php echo htmlentities($student['uniquecode']); ?>">Delete</a>
+        <a class="btn btn-danger" href="deletde.php?type=student&&id=<?php echo htmlentities($teacher['id']); ?>">Delete</a>
       </div>
     </div>
   </div>
 </div>
-
+                                    
                                 
                                     
                                 </tr>
@@ -194,7 +194,7 @@ if(!search_value=='')
                  
 
                 type: 'get',
-                url: 'ajax_fetch_data/school_stu.php',
+                url: 'fetch_data.php',
                 data: { search:search },
                 dataType: "json",
                 success: function(response) {

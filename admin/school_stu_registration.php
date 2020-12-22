@@ -33,124 +33,7 @@ if(isset($_GET['type']))
 }
 
 
-$fnameErr = $lnameErr = $addressErr = $fathernameErr  = $passwordErr = $uniquecodeErr= $dobErr = $contactErr = "";  
-$fname = $lname = $address = $contact = $fathername = $password = $uniquecode = $dob = "";  
-  
-//Input fields validation  
-if ($_SERVER["REQUEST_METHOD"] == "POST") {  
 
- 
-
-      
-//String Validation  
-    if (empty($_POST["fname"])) {  
-         $fnameErr = "Name is required";  
-    } else {  
-        $fname = input_data($_POST["fname"]);  
-            // check if name only contains letters and whitespace  
-            if (!preg_match("/^[a-zA-Z ]*$/",$fname)) {  
-                $fnameErr = "Only alphabets and white space are allowed";  
-            }  
-    }  
-      
-    //Email Validation   
-    if (empty($_POST["lname"])) {  
-            $lnameErr = "Last name  is required";  
-    } else {  
-            $lname = input_data($_POST["lname"]);  
-            // check that the e-mail address is well-formed  
-           if (!preg_match("/^[a-zA-Z ]*$/",$lname)) {   
-                $lnameErr = "Only alphabets and white space are allowed";  
-            }  
-     }  
-    if (empty($_POST["address"])) {  
-            $addressErr = "Address is required";  
-    } else {  
-            $address = input_data($_POST["address"]);  
-            // check that the e-mail address is well-formed  
-           if (!preg_match("/^[a-zA-Z0-9 -_:,]*$/",$address)) {   
-                $addressErr = "Only alphabets, number and white space are allowed";  
-            }  
-     }  
-      
-    //URL Validation      
-    if (empty($_POST["fathername"])) {  
-        $fathernameErr = " Father's name is required";  
-    } else {  
-            $fathername = input_data($_POST["fathername"]);  
-            // check if URL address syntax is valid  
-            if (!preg_match("/^[a-zA-Z ]*$/",$fathername)) {
-                $fathernameErr = "Only alphabets and white space are allowed";  
-            }      
-    }  
-    if (empty($_POST["contact"])) {  
-        $contactErr = " Parent's contact is required";  
-    } else {  
-            $contact = input_data($_POST["contact"]);  
-            // check if URL address syntax is valid  
-            if (!preg_match("/^[0-9]*$/",$contact) && strlen ($contact) != 10) {
-                $contactErr = "Only 10 digits are allowed";  
-            }      
-    }  
-
-     if (empty($_POST["password"])) {  
-        $passwordErr = "Enter the Password";  
-    } else {
-        $password = input_data($_POST["password"]);  
-       $uppercase = preg_match('@[A-Z]@', $password);
-       $lowercase = preg_match('@[a-z]@', $password);
-       $number    = preg_match('@[0-9]@', $password);
-       
-
-if(!$uppercase || !$lowercase || !$number ||  strlen($password) < 8)   
-            
-         {
-                $passwordErr = "Invalid Password";  
-            }      
-    }  
- 
-  if(!isset($edit))
-  {
- if (empty($_POST["uniquecode"])) {  
-        $uniquecodeErr = " What is your Unique Login Code?";  
-    } else {  
-            $uniquecodeS = input_data($_POST["uniquecode"]);  
-            // check if URL address syntax is valid  
-            if (!preg_match("/^(CLS)|[0-9]|(-)|[0-9]*$/",$uniquecodeS)) {
-                $uniquecodeErr = "Only alphabets and white space are allowed";  
-            }
-
-           
-            $sql="select *from school where uniquecode='$uniquecodeS' ";
-            $result=mysqli_query($db,$sql);
-
-            $check=mysqli_num_rows($result);
-            echo $check;
-            if($check>0)
-             {  
-                echo "yes";
-                $stu=mysqli_fetch_assoc($result);
-                $uniquecodeErr = "uniquecode is already assigned to student name".$stu['firstname']." ".$stu['lastname'];  
-             } 
-             
-
-
-    } 
-  }
-if (empty($_POST["dob"])) {  
-        $dobErr = " Enter your Date of Birth";  
-    } else {  
-            $dob = input_data($_POST["dob"]);  
-             
-                 
-    } 
-  }
-function input_data($data) {  
-  $data = trim($data);  
-  $data = stripslashes($data);  
-  $data = htmlspecialchars($data);  
-  return $data;  
-}  
 ?>  
   <div class="container">
 
@@ -160,12 +43,22 @@ function input_data($data) {
         <div class="row form body">
             <div class="col-lg-7 col-md-12 col-sm-12 bodycol">
  
-<form method="post" >    
+<form method="post"  action="insert.php"> 
+
+   <?php 
+      if(isset($edit))
+      {?>
+    <input type="hidden" name="uniquecode" value="<?php echo $student['uniquecode']; ?>">
+
+<?php
+      }
+
+    ?>   
      <div class="form-row">
       
     <div class="form-group col-md-6">
       <label for="inputName">FIRST NAME</label>  
-    <input type="text" name="fname" class="form-control" id="inputName" placeholder="Name" autocomplete="off" value="<?php
+    <input type="text" name="fname"  class="form-control" id="inputName" required placeholder="Name" autocomplete="off" value="<?php
       if(isset($edit))
       {
         echo($student['firstname']);
@@ -173,67 +66,74 @@ function input_data($data) {
       
     else
     {    
-     if(isset($_POST['fname'])){ echo $_POST['fname'];} 
+     if(isset($_SESSION['fname'])){ echo $_SESSION['fname']; unset($_SESSION['fname']);} 
      }  ?>">  
-    <span class="error"><?php echo $fnameErr; ?> </span>  
+   
+    <span class="error"><small><?php if(isset($_SESSION['fnameErr'])) echo $_SESSION['fnameErr']; unset($_SESSION['fnameErr']); ?> </small></span> 
       </div>
    <div class="form-group col-md-6">
       <label for="inputName">LAST NAME</label>  
-    <input type="text" name="lname" class="form-control" id="inputName" placeholder="Last Name" autocomplete="off" value="<?php
+    <input type="text" name="lname" required class="form-control" required id="inputName" placeholder="Last Name" autocomplete="off" value="<?php
      if(isset($edit))
       {
         echo($student['lastname']);
       }
       else
       {
-     if(isset($_POST['lname'])){ echo $_POST['lname']; }}?>">  
-    <span class="error"><?php echo $lnameErr; ?> </span>  
+if(isset($_SESSION['lname'])){ echo $_SESSION['lname']; unset($_SESSION['lname']);} }     ?>">  
+    
+    <span class="error"><small><?php if(isset($_SESSION['lnameErr'])) echo $_SESSION['lnameErr']; unset($_SESSION['lnameErr']); ?> </small></span> 
     </div>  
 </div>
 <div class="form-row">
     <div class="form-group col-md-12">
       <label for="inputEmail">ADDRESS</label>   
-    <input type="text" name="address" class="form-control" id="inputAddress" placeholder="Address" autocomplete="off" value="<?php 
+    <input type="text" required name="address" class="form-control" id="inputAddress" placeholder="Address" autocomplete="off" value="<?php 
    if(isset($edit))
       {
         echo($student['address']);
       }
       else
-    if(isset($_POST['address'])){ echo $_POST['address']; }?>">  
-    <span class="error"><?php echo $addressErr; ?> </span>  
+   
+          if(isset($_SESSION['address'])){ echo $_SESSION['address']; unset($_SESSION['address']);} 
+     ?>">  
+   
+     <span class="error"><small><?php if(isset($_SESSION['addressErr'])) echo $_SESSION['addressErr']; unset($_SESSION['addressErr']); ?> </small></span> 
     </div> 
    <div class="form-group col-md-12">
       <label for="inputEmail">FATHER'S NAME</label>
-    <input type="text" name="fathername" class="form-control" id="inputFathername" placeholder=" Father's Name" autocomplete="off"
+    <input type="text" name="fathername" required class="form-control" id="inputFathername" placeholder=" Father's Name" autocomplete="off"
          value="<?php 
              if(isset($edit))
       {
         echo($student['fathername']);
       }
       else
-         if(isset($_POST['fathername'])){ echo $_POST['fathername']; }?>" 
+         if(isset($_SESSION['fathername'])){ echo $_SESSION['fathername']; unset($_SESSION['fathername']);} 
+         ?>" 
      >  
-    <span class="error"><?php echo $fathernameErr; ?> </span>  
+     <span class="error"><small><?php if(isset($_SESSION['fathernameErr'])) echo $_SESSION['fathernameErr']; unset($_SESSION['fathernameErr']); ?> </small></span>  
+
     </div>
     <div class="form-group col-md-12">
       <label for="inputEmail">PARENT'S CONTACT</label>
-    <input type="text" name="contact" class="form-control" id="inputFathername" placeholder=" Parent's contact" autocomplete="off"
+    <input type="text" name="contact" required class="form-control" id="inputFathername" placeholder=" Parent's contact" autocomplete="off"
          value="<?php 
               if(isset($edit))
       {
         echo($student['contact']);
       }
       else
-          if(isset($_POST['lname'])){ echo $_POST['contact']; }?>" 
+          if(isset($_SESSION['contact'])){ echo $_SESSION['contact']; unset($_SESSION['contact']);}?>" 
     >  
-    <span class="error"><?php echo $contactErr; ?> </span>  
+    <span class="error"><small><?php if(isset($_SESSION['contactErr'])) echo $_SESSION['contactErr']; unset($_SESSION['contactErr']); ?> </small></span>  
     </div>
 </div>
 
         <div class="form-row">
     <div class="form-group col-md-12">
       <label for="inputEmail">PASSWORD</label>
-    <input <?php if(isset($edit)){ ?>type="text" <?php } else {?>type="password" <?php } ?>  name="password" class="form-control" id="inputEmail" placeholder=" Password" autocomplete="off" value="<?php
+    <input <?php if(isset($edit)){ ?>type="text" <?php } else {?>type="password" <?php } ?> required name="password" class="form-control" id="inputEmail" placeholder=" Password" autocomplete="off" value="<?php
          if(isset($edit))
       {
         echo($student['password']);
@@ -241,13 +141,14 @@ function input_data($data) {
       
 
     ?>">  
-    <span class="error"><?php echo $passwordErr; ?> </span>  
+   
+    <span class="error"><small><?php if(isset($_SESSION['passwordErr'])) echo $_SESSION['passwordErr']; unset($_SESSION['passwordErr']); ?> </small></span> 
     </div>
 
     
     <div class="form-group col-md-6">
       <label for="inputEmail">UNIQUE CODE</label>
-    <input type="text" name="uniquecode" class="form-control" id="inputEmail" placeholder=" Unique code" autocomplete="off"
+    <input type="text" name="uniquecode" required class="form-control" id="inputEmail" placeholder=" Unique code" autocomplete="off"
     value="<?php 
              if(isset($edit))
       {
@@ -255,7 +156,7 @@ function input_data($data) {
       }
        else
 
-    if(isset($_POST['uniquecode'])){ echo $_POST['uniquecode']; }?>" 
+   if(isset($_SESSION['uniquecode'])){ echo $_SESSION['uniquecode']; unset($_SESSION['uniquecode']);}?>" 
 
     <?php if(isset($edit))
     {
@@ -263,24 +164,25 @@ function input_data($data) {
     } 
     ?>
     >  
-    <span class="error"><?php echo $uniquecodeErr; ?> </span>  
+    
+    <span class="error"><small><?php if(isset($_SESSION['uniquecodeErr'])) echo $_SESSION['uniquecodeErr']; unset($_SESSION['uniquecodeErr']); ?> </small></span>  
     </div>
     
     <div class="form-group col-md-6">
       <label for="inputEmail">DATE OF BIRTH</label>
-    <input type="date" name="dob" class="form-control" id="inputEmail" placeholder=" Password" autocomplete="off"
+    <input type="date" name="dob" required class="form-control" id="inputEmail" placeholder=" Password" autocomplete="off"
        value="<?php 
          
              if(isset($edit))
       {
         echo($student['dob']);
       }
-       else
-       if(isset($_POST['dob']))      
 
-        echo $_POST['dob']; ?>" 
+      if(isset($_SESSION['dob'])){echo $_SESSION['dob']; unset($_SESSION['dob']);}
+       ?>" 
     >  
-    <span class="error"><?php echo $dobErr; ?> </span>  
+   
+
     </div>
     
 </div>
@@ -289,9 +191,9 @@ function input_data($data) {
     <?php if(!isset($edit)) 
     {
     ?>                     
-    <input type="submit" name="insert" value="REGISTER" class="btn btn-primary" style="background-color: #224a8f; border: none;">  
+    <input type="submit" name="stu_registration" value="REGISTER" class="btn btn-primary" style="background-color: #224a8f; border: none;">  
     <?php }  else {?>
-    <input type="submit" name="edit" value="update" class="btn btn-primary" style="background-color: #224a8f; border: none;">  
+    <input type="submit" name="stu_registration_edit" value="update" class="btn btn-primary" style="background-color: #224a8f; border: none;">  
 
   <?php } ?>
 
@@ -305,7 +207,7 @@ function input_data($data) {
                 <h4 style="padding-top: 50px;">REGISTER TO<br> CONTINUE ACCESS<br> PAGE</h4>
                 <br>
                 <br>
-                <h4 class="error"><?php if(isset($_SESSION['error'])) {echo $_SESSION['error']; unset($_SESSION['error']); } ?></h4>
+                <h4 class="error"><?php if(isset($_SESSION['error'])) {echo $_SESSION['error']; unset($_SESSION['error']); } ?></h4><h4 class="error"><?php if(isset($_SESSION['success'])) {echo $_SESSION['success']; unset($_SESSION['success']); } ?></h4>
                 <br>
                 <a href="school_stu_registration_table.php" class="btn-primary btn btn-sm">Click to go previous page</a>
                 <br>
@@ -337,29 +239,7 @@ function input_data($data) {
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
-<?php  
-    if(isset($_POST['insert'])) {  
 
-       echo "string";
-      
-          if($fnameErr == "" && $lnameErr == "" && $addressErr == "" && $fathernameErr == "" && $passwordErr == "" && $contactErr =="" && $uniquecodeErr == "" && $dobErr == "" ) 
-        {
-          
-           // $sql="INSERT into schoo (firstname,lastname,address,fathername,contact,password,uniquecode,dob)  "
-        
-    mysqli_query($db,"INSERT INTO school(firstname,lastname,address,fathername,contact,password,uniquecode,dob) VALUES('$fname', '$lname', '$address', '$fathername', $contact, '$password','$uniquecodeS','$dob')"); 
-
-         
-    } 
-
-    else 
-    {  
-         $_SESSION['error']="you didn't fill the form correctly";
-    }  
-     
-}
-  
-?>  
   
 </body>  
 </html> 

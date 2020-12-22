@@ -77,6 +77,30 @@ include('include/check_login.php');
 
        }
 
+       else if($type=='student')
+       {
+          $sql=" DELETE FROM school  WHERE uniquecode='$id' ";
+
+       
+
+      if(mysqli_query($db,$sql))
+      {
+        $_SESSION['success']='student record  has been successfully deleted';
+          
+        header('location:school_stu_registration_table.php');
+     
+      }
+      else
+       {
+        $_SESSION['error']='!Opps somthing wrong in deleting student';
+            header('location:school_stu_registration_table.php');
+              
+     
+
+      }
+
+       }
+
        
 
 ?>
