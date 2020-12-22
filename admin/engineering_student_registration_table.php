@@ -2,7 +2,7 @@
 session_start();
 include('include/connection.php');
 
-$sql="select *from school limit 4 ";
+$sql="select *from engineering limit 4 ";
 $result=mysqli_query($db,$sql);
 
 // $date=now();
@@ -14,7 +14,7 @@ $result=mysqli_query($db,$sql);
 <html>
 
 <head>
-    <title>School Student Table</title>
+    <title>Engineering Student Table</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -33,12 +33,12 @@ $result=mysqli_query($db,$sql);
         color: white; 
         
    }
-    .head{
+   .head{
     color:#1a237e;
     font-weight: bold;
     margin-bottom: 5px;
     padding-bottom: 5px;
-    font-size:35px;
+    font-size:40px;
    }
     
   
@@ -60,11 +60,13 @@ include('include/check_login.php');
          include('include/sidebar.php');
      ?>
             <!-- content -->
+            
             <div class="col-lg-8 col-md-8 col-sm-12">
                 <div class="container uploadsection">
-                   <div class="head">
-                    <p >School Student</p>  
+                  <div class="head">
+                    <p >Engineering Student</p>  
                   </div>
+                  
                     <?php
                     if(isset($_SESSION['success']))
                     { 
@@ -87,7 +89,7 @@ include('include/check_login.php');
                         <input type="text" name="search" placeholder=" search " onkeyup="search"  id='search' style="border-radius:5px;border: blue;  "><i class='fa fa-search' style="margin-left: px; margin-top: 4px;"> </i>
                     </p>
                     <p style="display: inline-flex;">
-                        <a href="school_stu_registration.php" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; margin-left: 250px">register</a>
+                        <a href="engineering_student_registration.php" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; margin-left: 250px">register</a>
                     </p>
                     <div class="col-12">
                         <div class="row justify-content-center">
@@ -112,14 +114,15 @@ include('include/check_login.php');
                                     <td>
                                         <?php echo htmlentities($x); ?>
                                     </td>
-                                    <td>
-                                        <?php echo  htmlentities($student['firstname']);  echo  htmlentities($student['lastname']);?>
-                                    </td>
-                                    <td>
+                                     <td>
                                         <?php echo htmlentities($student['uniquecode']); ?>
                                     </td>
                                     <td>
-                                        <a href="school_stu_registration.php?type=edit&&id=<?php echo htmlentities($student['uniquecode']); ?>"><i class="fa fa-edit"> </i></a>
+                                        <?php echo  htmlentities($student['firstname']);echo " ";  echo  htmlentities($student['lastname']);?>
+                                    </td>
+                                   
+                                    <td>
+                                        <a href="engineering_student_registration.php?type=edit&&id=<?php echo htmlentities($student['uniquecode']); ?>"><i class="fa fa-edit"> </i></a>
 
                                         <a  href=""  data-toggle="modal" data-target="#exampleModalLong-<?php echo htmlentities($student['uniquecode']);?>">
                                           <i class="fa fa-trash"> </i>
@@ -204,7 +207,7 @@ if(!search_value=='')
                  
 
                 type: 'get',
-                url: 'ajax_fetch_data/school_stu.php',
+                url: 'ajax_fetch_data/engineering_stu.php',
                 data: { search:search },
                 dataType: "json",
                 success: function(response) {

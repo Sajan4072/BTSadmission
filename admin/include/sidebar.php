@@ -10,8 +10,10 @@
             <li><a href="admission_table_managment.php"><i class="fa fa-picture-o"  ></i>Admision Form Managment</a></li>
             <li><a href="admission_table_engineering.php"><i class="fa fa-picture-o"  ></i>Admision Form Engineering</a></li>
             <li><a href="admission_table_school.php"><i class="fa fa-picture-o"  ></i>Admision Form school</a></li>
-            <li><a href="school_teacher_registration_table.php"><i class="fa fa-picture-o"  ></i>Teacher Registration</a></li>
+            <li><a href="school_teacher_registration_table.php"><i class="fa fa-picture-o"  ></i>school Teacher Registration</a></li>
+            <li><a href="school_teacher_registration_table.php"><i class="fa fa-picture-o"  ></i>engineering Teacher Registration</a></li>
             <li><a href="school_stu_registration_table.php"><i class="fa fa-picture-o"  ></i>School StuRegistration</a></li>
+            <li><a href="engineering_student_registration_table.php"><i class="fa fa-picture-o"  ></i>engineering StuRegistration</a></li>
          
           </ul>
         </div>

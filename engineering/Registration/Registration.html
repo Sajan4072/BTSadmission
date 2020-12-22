@@ -20,29 +20,55 @@
 		<div class="row form body">
 			<div class="col-lg-7 col-md-12 col-sm-12 bodycol">
 				
-				<form>
-  <div class="form-row">
-    <div class="form-group col-md-12">
-      <label for="inputName">NAME</label>
-      <input type="name" class="form-control" id="inputName" placeholder="Name">
+				<form method="post" action="insert.php">
+         
+  <div class="form-row" >
+    <div class="form-group col-md-6">
+      <label for="inputName">First Name</label>
+      <input type="name" class="form-control" name="firstname" placeholder="First Name">
     </div>
-    <div class="form-group col-md-12">
-      <label for="inputEmail">EMAIL</label>
-      <input type="email" class="form-control" id="inputEmail" placeholder=" Email">
+    <div class="form-group col-md-6">
+      <label for="inputName">Last Name</label>
+      <input type="name" class="form-control" name="lastname" placeholder="Last Name">
     </div>
+    
+      <div class="form-group col-md-6">
+      <label for="inputEmail">Address</label>
+      <input type="email" class="form-control" name="address" placeholder=" Address">
+    </div>
+ 
+  <div class="form-group col-md-6">
+    <label for="inputPassword">Father Name</label>
+    <input type="text" class="form-control" name="fathername" placeholder=" Father Name">
   </div>
-  <div class="form-group">
-    <label for="inputPassword">PASSWORD</label>
-    <input type="text" class="form-control" id="inputPassword" placeholder=" Password">
+  <div class="form-group col-md-6">
+    <label for="inputPassword">Parent Contact</label>
+    <input type="text" class="form-control"  name="phone" placeholder=" Parents Contact">
   </div>
-  <div class="form-group">
+  <div class="form-group col-md-6">
+    <label for="inputPassword">Faculty</label>
+     <select name='faculty' class="form-control">
+       <option selected disabled>--choose--</option>
+       <option value="engineering">Engineering</option>
+       <option value="managment">Managment</option>
+       <option value="arts">Arts</option>
+       <option value="education">education</option>
+     </select>
+  </div>
+   <div class="form-group col-md-12">
+    <label for="inputRoll">Password</label>
+    <input type="Password" class="form-control" name="password" placeholder="Password">
+  </div>
+  <div class="form-group col-md-12">
     <label for="inputRoll">UNIQUE ROLL NUMBER</label>
-    <input type="text" class="form-control" id="inputRoll" placeholder="Unique Roll Number">
+    <input type="text" class="form-control" id="inputRoll" name="uniquecode" placeholder="Unique Roll Number">
   </div>
+
+ </div>
   <div class="form-row">
     <div class="form-group col-md-12">
       <label for="inputDate">DATE OF BIRTH</label>
-      <input type="text" class="form-control" id="inputDate"  placeholder="Date Of Birth">
+      <input type="Date" class="form-control" name="dob" placeholder="Date Of Birth">
     </div>
 	</div>
 	<div class="form-row">

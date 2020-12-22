@@ -6,7 +6,7 @@ $search=$_GET['search'];
 
 
 
-  $sql="select * from school_teacher where email LIKE '%$search%' or firstname LIKE '%$search%' or lastname LIKE '%$search%'  ";
+  $sql="select * from engineering where uniquecode LIKE '%$search%' or firstname LIKE '%$search%' or lastname LIKE '%$search%'  ";
     
    $result=mysqli_query($db,$sql);
    $fetch_result=array();
