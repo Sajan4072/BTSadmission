@@ -39,9 +39,9 @@ include('include/connection.php');
 			$sub=$myData[5];
 			$marks=$myData[6];
 
-			$sql1="insert into enginneringresult (uniquecode,roll,subject,marks,term,faculty,sem) values('".$uniquecode."','".$roll."','".$sub."','".$marks."','".$term."','".$faculty."','".$sem."')";
+			$sql1="insert into enginneringresult (uniquecode,roll,subject,marks,term,faculty,semester) values('".$uniquecode."','".$roll."','".$sub."','".$marks."','".$term."','".$faculty."','".$sem."')";
 			$query1=mysqli_query($db,$sql1);
-;
+
 			
 		  }
 	if(!$query1){
