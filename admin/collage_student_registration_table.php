@@ -264,8 +264,9 @@ function filltable() {
 
             var tr_str = "<tr>" +
                 "<td scope='row' >" + x + "</td>" +
-                "<td >" + student[i].uniquecode + "</td>" +
+               
                 "<td >" + student[i].firstname + " " + student[i].lastname + "</td>" +
+                 "<td >" + student[i].uniquecode + "</td>" +
                 "<td >" +
                 "<a href='collage_student_registration.php?type=edit&&id=" + student[i].uniquecode + " '><i class='fa fa-edit'></i></a> " + " " +
 

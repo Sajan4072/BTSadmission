@@ -428,6 +428,7 @@ session_start();
 
         function call_data(term, stu_class) {
           
+          
             $.ajax({
 
 

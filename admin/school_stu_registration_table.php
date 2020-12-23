@@ -119,11 +119,12 @@ include('include/check_login.php');
                                             <?php echo htmlentities($x); ?>
                                         </td>
                                         <td>
-                                            <?php echo  htmlentities($student['firstname']);  echo  htmlentities($student['lastname']);?>
-                                        </td>
-                                        <td>
                                             <?php echo htmlentities($student['uniquecode']); ?>
                                         </td>
+                                        <td>
+                                            <?php echo  htmlentities($student['firstname']);  echo  htmlentities($student['lastname']);?>
+                                        </td>
+                                        
                                         <td>
                                             <a href="school_stu_registration.php?type=edit&&id=<?php echo htmlentities($student['uniquecode']); ?>"><i class="fa fa-edit"> </i></a>
                                             <a href="" data-toggle="modal" data-target="#exampleModalLong-<?php echo htmlentities($student['uniquecode']);?>">
