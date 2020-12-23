@@ -336,6 +336,7 @@ $code=$_SESSION['code'];
         var uniquecode = $('#uniquecode').val();
         var stu_class = $('#class option:selected').val();
         var selected_term = 1
+          
            $('#class').change(function(){
 
           var stu_class =$('#class option:selected').val();
