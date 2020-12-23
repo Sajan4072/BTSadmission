@@ -53,13 +53,11 @@ session_start();
       <div class="container sidebar">
         <div class="row">
           <ul class="unstyled" >
-        <li><a href="../news and events/index.html" class="active"><i class="fa fa-newspaper-o" ></i>NEWS AND EVENTS</a></li>
-           <li><a href="../notices/index.html"><i class="fa fa-bars" ></i>NOTICES</a></li>
-           <li><a href="../events/index.html"><i class="fa fa-calendar"  ></i>EVENTS</a></li>
+     
             <li><a href="#"><i class="fa fa-file"  ></i>RESOURCES </a></li>
-            <li><a href="../galary update/index.html"><i class="fa fa-picture-o"  ></i>GALARY UPDATE</a></li>
-            <li><a href="../results/index.html"><i class="fa fa-file" ></i>RESULTS</a></li>
-            <li><a href="../calender events/index.html"><i class="fa fa-calendar" ></i>CALENDER EVENTS</a></li>
+           
+            <li><a href="results.php"><i class="fa fa-file" ></i>RESULTS</a></li>
+            
           </ul>
         </div>
       </div>

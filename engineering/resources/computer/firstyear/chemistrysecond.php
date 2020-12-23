@@ -93,7 +93,7 @@
               <a class="nav-link" href="../../../ourteam/ourteam.php">Our Team</a>
             </li>
              <li class="nav-item center-menu">
-              <a class="nav-link" href="../../../results/results.php">Results</a>
+              <a class="nav-link" href="../../../results/reuslts.php">Results</a>
             </li>
             <li class="nav-item center-menu">
               <a class="nav-link" href="../../../contact/contact.php">Contact Us</a>
@@ -279,7 +279,7 @@ ul#menu li {
          <div class="row" style="justify-content: center;"><h2>PDF FILES</h2></div>
          <div class="row">
            <?php          
-                      $sql="select *from engineering_resource where faculty='computer' and subject = 'engineering chemistry II' and semister = 'second' and year = 'first'";
+                      $sql="select *from engineering_resource where faculty='computer' and subject = 'Engineering Chemistry II' and semister = 'second' and year = 'first'";
                       $query=mysqli_query($db,$sql);
                       while($post= mysqli_fetch_array($query))
                       {
@@ -322,7 +322,7 @@ if (isset($_GET["page"])) {
 $start_from = ($page-1) * $limit;  
 
                                  
-                      $sql="select *from engineering_resource where faculty ='computer' and subject = 'engineering chemistry II' and  semister = 'second' and year='first' ORDER BY id ASC LIMIT $start_from, $limit";
+                      $sql="select *from engineering_resource where faculty ='computer' and subject = 'Engineering Chemistry II' and  semister = 'second' and year='first' ORDER BY id ASC LIMIT $start_from, $limit";
                       $query=mysqli_query($db,$sql);
                       while($row=mysqli_fetch_array($query))
                         {

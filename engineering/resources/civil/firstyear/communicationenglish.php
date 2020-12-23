@@ -278,7 +278,7 @@ ul#menu li {
          <div class="row" style="justify-content: center;"><h2>PDF FILES</h2></div>
          <div class="row">
            <?php          
-                      $sql="select *from engineering_resource where faculty='civil' and subject = 'communication english' and semister = 'first' and year = 'first'";
+                      $sql="select *from engineering_resource where faculty='civil' and subject = 'Communication English' and semister = 'first' and year = 'first'";
                       $query=mysqli_query($db,$sql);
                       while($post= mysqli_fetch_array($query))
                       {
@@ -321,7 +321,7 @@ if (isset($_GET["page"])) {
 $start_from = ($page-1) * $limit;  
 
                                  
-                      $sql="select *from engineering_resource where faculty ='civil' and subject = 'communication english' and  semister = 'first' and year = 'first' ORDER BY id ASC LIMIT $start_from, $limit";
+                      $sql="select *from engineering_resource where faculty ='civil' and subject = 'Communication English' and  semister = 'first' and year = 'first' ORDER BY id ASC LIMIT $start_from, $limit";
                       $query=mysqli_query($db,$sql);
                       while($row=mysqli_fetch_array($query))
                         {

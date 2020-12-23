@@ -229,10 +229,10 @@ $code=$_SESSION['code'];
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <h6>ROLL:
-                    <?php  echo $row['roll']; ?>
+                    
                 </h6>
                 <?php } ?>
-                <h6>SECTION:A</h6>
+                <h6>SECTION:</h6>
             </div>
         </div>
 
@@ -336,7 +336,12 @@ $code=$_SESSION['code'];
         var uniquecode = $('#uniquecode').val();
         var stu_class = $('#class option:selected').val();
         var selected_term = 1
+           $('#class').change(function(){
 
+          var stu_class =$('#class option:selected').val();
+
+          call_data(selected_term,stu_class);
+        });
 
 
         $(document).ready(function() {
@@ -364,6 +369,7 @@ $code=$_SESSION['code'];
 
 
         function load_on_term(term) {
+           var stu_class =$('#class option:selected').val();
 
             underline_term(term);
 
@@ -460,8 +466,8 @@ $code=$_SESSION['code'];
                     var tr_str = "<tr>" +
                         "<th scope='row' >" + x + "</td>" +
                         "<td >" + result[i].subject + "</td>" +
-                        "<td >" + 100 + "</td>" +
-                        "<td >" + 40 + "</td>" +
+                        "<td >" + ".." + "</td>" +
+                        "<td >" + ".."+ "</td>" +
                         "<td >" + result[i].marks + "</td>" +
                         "<td >" + ".." + "</td>" +
                         
