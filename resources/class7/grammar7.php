@@ -372,7 +372,7 @@
                              
                       
           <?php          
-                      $sql="select *from school_resource where class = 7 and subject = 'grammar'";
+                      $sql="select *from school_resource where class = 7 and subject = 'Grammar'";
                       $query=mysqli_query($db,$sql);
                       $post= mysqli_fetch_array($query);
 
@@ -429,7 +429,7 @@
   </div><br>
 <div class="row row-image" style="margin-top: 50px; background-color: #fae19d; ">
                          <?php          
-                      $sql="select *from school_resource where class = 7 and subject ='grammar'";
+                      $sql="select *from school_resource where class = 7 and subject ='Grammar'";
                       $query=mysqli_query($db,$sql);
                       while($row=mysqli_fetch_array($query))
                         {

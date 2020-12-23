@@ -375,7 +375,7 @@
           <?php          
                      
             
-                      $sql="select *from school_resource where class = 3 and subject = 'computer'";
+                      $sql="select *from school_resource where class = 3 and subject = 'Computer'";
                       $query=mysqli_query($db,$sql);
                       while($row=mysqli_fetch_array($query))
                         {
@@ -415,7 +415,7 @@ $start_from = ($page-1) * $limit;
 
                                  
                                   
-                      $sql="select *from school_resource where class = 3 and subject = 'computer'";
+                      $sql="select *from school_resource where class = 3 and subject = 'Computer'";
                       $query=mysqli_query($db,$sql);
                       while($row=mysqli_fetch_array($query))
                         {
