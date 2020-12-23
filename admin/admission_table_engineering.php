@@ -27,6 +27,19 @@ $result=mysqli_query($db,$sql);
         background-color:#000071;
         color: white; 
     }
+    .head{
+    color:#1a237e;
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    font-size:30px;
+   }
+   .span{
+    border-left: 5px solid #1a237e;
+    border-top: 5px solid #1a237e;
+    border-radius: 6px;
+    box-shadow: 10px 10px 0.6px;
+   }
     </style>
 </head>
 
@@ -48,6 +61,9 @@ include('include/check_login.php');
             <!-- content -->
             <div class="col-lg-8 col-md-8 col-sm-12">
                 <div class="container uploadsection">
+                    <div class="head">
+                        <p><span class="span">Engineering Student Form</span></p>
+                    </div>
                     <div class="col-12">
                         <div class="row justify-content-center">
                             <table class="table">

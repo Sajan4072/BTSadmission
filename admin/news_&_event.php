@@ -3,6 +3,7 @@ session_start();
 include('include/connection.php');
 
 $type=$_GET['type'];
+$news_and_event='set';
 
 if($type=='insert')
 {

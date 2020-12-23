@@ -2,6 +2,8 @@
 session_start();
 include('include/connection.php');
 $type=$_GET['type'];
+$notice='set';
+
 
 if($type=='insert')
 {
