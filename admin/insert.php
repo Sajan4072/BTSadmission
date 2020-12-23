@@ -370,6 +370,65 @@ if(isset($_POST['engineering_teacher_insert']))
       
  }
 
+ if(isset($_POST['collage_teacher_insert']))
+ {
+     include('collage_teacher_registration/old_data.php');
+     include('collage_student_registration/global_validate.php');
+     include('collage_teacher_registration/validate.php');
+      
+        $sql="INSERT INTO college_teacher(firstname,lastname,address,email,phone,password) VALUES('$fname', '$lname', '$address', '$email', '$contact', '$password')"; 
+
+     if(mysqli_query($db,$sql))
+     {
+      $_SESSION['success']=" New teacher ".$fname." ".$lname ." is added successfully";
+             include('collage_teacher_registration/clear_old_data.php');
+
+            header('location:collage_teacher_registration_table.php'); 
+
+     }
+     else
+     {
+       $_SESSION['error']=" ".$fname." ".$lname ." cannot added something went wrong";
+        header('location:collage_teacher_registration_table.php'); 
+
+
+     }
+
+ }
+
+ if(isset($_POST['collage_teacher_edit']))
+ {
+     $edit='set';
+     $id=$_POST['id'];
+
+     include('collage_teacher_registration/old_data.php');
+     include('collage_student_registration/global_validate.php');
+     include('collage_teacher_registration/validate.php');
+
+         $sql="UPDATE  college_teacher SET firstname='$fname',lastname='$lname' ,address='$address',phone='$contact',password='$password' where id='$id' "; 
+
+     if(mysqli_query($db,$sql))
+     {
+           include('collage_teacher_registration/clear_old_data.php');
+           $_SESSION['success']="Informaton of ".$email." is edited successfully";
+           
+
+            header('location:collage_teacher_registration_table.php'); 
+
+     }
+     else
+     {
+       $_SESSION['error']="Informaton of ".$email." is not edited!! somthing went wrong";
+           
+
+            header('location:collage_teacher_registration_table.php'); 
+
+     }
+        
+
+
+ }
+
 
 
 ?>

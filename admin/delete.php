@@ -167,6 +167,49 @@ include('include/check_login.php');
 
     }
 
+    else if($type=='collage_teacher')
+    {
+       $sql=" DELETE FROM college_teacher  WHERE id='$id' ";
+           if(mysqli_query($db,$sql))
+      {
+        $_SESSION['success']="One Collage Teacher  has been successfully deleted";
+          
+        header('location:collage_teacher_registration_table.php');
+     
+      }
+      else
+       {
+        $_SESSION['error']='!Opps somthing wrong in deleting student';
+              header('location:collage_teacher_registration_table.php');
+              
+     
+
+      }
+
+    }
+
+    else if($type=='collage_student')
+    {
+      $sql=" DELETE FROM college  WHERE id='$id' ";
+           if(mysqli_query($db,$sql))
+      {
+        $_SESSION['success']=" One Collage Student  has been successfully deleted";
+          
+        header('location:collage_student_registration_table.php');
+     
+      }
+      else
+       {
+        $_SESSION['error']='!Opps somthing wrong in deleting student';
+              header('location:collage_student_registration_table.php');
+              
+     
+
+      }
+       
+
+    }
+
        
 
 ?>

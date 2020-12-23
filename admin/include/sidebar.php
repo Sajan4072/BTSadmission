@@ -33,7 +33,7 @@
               </a>
 
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="">Managment</a>
+                <a class="dropdown-item" href="collage_teacher_registration_table.php">Managment</a>
                 <a class="dropdown-item" href="engineering_teacher_registration_table.php">Engineering</a>
                 <a class="dropdown-item" href="school_teacher_registration_table.php">School</a>
               </div>

@@ -42,8 +42,7 @@
  }
 
  function uniquecodeAlreadyExist($get,$table)
- {
-           $db = mysqli_connect("localhost","root", "", "bts" );  
+ {include('include/connection.php');
 
  	         $uniquecode = input_data($get); 
          
@@ -87,6 +86,63 @@
                 
                 return true;
               }
+ }
+
+ function emailAlreadyExist($get,$table)
+ {
+    include('include/connection.php');
+
+      $email = input_data($get);
+     $sql="select * from college_teacher where email='$email' limit 1 ";
+
+            $result=mysqli_query($db,$sql);
+
+            $check=mysqli_num_rows($result);
+          
+            if($check>0)
+             {  
+               
+                
+                
+                 return true;  
+             } 
+ }
+
+ function email($get)
+ { 
+   $email = input_data($get);
+   if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                              
+                $emailErr=true;  
+           }
+ }
+
+ function getNameFromEmail($get,$table)
+ {
+    include('include/connection.php');  
+   $email=input_data($get);
+   $sql="select * from $table where email='$email' limit 1 ";
+
+            $result=mysqli_query($db,$sql);
+            $teach=mysqli_fetch_assoc($result);
+            return  $teach['firstname']." ".$teach['lastname'];
+                
+         
+     
+ }
+
+ function getNameFromUniquecode($get,$table)
+ {
+   include('include/connection.php');
+    $uniquecode=input_data($get);
+    $sql="select * from $table where uniquecode='$uniquecode' limit 1 ";
+
+            $result=mysqli_query($db,$sql);
+            $teach=mysqli_fetch_assoc($result);
+            return  $teach['firstname']." ".$teach['lastname'];
+                
+         
+
  }
 
 
