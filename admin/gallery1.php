@@ -2,7 +2,7 @@
 session_start();
 include('include/connection.php');
 
-
+ $gallery='set';
 ?>
 
 <!DOCTYPE html>

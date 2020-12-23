@@ -4,10 +4,7 @@ include('include/connection.php');
 
 $sql="select *from engineering limit 4 ";
 $result=mysqli_query($db,$sql);
-
-// $date=now();
-// echo $date;
-
+$students='set';
 
 ?>
 <!DOCTYPE html>
@@ -21,7 +18,7 @@ $result=mysqli_query($db,$sql);
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="frontpage/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="frontpage/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="../frontpage/css/style.css" />
+    <link rel="stylesheet" href="../frontpage/css/style.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
@@ -38,7 +35,13 @@ $result=mysqli_query($db,$sql);
     font-weight: bold;
     margin-bottom: 5px;
     padding-bottom: 5px;
-    font-size:40px;
+    font-size:30px;
+   }
+   .span{
+    border-left: 5px solid #1a237e;
+    border-top: 5px solid #1a237e;
+    border-radius: 6px;
+    box-shadow: 10px 10px 0.6px;
    }
     
   
@@ -64,7 +67,7 @@ include('include/check_login.php');
             <div class="col-lg-8 col-md-8 col-sm-12">
                 <div class="container uploadsection">
                   <div class="head">
-                    <p >Engineering Student</p>  
+                    <p ><spam class="span">Engineering Student</spam></p>  
                   </div>
                   
                     <?php
@@ -173,6 +176,26 @@ include('include/check_login.php');
 
 
 <!-- Modal -->
+ <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Are you sure you want to delete?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+     
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <p id="injectdelete"></p>
+       
+      </div>
+    </div>
+  </div>
+</div>
 
       
 </body>
@@ -184,6 +207,20 @@ include('include/check_login.php');
 </body>
 <script>
   var student;
+
+ function deletes(key)
+  {
+      $('#injectdelete').html("");
+      $('.modal-body').html("");
+     var modal=" student with <b>"+key+" </b> is going to be delete";
+    var a="<a href='delete.php?type=engineering_student&&id="+key+"' class='btn btn-danger'>delete</a>";
+        $("#injectdelete").append(a);
+         $('.modal-body').append(modal);
+    
+    $('#delete').modal('show');
+      
+    
+  }
 
   $(document).ready(function(){
 
@@ -246,7 +283,7 @@ if(!search_value=='')
                         "<td >" +
                           "<a href='school_stu_registration.php?type=edit&&id="+student[i].uniquecode+" '><i class='fa fa-edit'></i></a> " +" "+
                        
-                          "<a href='delete.php?type=student&&id="+student[i].uniquecode+"' ><i class='fa fa-trash'></i></a> " + "</td>" +
+                          "<a onclick="+"deletes('"+student[i].uniquecode+"')"+"   href='#'  ><i class='fa fa-trash'></i></a> " + "</td>" +
                         "</tr>" ;
 
 

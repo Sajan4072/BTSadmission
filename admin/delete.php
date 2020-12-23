@@ -77,7 +77,7 @@ include('include/check_login.php');
 
        }
 
-       else if($type=='student')
+       else if($type=='school_student')
        {
           $sql=" DELETE FROM school  WHERE uniquecode='$id' ";
 
@@ -100,6 +100,72 @@ include('include/check_login.php');
       }
 
        }
+
+      else if($type=='school_teacher')
+      {    
+           $sql=" DELETE FROM school_teacher  WHERE email='$id' ";
+           if(mysqli_query($db,$sql))
+      {
+        $_SESSION['success']="Teacher ".$name." record  has been successfully deleted";
+          
+        header('location:school_teacher_registration_table.php');
+     
+      }
+      else
+       {
+        $_SESSION['error']='!Opps somthing wrong in deleting student';
+            header('location:school_teacher_registration_table.php');
+              
+     
+
+      }
+    }
+
+    else if($type=='engineering_student')
+    {
+     
+         $sql=" DELETE FROM engineering  WHERE uniquecode='$id' ";
+           if(mysqli_query($db,$sql))
+      {
+        $_SESSION['success']="Student with ".$id." record  has been successfully deleted";
+          
+        header('location:engineering_student_registration_table.php');
+     
+      }
+      else
+       {
+        $_SESSION['error']='!Opps somthing wrong in deleting student';
+              header('location:engineering_student_registration_table.php');
+              
+     
+
+      }
+
+
+    }
+
+    else if($type=='engineering_teacher')
+    {
+     
+         $sql=" DELETE FROM engineering_teacher  WHERE email='$id' ";
+           if(mysqli_query($db,$sql))
+      {
+        $_SESSION['success']="Teacher with ".$id." record  has been successfully deleted";
+          
+        header('location:engineering_teacher_registration_table.php');
+     
+      }
+      else
+       {
+        $_SESSION['error']='!Opps somthing wrong in deleting student';
+              header('location:engineering_teacher_registration_table.php');
+              
+     
+
+      }
+
+
+    }
 
        
 

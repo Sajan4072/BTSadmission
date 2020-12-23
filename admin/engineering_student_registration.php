@@ -67,7 +67,7 @@ if(isset($_GET['type']))
     else
     {    
      if(isset($_SESSION['fname'])){ echo $_SESSION['fname']; unset($_SESSION['fname']);} 
-     }  ?>">  
+       ?>">  
    
     <span class="error"><small><?php if(isset($_SESSION['fnameErr'])) echo $_SESSION['fnameErr']; unset($_SESSION['fnameErr']); ?> </small></span> 
       </div>
@@ -132,8 +132,8 @@ if(isset($_SESSION['lname'])){ echo $_SESSION['lname']; unset($_SESSION['lname']
 
         <div class="form-row">
     <div class="form-group col-md-12">
-      <label for="inputEmail">PASSWORD</label>
-    <input <?php if(isset($edit)){ ?>type="text" <?php } else {?>type="password" <?php } ?> required name="password" class="form-control" id="inputEmail" placeholder=" Password" autocomplete="off" value="<?php
+      <label for="inputEmail">PASSWORD</label> <a href="#"><i class="fa fa-eye"></i></a>
+    <input type="password"  required name="password" class="form-control" id="inputEmail" placeholder=" Password" autocomplete="off" value="<?php
          if(isset($edit))
       {
         echo($student['password']);
@@ -245,3 +245,4 @@ if(isset($_SESSION['lname'])){ echo $_SESSION['lname']; unset($_SESSION['lname']
 </html> 
 
 
+<?php }?>

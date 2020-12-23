@@ -2,7 +2,7 @@
 session_start();
 include('include/connection.php');
 
-$sql="select *from school_teacher limit 5 ";
+$sql="select *from engineering_teacher limit 5 ";
 $result=mysqli_query($db,$sql);
 $teacher='set';
 
@@ -15,7 +15,7 @@ $teacher='set';
 <html>
 
 <head>
-    <title>school Teacher Table</title>
+    <title>Engineering Teacher Table</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -39,14 +39,15 @@ $teacher='set';
     margin-bottom: 5px;
     padding-bottom: 5px;
     font-size:35px;
+
    }
-    .span{
+   .span{
     border-left: 5px solid #1a237e;
     border-top: 5px solid #1a237e;
     border-radius: 6px;
     box-shadow: 10px 10px 0.6px;
    }
-  
+    
     </style>
 
 <body>
@@ -68,7 +69,7 @@ include('include/check_login.php');
             <div class="col-lg-8 col-md-8 col-sm-12">
                 <div class="container uploadsection">
                      <div class="head">
-                    <p ><span class="span">  School Teacher</span></p>  
+                    <p><span class="span">Engineering Teacher</span></p>  
                   </div>
                     <?php
                     if(isset($_SESSION['success']))
@@ -92,7 +93,7 @@ include('include/check_login.php');
                         <input type="text" name="search" placeholder=" search " onkeyup="search" id='search' style="border-radius:5px;border: blue;  "><i class='fa fa-search' style="margin-left: px; margin-top: 4px;"> </i>
                     </p>
                     <p style="display: inline-flex;">
-                        <a href="school_teacher_registration.php" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; margin-left: 250px">register</a>
+                        <a href="engineering_teacher_registration.php" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; margin-left: 250px">register</a>
                     </p>
                     <div class="col-12">
                         <div class="row justify-content-center">
@@ -123,13 +124,11 @@ include('include/check_login.php');
                                             <?php echo htmlentities($teacher['email']); ?>
                                         </td>
                                         <td>
-                                            <a href="school_teacher_registration.php?type=edit&&id=<?php echo htmlentities($teacher['id']); ?>"><i class="fa fa-edit"> </i></a>
+                                            <a href="engineering_teacher_registration.php?type=edit&&id=<?php echo htmlentities($teacher['id']); ?>"><i class="fa fa-edit"> </i></a>
                                             <a href="" data-toggle="modal" data-target="#exampleModalLong-<?php echo htmlentities($teacher['id']);?>">
                                                 <i class="fa fa-trash"> </i>
                                             </a>
                                         </td>
-
-                                        
                                         <div class="modal fade" id="exampleModalLong-<?php echo htmlentities($teacher['id']); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
@@ -140,12 +139,12 @@ include('include/check_login.php');
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Teacher with email <b>
-                                                            <?php echo htmlentities($teacher['email']);?></b> is going to be delete
+                                                        Teacher with email <b> <?php
+                                                            echo htmlentities($teacher['email']); ?></b> is going to be delete
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <a class="btn btn-danger" href="delete.php?type=school_teacher&&id=<?php echo htmlentities($teacher['email']);?>">Delete</a>
+                                                        <a class="btn btn-danger" href="delete.php?type=engineering_teacher&&id=<?php echo htmlentities($teacher['email']); ?>">Delete</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -167,7 +166,7 @@ include('include/check_login.php');
     </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+       <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -195,12 +194,12 @@ include('include/check_login.php');
 </body>
 <script>
 var teacher;
- function deletes(key)
+function deletes(key)
   {
       $('#injectdelete').html("");
       $('.modal-body').html("");
      var modal=" Teacher with email <b>"+key+" </b> is going to be delete";
-    var a="<a href='delete.php?type=school_student&&id="+key+"' class='btn btn-danger'>delete</a>";
+    var a="<a href='delete.php?type=engineering_teacher&&id="+key+"' class='btn btn-danger'>delete</a>";
         $("#injectdelete").append(a);
          $('.modal-body').append(modal);
     
@@ -208,7 +207,6 @@ var teacher;
       
     
   }
-
 
 $(document).ready(function() {
 
@@ -231,7 +229,7 @@ function call_data(search) {
 
 
         type: 'get',
-        url: 'ajax_fetch_data/school_teacher.php',
+        url: 'ajax_fetch_data/engineering_teacher.php',
         data: { search: search },
         dataType: "json",
         success: function(response) {
@@ -271,9 +269,8 @@ function filltable() {
                         "<td >" +
                           "<a href='school_stu_registration.php?type=edit&&id="+teacher[i].id+" '><i class='fa fa-edit'></i></a> " +" "+
                        
-                        "<a onclick="+"deletes('"+teacher[i].email+"')"+"   href='#'  ><i class='fa fa-trash'></i></a> " + "</td>" +
-                         "</tr>" ;
-                        
+                           "<a onclick="+"deletes('"+teacher[i].email+"')"+"   href='#'  ><i class='fa fa-trash'></i></a> " + "</td>" +
+                        "</tr>" ;
 
 
             $("#tbody").append(tr_str);

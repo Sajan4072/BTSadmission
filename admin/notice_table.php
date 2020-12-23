@@ -4,6 +4,7 @@ include('include/connection.php');
 
 $sql="select *from notice order by id desc ";
 $result=mysqli_query($db,$sql);
+$notice='set';
 
 function short_notice($text)
 {

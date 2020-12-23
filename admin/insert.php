@@ -267,6 +267,109 @@
       }
 }
 
+if(isset($_POST['engineering_teacher_insert']))
+ {
+   include('engineering_teacher_registration/old_data.php');
+   include('engineering_teacher_registration/validate.php');
+
+      $sql="INSERT INTO engineering_teacher(firstname,lastname,address,email,contact,password) VALUES('$fname', '$lname', '$address', '$email', '$contact', '$password')"; 
+
+     if(mysqli_query($db,$sql))
+     {
+      $_SESSION['success']=" New teacher ".$fname." ".$lname ." is added successfully";
+             include('engineering_teacher_registration/clear_old_data.php');
+
+            header('location:engineering_teacher_registration_table.php'); 
+
+     }
+     else
+     {
+       $_SESSION['error']=" ".$fname." ".$lname ." cannot added something went wrong";
+        header('location:school_teacher_registration_table.php'); 
+
+
+     }
+
+
+ }
+
+
+ if(isset($_POST['engineering_teacher_edit']))
+ {
+       $edit='set';
+       $id=$_POST['id'];
+       $email=$_POST['email'];
+      include('engineering_teacher_registration/old_data.php');
+      include('engineering_teacher_registration/validate.php');
+
+     $sql="UPDATE  engineering_teacher SET firstname='$fname',lastname='$lname' ,address='$address',contact='$contact',password='$password' where id='$id' "; 
+
+     if(mysqli_query($db,$sql))
+     {
+           include('engineering_teacher_registration/clear_old_data.php');
+           $_SESSION['success']="Informaton of ".$email." is edited successfully";
+           
+
+            header('location:engineering_teacher_registration_table.php'); 
+
+     }
+     else
+     {
+       $_SESSION['error']="Informaton of ".$email." is not edited!! somthing went wrong";
+           
+
+            header('location:engineering_teacher_registration_table.php'); 
+
+     }
+
+ }
+
+ if(isset($_POST['collage_student_insert']))
+ {
+     include('collage_student_registration/old_data.php');
+     include('collage_student_registration/global_validate.php');
+     include('collage_student_registration/validate.php');
+
+
+       if(mysqli_query($db,"INSERT INTO  college(firstname,lastname,address,fathername,phone,password,uniquecode,dob) VALUES('$fname', '$lname', '$address', '$fathername', '$contact', '$password','$uniquecode','$dob')"))
+       {
+         include('collage_student_registration/clear_old_data.php');
+        $_SESSION['success']="you have successfully insert student data";  
+        header('location:collage_student_registration_table.php');     
+       } 
+       else
+       {
+        $_SESSION['error']="opps somthing went worng";
+       }
+
+ }
+
+ if(isset($_POST['collage_student_edit']))
+ {
+   $edit='set';
+   $id=input_data($_POST['uniquecode']);
+
+    include('collage_student_registration/old_data.php');
+     include('collage_student_registration/global_validate.php');
+     include('collage_student_registration/validate.php');
+
+     $sql="update college set firstname='$fname', lastname='$lname' ,address='$address',fathername='$fathername',phone='$contact',password='$password',dob='$dob'   where uniquecode='$id' ";
+
+      if(mysqli_query($db,$sql))
+      {
+         $_SESSION['success']="Informaton of uniquecode=".$uniquecode." has been successfully edited";
+        header('location:collage_student_registration_table.php'); 
+       
+      }
+      else
+      {
+        $_SESSION['error']="Informaton of uniquecode=".$uniquecode." has not edited somthing went wrong";
+        header('location:collage_student_registration_table.php'); 
+
+      }
+      
+ }
+
 
 
 ?>

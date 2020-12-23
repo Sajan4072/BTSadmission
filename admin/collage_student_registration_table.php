@@ -1,21 +1,16 @@
 <?php
 session_start();
 include('include/connection.php');
-
-$sql="select *from school_teacher limit 5 ";
+$sql="select *from college limit 6 ";
 $result=mysqli_query($db,$sql);
-$teacher='set';
-
-// $date=now();
-// echo $date;
-
-
+$students='set';
 ?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>school Teacher Table</title>
+    <title>Collage Student Table</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -33,20 +28,20 @@ $teacher='set';
         color: white; 
         
    }
-   .head{
+    .head{
     color:#1a237e;
     font-weight: bold;
     margin-bottom: 5px;
     padding-bottom: 5px;
     font-size:35px;
    }
-    .span{
+   .span{
     border-left: 5px solid #1a237e;
     border-top: 5px solid #1a237e;
     border-radius: 6px;
     box-shadow: 10px 10px 0.6px;
    }
-  
+
     </style>
 
 <body>
@@ -67,9 +62,9 @@ include('include/check_login.php');
             <!-- content -->
             <div class="col-lg-8 col-md-8 col-sm-12">
                 <div class="container uploadsection">
-                     <div class="head">
-                    <p ><span class="span">  School Teacher</span></p>  
-                  </div>
+                    <div class="head">
+                        <p><span class="span">Collage Student</span></p>
+                    </div>
                     <?php
                     if(isset($_SESSION['success']))
                     { 
@@ -92,7 +87,7 @@ include('include/check_login.php');
                         <input type="text" name="search" placeholder=" search " onkeyup="search" id='search' style="border-radius:5px;border: blue;  "><i class='fa fa-search' style="margin-left: px; margin-top: 4px;"> </i>
                     </p>
                     <p style="display: inline-flex;">
-                        <a href="school_teacher_registration.php" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; margin-left: 250px">register</a>
+                        <a href="collage_student_registration.php" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; margin-left: 250px">register</a>
                     </p>
                     <div class="col-12">
                         <div class="row justify-content-center">
@@ -100,15 +95,16 @@ include('include/check_login.php');
                                 <thead class="blue ">
                                     <tr>
                                         <TH>SN</TH>
-                                        <th>Name</th>
-                                        <th>EMAIL</th>
+                                         <th>Name</th>
+                                        <th>UNIQUECODE</th>
+                                       
                                         <th>ACTION</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tbody">
                                     <?php 
                                  $x=1;
-                                 while($teacher=mysqli_fetch_array($result))
+                                 while($student=mysqli_fetch_array($result))
                              {
 
                                  ?>
@@ -117,20 +113,18 @@ include('include/check_login.php');
                                             <?php echo htmlentities($x); ?>
                                         </td>
                                         <td>
-                                            <?php echo  htmlentities($teacher['firstname']); echo " "; echo  htmlentities($teacher['lastname']);?>
+                                            <?php echo  htmlentities($student['firstname']);  echo  htmlentities($student['lastname']);?>
                                         </td>
                                         <td>
-                                            <?php echo htmlentities($teacher['email']); ?>
+                                            <?php echo htmlentities($student['uniquecode']); ?>
                                         </td>
                                         <td>
-                                            <a href="school_teacher_registration.php?type=edit&&id=<?php echo htmlentities($teacher['id']); ?>"><i class="fa fa-edit"> </i></a>
-                                            <a href="" data-toggle="modal" data-target="#exampleModalLong-<?php echo htmlentities($teacher['id']);?>">
+                                            <a href="collage_student_registration.php?type=edit&&id=<?php echo htmlentities($student['uniquecode']); ?>"><i class="fa fa-edit"> </i></a>
+                                            <a href="" data-toggle="modal" data-target="#exampleModalLong-<?php echo htmlentities($student['uniquecode']);?>">
                                                 <i class="fa fa-trash"> </i>
                                             </a>
                                         </td>
-
-                                        
-                                        <div class="modal fade" id="exampleModalLong-<?php echo htmlentities($teacher['id']); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                        <div class="modal fade" id="exampleModalLong-<?php echo htmlentities($student['uniquecode']); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -140,12 +134,12 @@ include('include/check_login.php');
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Teacher with email <b>
-                                                            <?php echo htmlentities($teacher['email']);?></b> is going to be delete
+                                                        Student with <b>
+                                                            <?php echo htmlentities($student['uniquecode']); ?></b> is going to be delete
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <a class="btn btn-danger" href="delete.php?type=school_teacher&&id=<?php echo htmlentities($teacher['email']);?>">Delete</a>
+                                                        <a class="btn btn-danger" href="delete.php?type=school_student&&id=<?php echo htmlentities($student['uniquecode']); ?>">Delete</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -166,51 +160,52 @@ include('include/check_login.php');
         </div>
     </div>
     </div>
-    <!-- Modal -->
     <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Are you sure you want to delete?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-     
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <p id="injectdelete"></p>
-       
-      </div>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Are you sure you want to delete?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <p id="injectdelete"></p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
+    <!-- Modal -->
 </body>
 <script src="script.js"></script>
 <script src="https://kit.fontawesome.com/302b58d09d.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="https://codepb.github.io/jquery-template/jquery.loadTemplate-0.4.3.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
 </body>
 <script>
-var teacher;
- function deletes(key)
-  {
-      $('#injectdelete').html("");
-      $('.modal-body').html("");
-     var modal=" Teacher with email <b>"+key+" </b> is going to be delete";
-    var a="<a href='delete.php?type=school_student&&id="+key+"' class='btn btn-danger'>delete</a>";
-        $("#injectdelete").append(a);
-         $('.modal-body').append(modal);
-    
+var student;
+
+function deletes(key) {
+    $('#injectdelete').html("");
+    $('.modal-body').html("");
+    var modal = " Student with <b>" + key + " </b> is going to be delete";
+    var a = "<a href='delete.php?type=school_student&&id=" + key + "' class='btn btn-danger'>delete</a>";
+    $("#injectdelete").append(a);
+    $('.modal-body').append(modal);
+
     $('#delete').modal('show');
-      
-    
-  }
+   }
+
 
 
 $(document).ready(function() {
+
+
 
     var search_value = $('#search').val();
     if (!search_value == '') {
@@ -231,12 +226,12 @@ function call_data(search) {
 
 
         type: 'get',
-        url: 'ajax_fetch_data/school_teacher.php',
+        url: 'ajax_fetch_data/collage_student.php',
         data: { search: search },
         dataType: "json",
         success: function(response) {
 
-            teacher = response;
+            student = response;
             filltable();
 
 
@@ -250,7 +245,7 @@ function call_data(search) {
 function filltable() {
     $("#tbody").html("");
 
-    if (teacher.length === 0) {
+    if (student.length === 0) {
         var tr_str = "<tr>" +
             "<td rowspan='3'>" + "<h5>No result</h5> " + "</td>" +
 
@@ -260,20 +255,24 @@ function filltable() {
 
     } else {
 
+        $("#tbody").html("");
+
+
         var x = 1;
-        for (var i = 0; i < teacher.length; i++) {
+        for (var i = 0; i < student.length; i++) {
+
 
             var tr_str = "<tr>" +
-                        "<td scope='row' >" + x + "</td>" +
-                       
-                        "<td >" + teacher[i].firstname+" "+teacher[i].lastname + "</td>" +
-                         "<td >" + teacher[i].email+ "</td>" +
-                        "<td >" +
-                          "<a href='school_stu_registration.php?type=edit&&id="+teacher[i].id+" '><i class='fa fa-edit'></i></a> " +" "+
-                       
-                        "<a onclick="+"deletes('"+teacher[i].email+"')"+"   href='#'  ><i class='fa fa-trash'></i></a> " + "</td>" +
-                         "</tr>" ;
-                        
+                "<td scope='row' >" + x + "</td>" +
+                "<td >" + student[i].uniquecode + "</td>" +
+                "<td >" + student[i].firstname + " " + student[i].lastname + "</td>" +
+                "<td >" +
+                "<a href='collage_student_registration.php?type=edit&&id=" + student[i].uniquecode + " '><i class='fa fa-edit'></i></a> " + " " +
+
+                "<a onclick=" + "deletes('" + student[i].uniquecode + "')" + "   href='#'  ><i class='fa fa-trash'></i></a> " + "</td>" +
+                "</tr>";
+
+
 
 
             $("#tbody").append(tr_str);

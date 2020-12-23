@@ -5,6 +5,8 @@ include('include/connection.php');
 $sql="select *from news_and_event order by id desc ";
 $result=mysqli_query($db,$sql);
 
+$news_and_event='set';
+
 // $date=now();
 // echo $date;
 

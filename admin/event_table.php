@@ -4,6 +4,7 @@ include('include/connection.php');
 
 $sql="select *from calender order by id desc ";
 $result=mysqli_query($db,$sql);
+$event='set';
 
 // $date=now();
 // echo $date;
