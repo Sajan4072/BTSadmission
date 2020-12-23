@@ -43,42 +43,26 @@ include('include/connection.php');
 	 $sql="insert into college_resource(image,pdf,class,caption,subject,management)
 	    values('$image','$pdf',$class,'$caption','$subject','$management')";
 	    $query=mysqli_query($db,$sql);
-	   
-$_SESSION['message']="POSTED";
+	   if(!$query){
+			
+			$_SESSION['error']='error in uploading'.mysql_error();
+			header('location:resources.php');
+
+		            }
+		else{?>
+			
+			<?php
+			$_SESSION['success']='RESOURCE HAS BEEN POSTED SUCCESFULLY';
+			header('location:resources.php');
+
+		    }
+		}
 	
- }
-
-
-?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-
-	 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-      <title>EATGITA</title>
-</head>
-<body>
-	<?php
-
-	if(isset($_SESSION['message'])):
-
-
 	?>
-	<div class="alert alert-success">
 
-		<?php
-		echo $_SESSION['message'];
 
-		?>
-	</div>
-	<?php endif ?>
 
-</body>
-</html>
+
 
 
 
