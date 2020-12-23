@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 include('include/connection.php');
 	
  if(isset($_POST['submit']))
@@ -44,13 +45,16 @@ include('include/connection.php');
 			
 		  }
 		if(!$query1){
-			die("error in uploading".mysql_error());
+			
+			$_SESSION['error']='error in uploading'.mysql_error();
+			header('location:results.php');
 
 		            }
 		else{?>
-			<div class="alert alert-succesfully">
-				file uploaded
-			</div><?php
+			
+			<?php
+			$_SESSION['success']='RESULT HAS BEEN POSTED SUCCESFULLY';
+			header('location:results.php');
 
 		    }
 		}
