@@ -330,7 +330,7 @@ session_start();
                 </div>
             </div>
         </div>
-        <input type="text" id="uniquecode" value="<?php echo $code; ?>">
+        <input type="hidden" id="uniquecode" value="<?php echo $code; ?>">
        <script>
         var result = [];
         var total=0;
