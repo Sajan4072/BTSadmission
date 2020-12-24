@@ -33,7 +33,7 @@ $students='set';
     font-weight: bold;
     margin-bottom: 5px;
     padding-bottom: 5px;
-    font-size:35px;
+    font-size:30px;
    }
    .span{
     border-left: 5px solid #1a237e;

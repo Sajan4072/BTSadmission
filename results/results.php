@@ -443,7 +443,7 @@ session_start();
 
                     result = response;
                     $('#percentage').text('');
-
+                     $("#tbody").html(" ");
                     filltable();
 
                 }
@@ -452,7 +452,7 @@ session_start();
         }
 
         function filltable() {
-            $("#tbody").html("");
+            $("#tbody").html(" ");
 
             if (result.length === 0) {
                 var tr_str = "<tr>" +
@@ -463,6 +463,7 @@ session_start();
                 $("#tbody").append(tr_str);
 
             } else {
+                $("#tbody").html(" ");
 
                 var x = 1;
                 for (var i = 0; i < result.length; i++) {

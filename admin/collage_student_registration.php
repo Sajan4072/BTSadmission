@@ -242,9 +242,6 @@ if(isset($_SESSION['lname'])){ echo $_SESSION['lname']; unset($_SESSION['lname']
          $('#password').attr('type','password');
       }
 
-      
-
-      
     });
 
     </script>

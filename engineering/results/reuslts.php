@@ -182,6 +182,7 @@ $code=$_SESSION['code'];
                     $show_drop_down=true;
                         
                       include("connection.php");
+                     
 
 
                       $sql1="select distinct semester from enginneringresult where uniquecode='$code'";

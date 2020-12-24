@@ -96,8 +96,8 @@ if(isset($_GET['type']))
 
         <div class="form-row">
     <div class="form-group col-md-12">
-      <label for="inputEmail">PASSWORD</label>
-    <input type="password" name="password" class="form-control"  placeholder=" Password" required autocomplete="off"  
+      <label for="inputEmail">PASSWORD</label>  <a href="#" class="show-password" ><i class="fa fa-eye-slash" id="font-eye"></i></a>
+    <input type="password" name="password" class="form-control"  placeholder=" Password" required autocomplete="off" id="password" 
    value="<?php if(isset($_SESSION['password'])){echo $_SESSION['password']; unset($_SESSION['password']); } if(isset($edit)){ echo $teacher['password'];  } ?>"
     
     >  
@@ -126,6 +126,7 @@ if(isset($_GET['type']))
   <div class="col-lg-5 col-md-12 col-sm-12 textcol" style="background-color: #224a8f; opacity: 60%; padding-top: 100px; text-align: center; color: white;">
                 <h1>WELCOME</h1>
                 <h4 style="padding-top: 50px;">REGISTER TO<br> CONTINUE ACCESS<br> PAGE</h4>
+                   <a href="school_teacher_registration_table.php" class="btn-primary btn btn-sm">Click to go previous page</a>
             </div>
 
             
@@ -144,6 +145,32 @@ if(isset($_GET['type']))
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function(){
+
+    });
+
+    
+    $('.show-password').click(function(){
+
+      if($('#font-eye').hasClass('fa-eye-slash'))
+      {
+          
+      $('#font-eye').removeClass('fa-eye-slash');
+      $('#font-eye').addClass('fa-eye');
+      $('#password').attr('type','text');
+      }
+
+      else
+      {
+        $('#font-eye').removeClass('fa-eye');
+        $('#font-eye').addClass('fa-eye-slash');
+         $('#password').attr('type','password');
+      }
+
+    });
+
+</script>
 </body>  
 </html> 
 
