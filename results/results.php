@@ -70,7 +70,7 @@ session_start();
               <a class="nav-link" href="./engineering/index.php">Engineering</a>
             </li>-->
             <li class="nav-item center-menu">
-              <a class="nav-link active" href="">Gallery</a>
+              <a class="nav-link" href="../galary/gallery.php">Gallery</a>
             </li>
             <li class="nav-item center-menu">
               <a class="nav-link" href="../events/events.php">Events</a>
@@ -82,7 +82,7 @@ session_start();
               <a class="nav-link" href="../ourteam/ourteam.php">Our Team</a>
             </li>
              <li class="nav-item center-menu">
-              <a class="nav-link" href="../results/results.php">Results</a>
+              <a class="nav-link active" href="">Results</a>
             </li>
             <li class="nav-item center-menu">
               <a class="nav-link" href="../contact/contact.php">Contact Us</a>
@@ -132,7 +132,7 @@ session_start();
               <a class="nav-link" href="../engineering/index.php">Engineering</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link active" href="">Gallery</a>
+              <a class="nav-link" href="../galary/gallery.php">Gallery</a>
             </li>
             <li class="nav-item center-menu">
               <a class="nav-link" href="../events/events.php">Events</a>
@@ -331,7 +331,7 @@ session_start();
             </div>
         </div>
         <input type="text" id="uniquecode" value="<?php echo $code; ?>">
-        <script>
+       <!--  <script>
         var result = [];
         var total=0;
         var percentage=0;
@@ -443,7 +443,7 @@ session_start();
 
                     result = response;
                     $('#percentage').text('');
-                     $("#tbody").html(" ");
+                     // $("#tbody").html(" ");
                     filltable();
 
                 }
@@ -514,7 +514,187 @@ session_start();
 
         })
 
+        </script> -->
+
+
+        <script>
+        var result = [];
+        var total=0;
+        var percentage=0;
+        var uniquecode = $('#uniquecode').val();
+        var stu_class = $('#class option:selected').val();
+        var selected_term = 1;
+
+        $('#class').change(function(){
+
+          var stu_class =$('#class option:selected').val();
+
+          call_data(selected_term,stu_class);
+        });
+
+        $(document).ready(function() {
+            
+
+          $('#print').click(function(){
+
+            var mode='iframe';
+            var close=mode=="popup";
+            var options={mode:mode,popClose:close};
+            $('div.area-to-print').printArea(options);
+          });
+
+
+
+            var term = 1;
+
+            call_data(term, stu_class);
+            $('#class :selected').text();
+
+
+
+
+        });
+
+
+        function load_on_term(term) {
+          var stu_class =$('#class option:selected').val();
+            underline_term(term);
+
+
+
+            call_data(term, stu_class);
+
+        }
+
+        function underline_term(term) {
+            if (term == 1) {
+                $('#first').addClass('selected');
+                remove_underlineon_term(selected_term);
+                selected_term = 1;
+            }
+
+            if (term == 2) {
+                $('#second').addClass('selected');
+                remove_underlineon_term(selected_term);
+                selected_term = 2;
+            } else if (term == 3) {
+                $('#third').addClass('selected');
+                remove_underlineon_term(selected_term);
+                selected_term = 3;
+
+            } else if (term == 4) {
+                $('#fourth').addClass('selected');
+                remove_underlineon_term(selected_term);
+                selected_term = 4;
+            }
+
+        }
+
+        function remove_underlineon_term(term) {
+            if (term == 1) {
+                $('#first').removeClass('selected');
+
+            } else if (term == 2) {
+                $('#second').removeClass('selected');
+
+
+            } else if (term == 3) {
+                $('#third').removeClass('selected');
+
+
+            } else if (term == 4) {
+                $('#fourth').removeClass('selected');
+
+            }
+
+        }
+
+        function call_data(term, stu_class) {
+            $.ajax({
+
+
+                type: 'get',
+                url: 'fetch_result.php',
+                data: { class: stu_class, uniquecode: uniquecode, term: term },
+                dataType: "json",
+                success: function(response) {
+                    result='';
+                    total=0;
+                    percentage=0;
+
+                    result = response;
+                    $('#percentage').text('');
+                    filltable();
+
+                }
+            });
+
+        }
+
+        function filltable() {
+            $("#tbody").html("");
+
+            if (result.length === 0) {
+                var tr_str = "<tr>" +
+                    "<td rowspan='3'>" + "<h5>No result</h5> " + "</td>" +
+
+                    "</tr>";
+
+                $("#tbody").append(tr_str);
+
+            } else {
+
+                var x = 1;
+                for (var i = 0; i < result.length; i++) {
+                     total=total+parseInt(result[i].marks);
+
+
+                    var tr_str = "<tr>" +
+                        "<th scope='row' >" + x + "</td>" +
+                        "<td >" + result[i].subject + "</td>" +
+                        "<td >" + ".." + "</td>" +
+                        "<td >" + ".."+ "</td>" +
+                        "<td >" + result[i].marks + "</td>" +
+                        "<td >" + ".." + "</td>" +
+                        
+                        "</tr>";
+
+
+
+                    $("#tbody").append(tr_str);
+
+                    x++;
+
+                } percentage=((total)/(result.length*100))*100;
+
+            var per=percentage.toFixed(2)
+
+               $('#percentage').text(per);
+
+
+            
+
+            }
+
+        }
+
+        $("#class").change(function() {
+            var stu_class = $('#class option:selected').val();
+
+            var term = 1;
+
+            call_data(term, stu_class)
+
+
+
+
+
+        })
+
         </script>
+
+
+        
         <script src="https://kit.fontawesome.com/302b58d09d.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
