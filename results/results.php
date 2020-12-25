@@ -24,6 +24,42 @@ session_start();
 </head>
 
 <body>
+  <!-- top banner -->
+    <div class="container-fluid ">
+      <div class="row top-banner p-2">
+        <div class="col-lg-8 col-md-8 col-sm-12">
+          <div class="row">
+            <div class="col-lg-2 col-sm-6 col-md-4">
+              <div class="logo">
+                <a href="../../index.php"><img src="../frontpage/images/logo.jpg" style="margin-top: 20px;" alt="Not Available!" /></a>              </div>
+            </div>
+            <div class="col-sm-8">
+              <div class="top-title">
+                <h1>BUDHANILKANTHA TECHNICAL SCHOOL</h1>
+              </div>
+
+              <div class="top-subtitle">
+                <h5>A BETTER LEARNING FUTURE STARTS</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+          <div class="quick-contact">
+            <ul>
+              <li><i class="fa fa-phone"></i>&nbsp;01-4372300</li>
+              <li><i class="fa fa-envelope"></i>bnktechschool@gmail.com</li>
+              <li>
+                <i class="fa fa-map-marker"></i>&nbsp;&nbsp;Budhanilkantha-3,
+                Kathmandu, Nepal
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- navbar -->
    
     <!-- top banner -->
      <style>
@@ -63,12 +99,18 @@ session_start();
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto">
+            <li class="nav-item center-menu">
+              <a class="nav-link active " href="">School</a>
+            </li>
             <!--<li class="nav-item center-menu">
               <a class="nav-link " href="./+2/index.php">+2</a>
             </li>
              <li class="nav-item center-menu">
               <a class="nav-link" href="./engineering/index.php">Engineering</a>
             </li>-->
+              <li class="nav-item center-menu">
+              <a class="nav-link" href="../index.php">Home</a>
+            </li>
             <li class="nav-item center-menu">
               <a class="nav-link" href="../galary/gallery.php">Gallery</a>
             </li>
@@ -467,8 +509,8 @@ session_start();
                     var tr_str = "<tr>" +
                         "<th scope='row' >" + x + "</td>" +
                         "<td >" + result[i].subject + "</td>" +
-                        "<td >" + ".." + "</td>" +
-                        "<td >" + ".."+ "</td>" +
+                        "<td >" + 100 + "</td>" +
+                        "<td >" + 40+ "</td>" +
                         "<td >" + result[i].marks + "</td>" +
                         "<td >" + ".." + "</td>" +
                         
