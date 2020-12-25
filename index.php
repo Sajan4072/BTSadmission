@@ -13,6 +13,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="frontpage/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="frontpage/css/font-awesome.min.css" />
     <link rel="stylesheet" href="frontpage/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   </head>
   <body>
     <!-- top banner -->
@@ -395,6 +396,7 @@ session_start();
         </div>
       </div>
     </div>
+    <input type="hidden" id="admission_success_school" value="<?php if(isset($_SESSION['admission_success_school'])) {echo htmlentities($_SESSION['admission_success_school']); } unset($_SESSION['admission_success_school']); ?>">
 
     <!-- js setup -->
     <script
@@ -412,5 +414,21 @@ session_start();
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
+     <script>
+
+      var checksuccess =$('#admission_success_school').val();
+
+      if(checksuccess!=='')
+      {
+      Swal.fire({
+       title: 'success!',
+      text: 'Your form has been submitte successfully',
+      icon: 'success',
+      confirmButtonText: 'OK'
+     })
+    }
+
+  
+    </script>
   </body>
 </html>

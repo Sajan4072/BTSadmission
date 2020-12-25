@@ -116,16 +116,18 @@
 
       if(mysqli_query($db,$sql))
       {
-        $_SESSION['success']='We have received your  form !! plz visit school for further details';
+       $_SESSION['admission_success_school']='set';
           
           include('reset_old_data.php');
-        header('location:../admission/index.php');
+        header('location:../index.php');
+        exit();
      
       }
       else
        {
         $_SESSION['error']='!Opps somthing wrong in wrong plz check data again';
         header('location:../admission/index.php');
+        exit();
               
      
 

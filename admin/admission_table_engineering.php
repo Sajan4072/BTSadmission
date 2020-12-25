@@ -5,6 +5,8 @@ include('include/connection.php');
 $sql="select *from engineeringadmission order by id desc ";
 
 $result=mysqli_query($db,$sql);
+$admission='set';
+
 
 
 ?>

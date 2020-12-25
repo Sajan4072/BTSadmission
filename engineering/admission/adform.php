@@ -15,6 +15,13 @@
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       crossorigin="anonymous"
     ></script>
+    <style>
+     .error{
+         color: red;
+         font-style: italic;
+         font-size:15px; 
+     }
+    </style>
 
     <title>Admission Form</title>
 
@@ -46,6 +53,7 @@
                     class="form-control"
                     placeholder="First name"
                     name="sname"
+                    required
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -64,6 +72,7 @@
                     class="form-control"
                     placeholder="Last name"
                     name="lname"
+                    requird
                   />
                 </div>
               </div>
@@ -76,6 +85,7 @@
                     class="form-control"
                     placeholder="DD-MM-YYYY"
                     name="DOB"
+                    requird
                   />
                 </div>
               </div>
@@ -90,6 +100,7 @@
                       id="exampleRadios1"
                       value="male"
                       checked
+
                     />
                     <label class="form-check-label" for="exampleRadios1">
                       Male
@@ -117,8 +128,9 @@
                     id="firstName"
                     type="text"
                     class="form-control"
-                    placeholder="Mobile No."
+                    placeholder="Nationality"
                     name="nationality"
+                    required
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -128,7 +140,10 @@
                     class="form-control"
                     placeholder="number"
                     name="mobilenumber"
+                    id="mobilenumber"
+                    required
                   />
+                  <small class="error" id="mobileerror"></small>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="lastName">E-mail</label>
@@ -137,6 +152,7 @@
                     class="form-control"
                     placeholder="email"
                     name="email"
+
                   />
                 </div>
               </div>
@@ -145,32 +161,38 @@
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="dob">Zone</label>
                   <input
-                    id="dob"
+                   
                     type="text"
                     class="form-control"
                     placeholder="Province"
                     name="zone"
+                    id="zone"
+                    requird
                   />
                 </div> 
 
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="dob">Province</label>
                   <input
-                    id="dob"
+                    
                     type="text"
                     class="form-control"
                     placeholder="Province"
                     name="province"
+                    id="province"
+                    required
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="dob">District</label>
                   <input
-                    id="dob"
+                  
                     type="text"
                     class="form-control"
                     placeholder="District"
                     name="district"
+                    id="district"
+                    required
                   />
                 </div>
               </div>
@@ -178,55 +200,68 @@
                 <div class="col-lg-6 col-md-6 col-sm-12">
                   <label for="dob">Municipality/Rural Municipality</label>
                   <input
-                    id="dob"
+                    
                     type="text"
                     class="form-control"
                     placeholder="Municipality/Rural Municipality"
                     name="municipality"
+                    id="municipality"
+                    required
                   />
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-12">
                   <label for="dob">Ward No.</label>
                   <input
-                    id="dob"
+                    
                     type="text"
                     class="form-control"
                     placeholder="Ward No."
                     name="wardno"
+                    id="wardno"
+                    required
                   />
                 </div>
               </div>
+
               <h5>Temporary Address</h5>
+               same as permanent
+              <input type="checkbox" id="check_as_permanent">
               <div class="form-row">
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="dob">Zone</label>
                   <input
-                    id="dob"
+                   
                     type="text"
                     class="form-control"
                     placeholder="Province"
                     name="zone1"
+                    id="zone1"
+                   
                   />
                 </div> 
                 
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="dob">Province</label>
                   <input
-                    id="dob"
+                    
                     type="text"
                     class="form-control"
                     placeholder="Province"
                     name="province1"
+                    id="province1"
+                   
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="dob">District</label>
                   <input
-                    id="dob"
+                    
                     type="text"
                     class="form-control"
                     placeholder="District"
                     name="district1"
+                    id="district1"
+                   
                   />
                 </div>
               </div>
@@ -234,21 +269,25 @@
                 <div class="col-lg-6 col-md-6 col-sm-12">
                   <label for="dob">Municipality/Rural Municipality</label>
                   <input
-                    id="dob"
+                    
                     type="text"
                     class="form-control"
                     placeholder="Municipality/Rural Municipality"
                     name="municipality1"
+                    id="municipality1"
+                    
                   />
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-12">
                   <label for="dob">Ward No.</label>
                   <input
-                    id="dob"
+                  
                     type="text"
                     class="form-control"
                     placeholder="Ward No."
                     name="wardno1"
+                    id="wardno1"
+                    
                   />
                 </div>
               </div>
@@ -262,6 +301,7 @@
                     class="form-control"
                     placeholder="Father's name"
                     name="fname"
+                    required
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -271,8 +311,13 @@
                     class="form-control"
                     placeholder="Contact No."
                     name="contact"
+                    id="contact"
+                    required
                   />
+                   <small class="error" id="contacterror"></small>
                 </div>
+
+                 
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="lastName">Occupation</label>
                   <input
@@ -292,6 +337,7 @@
                     class="form-control"
                     placeholder="Mother's name"
                     name="moname"
+                    required
                   />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -301,7 +347,10 @@
                     class="form-control"
                     placeholder="Contact No."
                     name="mcontact"
+                    id="mcontact"
+                    required
                   />
+                   <small class="error" id="mcontacterror"></small>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="lastName">Occupation</label>
@@ -331,7 +380,9 @@
                     class="form-control"
                     placeholder="Contact No."
                     name="gcontact"
+                    id="gcontact"
                   />
+                   <small class="error" id="gcontacterror"></small>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="lastName">Occupation</label>
@@ -514,43 +565,43 @@
                   <label for="file" class="file-label"
                     >SEE/SLC Gradesheet</label
                   >
-                  <input type="file" class="form-control file-upload" name="slcgrade" />
+                  <input type="file" class="form-control file-upload" name="slcgrade" required />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="file" class="file-label"
                     >SEE/SLC Character Certificate</label
                   >
-                  <input type="file" class="form-control file-upload" name="slccharacter" />
+                  <input type="file" class="form-control file-upload" name="slccharacter" required />
                 </div>
                  <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="file" class="file-label"
                     >Birth Certificate/Citizenship</label
                   >
-                  <input type="file" class="form-control file-upload"  name="birthcert"/>
+                  <input type="file" class="form-control file-upload"  name="birthcert" required />
                 </div>
                  <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="file" class="file-label"
                     >Entrance Admit Card (Original</label
                   >
-                  <input type="file" class="form-control file-upload" name="entrance" />
+                  <input type="file" class="form-control file-upload" name="entrance" required />
                 </div>
                  <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="file" class="file-label"
                     >Recommendation Letter from Entrance appearing School</label
                   >
-                  <input type="file" class="form-control file-upload"  name="recommendation"/>
+                  <input type="file" class="form-control file-upload"  name="recommendation" required />
                 </div>
                  <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="file" class="file-label"
                     >Result Copy</label>
                   >
-                  <input type="file" class="form-control file-upload" name="resultcopy" />
+                  <input required type="file" class="form-control file-upload" name="resultcopy" />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="file" class="file-label"
                     >Recent PP size Photo</label
                   >
-                  <input type="file" class="form-control file-upload" name="pp"/>
+                  <input  required type="file" class="form-control file-upload" name="pp"/>
                 </div>
               </div>
               <div class="form-row">
@@ -565,12 +616,15 @@
                       type="checkbox"
                       name="agreed"
                       class="agree-checkbox"
-                    />
+                      id="agreed"
+
+                    /><br>
+                    <small id="term" style="color: red; font-style: italic; font-size:20px;">you must accept term and conditions to submit form</small>
                   </p>
                 </div>
               </div>
               <div class="text-center">
-                <button type="Submit" class="btn btn-warning" name="submit">Submit</button>
+                <button type="submit" class="btn btn-warning" name="submit" id="submit">Submit</button>
               </div>
             </form>
           </div>
@@ -594,5 +648,131 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+    <script>
+
+
+        $(document).ready(function() { 
+           if (! $('#agreed').is(":checked"))
+                     { 
+                        $('#submit').attr('disabled','true');   
+                    } 
+
+                $("#agreed").click(function() { 
+                    if (! $('#agreed').is(":checked"))
+                     { 
+                       $('#term').html("you must accept term and conditions to submit form");
+                        $('#submit').attr('disabled','true');   
+                     }
+                     else 
+                     {
+                        $('#term').html("");
+                       $('#submit').removeAttr('disabled','true');  
+                     }
+                }); 
+            });
+
+            $('#submit').click(function(){
+               
+                   if (! $('#agreed').is(":checked"))
+                     { 
+                       alert("plz accept term and condition");
+                    }
+
+            });
+
+             $('#check_as_permanent').change(function(){
+
+
+
+
+              $('#zone1').val($('#zone').val());
+              $('#district1').val($('#district').val());
+              $('#municipality1').val($('#municipality').val());
+              $('#wardno1').val($('#wardno').val());
+              $('#province1').val($('#province').val());
+
+
+
+        });
+
+             $('#mobilenumber').keyup(function(){
+              $('#mobileerror').html('');
+            
+               if(! $.isNumeric($('#mobilenumber').val()) )
+               {
+                 $('#mobileerror').html('mobile must be Numeric');
+               }
+
+               
+
+               if( ($("#mobilenumber").val()).length!==10)
+               {
+                 $('#mobileerror').html('mobile must be 10 digit');
+               }
+              
+
+             });
+
+
+        $('#contact').keyup(function(){
+              $('#contacterror').html('');
+            
+               if(! $.isNumeric($('#contact').val()) )
+               {
+                 $('#contacterror').html('mobile must be Numeric');
+               }
+
+               
+
+               if( ($("#contact").val()).length!==10)
+               {
+                 $('#contacterror').html('mobile must be 10 digit');
+               }
+              
+
+             });
+         $('#gcontact').keyup(function(){
+              $('#gcontacterror').html('');
+            
+               if(! $.isNumeric($('#gcontact').val()) )
+               {
+                 $('#gcontacterror').html('mobile must be Numeric');
+               }
+
+               
+
+               if( ($("#gcontact").val()).length!==10)
+               {
+                 $('#gcontacterror').html('mobile must be 10 digit');
+               }
+              
+
+             });
+          $('#mcontact').keyup(function(){
+              $('#mcontacterror').html('');
+            
+               if(! $.isNumeric($('#mcontact').val()) )
+               {
+                 $('#mcontacterror').html('mobile must be Numeric');
+               }
+
+               
+
+               if( ($("#mcontact").val()).length!==10)
+               {
+                 $('#mcontacterror').html('mobile must be 10 digit');
+               }
+              
+
+             });
+
+
+
+
+
+
+     
+        
+    </script>
   </body>
 </html>

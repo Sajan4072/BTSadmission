@@ -4,7 +4,7 @@ include('include/connection.php');
 
 $sql="select *from admission_school order by id desc ";
 $result=mysqli_query($db,$sql);
-
+$admission='set';
 
 
 ?>

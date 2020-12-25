@@ -35,15 +35,7 @@
     </style>
   </head>
   <body>
-      <?php if(isset($_SESSION['success']))
-      { 
-      ?>
-    <div class="container alert alert-success" role="alert">
-      <?php echo $_SESSION['success']; unset($_SESSION['success']); ?> <a href="../index.php"> click here to go home page</a> 
-   </div>
- <?php } ?>
-
- <?php if(isset($_SESSION['error']))
+  <?php if(isset($_SESSION['error']))
       { 
       ?>
     <div class="container alert alert-danger" role="alert">
@@ -1150,6 +1142,8 @@
                       id='agreed'
                       
                     />
+                      <br>
+                       <small id="term" style="color: red; font-style: italic; font-size:20px;">you must accept term and conditions to submit form</small>
                     <?php
                        if(isset($_SESSION['agreed']))
                        {
@@ -1164,7 +1158,7 @@
                 </div>
               </div>
               <div class="text-center">
-                <button type="Submit" class="btn btn-warning" name="school_form" >Submit</button>
+                <button type="Submit" class="btn btn-warning" name="school_form" id="submit">Submit</button>
               </div>
             </form>
           </div>
@@ -1192,6 +1186,25 @@
 
    <script>
    $(document).ready(function() {
+
+
+           if (! $('#agreed').is(":checked"))
+                     { 
+                        $('#submit').attr('disabled','true');   
+                    } 
+
+                $("#agreed").click(function() { 
+                    if (! $('#agreed').is(":checked"))
+                     { 
+                       $('#term').html("you must accept term and conditions to submit form");
+                        $('#submit').attr('disabled','true');   
+                     }
+                     else 
+                     {
+                        $('#term').html("");
+                       $('#submit').removeAttr('disabled','true');  
+                     }
+                }); 
 
      
 

@@ -57,6 +57,7 @@ else
 if($error_guardian_contact==true || $error_mother_contact==true || $error_mobile==true || $erro_agree==true ||$error_father_contact==true  )
 {
 	header('location:../admission/index.php');
+	exit();
 }
 
 

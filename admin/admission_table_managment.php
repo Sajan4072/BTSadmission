@@ -5,6 +5,8 @@ include('include/connection.php');
 $sql="select *from admission order by id desc ";
 $admission=[];
 $result=mysqli_query($db,$sql);
+$admission='set';
+
 
 
 ?>

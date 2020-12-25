@@ -135,20 +135,23 @@ $GPA1=$_POST['GPA1'];
 
       if(mysqli_query($db,$sql))
       {
-        $_SESSION['success']='Event and post has been successfully posted';
+        $_SESSION['admission_success_engineering']='set';
           
         header('location:../index.php');
+        exit();
      
       }
       else
        {
-        $_SESSION['success']='!Opps somthing wrong in posting event and news';
+        $_SESSION['admission_error_engineering']='set';
+        header('location:../index.php');
+        exit();
               
      
 
       }
-      
-
+          $_SESSION['admission_error_engineering']='set';
+        header('location:../index.php');
 
    }
 
