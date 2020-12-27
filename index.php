@@ -1,7 +1,18 @@
 
 <!DOCTYPE html><?php
 include "connection.php";
+
 session_start();
+ 
+  if(isset($_SESSION['login_from_collage']))
+  {
+      header('location:+2/index.php');
+  }
+  if(isset($_SESSION['login_from_engineering']))
+  {
+    header('location:engineering/index.php');
+
+  }
 ?>
 <html lang="en">
   <head>
@@ -72,9 +83,7 @@ session_start();
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto">
-             <li class="nav-item center-menu">
-              <a class="nav-link active " href="">School</a>
-            </li>
+           
             <!--<li class="nav-item center-menu">
               <a class="nav-link " href="./+2/index.php">+2</a>
             </li>
@@ -91,13 +100,13 @@ session_start();
               <a class="nav-link" href="resources/resource.php">Resources</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./ourteam/ourteam.php">Our Team</a>
+              <a class="nav-link" href="ourteam/ourteam.php">Our Team</a>
             </li>
              <li class="nav-item center-menu">
-              <a class="nav-link" href="./results/results.php">Results</a>
+              <a class="nav-link" href="results/results.php">Results</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./contact/contact.php">Contact Us</a>
+              <a class="nav-link" href="contact/contact.php">Contact Us</a>
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
@@ -151,14 +160,14 @@ session_start();
             </li>
             
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./ourteam/ourteam.php">Our Team</a>
+              <a class="nav-link" href="ourteam/ourteam.php">Our Team</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./admission/index.php">Admision form</a>
+              <a class="nav-link" href="admission/index.php">Admision form</a>
             </li>
              
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./contact/contact.php">Contact Us</a>
+              <a class="nav-link" href="contact/contact.php">Contact Us</a>
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
@@ -298,7 +307,7 @@ session_start();
             <form class="form-inline my-2 my-lg-0">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link right-link" href="./description/description.php"><h1>ABOUT US</h1></a>
+                <a class="nav-link right-link" href="description/description.php"><h1>ABOUT US</h1></a>
               </li>
             </ul>
           </form>
@@ -338,7 +347,7 @@ session_start();
           <div class="introduction"  style="margin-bottom: 20px;">
             <h4>MESSAGE FROM THE CHIEF</h4>
             <div class="chief-img">
-              <img src="frontpage/images/founder.jpg" alt="Not Available!" />
+            <img src="frontpage/photos/1.jpg" alt="Not Available!" />
             </div>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.

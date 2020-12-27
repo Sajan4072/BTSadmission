@@ -1,7 +1,17 @@
 <?php
 include"connection.php";
 session_start();
-?><!DOCTYPE html>
+  if(isset($_SESSION['login_from_school']))
+  {
+      header('location:../index.php');
+  }
+  if(isset($_SESSION['login_from_collage']))
+  {
+    header('location:../+2/index.php');
+
+  }
+?>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -300,7 +310,7 @@ session_start();
             <form class="form-inline my-2 my-lg-0">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link right-link" href="./description/description.php"><h1>ABOUT US</h1></a>
+                <a class="nav-link right-link" href="description/description.php"><h1>ABOUT US</h1></a>
               </li>
             </ul>
           </form>
@@ -340,7 +350,7 @@ session_start();
           <div class="introduction"  style="margin-bottom: 20px;">
             <h4>MESSAGE FROM THE CHIEF</h4>
             <div class="chief-img">
-              <img src="frontpage/images/founder.jpg" alt="Not Available!" />
+             <img src="../frontpage/photos/1.jpg" alt="Not Available!" />
             </div>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.

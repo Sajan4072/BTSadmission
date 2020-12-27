@@ -1,6 +1,17 @@
 <?php
 include"connection.php";
-session_start();?>
+session_start();
+  if(isset($_SESSION['login_from_school']))
+  {
+      header('location:../index.php');
+  }
+  if(isset($_SESSION['login_from_engineering']))
+  {
+    header('location:../engineering/index.php');
+
+  }
+ 
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -81,16 +92,16 @@ session_start();?>
               <a class="nav-link" href="galary/gallery.php">Gallery</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./events/events.php">Events</a>
+              <a class="nav-link" href="events/events.php">Events</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./resources/resource.php">Resources</a>
+              <a class="nav-link" href="resources/resource.php">Resources</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./ourteam/ourteam.php">Our Team</a>
+              <a class="nav-link" href="ourteam/ourteam.php">Our Team</a>
             </li>
              <li class="nav-item center-menu">
-              <a class="nav-link" href="./results/results.php">Results</a>
+              <a class="nav-link" href="results/results.php">Results</a>
             </li>
            
            
@@ -349,7 +360,7 @@ session_start();?>
           <div class="introduction"  style="margin-bottom: 20px;">
             <h4>MESSAGE FROM THE CHIEF</h4>
             <div class="chief-img">
-              <img src="frontpage/images/founder.jpg" alt="Not Available!" />
+              <img src="../frontpage/photos/1.jpg" alt="Not Available!" />
             </div>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.

@@ -149,7 +149,8 @@ function input_data($data) {
         session_start();
         $_SESSION['login_user'] = $row['firstname'];
         $_SESSION['code']=$row['uniquecode'];
-        echo $_SESSION['code'];
+        $_SESSION['login_from_school']='set';
+        
        
         header('Location: ../index.php');
         

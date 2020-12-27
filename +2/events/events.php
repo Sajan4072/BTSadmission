@@ -92,7 +92,7 @@ session_start();
               <a class="nav-link" href="../resources/resource.php">Resources</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./../ourteam/ourteam.php">Our Team</a>
+              <a class="nav-link" href="../ourteam/ourteam.php">Our Team</a>
             </li>
              <li class="nav-item center-menu">
               <a class="nav-link" href="../results/results.php">Results</a>
@@ -152,7 +152,7 @@ session_start();
             </li>
             
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./ourteam/ourteam.php">Our Team</a>
+              <a class="nav-link" href="../ourteam/ourteam.php">Our Team</a>
             </li>
              
             <li class="nav-item center-menu">

@@ -70,12 +70,9 @@ session_start();?>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto">
-            <!--<li class="nav-item center-menu">
-              <a class="nav-link " href="../index.php">School</a>
+               <li class="nav-item center-menu">
+              <a class="nav-link" href="../index.php">Home</a>
             </li>
-            <li class="nav-item center-menu">
-              <a class="nav-link " href="../+2/index.php">+2</a>
-            </li>-->
              
             <li class="nav-item center-menu">
               <a class="nav-link active" href="">Gallery</a>
@@ -149,7 +146,7 @@ session_start();?>
             </li>
             
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./ourteam/ourteam.php">Our Team</a>
+              <a class="nav-link" href="../ourteam/ourteam.php">Our Team</a>
             </li>
              
             <li class="nav-item center-menu">

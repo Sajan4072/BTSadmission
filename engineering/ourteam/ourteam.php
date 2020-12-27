@@ -1,3 +1,7 @@
+<?php
+ include("../connection.php");
+ session_start();
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +11,8 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="./description.css">
+  <link rel="stylesheet" type="text/css" href="./ourteam.css">
+
 </head>
 <body>
   
@@ -19,7 +24,7 @@
           <div class="row">
             <div class="col-lg-2 col-sm-6 col-md-4">
               <div class="logo">
-                <img src="../frontpage/images/logo.jpg" alt="Not Available!" />
+                <img src="../frontpage/images/logo.jpg" style="margin-top: 20px;" alt="Not Available!" />
               </div>
             </div>
             <div class="col-sm-8">
@@ -48,7 +53,10 @@
       </div>
     </div>
 
-    <!-- navbar -->
+   <!-- navbar -->
+     <?php
+      if(isset($_SESSION['login_user'])){
+      ?>
     <div>
       <nav class="navbar navbar-expand-lg navbar-light py-0 ">
         <button
@@ -65,33 +73,91 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto">
-           <li class="nav-item center-menu">
-              <a class="nav-link " href="../+2/index.html">+2</a>
+               <li class="nav-item center-menu">
+              <a class="nav-link" href="../index.php">Home</a>
+            </li>
+             
+            <li class="nav-item center-menu">
+              <a class="nav-link active" href="../galary/gallery.php">Gallery</a>
+            </li>
+            <li class="nav-item center-menu">
+              <a class="nav-link" href="../events/events.php">Events</a>
+            </li>
+            <li class="nav-item center-menu">
+              <a class="nav-link" href="../resources/resource.php">Resources</a>
+            </li>
+            <li class="nav-item center-menu">
+              <a class="nav-link active" href="">Our Team</a>
+            </li>
+            <li class="nav-item center-menu">
+              <a class="nav-link" href="../results/reuslts.php">Results</a>
+            </li>
+            <li class="nav-item center-menu">
+              <a class="nav-link " href="../contact/contact.php">Contact Us</a>
+            </li>
+            
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <ul class="navbar-nav mr-5" >
+              
+              
+              <li class="nav-item">
+                <a class="nav-link right-link" href="../student/profile.php"><?php echo "$_SESSION[login_user]";?></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link right-link" href="../login/logout.php">Logout</a>
+              </li>
+            
+            </ul>
+          </form>
+        </div>
+      </nav>
+    </div>
+  <?php }
+  else{
+    ?>
+    <div>
+      <nav class="navbar navbar-expand-lg navbar-light py-0 ">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item center-menu">
+              <a class="nav-link " href="../../index.php">School</a>
+            </li>
+            <li class="nav-item center-menu">
+              <a class="nav-link " href="../../+2/index.php">+2</a>
             </li>
              <li class="nav-item center-menu">
-              <a class="nav-link" href="../engineering/index.html">Engineering</a>
+              <a class="nav-link active" href="../index.php">Engineering</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="../galary/galary.html">Gallery</a>
+              <a class="nav-link " href="../galary/gallery.php">Gallery</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="../events/events.html">Events</a>
+              <a class="nav-link" href="../events/events.php">Events</a>
             </li>
+            
             <li class="nav-item center-menu">
-              <a class="nav-link" href="../resources/resources.html">Resources</a>
+              <a class="nav-link active" href="">Our Team</a>
             </li>
+             
             <li class="nav-item center-menu">
-              <a class="nav-link" href="../ourteam/ourteam.html">Our Team</a>
-            </li>
-            <li class="nav-item center-menu">
-              <a class="nav-link" href="../results/results.html">Results</a>
-            </li>
-            <li class="nav-item center-menu">
-              <a class="nav-link" href="../contact/contact.html">Contact Us</a>
+              <a class="nav-link " href="../contact/contact.php">Contact Us</a>
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
-            <ul class="navbar-nav mr-lg-5">
+            <ul class="navbar-nav mr-5" >
               <li class="nav-item dropdown" >
                 <a class="nav-link right-link dropdown-toggle"
                 id="navbarDropdown"
@@ -99,10 +165,10 @@
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false" >Login</a>
-                <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="../Login/login.html">Student</a>
-                <a class="dropdown-item" href="./+2/index.html">Teacher</a>
-                <a class="dropdown-item" href="../admin/admin login/index.html">Admin</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="../login/login.php">Student</a>
+                <a class="dropdown-item" href="../login/teacher_login.php">Teacher</a>
+                
               </div>
               </li>
             </ul>
@@ -110,109 +176,82 @@
         </div>
       </nav>
     </div>
+    <?php
+  }
+  ?>  
 
-    <!-- home image -->
-    <div class="row p-0">
-      <div class="col-lg-12">
-        <div>
-          <img src="../frontpage/images/banner-img.jpg"  class="img-fluid" alt="Not Available!" />
-             <div class="title"><h4>ABOUT US</h4></div>
-        </div>
-      </div>
-    </div>
-
-    
-
-   
-
-    <!-- message section -->
-    <div class="container-fluid">
+   <!-- message section -->
+<div class="container-fluid">
+  <h1 style="text-align: center; color: #1a237e;">MEET OUR TEAM</h1>
       <div class="row message p-5">
-        <div class="col-lg-6 col-sm-12 col-md-6">
-          <div class="row p-2">
+        <div class="col-lg-4 col-sm-12 col-md-4 " >
+          <div class="introduction">
             
-             <div class="introduction">
-            <h4>INTRODUCTION</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reprehenderit ad saepe facilis doloremque. Id asperiores nam
-              incidunt, ipsum minima suscipit magnam, repudiandae vitae at
-              deleniti cupiditate dicta! Quos nobis sed, recusandae, aut
-              perferendis a molestias omnis iste repellat commodi error harum
-              aliquam cumque eligendi eum asperiores voluptas magnam. Pariatur,
-              recusandae! Lorem ipsum dolor sit amet consectetur, adipisicing
-              elit. Asperiores nobis magni cupiditate unde aliquid modi quas
-              aperiam quod eligendi, beatae tempore corporis laborum
-              exercitationem nesciunt repellendus ipsam. Cupiditate incidunt, ad
-              alias quaerat labore asperiores hic nobis quidem excepturi
-              assumenda saepe itaque consequuntur vel quibusdam? Fugiat expedita
-              beatae sapiente atque sint.<br />
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni
-              tenetur enim, nobis natus sunt vitae culpa, quae earum obcaecati
-              magnam perferendis veniam fuga molestias maiores.
-            </p>
-          </div>
-
-          </div>
-          <div class="row p-2">
-            
-            <div class="introduction">
-            <h4>OBJECTIVE</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reprehenderit ad saepe facilis doloremque. Id asperiores nam
-              incidunt, ipsum minima suscipit magnam, repudiandae vitae at
-              deleniti cupiditate dicta! Quos nobis sed, recusandae, aut
-              perferendis a molestias omnis iste repellat commodi error harum
-              aliquam cumque eligendi eum asperiores voluptas magnam. Pariatur,
-              recusandae! Lorem ipsum dolor sit amet consectetur, adipisicing
-              elit. Asperiores nobis magni cupiditate unde aliquid modi quas
-              aperiam quod eligendi, beatae tempore corporis laborum
-              exercitationem nesciunt repellendus ipsam. Cupiditate incidunt, ad
-              alias quaerat labore asperiores hic nobis quidem excepturi
-              assumenda saepe itaque consequuntur vel quibusdam? Fugiat expedita
-              beatae sapiente atque sint.<br />
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni
-              tenetur enim, nobis natus sunt vitae culpa, quae earum obcaecati
-              magnam perferendis veniam fuga molestias maiores.
-            </p>
-          </div>
-
-          </div>
-          <div class="row p-2">
-            
-            <div class="introduction">
-            <h4>MISSION</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reprehenderit ad saepe facilis doloremque. Id asperiores nam
-              incidunt, ipsum minima suscipit magnam, repudiandae vitae at
-              deleniti cupiditate dicta! Quos nobis sed, recusandae, aut
-              perferendis a molestias omnis iste repellat commodi error harum
-              aliquam cumque eligendi eum asperiores voluptas magnam. Pariatur,
-              recusandae! Lorem ipsum dolor sit amet consectetur, adipisicing
-              elit. Asperiores nobis magni cupiditate unde aliquid modi quas
-              aperiam quod eligendi, beatae tempore corporis laborum
-              exercitationem nesciunt repellendus ipsam. Cupiditate incidunt, ad
-              alias quaerat labore asperiores hic nobis quidem excepturi
-              assumenda saepe itaque consequuntur vel quibusdam? Fugiat expedita
-              beatae sapiente atque sint.<br />
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni
-              tenetur enim, nobis natus sunt vitae culpa, quae earum obcaecati
-              magnam perferendis veniam fuga molestias maiores.
-            </p>
-          </div>
-
-          </div>
-        </div>
-        <div class="col-lg-6 col-sm-12 col-md-6 pl-20 ">
-          <div class="row p-2">
-            
-             <div class="introduction">
-            <h4>MESSAGE FROM THE CHIEF</h4>
             <div class="chief-img">
               <img src="../frontpage/images/founder.jpg" alt="Not Available!" />
             </div>
+            <h2>JOHN SCOUT</h2>
+            <h5>POST OF MINE</h5>
+            <p>
+               Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Reprehenderit ad saepe facilis doloremque. Id asperiores nam
+              incidunt, ipsum minima suscipit magnam, repudiandae vitae at
+              deleniti cupiditate dicta! Quos nobis sed, recusandae, aut
+              perferendis a molestias omnis iste repellat commodi error harum
+              aliquam csuids xnxsaw witye hdhe repeltu hu powioer heui Lorem
+              ipsum dolor sit amet Lorem ipsum dolor sit amet.
+            </p>
+             <div class="social-media" style="text-align: center;">
+            <ul>
+              <li><i class="fa fa-facebook"></i></li>
+              <li><i class="fa fa-twitter"></i></li>
+              <li><i class="fa fa-pinterest"></i></li>
+            </ul>
+          </div>
+            
+          </div>
+        </div>
+
+
+        <div class="col-lg-4 col-sm-12 col-md-4 " >
+          <div class="introduction">
+            
+            <div class="chief-img">
+              <img src="../frontpage/images/founder.jpg" alt="Not Available!" />
+            </div>
+            <h2>JOHN SCOUT</h2>
+            <h5>POST OF MINE</h5>
+
+            <p>
+               Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Reprehenderit ad saepe facilis doloremque. Id asperiores nam
+              incidunt, ipsum minima suscipit magnam, repudiandae vitae at
+              deleniti cupiditate dicta! Quos nobis sed, recusandae, aut
+              perferendis a molestias omnis iste repellat commodi error harum
+              aliquam csuids xnxsaw witye hdhe repeltu hu powioer heui Lorem
+              ipsum dolor sit amet Lorem ipsum dolor sit amet.
+            </p>
+             <div class="social-media" style="text-align: center;">
+            <ul>
+              <li><i class="fa fa-facebook"></i></li>
+              <li><i class="fa fa-twitter"></i></li>
+              <li><i class="fa fa-pinterest"></i></li>
+            </ul>
+          </div>
+            
+          </div>
+        </div>
+
+
+        <div class="col-lg-4 col-sm-12 col-md-4">
+          <div class="message-chief">
+    
+            <div class="chief-img">
+              <img src="../frontpage/images/founder.jpg" alt="Not Available!" />
+            </div>
+            <h2>JOHN SCOUT</h2>
+            <h5>POST OF MINE</h5>
+
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Reprehenderit ad saepe facilis doloremque. Id asperiores nam
@@ -221,65 +260,116 @@
               perferendis a molestias omnis iste repellat commodi error harum
               aliquam csuids xnxsaw witye hdhe repeltu hu powioer heui Lorem
               ipsum dolor sit amet Lorem ipsum dolor sit amet.
+            </p>
+             <div class="social-media" style="text-align: center;">
+            <ul>
+              <li><i class="fa fa-facebook"></i></li>
+              <li><i class="fa fa-twitter"></i></li>
+              <li><i class="fa fa-pinterest"></i></li>
+            </ul>
+          </div>
+
+          </div>
+        </div>
+      </div>
+
+
+       <div class="row message p-5">
+        <div class="col-lg-4 col-sm-12 col-md-4 " >
+          <div class="introduction">
+            
+            <div class="chief-img">
+              <img src="../frontpage/images/founder.jpg" alt="Not Available!" />
+            </div>
+            <h2>JOHN SCOUT</h2>
+            <h5>POST OF MINE</h5>
+            <p>
                Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Reprehenderit ad saepe facilis doloremque. Id asperiores nam
               incidunt, ipsum minima suscipit magnam, repudiandae vitae at
               deleniti cupiditate dicta! Quos nobis sed, recusandae, aut
               perferendis a molestias omnis iste repellat commodi error harum
-              aliquam cumque eligendi eum asperiores voluptas magnam. Pariatur,
-              recusandae! Lorem ipsum dolor sit amet consectetur, adipisicing
-              elit. Asperiores nobis magni cupiditate unde aliquid modi quas
-              aperiam quod eligendi, beatae tempore corporis laborum
-              exercitationem nesciunt repellendus ipsam. 
-              em ipsum dolor sit amet consectetur adipisicing elit.
+              aliquam csuids xnxsaw witye hdhe repeltu hu powioer heui Lorem
+              ipsum dolor sit amet Lorem ipsum dolor sit amet.
+            </p>
+             <div class="social-media" style="text-align: center;">
+            <ul>
+              <li><i class="fa fa-facebook"></i></li>
+              <li><i class="fa fa-twitter"></i></li>
+              <li><i class="fa fa-pinterest"></i></li>
+            </ul>
+          </div>
+            
+          </div>
+        </div>
+
+
+        <div class="col-lg-4 col-sm-12 col-md-4 " >
+          <div class="introduction">
+            
+            <div class="chief-img">
+              <img src="../frontpage/images/founder.jpg" alt="Not Available!" />
+            </div>
+            <h2>JOHN SCOUT</h2>
+            <h5>POST OF MINE</h5>
+
+            <p>
+               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Reprehenderit ad saepe facilis doloremque. Id asperiores nam
               incidunt, ipsum minima suscipit magnam, repudiandae vitae at
               deleniti cupiditate dicta! Quos nobis sed, recusandae, aut
               perferendis a molestias omnis iste repellat commodi error harum
-              aliquam cumque eligendi eum asperiores voluptas magnam. Pariatur,
-              recusandae! Lorem ipsum dolor sit amet consectetur, adipisicing
-              elit. Asperiores nobis magni cupiditate unde aliquid modi quas
-              aperiam quod eligendi, beatae tempore corporis laborum
-              exercitationem nesciunt repellendus ipsam. Cupiditate incidunt, ad
-              alias quaerat labore asperiores hic nobis quidem excepturi
-              assumenda saepe itaque consequuntur vel quibusdam? Fugiat expedita
-              beatae sapiente atque sint.<br />
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni
-              tenetur enim, nobis natus sunt vitae culpa, quae earum obcaecati
-              magnam perferendis veniam fuga molestias maiores.
+              aliquam csuids xnxsaw witye hdhe repeltu hu powioer heui Lorem
+              ipsum dolor sit amet Lorem ipsum dolor sit amet.
             </p>
+             <div class="social-media" style="text-align: center;">
+            <ul>
+              <li><i class="fa fa-facebook"></i></li>
+              <li><i class="fa fa-twitter"></i></li>
+              <li><i class="fa fa-pinterest"></i></li>
+            </ul>
           </div>
-
-          </div>
-          <div class="row p-2">
             
-            <div class="introduction">
-            <h4>PURPOSE</h4>
+          </div>
+        </div>
+
+
+        <div class="col-lg-4 col-sm-12 col-md-4">
+          <div class="introduction">
+    
+            <div class="chief-img">
+              <img src="../frontpage/images/founder.jpg" alt="Not Available!" />
+            </div>
+            <h2>JOHN SCOUT</h2>
+            <h5>POST OF MINE</h5>
+
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Reprehenderit ad saepe facilis doloremque. Id asperiores nam
               incidunt, ipsum minima suscipit magnam, repudiandae vitae at
               deleniti cupiditate dicta! Quos nobis sed, recusandae, aut
               perferendis a molestias omnis iste repellat commodi error harum
-              aliquam cumque eligendi eum asperiores voluptas magnam. Pariatur,
-              recusandae! Lorem ipsum dolor sit amet consectetur, adipisicing
-              elit. Asperiores nobis magni cupiditate unde aliquid modi quas
-              aperiam quod eligendi, beatae tempore corporis laborum
-              exercitationem nesciunt repellendus ipsam. Cupiditate incidunt, ad
-              alias quaerat labore asperiores hic nobis quidem excepturi
-              assumenda saepe itaque consequuntur vel quibusdam? Fugiat expedita
-              beatae sapiente atque sint.<br />
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni
-              tenetur enim, nobis natus sunt vitae culpa, quae earum obcaecati
-              magnam perferendis veniam fuga molestias maiores.
+              aliquam csuids xnxsaw witye hdhe repeltu hu powioer heui Lorem
+              ipsum dolor sit amet Lorem ipsum dolor sit amet.
             </p>
+             <div class="social-media" style="text-align: center;">
+            <ul>
+              <li><i class="fa fa-facebook"></i></li>
+              <li><i class="fa fa-twitter"></i></li>
+              <li><i class="fa fa-pinterest"></i></li>
+            </ul>
           </div>
 
           </div>
         </div>
-
       </div>
     </div>
+
+    
+
+   
+
+    
 
     <!-- footer -->
     <div class="container-fluid">

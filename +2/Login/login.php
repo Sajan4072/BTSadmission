@@ -146,6 +146,7 @@ function input_data($data) {
         
         $_SESSION['login_user'] = $row['firstname'];
         $_SESSION['code']=$row['uniquecode'];
+        $_SESSION['login_from_collage']='set';
        
         header('Location: ../index.php');
 

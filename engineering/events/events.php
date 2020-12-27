@@ -79,6 +79,9 @@ session_start();
              <li class="nav-item center-menu">
               <a class="nav-link" href="../../engineering/index.php">Engineering</a>
             </li>-->
+              <li class="nav-item center-menu">
+              <a class="nav-link" href="../index.php">Home</a>
+            </li>
             <li class="nav-item center-menu">
               <a class="nav-link" href="../galary/gallery.php">Gallery</a>
             </li>
@@ -149,7 +152,7 @@ session_start();
             </li>
             
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./ourteam/ourteam.php">Our Team</a>
+              <a class="nav-link" href="../ourteam/ourteam.php">Our Team</a>
             </li>
              
             <li class="nav-item center-menu">

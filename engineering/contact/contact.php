@@ -134,12 +134,9 @@ function input_data($data) {
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto">
-            <!--<li class="nav-item center-menu">
-              <a class="nav-link " href="../index.php">School</a>
+                <li class="nav-item center-menu">
+              <a class="nav-link" href="../index.php">Home</a>
             </li>
-            <li class="nav-item center-menu">
-              <a class="nav-link " href="../+2/index.php">+2</a>
-            </li>-->
              
             <li class="nav-item center-menu">
               <a class="nav-link" href="../galary/gallery.php">Gallery</a>
@@ -148,7 +145,7 @@ function input_data($data) {
               <a class="nav-link" href="../events/events.php">Events</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="../resources/resources.php">Resources</a>
+              <a class="nav-link" href="../resources/resource.php">Resources</a>
             </li>
             <li class="nav-item center-menu">
               <a class="nav-link" href="../ourteam/ourteam.php">Our Team</a>
@@ -213,7 +210,7 @@ function input_data($data) {
             </li>
             
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./ourteam/ourteam.php">Our Team</a>
+              <a class="nav-link" href="../ourteam/ourteam.php">Our Team</a>
             </li>
              
             <li class="nav-item center-menu">
