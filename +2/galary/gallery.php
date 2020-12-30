@@ -288,7 +288,11 @@ echo $pagLink . "</ul>";
 
     
 
-
+<script src="script.js">
+  $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+</script>
    
     <!-- footer -->
   <?php include('../include/footer.php'); ?>
