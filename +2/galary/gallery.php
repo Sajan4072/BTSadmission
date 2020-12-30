@@ -208,7 +208,28 @@ $start_from = ($page-1) * $limit;
 ?>
 
         <div class="col-lg-4 col-md-4 col-sm-12 col-12 mt-2">
-          <img src="../../admin/photo/<?php echo $row['photo']; ?>" class="img-fluid" style="height: 250px; width: 350px;">
+         <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal<?php echo $row['id'] ?>">
+   <img src="../../admin/photo/<?php echo $row['photo']; ?>" class="img-fluid" style="height: 250px; width: 350px;">
+</button>
+
+<!-- Modal -->
+
+
+<div class="modal fade" id="exampleModal<?php echo $row['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="../../admin/photo/<?php echo $row['photo']; ?>" class="img-fluid" style="height: 350px; width: 450px;">
+      </div>
+      
+    </div>
+  </div>
+</div>
           
 
         </div>
