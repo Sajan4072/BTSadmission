@@ -6,9 +6,6 @@ $sql="select *from admission order by id desc ";
 $admission=[];
 $result=mysqli_query($db,$sql);
 $admission='set';
-
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,7 +61,7 @@ include('include/check_login.php');
             <div class="col-lg-8 col-md-8 col-sm-12">
                 <div class="container uploadsection">
                     <div class="head">
-                        <p><span class="span">Collage Student From</span></p>
+                        <p><span class="span">Collage Student Form</span></p>
                     </div>
                     <div class="col-12">
                         <div class="row justify-content-center">
