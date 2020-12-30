@@ -1,5 +1,5 @@
 <?php
-include "../connection.php";
+include "../../include/connection.php";
 session_start();?>
 <!DOCTYPE html>
 <html>
@@ -183,10 +183,8 @@ session_start();?>
           </div> 
     <div class="container">
 
-      <div class="row row-image" style="margin-top: 30px;">
+      <div class="row" style="margin-top: 30px;">
         <?php 
-
-include("../connection.php");
                        
             
     $limit = 6;  
@@ -205,8 +203,29 @@ $start_from = ($page-1) * $limit;
 ?>
 
         <div class="col-lg-4 col-md-4 col-sm-12 col-12 mt-2">
-          <img src="../../admin/photo/<?php echo $row['photo']; ?>" class="img-fluid" style="height: 250px; width: 350px;">
-          
+         
+            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal<?php echo $row['id'] ?>">
+   <img src="../../admin/photo/<?php echo $row['photo']; ?>" class="img-fluid" style="height: 250px; width: 350px;">
+</button>
+
+<!-- Modal -->
+
+
+<div class="modal fade" id="exampleModal<?php echo $row['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="../../admin/photo/<?php echo $row['photo']; ?>" class="img-fluid" style="height: 350px; width: 450px;">
+      </div>
+      
+    </div>
+  </div>
+</div>
 
         </div>
         <?php
@@ -216,9 +235,28 @@ $start_from = ($page-1) * $limit;
        
 
 
-    </div><br>
+    </div>
+    <br>
 
-
+<div class="modal fade" id="myModal<?php echo $row['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
  <nav aria-label="Page navigation example" style="background-color: #d5d8de; margin-top: 25px;">
@@ -264,77 +302,17 @@ echo $pagLink . "</ul>";
 
    
     <!-- footer -->
-    <section>
-    <div class="container-fluid">
-      <div class="row bottom-section p-5 pb-0">
-        <div class="col-sm-12">
-          <div class="bottom-title">
-            <h5>BUDHANILKANTHA TECHNICAL SCHOOL</h5>
-          </div>
-        </div>
-      </div>
 
-      <div class="row bottom-section pl-5 pr-5">
-        <div class="col-lg-3">
-          <span>Address</span><br />Budhanilkantha-3, Kathmandu, Nepal
-        </div>
-        <div class="col-lg-3"><span>TEL NO.</span><br />01-4372300</div>
-        <div class="col-lg-3">
-          <span>EMAIL</span><br />bnktechschool@gmail.com
-        </div>
-        <div class="col-lg-3"><span>WEBSITE</span><br />www.bts.com</div>
-      </div>
-
-      <div class="row bottom-section p-5 pb-0">
-        <div class="col-sm-12">
-          <div class="bottom-title">
-            <h5>STAY IN TOUCH</h5>
-          </div>
-          <div class="social-media">
-            <ul>
-              <li><i class="fa fa-facebook"></i></li>
-              <li><i class="fa fa-twitter"></i></li>
-              <li><i class="fa fa-pinterest"></i></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="row bottom-section">
-        <div class="col-sm-12">
-          <div class="bottom-title">
-            <h5>&copy; All rights reserved Budhanilkantha Technical School</h5>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php include"../../include/footer.php";?>
+    
 
 
-
-</section>
-
-
-
-
-<script src="script.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<script src="script.js">
+  $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+</script>
+<!-- Button trigger modal -->
 
 
 <script src="https://kit.fontawesome.com/302b58d09d.js" crossorigin="anonymous"></script>
@@ -344,6 +322,3 @@ echo $pagLink . "</ul>";
 </body>
 </html>
 
-<style type="text/css">
-  
-</style>
