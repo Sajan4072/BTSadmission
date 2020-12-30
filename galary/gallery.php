@@ -1,11 +1,11 @@
 <?php
- include("connection.php");
+ include("../include/connection.php");
  session_start();
  ?>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BTS</title>
+  <title> Gallery</title>
   <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -193,7 +193,7 @@
       <div class="row row-image" style="justify-content: center;">
         <?php 
 
-include("../connection.php");
+include("../include/connection.php");
                        
             
     $limit = 6;  
@@ -274,54 +274,7 @@ echo $pagLink . "</ul>";
 
    
     <!-- footer -->
-    <section>
-    <div class="container-fluid">
-      <div class="row bottom-section p-5 pb-0">
-        <div class="col-sm-12">
-          <div class="bottom-title">
-            <h5>BUDHANILKANTHA TECHNICAL SCHOOL</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="row bottom-section pl-5 pr-5">
-        <div class="col-lg-3">
-          <span>Address</span><br />Budhanilkantha-3, Kathmandu, Nepal
-        </div>
-        <div class="col-lg-3"><span>TEL NO.</span><br />01-4372300</div>
-        <div class="col-lg-3">
-          <span>EMAIL</span><br />bnktechschool@gmail.com
-        </div>
-        <div class="col-lg-3"><span>WEBSITE</span><br />www.bts.com</div>
-      </div>
-
-      <div class="row bottom-section p-5 pb-0">
-        <div class="col-sm-12">
-          <div class="bottom-title">
-            <h5>STAY IN TOUCH</h5>
-          </div>
-          <div class="social-media">
-            <ul>
-              <li><i class="fa fa-facebook"></i></li>
-              <li><i class="fa fa-twitter"></i></li>
-              <li><i class="fa fa-pinterest"></i></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="row bottom-section">
-        <div class="col-sm-12">
-          <div class="bottom-title">
-            <h5>&copy; All rights reserved Budhanilkantha Technical School</h5>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-</section>
+   <?php include('../include/footer.php'); ?>
 
 
 <script>   
@@ -334,33 +287,9 @@ echo $pagLink . "</ul>";
   </script>
 
 
-<script src="script.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script src="https://kit.fontawesome.com/302b58d09d.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </body>
 </html>
-<style type="text/css">
-  
-</style>

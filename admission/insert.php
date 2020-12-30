@@ -4,7 +4,7 @@
 
 
 
-  $db = mysqli_connect("localhost","root", "", "bts" );  
+  include('../include/connection.php');
 
 
     

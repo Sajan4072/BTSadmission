@@ -1,8 +1,7 @@
 
 <a href="management.php">&#8592;BACK</a>
       <?php 
-      include"../../connection.php";
-$id = $_GET['id'];
+      include("../../include/connection.php");
       $query = "SELECT id, pdf FROM school_resource WHERE id= '$id'";
 $result = $db->query($query);
 while ($row = $result->fetch_object()) {

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('include/connection.php');
+include('../../include/connection.php');
 
 
 ?>
@@ -43,13 +43,6 @@ if (empty($uname)) {
   
   </div>
 </div>
-
-
-
-<script src="script.js"></script>
-
-
-
 
 
 <script src="https://kit.fontawesome.com/302b58d09d.js" crossorigin="anonymous"></script>

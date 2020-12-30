@@ -1,6 +1,6 @@
 
 <!DOCTYPE html><?php
-include "connection.php";
+include "include/connection.php";
 
 session_start();
  
@@ -28,41 +28,7 @@ session_start();
   </head>
   <body>
     <!-- top banner -->
-    <div class="container-fluid">
-      <div class="row top-banner p-2">
-        <div class="col-lg-8 col-md-8 col-sm-12">
-          <div class="row">
-            <div class="col-lg-2 col-sm-6 col-md-4">
-              <div class="logo">
-                <img src="frontpage/images/logo.jpg" style="margin-top: 20px;" alt="Not Available!" />
-              </div>
-            </div>
-            <div class="col-sm-8">
-              <div class="top-title">
-                <h1>BUDHANILKANTHA TECHNICAL SCHOOL</h1>
-              </div>
-
-              <div class="top-subtitle">
-                <h5>A BETTER LEARNING FUTURE STARTS</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
-          <div class="quick-contact">
-            <ul>
-              <li><i class="fa fa-phone"></i>&nbsp;01-4372300</li>
-              <li><i class="fa fa-envelope"></i>bnktechschool@gmail.com</li>
-              <li>
-                <i class="fa fa-map-marker"></i>&nbsp;&nbsp;Budhanilkantha-3,
-                Kathmandu, Nepal
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
+     <?php include('include/banner.php'); ?>
     <!-- navbar -->
     <?php
       if(isset($_SESSION['login_user'])){
@@ -212,7 +178,7 @@ session_start();
             <?php 
 
                         
-                      include("admin/include/connection.php");
+                      include("include/connection.php");
                        
                          
                                               
@@ -365,49 +331,8 @@ session_start();
     </div>
 
     <!-- footer -->
-    <div class="container-fluid">
-      <div class="row bottom-section p-5 pb-0">
-        <div class="col-sm-12">
-          <div class="bottom-title">
-            <h5>BUDHANILKANTHA TECHNICAL SCHOOL</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="row bottom-section pl-5 pr-5">
-        <div class="col-lg-3">
-          <span>Address</span><br />Budhanilkantha-3, Kathmandu, Nepal
-        </div>
-        <div class="col-lg-3"><span>TEL NO.</span><br />01-4372300</div>
-        <div class="col-lg-3">
-          <span>EMAIL</span><br />bnktechschool@gmail.com
-        </div>
-        <div class="col-lg-3"><span>WEBSITE</span><br />www.bts.com</div>
-      </div>
-
-      <div class="row bottom-section p-5 pb-0">
-        <div class="col-sm-12">
-          <div class="bottom-title">
-            <h5>STAY IN TOUCH</h5>
-          </div>
-          <div class="social-media">
-            <ul>
-              <li><i class="fa fa-facebook"></i></li>
-              <li><i class="fa fa-twitter"></i></li>
-              <li><i class="fa fa-pinterest"></i></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="row bottom-section">
-        <div class="col-sm-12">
-          <div class="bottom-title">
-            <h5>&copy; All rights reserved Budhanilkantha Technical School</h5>
-          </div>
-        </div>
-      </div>
-    </div>
+     <?php include('include/footer.php'); ?>
+ 
     <input type="hidden" id="admission_success_school" value="<?php if(isset($_SESSION['admission_success_school'])) {echo htmlentities($_SESSION['admission_success_school']); } unset($_SESSION['admission_success_school']); ?>">
 
     <!-- js setup -->

@@ -1,5 +1,5 @@
 <?php
-include"connection.php";
+include "include/connection.php";
 session_start();
   if(isset($_SESSION['login_from_school']))
   {
@@ -223,9 +223,9 @@ session_start();
             </li>
              <?php 
 
-                        
-                      include("connection.php");
-                       
+                      
+
+
                          
                                               
                       $sql="select *from news_and_event WHERE plus2=1 ORDER BY id DESC LIMIT 5";
@@ -378,50 +378,7 @@ session_start();
     </div>
 
     <!-- footer -->
-    <div class="container-fluid">
-      <div class="row bottom-section p-5 pb-0">
-        <div class="col-sm-12">
-          <div class="bottom-title">
-            <h5>BUDHANILKANTHA TECHNICAL SCHOOL</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="row bottom-section pl-5 pr-5">
-        <div class="col-lg-3">
-          <span>Address</span><br />Budhanilkantha-3, Kathmandu, Nepal
-        </div>
-        <div class="col-lg-3"><span>TEL NO.</span><br />01-4372300</div>
-        <div class="col-lg-3">
-          <span>EMAIL</span><br />bnktechschool@gmail.com
-        </div>
-        <div class="col-lg-3"><span>WEBSITE</span><br />www.bts.com</div>
-      </div>
-
-      <div class="row bottom-section p-5 pb-0">
-        <div class="col-sm-12">
-          <div class="bottom-title">
-            <h5>STAY IN TOUCH</h5>
-          </div>
-          <div class="social-media">
-            <ul>
-              <li><i class="fa fa-facebook"></i></li>
-              <li><i class="fa fa-twitter"></i></li>
-              <li><i class="fa fa-pinterest"></i></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="row bottom-section">
-        <div class="col-sm-12">
-          <div class="bottom-title">
-            <h5>&copy; All rights reserved Budhanilkantha Technical School</h5>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <?php include('../include/footer.php'); ?>
     <!-- js setup -->
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BTS</title>
+    <title>view more</title>
 
     <!-- css  -->
     <link rel="stylesheet" type="text/css" href="../../frontpage/css/bootstrap.min.css" />
@@ -179,19 +179,13 @@
 }?>
 
     
-
-
-
-
-
-
 <div class="container-fluid">
       <div class="row" style="justify-content: center;color: white; background-color: #1a237e;"><h5>Calender Events</h5></div>
       <?php 
 
 
                         
-                      include("connection.php");
+                      include("../../include/connection.php");
                         $limit = 6;  
 if (isset($_GET["page"])) {
   $page  = $_GET["page"]; 
@@ -274,60 +268,9 @@ echo $pagLink . "</ul>";
         window.location.href = 'cal.php?page='+page;   
     }   
   </script>
-
-
-<script src="script.js"></script>
-
-
-
-   
-
-    
-
     <!-- footer -->
-    <div class="container-fluid">
-      <div class="row bottom-section p-5 pb-0">
-        <div class="col-sm-12">
-          <div class="bottom-title">
-            <h5>BUDHANILKANTHA TECHNICAL SCHOOL</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="row bottom-section pl-5 pr-5">
-        <div class="col-lg-3">
-          <span>Address</span><br />Budhanilkantha-3, Kathmandu, Nepal
-        </div>
-        <div class="col-lg-3"><span>TEL NO.</span><br />01-4372300</div>
-        <div class="col-lg-3">
-          <span>EMAIL</span><br />bnktechschool@gmail.com
-        </div>
-        <div class="col-lg-3"><span>WEBSITE</span><br />www.bts.com</div>
-      </div>
-
-      <div class="row bottom-section p-5 pb-0">
-        <div class="col-sm-12">
-          <div class="bottom-title">
-            <h5>STAY IN TOUCH</h5>
-          </div>
-          <div class="social-media">
-            <ul>
-              <li><i class="fa fa-facebook"></i></li>
-              <li><i class="fa fa-twitter"></i></li>
-              <li><i class="fa fa-pinterest"></i></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="row bottom-section">
-        <div class="col-sm-12">
-          <div class="bottom-title">
-            <h5>&copy; All rights reserved Budhanilkantha Technical School</h5>
-          </div>
-        </div>
-      </div>
-    </div>
+ 
+     <?php include('../../include/footer.php'); ?>
 
     <!-- js setup -->
     <script

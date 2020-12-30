@@ -1,5 +1,5 @@
 <?php
-include '../connection.php';
+include '../include/connection.php';
 
 session_start();
 $passwordErr = $emailErr= "";  
@@ -101,15 +101,6 @@ function input_data($data) {
       
     </div>
   </div>
- 
-
-
-
-<script src="script.js"></script>
-
-
-
-
 
 <script src="https://kit.fontawesome.com/302b58d09d.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
