@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="galary.css">
+ <link rel="stylesheet" type="text/css" href="galary.css">
   
 </head>
 <body>
@@ -190,7 +190,7 @@
      
     <div class="container" style="margin-top: 50px;">
 
-      <div class="row row-image" style="justify-content: center;">
+      <div class="row " style="justify-content: center;">
         <?php 
 
 include("../include/connection.php");
@@ -234,6 +234,7 @@ $start_from = ($page-1) * $limit;
     </div>
   </div>
 </div>
+          
           
 
         </div>
@@ -297,7 +298,11 @@ echo $pagLink . "</ul>";
     <!-- footer -->
    <?php include('../include/footer.php'); ?>
 
-
+<script src="script.js">
+  $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+</script>
 <script>   
     function go2Page()   
     {   

@@ -74,40 +74,6 @@ nav {
 
 /* title in the photos */
 
-.titleup {
-  position: absolute;
-  top: 20%;
-  left: 20%;
-  transform: translate(-50%, -50%);
-  color: white;
-}
-
-.titledown {
-  position: absolute;
-  top: 95%;
-  left: 20%;
-  transform: translate(-50%, -50%);
-  color: white;
-}
-.titleright {
-  position: absolute;
-  top: 95%;
-  left: 80%;
-  transform: translate(-50%, -50%);
-  color: white;
-}
-
-.row-image img{
-    opacity: 0.9;
-    transform: scale(1);
-    transition: transform 0.5s;
-    opacity: 0.5s;
-}
-.row-image img:hover{
-    opacity: 1;
-    transform: scale(1.30);
-}
-
 
 /* pagination*/
 .pagination li a{
