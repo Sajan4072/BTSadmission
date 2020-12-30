@@ -243,7 +243,7 @@ session_start();
       
 
     
-    <?php include('../../include/footer.php'); ?>
+    <?php include('../include/footer.php'); ?>
 
 
 

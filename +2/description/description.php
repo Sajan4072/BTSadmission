@@ -289,7 +289,8 @@ session_start();
     </div>
 
     <!-- footer -->
-   <?php include('../../include/footer.php'); ?>
+ <?php include('../include/footer.php'); ?>
+
 
 <script src="https://kit.fontawesome.com/302b58d09d.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

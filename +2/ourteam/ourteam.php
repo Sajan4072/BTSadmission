@@ -190,7 +190,7 @@ session_start();
           <div class="introduction">
             
             <div class="chief-img">
-              <img src="../frontpage/images/founder.jpg" alt="Not Available!" />
+              <img src="../../frontpage/photos/1.jpg" alt="Not Available!" />
             </div>
             <h2>JOHN SCOUT</h2>
             <h5>POST OF MINE</h5>
@@ -219,7 +219,7 @@ session_start();
           <div class="introduction">
             
             <div class="chief-img">
-              <img src="../frontpage/images/founder.jpg" alt="Not Available!" />
+            <img src="../../frontpage/photos/1.jpg" alt="Not Available!" />
             </div>
             <h2>JOHN SCOUT</h2>
             <h5>POST OF MINE</h5>
@@ -249,7 +249,7 @@ session_start();
           <div class="message-chief">
     
             <div class="chief-img">
-              <img src="../frontpage/images/founder.jpg" alt="Not Available!" />
+            <img src="../../frontpage/photos/1.jpg" alt="Not Available!" />
             </div>
             <h2>JOHN SCOUT</h2>
             <h5>POST OF MINE</h5>
@@ -281,7 +281,7 @@ session_start();
           <div class="introduction">
             
             <div class="chief-img">
-              <img src="../frontpage/images/founder.jpg" alt="Not Available!" />
+              <img src="../../frontpage/photos/1.jpg" alt="Not Available!" />
             </div>
             <h2>JOHN SCOUT</h2>
             <h5>POST OF MINE</h5>
@@ -310,7 +310,7 @@ session_start();
           <div class="introduction">
             
             <div class="chief-img">
-              <img src="../frontpage/images/founder.jpg" alt="Not Available!" />
+           <img src="../../frontpage/photos/1.jpg" alt="Not Available!" />
             </div>
             <h2>JOHN SCOUT</h2>
             <h5>POST OF MINE</h5>
@@ -340,7 +340,7 @@ session_start();
           <div class="introduction">
     
             <div class="chief-img">
-              <img src="../frontpage/images/founder.jpg" alt="Not Available!" />
+               <img src="../../frontpage/photos/1.jpg" alt="Not Available!" />
             </div>
             <h2>JOHN SCOUT</h2>
             <h5>POST OF MINE</h5>
@@ -374,7 +374,8 @@ session_start();
     
 
     <!-- footer -->
-   <?php include '../../include/footer.php'; ?>
+   <?php include('../include/footer.php'); ?>
+
 
 <script src="https://kit.fontawesome.com/302b58d09d.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

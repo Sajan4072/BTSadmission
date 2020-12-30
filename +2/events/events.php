@@ -276,7 +276,8 @@ echo $pagLink . "</ul>";
           
 
     <!-- footer -->
-     <?php include('../../include/footer.php'); ?>
+    <?php include('../include/footer.php'); ?>
+
 
 
 <script src="https://kit.fontawesome.com/302b58d09d.js" crossorigin="anonymous"></script>

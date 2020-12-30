@@ -325,7 +325,8 @@ $code=$_SESSION['code'];
     </div>
         <!-- footer -->
 
-        <?php include('../../include/footer.php'); ?>
+       <?php include('../include/footer.php'); ?>
+
         <input type="hidden" id="uniquecode" value="<?php echo $code; ?>">
         <script>
         var result = [];

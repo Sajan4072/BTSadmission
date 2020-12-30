@@ -378,7 +378,7 @@ session_start();
     </div>
 
     <!-- footer -->
-    <?php include('../include/footer.php'); ?>
+    <?php include('include/footer.php'); ?>
     <!-- js setup -->
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
