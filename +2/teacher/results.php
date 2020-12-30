@@ -1,3 +1,5 @@
+
+
 <?php
 session_start();
 ?>
@@ -80,15 +82,7 @@ session_start();
    ?>
 </div><?php } ?>
 
-             
-
-
-
-
-
-
-
-        <div class="col-12">
+  <div class="col-12">
           <div class="row"   style="color: #224a8f">
           <div class="col-1">
              <i class="fa fa-user"  style="color: #224a8f" aria-hidden="true"></i>

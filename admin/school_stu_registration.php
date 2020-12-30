@@ -19,7 +19,7 @@
 
 <?php  
 // define variables to empty values 
-include "../connection.php"; 
+include "include/connection.php"; 
 session_start();
 
 if(isset($_GET['type']))

@@ -1,7 +1,7 @@
 
 <a href="class9.php">&#8592;BACK</a>
       <?php 
-      include"../../connection.php";
+      include"../../include/connection.php";
 $id = $_GET['id'];
       $query = "SELECT id, pdf FROM school_resource WHERE id= '$id'";
 $result = $db->query($query);
