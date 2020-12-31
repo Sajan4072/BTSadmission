@@ -1,5 +1,5 @@
 <?php
-include '../connection.php';
+include '../include/connection.php';
 
 session_start();
 $passwordErr = $uniquecodeErr= "";  
@@ -146,7 +146,7 @@ function input_data($data) {
         
         $_SESSION['login_user'] = $row['firstname'];
         $_SESSION['code']=$row['uniquecode'];
-        $_SESSION['login_from_engineering']='set';
+      
        
         header('Location: ../index.php');
         

@@ -1,15 +1,7 @@
 <?php
 include "include/connection.php";
 session_start();
-  if(isset($_SESSION['login_from_school']))
-  {
-      header('location:../index.php');
-  }
-  if(isset($_SESSION['login_from_engineering']))
-  {
-    header('location:../engineering/index.php');
 
-  }
  
 ?>
 <!DOCTYPE html>

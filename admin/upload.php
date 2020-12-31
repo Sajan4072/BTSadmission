@@ -5,24 +5,47 @@ include('include/connection.php');
   if(isset($_POST['submit']))
    {
    	
+   	  if(isset($_POST['school']))
+   	  {
 	 if($_POST['school']=='Yes'){
          $school=1;
         }
         else{
          $school=0;
         }
+    }
+    else
+    {
+       $school=0;
+    }
+  
+   if(isset($_POST['plus2']))
+   {
      if($_POST['plus2']=='Yes'){
          $plus2=1;
         }
         else{
          $plus2=0;
         }
+    }
+    else
+    {
+          $plus2=0;
+    }
+
+    if(isset($_POST['engineering']))
+   {
      if($_POST['engineering']=='Yes'){
          $engineering=1;
         }
         else{
          $engineering=0;
         }
+     }
+     else
+     {
+     	$engineering=0;
+     }
 
 	$caption=$_POST['caption'];
 	
@@ -42,44 +65,114 @@ include('include/connection.php');
 
 	 $sql="insert into photos(caption,photo,school,plus2,engineering)
 	    values('$caption','$image',$school,$plus2,$engineering)";
-	    $query=mysqli_query($db,$sql);
 	   
-$_SESSION['message']="POSTED";
-	
- }
 
+
+	    if( $query=mysqli_query($db,$sql))
+	   {
+	   	  $_SESSION['success']='uploaded successfuly';
+           header('location:gallery_table.php');
+	   }
+	   else
+	   {
+	   	 $_SESSION['error']='opps somthing went wrong';
+	   	  header('location:gallery_table.php');
+	   }
+	   
+}
+
+
+  if(isset($_POST['update']))
+  {
+  	  $id=$_POST['id'];
+
+  	if(isset($_POST['school']))
+   	  {
+	 if($_POST['school']=='Yes'){
+         $school=1;
+        }
+        else{
+         $school=0;
+        }
+    }
+    else
+    {
+       $school=0;
+    }
+  
+   if(isset($_POST['plus2']))
+   {
+     if($_POST['plus2']=='Yes'){
+         $plus2=1;
+        }
+        else{
+         $plus2=0;
+        }
+    }
+    else
+    {
+          $plus2=0;
+    }
+
+    if(isset($_POST['engineering']))
+   {
+     if($_POST['engineering']=='Yes'){
+         $engineering=1;
+        }
+        else{
+         $engineering=0;
+        }
+     }
+     else
+     {
+     	$engineering=0;
+     }
+
+	$caption=$_POST['caption'];
+	
+
+	
+	
+	 
+
+	 $sql="UPDATE  photos set caption='$caption',school='$school',plus2='$plus2',engineering='$engineering' where id='$id' ";
+	   
+
+
+	    if( $query=mysqli_query($db,$sql))
+	   {
+	   	  $_SESSION['success']='photo has been Edited successfuly';
+           header('location:gallery_table.php');
+           exit();
+	   }
+	   else
+	   {
+	   	 $_SESSION['error']='opps somthing went wrong';
+	   	  header('location:gallery_table.php');
+	   	  exit();
+	   }
+  }
+
+
+  if(isset($_GET['delete']))
+  {
+  	 $id=$_GET['id'];
+  	 $sql="DELETE from photos where id='$id'";
+	   
+
+
+	    if( $query=mysqli_query($db,$sql))
+	   {
+	   	  $_SESSION['success']='image has been deleted successfuly';
+           header('location:gallery_table.php');
+	   }
+	   else
+	   {
+	   	 $_SESSION['error']='opps somthing went wrong';
+	   	  header('location:gallery_table.php');
+	   }
+      
+  }
 
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-
-	 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-      <title>EATGITA</title>
-</head>
-<body>
-	<?php
-
-	if(isset($_SESSION['message'])):
-
-
-	?>
-	<div class="alert alert-success">
-
-		<?php
-		echo $_SESSION['message'];
-
-		?>
-	</div>
-	<?php endif ?>
-
-</body>
-</html>
-
-
-
 

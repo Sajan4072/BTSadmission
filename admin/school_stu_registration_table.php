@@ -2,7 +2,7 @@
 session_start();
 include('include/connection.php');
 
-$sql="select *from school limit 4 ";
+$sql="select *from school  order by id desc ";
 $result=mysqli_query($db,$sql);
 $students='set';
 

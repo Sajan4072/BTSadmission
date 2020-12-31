@@ -2,7 +2,7 @@
 session_start();
 include('include/connection.php');
 
-$sql="select *from engineering_teacher limit 5 ";
+$sql="select *from engineering_teacher order by id desc ";
 $result=mysqli_query($db,$sql);
 $teacher='set';
 

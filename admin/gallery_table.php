@@ -2,9 +2,9 @@
 session_start();
 include('include/connection.php');
 
-$sql="select *from engineering order by id desc ";
+$sql="select *from photos order by id DESC";
 $result=mysqli_query($db,$sql);
-$students='set';
+$gallery='set';
 
 ?>
 <!DOCTYPE html>
@@ -43,7 +43,13 @@ $students='set';
     border-radius: 6px;
     box-shadow: 10px 10px 0.6px;
    }
-    
+   .rounded{
+
+    height: 50px;
+    width: 60px;
+    border-radius: 50%;
+   }
+
   
     </style>
 
@@ -67,7 +73,7 @@ include('include/check_login.php');
             <div class="col-lg-8 col-md-8 col-sm-12">
                 <div class="container uploadsection">
                   <div class="head">
-                    <p ><spam class="span">Engineering Student</spam></p>  
+                    <p ><spam class="span">Gallery Images</spam></p>  
                   </div>
                   
                     <?php
@@ -88,11 +94,9 @@ include('include/check_login.php');
                         <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
                     </div>
                     <?php } ?>
+                   
                     <p style="display: inline-flex;">
-                        <input type="text" name="search" placeholder=" search " onkeyup="search"  id='search' style="border-radius:5px;border: blue;  "><i class='fa fa-search' style="margin-left: px; margin-top: 4px;"> </i>
-                    </p>
-                    <p style="display: inline-flex;">
-                        <a href="engineering_student_registration.php" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; margin-left: 250px">register</a>
+                        <a href="gallery1.php" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; margin-left: 450px">Add</a>
                     </p>
                     <div class="col-12">
                         <div class="row justify-content-center">
@@ -100,8 +104,10 @@ include('include/check_login.php');
                                 <thead class="blue ">
                                     <tr>
                                         <TH>SN</TH>
-                                        <th>UNIQUECODE</th>
-                                        <th>Name</th>
+                                        <th>IMAGE</th>
+                                        <th>+2</th>
+                                        <th>school</th>
+                                        <th>engineering</th>
                                         <th>ACTION</th>
                                        
                                     </tr>
@@ -109,7 +115,7 @@ include('include/check_login.php');
                                 <tbody id="tbody">
                                 <?php 
                                  $x=1;
-                                 while($student=mysqli_fetch_array($result))
+                                 while($photo=mysqli_fetch_array($result))
                              {
 
                                  ?>
@@ -118,38 +124,21 @@ include('include/check_login.php');
                                         <?php echo htmlentities($x); ?>
                                     </td>
                                      <td>
-                                        <?php echo htmlentities($student['uniquecode']); ?>
+                                            <img src="photo/<?php echo $photo['photo']?>" alt="" class="rounded" >
                                     </td>
                                     <td>
-                                        <?php echo  htmlentities($student['firstname']);echo " ";  echo  htmlentities($student['lastname']);?>
+                                          <?php if($photo['plus2']==1) {?><i class="fa fa-check"></i><?php } ?>
                                     </td>
+                                    <td> <?php if($photo['school']==1) {?><i class="fa fa-check"></i><?php } ?></td>
+                                    <td> <?php if($photo['engineering']==1) {?><i class="fa fa-check"></i><?php } ?></td>
                                    
                                     <td>
-                                        <a href="engineering_student_registration.php?type=edit&&id=<?php echo htmlentities($student['uniquecode']); ?>"><i class="fa fa-edit"> </i></a>
+                                        <a href="gallery1.php?type=edit&&id=<?php echo htmlentities($photo['id']); ?>"><i class="fa fa-edit"> </i></a>
 
-                                        <a  href=""  data-toggle="modal" data-target="#exampleModalLong-<?php echo htmlentities($student['uniquecode']);?>">
-                                          <i class="fa fa-trash"> </i>
-                                        </a>
+                                        <a href="upload.php?delete&&id=<?php echo htmlentities($photo['id']); ?>"><i class="fa fa-trash"> </i></a>
                                     </td>
-                                     <div class="modal fade" id="exampleModalLong-<?php echo htmlentities($student['uniquecode']); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Are you sure you want to delete?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      Student <b><?php echo htmlentities($student['firstname']);echo htmlentities($student['lastname']); ?></b> is going to be delete
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a class="btn btn-danger" href="delete.php?type=student&&id=<?php echo htmlentities($student['uniquecode']); ?>">Delete</a>
-      </div>
-    </div>
-  </div>
-</div>
+
+                                    
 
                                 
                                     
@@ -175,31 +164,9 @@ include('include/check_login.php');
 
 
 
-<!-- Modal -->
- <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Are you sure you want to delete?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-     
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <p id="injectdelete"></p>
-       
-      </div>
-    </div>
-  </div>
-</div>
-
       
 </body>
-<script src="script.js"></script>
+
 <script src="https://kit.fontawesome.com/302b58d09d.js" crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

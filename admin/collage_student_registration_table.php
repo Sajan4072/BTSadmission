@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('include/connection.php');
-$sql="select *from college limit 6 ";
+$sql="select *from college order by id desc ";
 $result=mysqli_query($db,$sql);
 $students='set';
 ?>
@@ -63,7 +63,7 @@ include('include/check_login.php');
             <div class="col-lg-8 col-md-8 col-sm-12">
                 <div class="container uploadsection">
                     <div class="head">
-                        <p><span class="span">Collage Student</span></p>
+                        <p><span class="span">Management Student</span></p>
                     </div>
                     <?php
                     if(isset($_SESSION['success']))

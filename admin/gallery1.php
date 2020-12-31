@@ -3,6 +3,16 @@ session_start();
 include('include/connection.php');
 
  $gallery='set';
+
+  if(isset($_GET['type']))
+  {
+    $edit='set';
+    $id=$_GET['id'];
+    $sql="select * from photos where id='$id' limit 1";
+   $result=mysqli_query($db,$sql);
+   $photo=mysqli_fetch_assoc($result);
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +28,14 @@ include('include/connection.php');
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="landing.css">
 </head>
+<style>
+   .rounded{
+
+    height: 200px;
+    width: 300px;
+    border-radius: 50%;
+   }
+  </style>
 <body>
 </body>
 <?php 
@@ -48,6 +66,9 @@ include('include/check_login.php');
             <!-- content -->
     <div class="col-lg-8 col-md-8 col-sm-12">
       <form method="post" enctype="multipart/form-data" action="upload.php" >
+        <?php if(isset($edit)) {?>
+          <input type="hidden" name="id" value="<?php echo $photo['id']; ?>">
+        <?php } ?>
       <div class="container uploadsection">
         <div class="col-12">
           <div class="row"   style="color: #224a8f">
@@ -57,33 +78,72 @@ include('include/check_login.php');
           <div class="col-11">Post Pictures </div>
           </div>
           <div class="row">
-            <textarea name="caption"></textarea>
+            <textarea name="caption"><?php if(isset($edit)) echo $photo['caption'];?></textarea>
           </div>
+          <?php if(isset($edit)){ ?>
+          <div class="row mt-4">
+            <img src="photo/<?php echo $photo['photo']; ?>" class="rounded" alt="">
+          </div>
+        <?php } ?>
+
           <div class="row">
+            <?php if(!isset($edit)) {?>
             <div class="col-lg-3 col-md-4 col-sm-4" style="margin-top: 10px">
               <input type="file" name="image" > 
               
             </div>
-            <div class="check" style="margin-top: 12px; margin-left: 180px; color: #224a8f;">
-            <div class="col-4"></div>
-              <input type="checkbox" name="school" value="Yes">
-            School
 
+            <div class="check" style="margin-top: 12px; margin-left: 180px; color: #224a8f;">
+            
+          
              <input type="checkbox" name="plus2" value="Yes">
             plus2
+                <input type="checkbox" name="school" value="Yes">
+            School
+
 
              <input type="checkbox" name="engineering" value="Yes">
             Engineering
           </div>
-            <div class="col-4"><p style="float: right;">
+        <?php }  else {?>
+            <div class="check" style="margin-top: 12px; margin-left: 0px; color: #224a8f;">
+           
+          
+             <input type="checkbox" name="plus2" value="Yes" <?php if ($photo['plus2']==1) echo "checked"; ?>>
+            plus2
+                <input type="checkbox" name="school" value="Yes" <?php if ($photo['school']==1) echo "checked"; ?> >
+            School
+
+
+             <input type="checkbox" name="engineering" value="Yes" <?php if ($photo['engineering']==1) echo "checked"; ?>>
+            Engineering
+          </div>
+             
+
+        <?php } ?>
+            <div class="col-4">
             <div class="col-4"></div>
            
               
             </div>
-            <div class="col-lg-6 col-md-4 col-sm-4"><p style=" margin-left: 280px;">
+            <?php if(isset($edit)){ ?>
+
+          <div class="col-lg-6 col-md-4 col-sm-4"><p style=" margin-top: 5px;">
+
+            <button type="submit" name="update" class="btn btn-success" style="border: none; border-radius: 20px; margin-top: 5px;">update</button>
+
+            </div>
+
+          <?php } else { ?>
+             <div class="col-lg-6 col-md-4 col-sm-4"><p style=" margin-left: 280px;">
+
             <button type="submit" name="submit" class="btn btn-success" style="border: none; border-radius: 20px; margin-top: 5px;">POST</button>
 
-            </p></div>
+            </div>
+
+          <?php } ?>
+
+          
 </form>
 
           </div>

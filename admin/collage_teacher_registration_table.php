@@ -2,7 +2,7 @@
 session_start();
 include('include/connection.php');
 
-$sql="select *from college_teacher limit 5 ";
+$sql="select *from college_teacher order by id desc ";
 $result=mysqli_query($db,$sql);
 $teacher='set';
 
@@ -14,7 +14,7 @@ $teacher='set';
 <html>
 
 <head>
-    <title>Collage Teacher Table</title>
+    <title>Managment Teacher Table</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -68,7 +68,7 @@ include('include/check_login.php');
             <div class="col-lg-8 col-md-8 col-sm-12">
                 <div class="container uploadsection">
                      <div class="head">
-                    <p><span class="span">Collage Teacher</span></p>  
+                    <p><span class="span">Management Teacher</span></p>  
                   </div>
                     <?php
                     if(isset($_SESSION['success']))

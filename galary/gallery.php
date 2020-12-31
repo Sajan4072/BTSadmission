@@ -213,7 +213,7 @@ $start_from = ($page-1) * $limit;
 
         <div class="col-lg-4 col-md-4 col-sm-12 col-12 mt-2" >
           <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal<?php echo $row['id'] ?>">
-   <img src="../../admin/photo/<?php echo $row['photo']; ?>" class="img-fluid" style="height: 250px; width: 350px;">
+   <img src="../admin/photo/<?php echo $row['photo']; ?>" class="img-fluid" style="height: 250px; width: 350px;">
 </button>
 
 <!-- Modal -->
@@ -228,7 +228,7 @@ $start_from = ($page-1) * $limit;
         </button>
       </div>
       <div class="modal-body">
-        <img src="../../admin/photo/<?php echo $row['photo']; ?>" class="img-fluid" style="height: 350px; width: 450px;">
+        <img src="../admin/photo/<?php echo $row['photo']; ?>" class="img-fluid" style="height: 350px; width: 450px;">
       </div>
       
     </div>
