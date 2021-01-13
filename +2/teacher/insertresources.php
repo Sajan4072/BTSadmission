@@ -8,10 +8,34 @@ include('../include/connection.php');
 	$caption=$_POST['caption'];
 	$class=$_POST['class'];
 	$subject=$_POST['subject'];
+	$name= $_SESSION['teacher_user'];
 	 
     $management=1;
         
-       
+      	
+	 $dir="photo";
+	 $dir1 = "pdf";
+	 
+   
+
+/* Check if the directory already exists. */
+
+if(!is_dir($dir)){
+
+    /* Directory does not exist, so lets create it. */
+
+    mkdir($dir);
+
+}
+
+if(!is_dir($dir1)){
+
+    /* Directory does not exist, so lets create it. */
+
+    mkdir($dir1);
+
+}
+ 
 	
 
 	 
@@ -32,8 +56,8 @@ include('../include/connection.php');
 	
 	 
 
-	 $sql="insert into college_resource(image,pdf,class,caption,subject,management)
-	    values('$image','$pdf',$class,'$caption','$subject','$management')";
+	 $sql="insert into college_resource(image,pdf,class,caption,subject,management,posted_by)
+	    values('$image','$pdf',$class,'$caption','$subject','$management','$name')";
 	    $query=mysqli_query($db,$sql);
 	   if(!$query){
 			

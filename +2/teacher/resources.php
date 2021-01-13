@@ -57,7 +57,7 @@ session_start();
             <li><a href="#"><i class="fa fa-file"  ></i>RESOURCES </a></li>
            
             <li><a href="results.php"><i class="fa fa-file" ></i>RESULTS</a></li>
-       
+            <li><a href="mypost.php"><i class="fa fa-file" ></i>MYPOST</a></li>
           </ul>
         </div>
       </div>
@@ -172,7 +172,7 @@ session_start();
 </div>
 
 
-class 12
+
 
 <script src="https://kit.fontawesome.com/302b58d09d.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

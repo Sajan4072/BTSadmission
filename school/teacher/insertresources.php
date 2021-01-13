@@ -8,16 +8,39 @@ include('../../include/connection.php');
 	$caption=$_POST['caption'];
 	$class=$_POST['class'];
 	$subject = $_POST['subject'];
-	
+	$name = $_SESSION['teacher_user'];
 
 	 
+	
+	 $dir="photo";
+	 $dir1 = "pdf";
+	 
+   
+
+/* Check if the directory already exists. */
+
+if(!is_dir($dir)){
+
+    /* Directory does not exist, so lets create it. */
+
+    mkdir($dir);
+
+}
+
+if(!is_dir($dir1)){
+
+    /* Directory does not exist, so lets create it. */
+
+    mkdir($dir1);
+
+}
+
+
 	 $image=$_FILES['image']['name'];
 	
 
 	 $temp=$_FILES['image']['tmp_name'];
-	
-	 $dir="photo/".$image;
-	
+$dir="photo/".$image;
 	 move_uploaded_file($temp, $dir);
  	
  	 $pdf=$_FILES['pdf']['name'];
@@ -28,8 +51,8 @@ include('../../include/connection.php');
 	
 	 
 
-	 $sql="insert into school_resource(image,pdf,subject,class,caption)
-	    values('$image','$pdf','$subject',$class,'$caption')";
+	 $sql="insert into school_resource(image,pdf,subject,class,caption,posted_by)
+	    values('$image','$pdf','$subject',$class,'$caption','$name')";
 	    $query=mysqli_query($db,$sql);
 
 if(!$query){

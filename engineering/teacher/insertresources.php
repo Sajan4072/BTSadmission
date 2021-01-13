@@ -10,6 +10,30 @@ include('../include/connection.php');
    	$subject = $_POST['subject'];
    	$semister =$_POST['semister'];
    	$faculty = $_POST['faculty'];
+   	$name= $_SESSION['teacher_user'];
+	
+	 $dir="photo";
+	 $dir1 = "pdf";
+	 
+   
+
+/* Check if the directory already exists. */
+
+if(!is_dir($dir)){
+
+    /* Directory does not exist, so lets create it. */
+
+    mkdir($dir);
+
+}
+
+if(!is_dir($dir1)){
+
+    /* Directory does not exist, so lets create it. */
+
+    mkdir($dir1);
+
+}
 
 	 $image=$_FILES['image']['name'];
 	
@@ -26,7 +50,7 @@ include('../include/connection.php');
  	 $dir1="pdf/".$pdf;
  	 move_uploaded_file($temp1, $dir1);
 	
-	 $sql ="insert into engineering_resource(image,pdf,year,subject,semister,faculty) values('$image','$pdf','$year','$subject','$semister','$faculty')";
+	 $sql ="insert into engineering_resource(image,pdf,year,subject,semister,faculty,posted_by) values('$image','$pdf','$year','$subject','$semister','$faculty','$name')";
 	 $query= mysqli_query($db,$sql);
 
 

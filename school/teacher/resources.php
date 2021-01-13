@@ -1,6 +1,8 @@
 <?php
 session_start();
 error_reporting(0);
+$resources='set';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -99,6 +101,13 @@ error_reporting(0);
             <div class="col-lg-3 col-md-4 col-sm-4" style="margin-top: 10px">
               Choose images
               <input type="file" name="image" > 
+              
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-4" style="margin-top: 10px">
+              Choose PDF
+              <input type="file" name="pdf" > 
               
             </div>
           </div>

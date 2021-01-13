@@ -57,6 +57,7 @@ session_start();
             <li><a href="resources.php"><i class="fa fa-file"  ></i>RESOURCES </a></li>
            
             <li><a href="#"><i class="fa fa-file" ></i>RESULTS</a></li>
+            <li><a href="mypost.php"><i class="fa fa-file" ></i>MYPOST</a></li>
            
           </ul>
         </div>

@@ -1,7 +1,11 @@
-
-
 <?php
 session_start();
+
+include('../../include/connection.php');
+$id=$_SESSION['teacher_user'];
+$sql="select *from college_resource where posted_by='$id' order by id desc ";
+$result=mysqli_query($db,$sql);
+$mypost='set';
 ?>
 <!DOCTYPE html>
 <html>
@@ -58,75 +62,85 @@ session_start();
        
             <li><a href="resources.php"><i class="fa fa-file"  ></i>RESOURCES </a></li>
            
-            <li><a href="#"><i class="fa fa-file" ></i>RESULTS</a></li>
-          <li><a href="mypost.php"><i class="fa fa-file" ></i>MYPOST</a></li>
+            <li><a href="results.php"><i class="fa fa-file" ></i>RESULTS</a></li>
+             <li><a href="#"><i class="fa fa-file" ></i>MYPOSTS</a></li>
+           
           </ul>
         </div>
       </div>
     </div>
-    <div class="col-lg-8 col-md-8 col-sm-12">
- 
-      <form method="post" enctype="multipart/form-data" action="inserresult.php" >
-      <div class="container uploadsection">
-        <?php if(isset($_SESSION['error'])) {?>
-             <div class="alert alert-danger" role="alert">
-  <?php echo $_SESSION['error']; 
-  unset($_SESSION['error']);
-   ?>
-</div><?php } ?>
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="container">
+                  <?php
+                    if(isset($_SESSION['success']))
+                    { 
 
- <?php if(isset($_SESSION['success'])){?>
-             <div class="alert alert-success" role="alert">
-  <?php echo $_SESSION['success']; 
-  unset($_SESSION['success']);
-   ?>
-</div><?php } ?>
+                  ?>
+                  <div class="alert alert-success mt-4" role="alert">
+                        <?php echo $_SESSION['success']; unset($_SESSION['success']); ?>
+                  </div>
 
-  <div class="col-12">
-          <div class="row"   style="color: #224a8f">
-          <div class="col-1">
-             <i class="fa fa-user"  style="color: #224a8f" aria-hidden="true"></i>
-          </div>
-          <div class="col-11">Post Results</div>
-          </div>
-          
-         
+                 <?php } ?>
 
-          <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-4" style="margin-top: 10px; margin-bottom: 5px;">
-              Choose csv file
-              <input type="file" name="csv" > 
-              
-            </div>
-          </div>
-   
+                  <?php
+                    if(isset($_SESSION['error']))
+                    { 
 
+                  ?>
+                  <div class="alert alert-danger mt-4" role="alert">
+                        <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
+                  </div>
 
-            
-            <div class="col-4"><p style="float: right;">
-            <div class="col-4"></div>
-           
-              
-            </div>
-            <div class="col-lg-6 col-md-4 col-sm-4"><p style=" margin-left: 280px;">
-            <button type="submit" name="submit" class="btn btn-success" style="border: none; border-radius: 20px; margin-top: 5px; float: right;">POST</button>
+                 <?php } ?>
 
-            </p></div>
-</form>
+                <style type="text/css">
+table {
+  
+  counter-reset: row-num;
+}
+table tr {
+  counter-increment: row-num;
+}
+table tr td:first-child::before {
+    content: counter(row-num) ". ";
+}
+</style>
+                            <table class="table mt-5">
+                                <thead class="blue">
+                                    <tr>
+                                        <th>SN</th>
+                                        <th>PHOTO</th>
+                                        <th>PDF</th>
+                                        <th>Subject</th>
+                                       <th>Class</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
 
-          </div>
+                           <?php while($post=mysqli_fetch_array($result)) {?>
+                                <tr>
+                                   <td></td>
+                                    <td><a href="#"><img src="photo/<?php echo $post['image']; ?>" alt="" style="height: 80px; width: 80px;" ></a></td>
+                                    <td><a href="read.php?id=<?php echo $post['id']; ?>"><i class="fas fa-file-pdf fa-3x"></i></a></td>
+                                    <td><?php echo $post['subject']; ?></td>
+                                    <td><?php echo $post['class']; ?></td>
+                                   
+                                  
+                                    <td>
+                                       
+                                        <a href="include/delete.php?id=<?php echo $post['id']; ?>&&type=resources"><i class="fa fa-trash fa-lg"> </i></a>
+                                    </td>
+                                </tr>
+                              <?php } ?>
 
-        </div>
-        
-      </div>
-    </div>
-  </div>
+                            
+                            </table>
 
+                        </div>
+                    </div>
+    
 </div>
-
-
-
-<script src="script.js"></script>
+</div>
 
 
 
