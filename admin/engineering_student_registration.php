@@ -184,6 +184,22 @@ if(isset($_SESSION['lname'])){ echo $_SESSION['lname']; unset($_SESSION['lname']
    
 
     </div>
+     <div class="form-group col-md-6">
+      <label for="inputEmail">BATCH</label>
+    <input type="text" name="batch" required class="form-control" id="inputEmail" placeholder=" Eg 2020/2021 " autocomplete="off"value="<?php if(isset($edit)){echo $student['batch']; } else {if(isset($_SESSION['batch'])){ echo $_SESSION['batch']; unset($_SESSION['batch']); } } ?>"> 
+   
+
+    </div>
+     <div class="form-group col-md-6">
+      <label for="inputEmail">FACULTY</label>
+     <select name="faculty" class="form-control">
+       <option <?php if(isset($edit)){if($student['faculty']=='civil') echo "selected";} else {if(isset($_SESSION['faculty'])) if($_SESSION['faculty']=='civil') echo "selected"; } ?>>civil</option>
+        <option <?php if(isset($edit)){if($student['faculty']=='computer') echo "selected";} else {if(isset($_SESSION['faculty'])) if($_SESSION['faculty']=='computer') echo "selected"; } ?>>computer</option>
+     </select>
+
+   
+
+    </div>
     
 </div>
         <div class="form-row">

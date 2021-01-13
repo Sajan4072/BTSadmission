@@ -5,6 +5,25 @@ include('include/connection.php');
 $sql="select *from engineering order by id desc ";
 $result=mysqli_query($db,$sql);
 $students='set';
+ $sql1="select distinct batch from engineering where batch is not null and batch <>'' ";
+$batch=[];
+$query1=mysqli_query($db,$sql1);
+ while($row=mysqli_fetch_array($query1))
+      {
+           $batch[]=$row['batch'];
+      }
+if(isset($_GET['faculty']) && isset($_GET['batch']))
+{
+     $faculty=$_GET['faculty'];
+     $batchs=$_GET['batch'];
+  $sql="select *from engineering where faculty='$faculty' and batch='$batchs' order by id desc ";
+ $result=mysqli_query($db,$sql);
+}
+else
+{
+ $sql="select *from engineering order by id desc limit 20 ";
+$result=mysqli_query($db,$sql);   
+}
 
 ?>
 <!DOCTYPE html>
@@ -94,14 +113,34 @@ include('include/check_login.php');
                     <p style="display: inline-flex;">
                         <a href="engineering_student_registration.php" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px;  margin-left: 20px; float: right;">register</a>
                     </p>
+                    <br>
+                         <form action="engineering_student_registration_table.php">
+                       <p style="display: inline-flex;">
+                       
+                        <select name="faculty" class="form-control" style="margin-right: 15px;">
+                            <option selected disabled>faculty</option>
+                    <option   <?php if(isset($_GET['faculty'])){if($_GET['faculty']=='civil') echo "selected"; } ?>>civil</option>
+                        <option  <?php if(isset($_GET['faculty'])){if($_GET['faculty']=='computer') echo "selected"; } ?>>computer</option>
+                        </select>
+                         <select name="batch" class="form-control">
+                            <option selected disabled>batch</option>
+                           <?php foreach ($batch as  $value) { ?>
+                             <option value="<?php echo $value ?>" <?php if(isset($_GET['batch'])){if($_GET['batch']==$value) echo "selected"; } ?>><?php echo $value; ?></option>
+                           <?php } ?>
+                           
+                        </select>
+                        <input type="submit" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; float: right;  margin-left: 20px;" value="GO">
+                       
+                    </p>
                     <div class="col-12">
                         <div class="row justify-content-center">
                             <table class="table">
                                 <thead class="blue ">
                                     <tr>
                                         <TH>SN</TH>
-                                        <th>UNIQUECODE</th>
-                                        <th>Name</th>
+                                        <th>NAME</th>
+                                        <th>CODE/FACULTY</th>
+                                        <th>PAYMENT</th>
                                         <th>ACTION</th>
                                        
                                     </tr>
@@ -118,10 +157,20 @@ include('include/check_login.php');
                                         <?php echo htmlentities($x); ?>
                                     </td>
                                      <td>
-                                        <?php echo htmlentities($student['uniquecode']); ?>
-                                    </td>
-                                    <td>
                                         <?php echo  htmlentities($student['firstname']);echo " ";  echo  htmlentities($student['lastname']);?>
+                                    </td>
+                                     <td>
+                                        <?php echo htmlentities("[".$student['uniquecode']."] [".$student['faculty']."] [".$student['batch']."]"); ?>
+                                    </td>
+                                   
+                                    <td>
+                                            <?php if($student['payment']=='yes'){ ?>
+                                                 <a class="btn btn-success" id="payment<?php echo $student['id']; ?>" style="color:white" onclick="changes(<?php echo $student['id']; ?>)">paid</a>
+                                            <?php }else{ ?>
+                                                 <a class="btn btn-danger" id="payment<?php echo $student['id']; ?>" style="color:white" onclick="changes(<?php echo $student['id']; ?>)">unpaid</a>
+
+                                            <?php } ?>
+
                                     </td>
                                    
                                     <td>
@@ -258,6 +307,36 @@ if(!search_value=='')
 
         }
 
+        function changes(id)
+{
+      if($('#payment'+id).hasClass('btn-success'))
+      {
+        $('#payment'+id).removeClass('btn-success');
+        $('#payment'+id).addClass('btn-danger');
+        $('#payment'+id).html('unpaid');
+      }
+       else
+      {
+        $('#payment'+id).removeClass('btn-danger');
+        $('#payment'+id).addClass('btn-success');
+        $('#payment'+id).html('paid');
+      }
+     
+       $.ajax({
+
+
+        type: 'get',
+        url: 'ajax_fetch_data/payment_engineering.php',
+        data: { id: id },
+        dataType: "json",
+        success: function(response) {
+
+    }
+    });
+   
+}
+
+
 
 
         function filltable() {
@@ -275,11 +354,22 @@ if(!search_value=='')
 
                 var x = 1;
                 for (var i = 0; i < student.length; i++) {
+           if(student[i].payment=='yes')
+               {
+                var  class_btn='btn-success';
+                var paid='paid';
+              }
+           else
+           {
+             var class_btn='btn-danger';
+             var paid='unpaid';
+           }
                     
                     var tr_str = "<tr>" +
                         "<td scope='row' >" + x + "</td>" +
-                        "<td >" + student[i].uniquecode+ "</td>" +
-                        "<td >" + student[i].firstname+" "+student[i].lastname + "</td>" +
+                         "<td >" + student[i].firstname+" "+student[i].lastname + "</td>" +
+                        "<td >[" + student[i].uniquecode+"] ["+student[i].faculty+"] ["+student[i].batch+ "]</td>" +
+                        "<td >" + "<a class='btn "+class_btn+"' id='payment"+student[i].id+"' style='color:white' onclick='changes("+student[i].id+")'>"+paid+"</a>"+ "</td>" +
                         "<td >" +
                           "<a href='school_stu_registration.php?type=edit&&id="+student[i].uniquecode+" '><i class='fa fa-edit'></i></a> " +" "+
                        

@@ -8,4 +8,5 @@
   unset($_SESSION['password']);
   unset($_SESSION['uniquecode']);
   unset($_SESSION['dob']);
+  unset($_SESSION['class']);
 ?>

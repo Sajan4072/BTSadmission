@@ -8,5 +8,7 @@
   $_SESSION['password']=$_POST['password'];
   $_SESSION['uniquecode']=$_POST['uniquecode'];
   $_SESSION['dob']=$_POST['dob'];
+  $_SESSION['faculty']=$_POST['faculty'];
+  $_SESSION['batch']=$_POST['batch'];
 
 ?>
