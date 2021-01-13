@@ -62,12 +62,10 @@ include('include/check_login.php');
      ?>
             <!-- content -->
             <div class="col-lg-8 col-md-8 col-sm-12">
-                <div class="container uploadsection">
+                <div class="container">
                     <div class="head">
                         <p><span class="span">Engineering Student Form</span></p>
                     </div>
-                    <div class="col-12">
-                        <div class="row justify-content-center">
                             <table class="table">
                                 <thead class="blue">
                                     <tr>

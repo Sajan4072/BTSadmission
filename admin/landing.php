@@ -37,10 +37,21 @@ if (empty($uname)) {
 
 <div class="container">
   <div class="row">
+    <div class="col-md-4">
      <?php 
          include('include/sidebar.php');
      ?>
-  
+  </div>
+  <div class="col-md-8 mt-5">
+    <div class="about-img">
+          <img src="pic.jpeg" style="height: 350px; width: 650px;">
+        </div>
+          <div class="title">
+            
+                <h4 style=" color: blue; font-size: 100px; margin-bottom: 150px;">WELCOME</h4></a>
+              
+          </div>
+  </div>
   </div>
 </div>
 

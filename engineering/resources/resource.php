@@ -1,6 +1,11 @@
 <?php
  include("../../include/connection.php");
  session_start();
+ if(!isset($_SESSION['login_user']))
+ {
+  header('location:../login/login.php');
+ }
+ 
  ?>
  <!DOCTYPE html>
 <html>
@@ -12,176 +17,18 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="resources.css">
+       <link rel="stylesheet" href="../../frontpage/css/style.css" />
+
 </head>
 <body>
   
 
 <!-- top banner -->
-    <div class="container-fluid ">
-      <div class="row top-banner p-2">
-        <div class="col-lg-8 col-md-8 col-sm-12">
-          <div class="row">
-            <div class="col-lg-2 col-sm-6 col-md-4">
-              <div class="logo">
-                <a href="../index.php"><img src="../frontpage/images/logo.jpg" style="margin-top: 20px;" alt="Not Available!" /></a>              </div>
-            </div>
-            <div class="col-sm-8">
-              <div class="top-title">
-                <h1>BUDHANILKANTHA TECHNICAL SCHOOL</h1>
-              </div>
-
-              <div class="top-subtitle">
-                <h5>A BETTER LEARNING FUTURE STARTS</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
-          <div class="quick-contact">
-            <ul>
-              <li><i class="fa fa-phone"></i>&nbsp;01-4372300</li>
-              <li><i class="fa fa-envelope"></i>bnktechschool@gmail.com</li>
-              <li>
-                <i class="fa fa-map-marker"></i>&nbsp;&nbsp;Budhanilkantha-3,
-                Kathmandu, Nepal
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php include('../include/banner.php'); ?>
 
     <!-- navbar -->
-    <?php
-      if(isset($_SESSION['login_user'])){
-      ?>
-    <div>
-      <nav class="navbar navbar-expand-lg navbar-light py-0 ">
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+   <?php include('nav/nav.php'); ?>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mx-auto">
-            <!--<li class="nav-item center-menu">
-              <a class="nav-link " href="./+2/index.php">+2</a>
-            </li>
-             <li class="nav-item center-menu">
-              <a class="nav-link" href="./engineering/index.php">Engineering</a>
-            </li>-->
-            <li class="nav-item center-menu">
-              <a class="nav-link" href="../index.php">Home</a>
-            </li>
-            <li class="nav-item center-menu">
-              <a class="nav-link " href="../galary/gallery.php">Gallery</a>
-            </li>
-            <li class="nav-item center-menu">
-              <a class="nav-link" href="../events/events.php">Events</a>
-            </li>
-            <li class="nav-item center-menu">
-              <a class="nav-link active" href="">Resources</a>
-            </li>
-            <li class="nav-item center-menu">
-              <a class="nav-link" href="../ourteam/ourteam.php">Our Team</a>
-            </li>
-             <li class="nav-item center-menu">
-              <a class="nav-link" href="../results/reuslts.php">Results</a>
-            </li>
-            <li class="nav-item center-menu">
-              <a class="nav-link" href="../contact/contact.php">Contact Us</a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <ul class="navbar-nav mr-5" >
-              
-              
-              <li class="nav-item">
-                <a class="nav-link right-link" href="../student/profile.php"><?php echo "$_SESSION[login_user]";?></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link right-link" href="../login/logout.php">Logout</a>
-              </li>
-            
-            </ul>
-          </form>
-        </div>
-      </nav>
-    </div>
-<?php }else{
-  ?>
-  <div>
-      <nav class="navbar navbar-expand-lg navbar-light py-0 ">
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item center-menu">
-              <a class="nav-link active" href="../index.php">School</a>
-            </li>
-            <li class="nav-item center-menu">
-              <a class="nav-link " href="../+2/index.php">+2</a>
-            </li>
-             <li class="nav-item center-menu">
-              <a class="nav-link" href="../engineering/index.php">Engineering</a>
-            </li>
-            <li class="nav-item center-menu">
-              <a class="nav-link " href="../galary/gallery.php">Gallery</a>
-            </li>
-            <li class="nav-item center-menu">
-              <a class="nav-link " href="../events/events.php">Events</a>
-            </li>
-            <li class="nav-item center-menu">
-              <a class="nav-link active" href="">Resources</a>
-            </li>
-            
-            <li class="nav-item center-menu">
-              <a class="nav-link" href="../ourteam/ourteam.php">Our Team</a>
-            </li>
-             
-            <li class="nav-item center-menu">
-              <a class="nav-link" href="../contact/contact.php">Contact Us</a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <ul class="navbar-nav mr-5" >
-              <li class="nav-item dropdown" >
-                <a class="nav-link right-link dropdown-toggle"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false" >Login</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="../login/login.php">Student</a>
-                <a class="dropdown-item" href="../login/teacherlogin.php">Teacher</a>
-                
-              </div>
-              </li>
-            </ul>
-          </form>
-        </div>
-      </nav>
-    </div>
-  <?php
-}?>
 
    <!-- message section -->
 <div class="container-fluid">
@@ -193,85 +40,11 @@ ul#menu li {
   display:inline;
 }
 </style>
-<div class="row" style="justify-content: center;">
-    <ul id="menu" style="margin-top: 10px; ">
-      <li>
-    
-  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    CIVIL
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="civilfirst.php">I Year</a>
-    
+<?php include('faculty/faculty.php'); ?>
 
-    <a class="dropdown-item" href="civilsecond.php">II Year</a>
-    
 
-    <a class="dropdown-item" href="civilthird.php">III Year</a>
-    
-  
-</div>
-  </li>
-  <li>
-    
-  <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" ria-expanded="false">
-    COMPUTER
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="computerfirst.php">I Year</a>
-    <a class="dropdown-item" href="computersecond.php">II Year</a>
-    <a class="dropdown-item" href="computerthird.php">III Year</a>
-    
-  
-</div>
-  </li>
  
-</ul> 
-</div>    
-
- <div id="navbarContent" class="collapse navbar-collapse">
-      <ul class="navbar-nav mr-auto">
-        <!-- Level one dropdown -->
-        <li class="nav-item dropdown">
-          <a id="dropdownMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Dropdown</a>
-          <ul aria-labelledby="dropdownMenu1" class="dropdown-menu border-0 shadow">
-            <li><a href="#" class="dropdown-item">Some action </a></li>
-            <li><a href="#" class="dropdown-item">Some other action</a></li>
-
-            <li class="dropdown-divider"></li>
-
-            <!-- Level two dropdown-->
-            <li class="dropdown-submenu">
-              <a id="dropdownMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Hover for action</a>
-              <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
-                <li>
-                  <a tabindex="-1" href="#" class="dropdown-item">level 2</a>
-                </li>
-
-                <!-- Level three dropdown-->
-                <li class="dropdown-submenu">
-                  <a id="dropdownMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">level 2</a>
-                  <ul aria-labelledby="dropdownMenu3" class="dropdown-menu border-0 shadow">
-                    <li><a href="#" class="dropdown-item">3rd level</a></li>
-                    <li><a href="#" class="dropdown-item">3rd level</a></li>
-                  </ul>
-                </li>
-                <!-- End Level three -->
-
-                <li><a href="#" class="dropdown-item">level 2</a></li>
-                <li><a href="#" class="dropdown-item">level 2</a></li>
-              </ul>
-            </li>
-            <!-- End Level two -->
-          </ul>
-        </li>
-        <!-- End Level one -->
-
-        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Services</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
-      </ul>
-    </div>
+    
   </div>
 </nav>
       
@@ -289,7 +62,7 @@ if (isset($_GET["page"])) {
 $start_from = ($page-1) * $limit;  
 
                                  
-                      $sql="select *from engineering_resource ORDER BY id ASC LIMIT $start_from, $limit";
+                      $sql="select *from engineering_resource where image IS NOT NULL AND image <> '' ORDER BY id ASC LIMIT $start_from, $limit";
                       $query=mysqli_query($db,$sql);
                       while($row=mysqli_fetch_array($query))
                         {
@@ -324,7 +97,7 @@ $start_from = ($page-1) * $limit;
         </li> 
     <li class="page-item">
       <?php  
-$result_db = mysqli_query($db,"SELECT COUNT(id) FROM engineering_resource"); 
+$result_db = mysqli_query($db,"SELECT COUNT(id) FROM engineering_resource where image IS NOT NULL AND image <> '' "); 
 $row_db = mysqli_fetch_row($result_db);  
 $total_records = $row_db[0];  
 $total_pages = ceil($total_records / $limit); 
@@ -351,7 +124,7 @@ echo $pagLink . "</ul>";
   </ul>
 </nav><br>
 
-
+</div>
    
 
     <!-- footer -->
@@ -394,14 +167,6 @@ echo $pagLink . "</ul>";
 }
 
 </style>
-
-
-
-
-
-
-
-
 
 
 

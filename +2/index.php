@@ -14,23 +14,24 @@ session_start();
     <!-- css  -->
     <link rel="stylesheet" type="text/css" href="frontpage/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="frontpage/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="frontpage/css/style.css" />
+    <link rel="stylesheet" href="../frontpage/css/style.css" />
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   </head>
   <body>
     <!-- top banner -->
-    <div class="container-fluid">
+    
+<div class="container-fluid " style="background-color: #d5d8de;">
       <div class="row top-banner p-2">
         <div class="col-lg-8 col-md-8 col-sm-12">
           <div class="row">
-            <div class="col-lg-2 col-sm-6 col-md-4">
+            <div class="col-lg-2 col-sm-4 col-md-4 col-4 mt-">
               <div class="logo">
                 <img src="frontpage/images/logo.jpg" style="margin-top: 20px;" alt="Not Available!" />
               </div>
             </div>
-            <div class="col-sm-8">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-8">
               <div class="top-title">
-                <h1>BUDHANILKANTHA TECHNICAL SCHOOL</h1>
+                <h4>BUDHANILKANTHA TECHNICAL SCHOOL</h4>
               </div>
 
               <div class="top-subtitle">
@@ -53,7 +54,6 @@ session_start();
         </div>
       </div>
     </div>
-
     <!-- navbar -->
     <?php
       if(isset($_SESSION['login_user'])){
@@ -69,7 +69,7 @@ session_start();
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon" style="height: 20px; width: 20px;"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -131,7 +131,7 @@ session_start();
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon" style="height: 20px; width: 20px;"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -155,7 +155,7 @@ session_start();
             <li class="nav-item center-menu">
               <a class="nav-link" href="ourteam/ourteam.php">Our Team</a>
             </li>
-            <li class="nav-item dropdown" >
+            <li class="nav-item center-menu dropdown" >
                 <a class="nav-link right-link dropdown-toggle"
                 id="navbarDropdown"
                 role="button"
@@ -173,7 +173,7 @@ session_start();
               <a class="nav-link" href="contact/contact.php">Contact Us</a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
+          <form class="form-inline my-2 my-lg-0" style="margin-right: 35px;">
             <ul class="navbar-nav mr-5" >
               <li class="nav-item dropdown" >
                 <a class="nav-link right-link dropdown-toggle"
@@ -183,8 +183,8 @@ session_start();
                 aria-haspopup="true"
                 aria-expanded="false" >Login</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="login/login.php">Student</a>
-                <a class="dropdown-item" href="login/teacherlogin.php">Teacher</a>
+                <a class="dropdown-item" href="login/login.php" style="background-color: white;">Student</a>
+                <a class="dropdown-item" href="login/teacherlogin.php" style="background-color: white;">Teacher</a>
                 
               </div>
               </li>
@@ -195,19 +195,36 @@ session_start();
     </div>
   <?php
 }?>
+   <!-- carousel -->
 
-    <!-- home image -->
-    <div class="row p-0">
-      <div class="col-lg-12 col-md-12 col-sm-12">
-        <div>
-          <img src="frontpage/images/banner-img.jpg" class="img-fluid" alt="Not Available!" />
-        </div>
-      </div>
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="2000">
+  <div class="carousel-inner">
+    <div class="carousel-item active" >
+      <img class="d-block w-100" src="frontpage/photos/computerlab.jpg" alt="First slide">
     </div>
+
+    <div class="carousel-item">
+      <img class="d-block w-100" src="frontpage/photos/ophysicslab.jpg" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="frontpage/photos/labd.jpg" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+</div>
+</div>
 
     <!-- announcement section -->
     <div class="container-fluid">
-      <div class="row announcement pt-5">
+      <div class="row announcement pt-3">
         <div class="col-lg-4 ">
           <ul class="nav flex-column" style="margin-bottom: 15px;">
             <li class="nav-item">
@@ -234,7 +251,7 @@ session_start();
               >
             </li>
             <?php } ?>
-            <li class="nav-item">
+            <li class="nav-item"  style="text-align: center;">
               <a class="nav-link" href="View/news.php"
                 ><button type="button" class="btn btn-success">
                   View More
@@ -255,14 +272,14 @@ session_start();
                         {
               ?>
 
-            <li class="nav-item">
+            <li class="nav-item" >
               <a class="nav-link" href="#"
                 ><i class="fa fa-circle"></i></i><?php echo $row['notice']; ?></a
               >
             </li>
            <?php } ?>
 
-            <li class="nav-item">
+            <li class="nav-item"  style="text-align: center;">
               <a class="nav-link" href="View/notice.php"
                 ><button type="button" class="btn btn-success">
                   View More
@@ -271,7 +288,7 @@ session_start();
             </li>
           </ul>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 mb-3">
           <ul class="nav flex-column">
             <li class="nav-item">
               <a class="nav-link active" href="#">CALENDAR EVENTS</a>
@@ -285,12 +302,12 @@ session_start();
 
 
             <li class="nav-item">
-              <a class="nav-link" href="#"><p class="date-marker" style="width:90%; height: 60px; margin-top: 7px;"><?php echo $row['date']; ?><br /><?php echo $row['event']; ?></p>
+              <a class="nav-link" href="#"><p class="date-marker" style="width:100%; height: 60px; margin-top: 7px;"><?php echo $row['date']; ?><br /><?php echo $row['event']; ?></p>
               </a>
             </li>
           <?php } ?>
 
-            <li class="nav-item">
+            <li class="nav-item"  style="text-align: center;">
               <a class="nav-link" href="View/cal.php"
                 ><button type="button" class="btn btn-success">
                   View More
@@ -304,15 +321,17 @@ session_start();
     </div>
 
     <!-- about us banner -->
-    <div class="row p-0">
+    <div class="container-fluid">
+       <div class="row p-0">
       <div class="col-lg-12">
         <div class="about-img">
-          <img src="frontpage/images/banner-img.jpg" alt="Not Available!" />
+          <img src="frontpage/photos/sports.jpg" alt="Not Available!" />
+        </div>
           <div class="title">
-            <form class="form-inline my-2 my-lg-0">
+            <form class="form-inline about my-2 my-lg-0">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link right-link" href="./description/description.php"><h1>ABOUT US</h1></a>
+                <a class="nav-link right-link" href="description/description.php"><h4>ABOUT US</h4></a>
               </li>
             </ul>
           </form>
@@ -320,50 +339,30 @@ session_start();
         </div>
       </div>
     </div>
+    </div>
+   
 
     <!-- message section -->
     <div class="container-fluid">
-      <div class="row message p-5">
-        <div class="col-lg-6 col-sm-12 col-md-6" >
+      <div class="row message p-2">
+        <div class="col-lg-6 col-sm-12 col-md-6 p-sm-0 p-lg-3 p-md-3  p-1" >
           <div class="introduction"  style="margin-bottom: 20px;">
             <h4>INTRODUCTION</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reprehenderit ad saepe facilis doloremque. Id asperiores nam
-              incidunt, ipsum minima suscipit magnam, repudiandae vitae at
-              deleniti cupiditate dicta! Quos nobis sed, recusandae, aut
-              perferendis a molestias omnis iste repellat commodi error harum
-              aliquam cumque eligendi eum asperiores voluptas magnam. Pariatur,
-              recusandae! Lorem ipsum dolor sit amet consectetur, adipisicing
-              elit. Asperiores nobis magni cupiditate unde aliquid modi quas
-              aperiam quod eligendi, beatae tempore corporis laborum
-              exercitationem nesciunt repellendus ipsam. Cupiditate incidunt, ad
-              alias quaerat labore asperiores hic nobis quidem excepturi
-              assumenda saepe itaque consequuntur vel quibusdam? Fugiat expedita
-              beatae sapiente atque sint.<br />
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni
-              tenetur enim, nobis natus sunt vitae culpa, quae earum obcaecati
-              magnam perferendis veniam fuga molestias maiores.
+             <p>
+             Budhanilkantha is committed to academic excellence. The school is dedicated to maintain the academic environment with the help of outstanding faculty engaged in the task of creative sensibility, or sense of responsibility and moral integrity.
+            We believe that children today are responsible for citizens of tomorrow. However, the nourishment of these buds cannot blossom unless and until they get excellent academic environment which will enable them become acquainted with the nation and their society and family. Budhanilkantha is committed to create homely but disciplined environment so that children may become aware of their own future.<br>
             </p>
-            <button type="button" class="btn btn-success">View More</button>
           </div>
         </div>
-        <div class="col-lg-6 col-sm-12 col-md-6">
+        <div class="col-lg-6 col-sm-12 col-md-6 p-sm-0 p-lg-3 p-md-3">
           <div class="introduction"  style="margin-bottom: 20px;">
-            <h4>MESSAGE FROM THE CHIEF</h4>
+            <h4>MESSAGE FROM THE PRINCIPAL</h4>
             <div class="chief-img">
-              <img src="../frontpage/photos/1.jpg" alt="Not Available!" />
+              <img src="frontpage/photos/1.jpg" alt="Not Available!" />
             </div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reprehenderit ad saepe facilis doloremque. Id asperiores nam
-              incidunt, ipsum minima suscipit magnam, repudiandae vitae at
-              deleniti cupiditate dicta! Quos nobis sed, recusandae, aut
-              perferendis a molestias omnis iste repellat commodi error harum
-              aliquam csuids xnxsaw witye hdhe repeltu hu powioer heui Lorem
-              ipsum dolor sit amet Lorem ipsum dolor sit amet.
+              Welcome to Budanilkanta Technical School, Kathmandu, Nepal, a school deeply committed to the mission of inspiring each student a passion for learning, the confidence and competence to pursue their dreams and the commitment to serve as a compassionate global citizen who is a steward of the environment<br>
             </p>
-            <button type="button" class="btn btn-success">View More</button>
           </div>
         </div>
       </div>

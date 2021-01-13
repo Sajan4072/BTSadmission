@@ -1,6 +1,26 @@
 <?php
  include("../include/connection.php");
  session_start();
+ if(!isset($_SESSION['login_user']))
+ {
+  header('location:../login/login.php');
+ }
+ if(isset($_GET['class']))
+ {
+   $class=$_GET['class'];
+ }
+ if(isset($_GET['subject']))
+ {
+  $subject=$_GET['subject'];
+ }
+ if(isset($_GET['page']))
+ {
+  $pageno=$_GET['page'];
+ }
+ else
+ {
+  $pageno=1;
+ }
  ?>
  <!DOCTYPE html>
 <html>
@@ -12,6 +32,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="resources.css">
+  <link rel="stylesheet" href="../../frontpage/css/style.css" />
 </head>
 <body>
   
@@ -27,7 +48,7 @@
             </div>
             <div class="col-sm-8">
               <div class="top-title">
-                <h1>BUDHANILKANTHA TECHNICAL SCHOOL</h1>
+                <h4>BUDHANILKANTHA TECHNICAL SCHOOL</h4>
               </div>
 
               <div class="top-subtitle">
@@ -52,9 +73,7 @@
     </div>
 
     <!-- navbar -->
-    <?php
-      if(isset($_SESSION['login_user'])){
-      ?>
+    
     <div>
       <nav class="navbar navbar-expand-lg navbar-light py-0 ">
         <button
@@ -87,7 +106,7 @@
               <a class="nav-link" href="../events/events.php">Events</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link active" href="">Resources</a>
+              <a class="nav-link active" href="resource.php">Resources</a>
             </li>
             <li class="nav-item center-menu">
               <a class="nav-link" href="../ourteam/ourteam.php">Our Team</a>
@@ -115,84 +134,20 @@
         </div>
       </nav>
     </div>
-<?php }else{
-  ?>
-  <div>
-      <nav class="navbar navbar-expand-lg navbar-light py-0 ">
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item center-menu">
-              <a class="nav-link active" href="../index.php">School</a>
-            </li>
-            <li class="nav-item center-menu">
-              <a class="nav-link " href="../+2/index.php">+2</a>
-            </li>
-             <li class="nav-item center-menu">
-              <a class="nav-link" href="../engineering/index.php">Engineering</a>
-            </li>
-            <li class="nav-item center-menu">
-              <a class="nav-link " href="../galary/gallery.php">Gallery</a>
-            </li>
-            <li class="nav-item center-menu">
-              <a class="nav-link " href="../events/events.php">Events</a>
-            </li>
-            <li class="nav-item center-menu">
-              <a class="nav-link active" href="">Resources</a>
-            </li>
-            
-            <li class="nav-item center-menu">
-              <a class="nav-link" href="../ourteam/ourteam.php">Our Team</a>
-            </li>
-             
-            <li class="nav-item center-menu">
-              <a class="nav-link" href="../contact/contact.php">Contact Us</a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <ul class="navbar-nav mr-5" >
-              <li class="nav-item dropdown" >
-                <a class="nav-link right-link dropdown-toggle"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false" >Login</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="../login/login.php">Student</a>
-                <a class="dropdown-item" href="../login/teacherlogin.php">Teacher</a>
-                
-              </div>
-              </li>
-            </ul>
-          </form>
-        </div>
-      </nav>
-    </div>
-  <?php
-}?>
+ 
 
    <!-- message section -->
 <div class="container-fluid">
-<div class="row" style="background-color: green; height: 40px; color: white;justify-content: center;">
- <h4>WELCOME TO COLLEGE RESOURCES</h4>
+<div class="row" style="background-color: green; height: 40px; color: white; justify-content: center;">
+ <h4>HERE ARE SOME RESOURCES OF MANAGEMENT FACULTY</h4>
 </div>
 <style>
 ul#menu li {
   display:inline;
 }
 </style>
+
 <div class="row" style="justify-content: center;">
     <ul id="menu" style="margin-top: 10px; ">
       <li>
@@ -201,20 +156,31 @@ ul#menu li {
     MANAGEMENT
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="class11mng.php">Class 11</a>
-    <a class="dropdown-item" href="class12mng.php">Class 12</a>
-    
-  
-</div>
+    <a class="dropdown-item" href="resource.php?class=11" style="background-color: white;">Class 11</a>
+    <a class="dropdown-item" href="resource.php?class=12" style="background-color: white;">Class 12</a>
+  </div>
   </li>
- 
-  
-</ul> 
-</div>    
+ </ul> 
+</div>      
 
- 
-      
-        
+<?php if(isset($class))
+  { 
+   if($class==11)
+   {
+     include('management/class11.php');  
+   }
+
+   if($class==12)
+   {
+     include('management/class12.php');
+   } 
+
+ } ?>
+
+ <!--  ---------------------------------------------------------------------------------------------------------------------------------
+                  ********************** this part is displayed at first like resource.php PART1 start*********************************
+  --------------------------------------------------------------------------------------------------------------------------------- -->
+      <?php if(!isset($class)){ ?>
 <h5 style="text-align: center;">NOTE'S PHOTOS</h5>
             <div class="row row-image" style="margin-top: 50px; background-color: #fae19d; justify-content: center; ">
 <?php 
@@ -289,17 +255,234 @@ echo $pagLink . "</ul>";
     </li>
   </ul>
 </nav><br>
+<?php } ?>
+ <!--  ---------------------------------------------------------------------------------------------------------------------------------
+                  ********************** ************* PART1 END*********************************
+  --------------------------------------------------------------------------------------------------------------------------------- -->
 
+
+
+
+
+   <!--  ---------------------------------------------------------------------------------------------------------------------------------
+      ********************** this part is displayed when class 11 or 12 is selected  like class11mng.php class12mng.php **************   
+                                               *******  PART2 START*********************************
+  --------------------------------------------------------------------------------------------------------------------------------- -->
+
+<?php if(isset($class) && !isset($subject) ){ ?>
+
+ <div class="row row-image" style="margin-top: 50px; background-color: #fae19d; ">
+
+                         <?php  
+
+
+    $limit = 3;  
+if (isset($_GET["page"])) {
+  $page  = $_GET["page"]; 
+  } 
+  else{ 
+  $page=1;
+  };  
+$start_from = ($page-1) * $limit;            
+                      $sql="select *from college_resource where management = 1 and class = $class and image IS NOT NULL AND image <> '' ORDER BY id ASC LIMIT $start_from, $limit";
+                      $query=mysqli_query($db,$sql);
+                      while($row=mysqli_fetch_array($query))
+                        {
+?>        
+                     
+
+
+        
+          <div class="col-lg-4 col-md-4 col-sm-12 col-12 mt-2" >
+          <img src="../teacher/photo/<?php echo $row['image']; ?>" class="img-fluid" style="height: 450px; width: 350px;">
+          <p style="text-align: center;"><?php echo "class: "; echo $row['class']; ?></p>
+          <p style="text-align: center;"> <?php echo $row['subject'];?></p>
+          
+          </div>
+          <?php
+          }?>
+          </div>                    
+                      
    
 
+
+<nav aria-label="Page navigation example" style="background-color: #d5d8de;">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+     <?php if($page>=2){  
+        ?><li class='page-item'> 
+          <?php 
+            echo "<a class='page-link' href='resource.php?class=".$class."&&page=".($page-1)."'>  Prev </a>";   
+        ?>
+        </li>
+        <?php 
+        }  ?>
+       </li>
+    <li class="page-item">
+      <?php  
+
+$result_db = mysqli_query($db,"SELECT COUNT(id) FROM college_resource where class=$class and image IS NOT NULL AND image <> ''"); 
+$row_db = mysqli_fetch_row($result_db);  
+$total_records = $row_db[0];  
+$total_pages = ceil($total_records / $limit); 
+/* echo  $total_pages; */
+$pagLink = "<ul class='pagination'>";  
+for ($i=1; $i<=$total_pages; $i++) {
+              $pagLink .= "<li class='page-item'><a class='page-link' class ='active' href='resource.php?class=".$class."&&page=".$i."'>".$i."</a></li>"; 
+}
+echo $pagLink . "</ul>";  
+?></li>
+     <li class="page-item">
+<?php 
+  if($page<$total_pages){
+        ?>
+        <li class='page-item'>
+        <?php   
+            echo "<a class='page-link' href='resource.php?class=".$class."&&page=".($page+1)."'>  Next </a>"; ?>
+            </li>
+            <?php  
+        }   
+  ?>
+    </li>
+  </ul>
+</nav><br>
+
+<?php } ?>
+ <!--  ---------------------------------------------------------------------------------------------------------------------------------
+                  ********************** ************* PART2 END*********************************
+  --------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+   <!--  ---------------------------------------------------------------------------------------------------------------------------------
+      ********************** this part is displayed when class 11 or 12 is selected  like class11mng.php class12mng.php **************   
+                                               *******  PART2 START*********************************
+  --------------------------------------------------------------------------------------------------------------------------------- -->
+
+<?php if(isset($subject) && isset($class)) { ?>
+         <div class="row" style="background-color: #fae19d; padding: 20px; margin-top: 10px; justify-content: center;">
+    <div class="col">
+         <div class="row" style="justify-content: center;"><h2>NOTE'S PHOTO</h2></div>
+         <div class="row">
+   <?php 
+    $limit = 3;  
+if (isset($_GET["page"])) {
+  $page  = $_GET["page"]; 
+  } 
+  else{ 
+  $page=1;
+  };  
+$start_from = ($page-1) * $limit;  
+         
+                      $sql="select *from college_resource where management = 1 and class = $class and subject = '$subject'  and image IS NOT NULL AND image <> '' ORDER BY id ASC LIMIT $start_from, $limit";
+                      $query=mysqli_query($db,$sql);
+                      while($row=mysqli_fetch_array($query))
+                        {
+?>
+
+        
+          <div class="col-lg-4 col-md-4 col-sm-12 col-12 mt-2" >
+          <img src="../teacher/photo/<?php echo $row['image']; ?>" class="img-fluid" style="height: 450px; width: 350px;">
+          <p style="text-align: center;"><?php echo "class: "; echo $row['class']; ?></p>
+          <p style="text-align: center;"> <?php echo $row['subject'];?></p>
+          
+          </div>
+          <?php
+          }?>
+          </div>   
+        </div> 
+      </div> 
+
+         
+
+  <div class="row" style="background-color: #fae19d; padding: 20px; margin-top: 10px; justify-content: center;">
+    <div class="col">
+         <div class="row" style="justify-content: center;"><h2>PDF FILES</h2></div>
+         <div class="row">
+           <?php          
+                      $sql="select *from college_resource where management = 1 and class =$class and subject = '$subject'  and pdf IS NOT NULL AND pdf <> '' LIMIT $start_from, $limit ";
+                      $query=mysqli_query($db,$sql);
+                      while($post= mysqli_fetch_array($query))
+                      {
+
+                      ?>
+           <div class="col-lg-3 col-md-3 col-sm-3">
+            
+            
+                
+              <div class="text-center">
+                
+                <button type="button" class="btn btn-success btnview" >
+  <a href="read.php?id=<?php echo $post['id']; ?>&&class=<?php echo $class; ?>&&subject=<?php echo $subject; ?>&&page=<?php echo $pageno; ?>" style="color: black;"><?php echo $post['pdf'];?></a>
+  </button>
+</div>
+              </div>
+               <?php
+         }
+         ?>
+
+           </div>
+          </div>
+        </div>             
+                      
+   
+
+
+   <nav aria-label="Page navigation example" style="background-color: #d5d8de;">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+     <?php if($page>=2){  
+        ?><li class='page-item'> 
+          <?php 
+            echo "<a class='page-link' href='resource.php?class=".$class."&&subject=".$subject."&&page=".($page-1)."'>  Prev </a>";   
+        ?>
+        </li>
+        <?php 
+        }  ?> 
+      </li>
+    <li class="page-item"><?php  
+
+$result_db = mysqli_query($db,"SELECT COUNT(id) FROM college_resource where class=$class and subject='$subject' "); 
+$row_db = mysqli_fetch_row($result_db);  
+$total_records = $row_db[0];  
+$total_pages = ceil($total_records / $limit); 
+/* echo  $total_pages; */
+$pagLink = "<ul class='pagination'>";  
+for ($i=1; $i<=$total_pages; $i++) {
+              $pagLink .= "<li class='page-item'><a class='page-link' class ='active' href='resource.php?class=".$class."&&subject=".$subject."&&page=".$i."'>".$i."</a></li>"; 
+}
+echo $pagLink . "</ul>";  
+?></li>
+    <li class="page-item">
+<?php 
+  if($page<$total_pages){
+        ?>
+        <li class='page-item'>
+        <?php   
+            echo "<a class='page-link' href='resource.php?class=".$class."&&subject=".$subject."&&page=".($page+1)."'>  Next </a>"; ?>
+            </li>
+            <?php  
+        }   
+  ?>
+    </li>
+  </ul>
+</nav><br>
+<?php } ?>
+
+
+
+
+ <!--  ---------------------------------------------------------------------------------------------------------------------------------
+                  ********************** ************* PART2 END*********************************
+  --------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+
+    </div>
+
+    
+
     <!-- footer -->
-   <?php include('../include/footer.php'); ?>
-
-
-
-
-
-<script src="script.js"></script>
+       <?php include('../include/footer.php'); ?>
 
 <style>
 .button {
@@ -338,21 +521,6 @@ echo $pagLink . "</ul>";
 }
 
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

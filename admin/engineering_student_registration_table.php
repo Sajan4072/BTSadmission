@@ -92,7 +92,7 @@ include('include/check_login.php');
                         <input type="text" name="search" placeholder=" search " onkeyup="search"  id='search' style="border-radius:5px;border: blue;  "><i class='fa fa-search' style="margin-left: px; margin-top: 4px;"> </i>
                     </p>
                     <p style="display: inline-flex;">
-                        <a href="engineering_student_registration.php" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; margin-left: 250px">register</a>
+                        <a href="engineering_student_registration.php" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px;  margin-left: 20px; float: right;">register</a>
                     </p>
                     <div class="col-12">
                         <div class="row justify-content-center">

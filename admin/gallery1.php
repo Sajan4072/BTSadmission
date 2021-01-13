@@ -89,11 +89,12 @@ include('include/check_login.php');
           <div class="row">
             <?php if(!isset($edit)) {?>
             <div class="col-lg-3 col-md-4 col-sm-4" style="margin-top: 10px">
-              <input type="file" name="image" > 
+              <input type="file" name="image" style="overflow: hidden;"> 
               
-            </div>
+            </div></div>
+            <div class="row">
 
-            <div class="check" style="margin-top: 12px; margin-left: 180px; color: #224a8f;">
+            <div class="check" style="margin-top: 12px; margin-left: 20px;color: #224a8f;">
             
           
              <input type="checkbox" name="plus2" value="Yes">
@@ -118,7 +119,7 @@ include('include/check_login.php');
              <input type="checkbox" name="engineering" value="Yes" <?php if ($photo['engineering']==1) echo "checked"; ?>>
             Engineering
           </div>
-             
+             </div>
 
         <?php } ?>
             <div class="col-4">
@@ -128,16 +129,16 @@ include('include/check_login.php');
             </div>
             <?php if(isset($edit)){ ?>
 
-          <div class="col-lg-6 col-md-4 col-sm-4"><p style=" margin-top: 5px;">
+          <div class="col-lg-10 col-md-10 col-sm-12"><p style=" margin-top: 5px;">
 
             <button type="submit" name="update" class="btn btn-success" style="border: none; border-radius: 20px; margin-top: 5px;">update</button>
 
             </div>
 
           <?php } else { ?>
-             <div class="col-lg-6 col-md-4 col-sm-4"><p style=" margin-left: 280px;">
+             <div class="col-lg-2 col-md-2 col-sm-12"><p>
 
-            <button type="submit" name="submit" class="btn btn-success" style="border: none; border-radius: 20px; margin-top: 5px;">POST</button>
+            <button type="submit" name="submit" class="btn btn-success" style="border: none; border-radius: 20px; margin-top:5px;">POST</button>
 
             </div>
 

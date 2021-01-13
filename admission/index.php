@@ -16,6 +16,8 @@
     <link rel="stylesheet" type="text/css" href="../+2/admission/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../+2/admission/css/animate.css" />
     <link rel="stylesheet" type="text/css" href="../+2/admission/css/style.css" />
+         <link rel="stylesheet" href="../frontpage/css/style.css" />
+
     <script
       src="https://code.jquery.com/jquery-3.5.1.min.js"
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
@@ -46,9 +48,77 @@
     <!-- course structure -->
    
 
+
+<div class="container-fluid" style="margin: 0px; padding: 0px;">
+      <nav class="navbar navbar-expand-xl navbar-light py-0 " >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          >
+          <span class="navbar-toggler-icon"style="height: 20px; width: 25px;"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto" >
+            <li class="nav-item center-menu">
+              <a class="nav-link active " href="../index.php">School</a>
+            </li>
+            <li class="nav-item center-menu">
+              <a class="nav-link " href="../+2/index.php" style="color: #1A237E;">+2</a>
+            </li>
+             <li class="nav-item center-menu">
+              <a class="nav-link" href="../engineering/index.php" style="color: #1A237E;">Engineering</a>
+            </li>
+            <li class="nav-item center-menu">
+              <a class="nav-link" href="../galary/gallery.php" style="color: #1A237E;">Gallery</a>
+            </li>
+            <li class="nav-item center-menu">
+              <a class="nav-link" href="../events/events.php" style="color: #1A237E;">Events</a>
+            </li>
+            
+            <li class="nav-item center-menu">
+              <a class="nav-link" href="../ourteam/ourteam.php" style="color: #1A237E;">Our Team</a>
+            </li>
+            <li class="nav-item center-menu">
+              <a class="nav-link active" href="../admission/index.php">Admision form</a>
+            </li>
+             
+            <li class="nav-item center-menu">
+              <a class="nav-link" href="../contact/contact.php" style="color: #1A237E;">Contact Us</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0" style="margin-right: 35px; ">
+            <ul class="navbar-nav mr-5" >
+              <li class="nav-item dropdown" >
+                <a class="nav-link right-link dropdown-toggle"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false" style="color: #1A237E;">Login</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                <a class="dropdown-item" href="../login/login.php" style="background-color: white">Student</a>
+                <a class="dropdown-item" href="../login/teacherlogin.php" style="background-color: white">Teacher</a>
+                
+              </div>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </nav>
+</div>
     <!-- form -->
-    <div class="title">
-      <h4>Amission Form for School</h4>
+    <div style="font-weight: bold;
+  font-family: PT Sans, sans-serif;
+  font-style: italic;
+  margin-top: 2em;
+  text-align: center;">
+      <h4>Admission Form For School</h4>
     </div>
     <div class="container">
       <div class="form-container">
@@ -1128,20 +1198,21 @@
               </div>
               <div class="form-row">
                 <div class="col-sm-12">
-                  <p>
-                    I, hereby, declare that the information provided in this
-                    form is true to the best of my knowledge. I feel pleasure to
-                    show my commitment in the following rules and regulations
-                    strictly. If I violate the rules and regulations of the
-                    school, I will accept any action against me.
-                    <input
+                  <input
                       type="checkbox"
                       name="agreed"
                       class="agree-checkbox"
                       value="yes"
                       id='agreed'
                       
-                    />
+                    /><p>
+                  
+                    I, hereby, declare that the information provided in this
+                    form is true to the best of my knowledge. I feel pleasure to
+                    show my commitment in the following rules and regulations
+                    strictly. If I violate the rules and regulations of the
+                    school, I will accept any action against me.
+                    
                       <br>
                        <small id="term" style="color: red; font-style: italic; font-size:20px;">you must accept term and conditions to submit form</small>
                     <?php

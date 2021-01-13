@@ -22,6 +22,8 @@ $code=$_SESSION['code'];
 
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="./results.css">
+         <link rel="stylesheet" href="../../frontpage/css/style.css" />
+
 </head>
 
 <body>
@@ -44,40 +46,8 @@ $code=$_SESSION['code'];
   </style>
     <!-- top banner -->
     <!-- top banner -->
-    <div class="container-fluid">
-      <div class="row top-banner p-2">
-        <div class="col-lg-8 col-md-8 col-sm-12">
-          <div class="row">
-            <div class="col-lg-2 col-sm-6 col-md-4">
-              <div class="logo">
-                <img src="../frontpage/images/logo.jpg" style="margin-top: 20px;" alt="Not Available!" />
-              </div>
-            </div>
-            <div class="col-sm-8">
-              <div class="top-title">
-                <h1>BUDHANILKANTHA TECHNICAL SCHOOL</h1>
-              </div>
-
-              <div class="top-subtitle">
-                <h5>A BETTER LEARNING FUTURE STARTS</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
-          <div class="quick-contact">
-            <ul>
-              <li><i class="fa fa-phone"></i>&nbsp;01-4372300</li>
-              <li><i class="fa fa-envelope"></i>bnktechschool@gmail.com</li>
-              <li>
-                <i class="fa fa-map-marker"></i>&nbsp;&nbsp;Budhanilkantha-3,
-                Kathmandu, Nepal
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+   
+   <?php include('../include/banner.php'); ?>
      <?php
       if(isset($_SESSION['login_user'])){
       ?>
@@ -130,7 +100,7 @@ $code=$_SESSION['code'];
               
               
               <li class="nav-item">
-                <a class="nav-link right-link" href="../school/student/detail/profile.php"><?php echo "$_SESSION[login_user]";?></a>
+                <a class="nav-link right-link" href="../student/profile.php"><?php echo "$_SESSION[login_user]";?></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link right-link" href="../login/logout.php">Logout</a>
@@ -294,11 +264,14 @@ $code=$_SESSION['code'];
                 </table>
             </div>
             <div class="col-lg-2 col-md-12 col-sm-12 termsection">
+              <h4 style="border:1px solid #1a237e;
+   color: white;
+    background-color:#1a237e;
+    text-align: center;">TERMS</h4>
+                        
                 <div class="container-fluid">
                     <div class="termslist ">
-                        <div class="row title">
-                            <h4>TERMS</h4>
-                        </div>
+                        
                         <div class="row selected" id="first"><a href="#" type="button" onclick="load_on_term(1)">First term </a></div>
                         <div class="row " id="second"><a href="#" onclick="load_on_term(2)">Second term</a></div>
                         <div class="row " id="third"><a href="#" onclick="load_on_term(3)">Third term</a></div>
@@ -326,6 +299,8 @@ $code=$_SESSION['code'];
         </div>
       </div>
     </div>
+  </div>
+  </div>
         <!-- footer -->
 <?php include('../../include/footer.php'); ?>
         <input type="hidden" id="uniquecode" value="<?php echo $code; ?>">

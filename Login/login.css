@@ -1,6 +1,6 @@
 body{
  
-  background-image: url(banner-img.jpg);
+  background-color: grey;
   background-repeat: no-repeat;
   background-size: contain;
   background-size: 100% 100%;
@@ -21,7 +21,7 @@ body{
 	 justify-content: center; 
 	 padding-top:5px;
 	 color:#ffffff;
-	 height: 40px; 
+	 min-height: 50px; 
 	 opacity: 70%;
 	 position: relative;
 }

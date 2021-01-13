@@ -53,7 +53,9 @@ body {
 nav {
   background-color: #fff;
 }
-
+.navbar-toggler{
+ background-color:#d6d4d4;border: none; margin-bottom:3px; margin-top: 3px;  height: 35px; width: 50px;
+}
 .navbar-nav > .center-menu {
   padding-left: 20px;
   padding-right: 20px;

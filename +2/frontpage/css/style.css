@@ -17,18 +17,38 @@ body {
   width: 100%;
 }
 
-.top-title h1 {
+.top-title h4 {
   margin-top: 10px;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: bolder;
   color: #1a237e;
 }
+
+@media screen and (max-width: 425px) {
+ .top-title h4 {
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: bolder;
+  color: #1a237e;
+}
+}
+
 
 .top-subtitle h5 {
   font-style: italic;
   font-weight: bold;
   color: green;
   font-size: 22px;
+}
+
+@media screen and (max-width: 425px) {
+ .top-subtitle h5 {
+  margin-top: 6px;
+  font-style: italic;
+  font-weight: bold;
+  color: green;
+  font-size: 12px;
+}
 }
 
 .quick-contact {
@@ -70,6 +90,9 @@ nav {
 
 .navbar-nav > .nav-item > .right-link {
   color: #1a237e;
+}
+.navbar-toggler{
+ background-color:#d6d4d4;border: none; margin-bottom:3px; margin-top: 3px; height: 35px; width: 50px;
 }
 
 /* home image */
@@ -122,22 +145,28 @@ nav {
 
 /* home image */
 .about-img {
-  width: 100%;
-  height: 400px;
-  position: relative;
+   opacity: 0.6;
 }
 
-.about-img::before {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: #bbdefb;
-  opacity: 0.6;
+.about ul li{
+  border: 1px solid blue; border-radius:50px; background-color: #1a237e; padding: 8px;
+}
+@media screen and (max-width: 425px) {
+.about ul li{
+  border: 1px solid blue; border-radius:50px; background-color: #1a237e; padding: 4px;
+  height: 40px;
+  width: 50px;
+}
+}
+.about ul li a h4{
+  color: white;
 }
 
+@media screen and (max-width: 425px) {
+.about ul li a h4{
+  font-size: 8px;
+}
+}
 .title {
   position: absolute;
   top: 50%;
@@ -159,6 +188,7 @@ nav {
 .message-chief h4,
 .introduction h4 {
   font-weight: bolder;
+  font-size: 20px;
   color: #1a237e;
   text-align: center;
 }
@@ -168,10 +198,9 @@ nav {
 }
 
 .chief-img {
-  width: 30%;
+  width: 50%;
   display: block;
   margin: auto;
-  background-color: #1a237e;
   border-radius: 100%;
   padding: 10px;
 }
@@ -217,7 +246,7 @@ nav {
 
 .social-media li i {
   font-size: 22px;
-  color: #bbdefb;
+  color: white;
 }
 
 /* content */

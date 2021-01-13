@@ -13,6 +13,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="../../frontpage/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../../frontpage/css/font-awesome.min.css" />
     <link rel="stylesheet" href="../../frontpage/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="gal.css">
   </head>
   <body>
     
@@ -49,7 +50,7 @@ session_start();
     
 
     <!-- about us banner -->
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" style="background-color: white;">
       <div class="col-lg-6">
         
           

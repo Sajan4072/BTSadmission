@@ -71,7 +71,7 @@ include('include/check_login.php');
             <!-- content -->
             
             <div class="col-lg-8 col-md-8 col-sm-12">
-                <div class="container uploadsection">
+                <div class="container">
                   <div class="head">
                     <p ><spam class="span">Gallery Images</spam></p>  
                   </div>
@@ -95,11 +95,9 @@ include('include/check_login.php');
                     </div>
                     <?php } ?>
                    
-                    <p style="display: inline-flex;">
-                        <a href="gallery1.php" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; margin-left: 450px">Add</a>
+                    <p>
+                        <a href="gallery1.php" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px;  float:right; ">Add</a>
                     </p>
-                    <div class="col-12">
-                        <div class="row justify-content-center">
                             <table class="table">
                                 <thead class="blue ">
                                     <tr>

@@ -105,27 +105,42 @@ error_reporting(0);
 
           <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-4" style="margin-top: 10px">
-              Choose pdf file
-              <input type="file" name="pdf" > 
-              
-            </div>
-          </div>
-<div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-4" style="margin-top: 10px">
-              Choose Subject
-              <input type="text" name="subject" > 
-              
+              Choose class <br>
+              <select name="class" id="class">
+                <option selected disabled>choose class</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+               <option value="10">10</option>
+                
+              </select>
+           
             </div>
           </div>
 
 
           <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-4" style="margin-top: 10px">
-              Choose class
-              <input type="number" name="class" > 
+            <div class="col-lg-3 col-md-4 col-sm-4" style="margin-top: 10px; margin-bottom: 5px;">
+              Choose subject
+             
+              
+                  <select name="subject" id="subject">
+                  <option selected disabled>Choose subject</option>
+                    
+                  </select>
+             
               
             </div>
           </div>
+
+
+
 
 
 
@@ -136,8 +151,8 @@ error_reporting(0);
            
               
             </div>
-            <div class="col-lg-6 col-md-4 col-sm-4"><p style=" margin-left: 280px;">
-            <button type="submit" name="submit" class="btn btn-success" style="border: none; border-radius: 20px; margin-top: 5px; margin-left: 159px;">POST</button>
+            <div class="col-lg-4 col-md-4 col-sm-4"><p style=" margin-left: 280px;">
+            <button type="submit" name="submit" class="btn btn-success" style="border: none; border-radius: 20px; margin-top: 5px; float: right;">POST</button>
 
             </p></div>
 </form>
@@ -157,4 +172,102 @@ error_reporting(0);
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </body>
+<script>
+
+  // for class 1 and 2
+    var class2=  " <option selected disabled>Choose subject</option>"+
+                 "<option value='English'>English</option>"+
+                 "<option value='Grammar'>Grammar</option>"+
+                 "<option value='Math'>Math</option>"+
+                 "<option value='Nepali'>Nepali</option>"+
+                 "<option value='Science'>Science</option>"+
+                 "<option value='Social'>Social</option>";
+
+  // for classs 3 and 4 
+
+   var class3=  " <option selected disabled>Choose subject</option>"+
+                 "<option value='English'>English</option>"+
+                 "<option value='Grammar'>Grammar</option>"+
+                 "<option value='Math'>Math</option>"+
+                 "<option value='Nepali'>Nepali</option>"+
+                 "<option value='Science'>Science</option>"+
+                 "<option value='Social'>Social</option>"+
+                 "<option value='Health'>Health</option>"+
+                 "<option value='Computer'>Computer</option>"+
+                 "<option value='Moral'>Moral</option>";
+   // class 5 and 6
+var class5=  " <option selected disabled>Choose subject</option>"+
+                 "<option value='English'>English</option>"+
+                 "<option value='Grammar'>Grammar</option>"+
+                 "<option value='Math'>Math</option>"+
+                 "<option value='Nepali'>Nepali</option>"+
+                 "<option value='Science'>Science</option>"+
+                 "<option value='Social'>Social</option>"+          
+                 "<option value='Computer'>Computer</option>"+
+                 "<option value='EPH'>EPH</option>";
+
+var class7=  " <option selected disabled>Choose subject</option>"+
+                 "<option value='English'>English</option>"+
+                 "<option value='Grammar'>Grammar</option>"+
+                 "<option value='Math'>Math</option>"+
+                 "<option value='Nepali'>Nepali</option>"+
+                 "<option value='Science'>Science</option>"+
+                 "<option value='Social'>Social</option>"+          
+                 "<option value='Computer'>Computer</option>"+
+                 "<option value='EPH'>EPH</option>"+
+                 "<option value='Account'>Account</option>"+
+                 "<option value='Optional Math'>Optional math</option>";
+
+  //class 8 and 9 10
+
+  var class8=  " <option selected disabled>Choose subject</option>"+
+                 "<option value='English'>English</option>"+
+                 "<option value='Math'>Math</option>"+
+                 "<option value='Nepali'>Nepali</option>"+
+                 "<option value='Science'>Science</option>"+
+                 "<option value='Social'>Social</option>"+          
+                 "<option value='Computer'>Computer</option>"+
+                 "<option value='EPH'>EPH</option>"+
+                 "<option value='Account'>Account</option>"+
+                 "<option value='Optional Math'>Optional math</option>";
+
+
+
+
+            
+  $('#class').change(function(){
+   
+       var get_class=$('#class').val();
+        fill_subject(get_class);
+  });
+
+  function fill_subject(get_class)
+  {
+     $('#subject').html('');
+     if(get_class==1 || get_class==2)
+     {
+       $('#subject').append(class2);
+     }
+       if(get_class==3 || get_class==4)
+     {
+       $('#subject').append(class3);
+     }
+      if(get_class==5 || get_class==6)
+     {
+       $('#subject').append(class5);
+
+     }
+
+      if(get_class==7)
+     {
+       $('#subject').append(class7);
+     }
+      if(get_class==8 || get_class==9 || get_class==10)
+     {
+       $('#subject').append(class8);
+     }
+    
+  }
+
+</script>
 </html>

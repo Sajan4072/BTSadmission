@@ -12,44 +12,14 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="./resource.css">
+  <link rel="stylesheet" href="../frontpage/css/style.css" />
+
 </head>
 <body>
   
 
 <!-- top banner -->
-    <div class="container-fluid ">
-      <div class="row top-banner p-2">
-        <div class="col-lg-8 col-md-8 col-sm-12">
-          <div class="row">
-            <div class="col-lg-2 col-sm-6 col-md-4">
-              <div class="logo">
-                <a href="../index.html"><img src="../frontpage/images/logo.jpg" style="margin-top: 20px;" alt="Not Available!" /></a>              </div>
-            </div>
-            <div class="col-sm-8">
-              <div class="top-title">
-                <h1>BUDHANILKANTHA TECHNICAL SCHOOL</h1>
-              </div>
-
-              <div class="top-subtitle">
-                <h5>A BETTER LEARNING FUTURE STARTS</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
-          <div class="quick-contact">
-            <ul>
-              <li><i class="fa fa-phone"></i>&nbsp;01-4372300</li>
-              <li><i class="fa fa-envelope"></i>bnktechschool@gmail.com</li>
-              <li>
-                <i class="fa fa-map-marker"></i>&nbsp;&nbsp;Budhanilkantha-3,
-                Kathmandu, Nepal
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php include "../include/banner.php";?>
 
     <!-- navbar -->
     <?php
@@ -66,7 +36,7 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon" style="height: 20px; width: 20px;"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -161,7 +131,7 @@
               <a class="nav-link" href="../contact/contact.php">Contact Us</a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
+          <form class="form-inline my-2 my-lg-0" style="margin-right: 35px; ">
             <ul class="navbar-nav mr-5" >
               <li class="nav-item dropdown" >
                 <a class="nav-link right-link dropdown-toggle"
@@ -170,9 +140,9 @@
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false" >Login</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="../login/login.php">Student</a>
-                <a class="dropdown-item" href="../login/teacherlogin.php">Teacher</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                <a class="dropdown-item" href="../login/login.php" style="background-color: white;">Student</a>
+                <a class="dropdown-item" href="../login/teacherlogin.php" style="background-color: white">Teacher</a>
                 
               </div>
               </li>
@@ -393,8 +363,10 @@ $start_from = ($page-1) * $limit;
 
         
           <div class="col-lg-4 col-md-4 col-sm-12 col-12 mt-2" style="justify-content: center;" >
-          <img src="../school/teacher/photo/<?php echo $row['image']; ?>" class="img-fluid" style="height: 450px; width: 350px;">
-          <p style="text-align: center;"><?php echo "class: "; echo $row['class']; ?></p>
+            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal<?php echo $row['id'] ?>">
+
+          <img src="../school/teacher/photo/<?php echo $row['image']; ?>" class="img-fluid" style="height: 450px; width: 350px;"></button>
+          <p style="text-align: center; font-weight: bold;"><?php echo "CLASS: "; echo $row['class']; ?></p>
           <p style="text-align: center;"> <?php echo $row['subject'];?></p>
           
           </div>
@@ -404,6 +376,22 @@ $start_from = ($page-1) * $limit;
         </div>                 
                       
    
+<div class="modal fade" id="exampleModal<?php echo $row['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="../admin/photo/<?php echo $row['photo']; ?>" class="img-fluid" style="height: 350px; width: 450px;">
+      </div>
+      
+    </div>
+  </div>
+</div>
+        
 
  <nav aria-label="Page navigation example" style="background-color: #d5d8de;">
   <ul class="pagination justify-content-center">
@@ -450,49 +438,7 @@ echo $pagLink . "</ul>";
     
 
     <!-- footer -->
-    <div class="container-fluid">
-      <div class="row bottom-section p-5 pb-0">
-        <div class="col-sm-12">
-          <div class="bottom-title">
-            <h5>BUDHANILKANTHA TECHNICAL SCHOOL</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="row bottom-section pl-5 pr-5">
-        <div class="col-lg-3">
-          <span>Address</span><br />Budhanilkantha-3, Kathmandu, Nepal
-        </div>
-        <div class="col-lg-3"><span>TEL NO.</span><br />01-4372300</div>
-        <div class="col-lg-3">
-          <span>EMAIL</span><br />bnktechschool@gmail.com
-        </div>
-        <div class="col-lg-3"><span>WEBSITE</span><br />www.bts.com</div>
-      </div>
-
-      <div class="row bottom-section p-5 pb-0">
-        <div class="col-sm-12">
-          <div class="bottom-title">
-            <h5>STAY IN TOUCH</h5>
-          </div>
-          <div class="social-media">
-            <ul>
-              <li><i class="fa fa-facebook"></i></li>
-              <li><i class="fa fa-twitter"></i></li>
-              <li><i class="fa fa-pinterest"></i></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="row bottom-section">
-        <div class="col-sm-12">
-          <div class="bottom-title">
-            <h5>&copy; All rights reserved Budhanilkantha Technical School</h5>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php include"../include/footer.php";?>
 
 
 
@@ -501,8 +447,11 @@ echo $pagLink . "</ul>";
 
 
 
-<script src="script.js"></script>
-
+<script src="script.js">
+  $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+</script>
 <style>
 .button {
   border: none;
@@ -541,20 +490,11 @@ echo $pagLink . "</ul>";
 
 </style>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<style type="text/css">
+  .dropdown-menu .dropdown-item{
+    background-color: white;
+  }
+</style>
 
 
 

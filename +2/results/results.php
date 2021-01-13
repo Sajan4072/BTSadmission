@@ -21,6 +21,8 @@ $code=$_SESSION['code'];
 
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="./results.css">
+         <link rel="stylesheet" href="../../frontpage/css/style.css" />
+
 </head>
 
 <body>
@@ -53,10 +55,10 @@ $code=$_SESSION['code'];
             </div>
             <div class="col-sm-8">
               <div class="top-title">
-                <h1>BUDHANILKANTHA TECHNICAL SCHOOL</h1>
+                <h4>BUDHANILKANTHA TECHNICAL SCHOOL</h4>
               </div>
 
-              <div class="top-subtitle">
+              <div class="top-subtitle" style="float: left;">
                 <h5>A BETTER LEARNING FUTURE STARTS</h5>
               </div>
             </div>
@@ -129,7 +131,7 @@ $code=$_SESSION['code'];
               
               
               <li class="nav-item">
-                <a class="nav-link right-link" href="../school/student/detail/profile.php"><?php echo "$_SESSION[login_user]";?></a>
+                <a class="nav-link right-link" href="../student/profile.php"><?php echo "$_SESSION[login_user]";?></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link right-link" href="../login/logout.php">Logout</a>
@@ -291,11 +293,16 @@ $code=$_SESSION['code'];
                 </table>
             </div>
             <div class="col-lg-2 col-md-12 col-sm-12 termsection">
+              
+                            <h4 style="border:1px solid #1a237e;
+   color: white;
+    background-color:#1a237e;
+    text-align: center;">TERMS</h4>
+                        
+              <div class="termslist ">
+                        
                 <div class="container-fluid">
-                    <div class="termslist ">
-                        <div class="row title">
-                            <h4>TERMS</h4>
-                        </div>
+                    
                         <div class="row selected" id="first"><a href="#" type="button" onclick="load_on_term(1)">First term </a></div>
                         <div class="row " id="second"><a href="#" onclick="load_on_term(2)">Second term</a></div>
                         <div class="row " id="third"><a href="#" onclick="load_on_term(3)">Third term</a></div>

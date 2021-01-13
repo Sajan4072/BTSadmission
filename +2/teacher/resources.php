@@ -117,14 +117,22 @@ session_start();
           <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-4" style="margin-top: 10px">
               Choose class
-              <input type="number" name="class" > 
+             <!--  <input type="number" name="class" >  -->
+             <select name="class" id="class">
+               <option selected disabled>choose class</option>
+               <option value="11">Class 11</option>
+               <option value="12">Class 12</option>
+             </select>
               
             </div>
           </div>
           <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-4" style="margin-top: 10px">
+            <div class="col-lg-3 col-md-4 col-sm-4" style="margin-top: 10px; margin-bottom: 5px;">
               Choose subject
-              <input type="text" name="subject" > 
+             <!--  <input type="text" name="subject" >  -->
+             <select name="subject" id="subject">
+                   <option selected disabled>choose subject</option>
+             </select>
               
             </div>
           </div>
@@ -132,8 +140,7 @@ session_start();
             <div class="check" style="margin-top: 10px; margin-left: 7px; color: #224a8f;">
             <div class="col-4"></div>
             
-             <input type="checkbox" name="management" value="Yes">
-            <label for="vehicle1">Management</label>
+             
 
             
           </div>
@@ -148,8 +155,8 @@ session_start();
            
               
             </div>
-            <div class="col-lg-6 col-md-4 col-sm-4"><p style=" margin-left: 280px;">
-            <button type="submit" name="submit" class="btn btn-success" style="border: none; border-radius: 20px; margin-top: 5px; margin-left: 159px;">POST</button>
+            <div class="col-lg-4 col-md-4 col-sm-4"><p style=" margin-left: 280px;">
+            <button type="submit" name="submit" class="btn btn-success" style="border: none; border-radius: 20px; margin-top: 5px;float: right;">POST</button>
 
             </p></div>
 </form>
@@ -163,9 +170,59 @@ session_start();
   </div>
 
 </div>
+
+
+class 12
+
 <script src="https://kit.fontawesome.com/302b58d09d.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script >
+  var class11=" <option selected disabled>choose subject</option>"+
+              "<option value='C.English'>C.English</option>"+
+              "<option value='C.Nepali'>C.Nepali</option>"+
+              "<option value='Accounting'>Accounting</option>"+
+              "<option value='Economics'>Economics</option>"+
+              "<option value='Business Studies'>Business Studies</option>"+
+              "<option value='Hotel Management'>Hotel Management</option>";
+
+  var class12=" <option selected disabled>choose subject</option>"+
+            "<option value='C.English'>C.English</option>"+
+            "<option value='Accounting'>Accounting</option>"+
+            "<option value='Economics'>Economics</option>"+
+            "<option value='Business Studies'>Business Studies</option>"+
+            "<option value='Hotel Management'>Hotel Management</option>"+
+            "<option value='Business Matematics'>Business Matematics</option>"+
+            "<option value='Marketing'>Marketing</option>";
+
+          $('#class').change(function(){
+              
+              fill_subject($('#class').val());
+
+          });
+          function fill_subject(stu_class)
+          {
+             $('#subject').html('');
+
+            if(stu_class==null)
+            {
+
+            }
+            else
+            {
+               if(stu_class==11)
+               { 
+                   $('#subject').append(class11);
+               }
+               if(stu_class==12)
+               {
+                   $('#subject').append(class12);
+               }
+            }
+          }
+
+    
+</script>
 </body>
 </html>

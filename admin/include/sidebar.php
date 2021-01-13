@@ -5,9 +5,9 @@
                <li class="btn <?php if(isset($news_and_event)){echo "active";} ?>"><a href="news and events_table.php" class="active"><i class="fa fa-newspaper-o" ></i>NEWS AND EVENTS</a></li>
 
             <li class="btn <?php if(isset($notice)){echo "active";} ?>"><a href="notice_table.php"><i class="fa fa-bars" ></i>NOTICES</a></li>
-           <li class="btn <?php if(isset($event)){echo "active";} ?>"><a href="event_table.php"><i class="fa fa-calendar"  ></i>EVENTS</a></li>
+           <li class="btn <?php if(isset($event)){echo "active";} ?>"><a href="event_table.php"><i class="fa fa-calendar"  ></i> CALENDER EVENTS</a></li>
             
-            <li class="btn <?php if(isset($gallery)){echo "active";} ?>"><a href="gallery_table.php"><i class="fa fa-picture-o"  ></i>GALARY UPDATE</a></li>
+            <li class="btn <?php if(isset($gallery)){echo "active";} ?>"><a href="gallery_table.php"><i class="fa fa-picture-o"  ></i>GALLERY UPDATE</a></li>
 
        
            

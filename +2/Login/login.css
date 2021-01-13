@@ -1,6 +1,5 @@
 body{
- 
-  background-image: url(banner-img.jpg);
+  background-color: grey;
   background-repeat: no-repeat;
   background-size: contain;
   background-size: cover;
@@ -11,11 +10,11 @@ body{
 	 width: 70%;
 }
 .formtitle{
-	background-color: black;
+	 background-color: black;
 	 justify-content: center; 
 	 padding-top:5px;
 	 color:#ffffff;
-	 height: 40px; 
+	 min-height: 50px; 
 	 opacity: 70%
 }
 .bodycol{

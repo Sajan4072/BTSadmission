@@ -64,7 +64,7 @@ include('include/check_login.php');
      ?>
             <!-- content -->
             <div class="col-lg-8 col-md-8 col-sm-12">
-                <div class="container uploadsection">
+                <div class="container">
                   <?php
                     if(isset($_SESSION['success']))
                     { 
@@ -86,10 +86,8 @@ include('include/check_login.php');
                   </div>
 
                  <?php } ?>
-                    <a  href="notices.php?type=insert" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; margin-left: 500px;">ADD</a>
-                    <div class="col-12">
-                        <div class="row justify-content-center">
-                            <table class="table">
+                    <a  href="notices.php?type=insert" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; float: right; ">ADD</a>
+                              <table class="table">
                                 <thead class="blue">
                                     <tr>
                                         <TH>SN</TH>

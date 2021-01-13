@@ -56,6 +56,20 @@ text-align: center;
 	 border-radius: 20px; 
 	 width: 80%;
 }
+.blue th{
+	font-size: 11px;
+}
+.table td{
+	font-size: 11px;
+}
+.table td a{
+	font-size: 11px;
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+
+}
 textarea{
 	background-color:#dedbd5; 
 	height: 200px; 

@@ -93,7 +93,7 @@ session_start();
          
 
           <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-4" style="margin-top: 10px">
+            <div class="col-lg-3 col-md-4 col-sm-4" style="margin-top: 10px; margin-bottom: 5px;">
               Choose csv file
               <input type="file" name="csv" > 
               
@@ -109,7 +109,7 @@ session_start();
               
             </div>
             <div class="col-lg-6 col-md-4 col-sm-4"><p style=" margin-left: 280px;">
-            <button type="submit" name="submit" class="btn btn-success" style="border: none; border-radius: 20px; margin-top: 5px; margin-left: 159px;">POST</button>
+            <button type="submit" name="submit" class="btn btn-success" style="border: none; border-radius: 20px; margin-top: 5px; float: right;">POST</button>
 
             </p></div>
 </form>

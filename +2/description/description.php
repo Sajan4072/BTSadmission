@@ -9,6 +9,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="../frontpage/css/style.css" />
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="./description.css">
 </head>
@@ -16,40 +17,7 @@ session_start();
   
 
 <!-- top banner -->
-    <div class="container-fluid ">
-      <div class="row top-banner p-2">
-        <div class="col-lg-8 col-md-8 col-sm-12">
-          <div class="row">
-            <div class="col-lg-2 col-sm-6 col-md-4">
-              <div class="logo">
-                <img src="../frontpage/images/logo.jpg" alt="Not Available!" />
-              </div>
-            </div>
-            <div class="col-sm-8">
-              <div class="top-title">
-                <h1>BUDHANILKANTHA TECHNICAL SCHOOL</h1>
-              </div>
-
-              <div class="top-subtitle">
-                <h5>A BETTER LEARNING FUTURE STARTS</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
-          <div class="quick-contact">
-            <ul>
-              <li><i class="fa fa-phone"></i>&nbsp;01-4372300</li>
-              <li><i class="fa fa-envelope"></i>bnktechschool@gmail.com</li>
-              <li>
-                <i class="fa fa-map-marker"></i>&nbsp;&nbsp;Budhanilkantha-3,
-                Kathmandu, Nepal
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php include"../include/banner.php";?>
 
     <!-- navbar -->
     <?php
@@ -170,7 +138,7 @@ session_start();
               <a class="nav-link" href="../contact/contact.php">Contact Us</a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
+          <form class="form-inline my-2 my-lg-0" style="margin-right: 35px;">
             <ul class="navbar-nav mr-5" >
               <li class="nav-item dropdown" >
                 <a class="nav-link right-link dropdown-toggle"
@@ -196,7 +164,7 @@ session_start();
     <div class="row p-0">
       <div class="col-lg-12">
         <div>
-          <img src="../../frontpage/photos/physicslab.jpg"  class="img-fluid" alt="Not Available!" />
+          <img src="../frontpage/photos/physicslab.jpg"  class="img-fluid" alt="Not Available!" />
              <div class="title"><h4>ABOUT US</h4></div>
         </div>
       </div>
@@ -208,8 +176,8 @@ session_start();
 
     <!-- message section -->
     <div class="container-fluid">
-      <div class="row message p-5">
-        <div class="col-lg-6 col-sm-12 col-md-6">
+      <div class="row message p-1">
+        <div class="col-lg-6 col-sm-12 col-md-6 ">
           <div class="row p-2">
             
              <div class="introduction">
@@ -254,7 +222,7 @@ session_start();
              <div class="introduction">
             <h4>MESSAGE FROM THE CHIEF</h4>
             <div class="chief-img">
-              <img src="../../frontpage/photos/1.jpg" alt="Not Available!" />
+              <img src="../frontpage/photos/1.jpg" alt="Not Available!" />
             </div>
             <p>
                Welcome to Budanilkanta Technical School, Kathmandu, Nepal, a school deeply committed to the mission of inspiring each student a passion for learning, the confidence and competence to pursue their dreams and the commitment to serve as a compassionate global citizen who is a steward of the environment<br>

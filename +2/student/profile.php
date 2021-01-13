@@ -27,7 +27,7 @@ session_start();
             </div>
             <div class="col-sm-8">
               <div class="top-title">
-                <h1>BUDHANILKANTHA TECHNICAL SCHOOL</h1>
+                <h4>BUDHANILKANTHA TECHNICAL SCHOOL</h4>
               </div>
 
               <div class="top-subtitle">
@@ -91,10 +91,10 @@ session_start();
               <a class="nav-link" href="../resources/resource.php">Resources</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./ourteam/ourteam.php">Our Team</a>
+              <a class="nav-link" href="../ourteam/ourteam.php">Our Team</a>
             </li>
              <li class="nav-item center-menu">
-              <a class="nav-link" href="./results/results.php">Results</a>
+              <a class="nav-link" href="../results/results.php">Results</a>
             </li>
             <li class="nav-item center-menu">
               <a class="nav-link" href="../contact/contact.php">Contact Us</a>
@@ -105,7 +105,7 @@ session_start();
               
               
               <li class="nav-item">
-                <a class="nav-link right-link" href=""><?php echo "$_SESSION[login_user]";?></a>
+                <a class="nav-link right-link" href="" style="color: green;"><?php echo "$_SESSION[login_user]";?></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link right-link" href="../login/logout.php">Logout</a>
@@ -144,11 +144,11 @@ session_start();
               <a class="nav-link" href="../galary/galary.php">Gallery</a>
             </li>
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./events/events.php">Events</a>
+              <a class="nav-link" href="../events/events.php">Events</a>
             </li>
             
             <li class="nav-item center-menu">
-              <a class="nav-link" href="./ourteam/ourteam.php">Our Team</a>
+              <a class="nav-link" href="../ourteam/ourteam.php">Our Team</a>
             </li>
              
             <li class="nav-item center-menu">

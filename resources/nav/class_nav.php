@@ -3,6 +3,11 @@
   <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
    CLASS 1
   </button>
+  <style type="text/css">
+    .dropdown-menu .dropdown-item{
+      background-color: white;
+    }
+  </style>
   <div class="dropdown-menu">
     <a class="dropdown-item" href="../class1/eng1.php">English</a>
     <a class="dropdown-item" href="../class1/math1.php">Math</a>

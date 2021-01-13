@@ -75,45 +75,12 @@ function input_data($data) {
     <link rel="stylesheet" href="../../frontpage/css/style.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="./contact.css">
+
 </head>
 <body>
 
   <!-- top banner -->
-    <div class="container-fluid ">
-      <div class="row top-banner p-2">
-        <div class="col-lg-8 col-md-8 col-sm-12">
-          <div class="row">
-            <div class="col-lg-2 col-sm-6 col-md-4">
-              <div class="logo">
-                <img src="../frontpage/images/logo.jpg" style="margin-top: 20px;" alt="Not Available!" />
-              </div>
-            </div>
-            <div class="col-sm-8">
-              <div class="top-title">
-                <h1>BUDHANILKANTHA TECHNICAL SCHOOL</h1>
-              </div>
-
-              <div class="top-subtitle">
-                <h5>A BETTER LEARNING FUTURE STARTS</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
-          <div class="quick-contact">
-            <ul>
-              <li><i class="fa fa-phone"></i>&nbsp;01-4372300</li>
-              <li><i class="fa fa-envelope"></i>bnktechschool@gmail.com</li>
-              <li>
-                <i class="fa fa-map-marker"></i>&nbsp;&nbsp;Budhanilkantha-3,
-                Kathmandu, Nepal
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
+   <?php include"../include/banner.php";?>
     <!-- navbar -->
     <?php
       if(isset($_SESSION['login_user'])){
@@ -223,7 +190,7 @@ function input_data($data) {
               <a class="nav-link active" href="">Contact Us</a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
+            <form class="form-inline my-2 my-lg-0" style="margin-right: 35px;">
             <ul class="navbar-nav mr-5" >
               <li class="nav-item dropdown" >
                 <a class="nav-link right-link dropdown-toggle"
@@ -233,8 +200,8 @@ function input_data($data) {
                 aria-haspopup="true"
                 aria-expanded="false" >Login</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="../login/login.php">Student</a>
-                <a class="dropdown-item" href="../login/teacherlogin.php">Teacher</a>
+                <a class="dropdown-item" href="../login/login.php" style="background-color: white;">Student</a>
+                <a class="dropdown-item" href="../login/teacherlogin.php" style="background-color: white;">Teacher</a>
                 
               </div>
               </li>
@@ -311,12 +278,23 @@ function input_data($data) {
           Budhanilkantha-3, Kathmandu, Nepal
         </P>
         </div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14120.288038342855!2d85.3624916!3d27.7767553!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x75353d0ced2c3ea5!2sBudhanilkantha%20Technical%20School!5e0!3m2!1sen!2snp!4v1602489148755!5m2!1sen!2snp" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+       
+         <div class="container" style="position: relative;
+  overflow: hidden;
+  width: 100%;
+  ">
+  <iframe  class="responsive-iframe" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14120.288038342855!2d85.3624916!3d27.7767553!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x75353d0ced2c3ea5!2sBudhanilkantha%20Technical%20School!5e0!3m2!1sen!2snp!4v1602489148755!5m2!1sen!2snp" width="450" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" style="position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;"></iframe>
+</div> 
         
       </div>
     </div>
   </div>
-
 
 
 

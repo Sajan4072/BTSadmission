@@ -12,22 +12,24 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="../resource.css">
+<link rel="stylesheet" href="../../frontpage/css/style.css" />
 </head>
 <body>
   
 
 <!-- top banner -->
-    <div class="container-fluid ">
+   <div class="container-fluid " style="background-color: #d5d8de;">
       <div class="row top-banner p-2">
         <div class="col-lg-8 col-md-8 col-sm-12">
           <div class="row">
-            <div class="col-lg-2 col-sm-6 col-md-4">
+            <div class="col-lg-2 col-sm-4 col-md-4 col-4 mt-">
               <div class="logo">
-                <a href="../../index.php"><img src="../../frontpage/images/logo.jpg" style="margin-top: 20px;" alt="Not Available!" /></a>              </div>
+                <img src="../../frontpage/images/logo.jpg" style="margin-top: 20px;" alt="Not Available!" />
+              </div>
             </div>
-            <div class="col-sm-8">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-8 ">
               <div class="top-title">
-                <h1>BUDHANILKANTHA TECHNICAL SCHOOL</h1>
+                <h4>BUDHANILKANTHA TECHNICAL SCHOOL</h4>
               </div>
 
               <div class="top-subtitle">
@@ -50,7 +52,6 @@
         </div>
       </div>
     </div>
-
     <!-- navbar -->
     <?php
       if(isset($_SESSION['login_user'])){
@@ -81,7 +82,7 @@
               <a class="nav-link" href="./engineering/index.php">Engineering</a>
             </li>-->
             <li class="nav-item center-menu">
-              <a class="nav-link" href="../../index.php">home</a>
+              <a class="nav-link" href="../../index.php">Home</a>
             </li>
             <li class="nav-item center-menu">
               <a class="nav-link " href="../../galary/gallery.php">Gallery</a>

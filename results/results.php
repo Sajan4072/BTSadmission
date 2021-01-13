@@ -21,21 +21,24 @@ session_start();
 
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="./results.css">
+    <link rel="stylesheet" href="../frontpage/css/style.css" />
+
 </head>
 
 <body>
   <!-- top banner -->
-    <div class="container-fluid ">
+   <div class="container-fluid " style="background-color: #d5d8de;">
       <div class="row top-banner p-2">
         <div class="col-lg-8 col-md-8 col-sm-12">
           <div class="row">
-            <div class="col-lg-2 col-sm-6 col-md-4">
+            <div class="col-lg-2 col-sm-4 col-md-4 col-4 mt-">
               <div class="logo">
-                <a href="../../index.php"><img src="../frontpage/images/logo.jpg" style="margin-top: 20px;" alt="Not Available!" /></a>              </div>
+                <img src="../frontpage/images/logo.jpg" style="margin-top: 20px;" alt="Not Available!" />
+              </div>
             </div>
-            <div class="col-sm-8">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-8 ">
               <div class="top-title">
-                <h1>BUDHANILKANTHA TECHNICAL SCHOOL</h1>
+                <h4>BUDHANILKANTHA TECHNICAL SCHOOL</h4>
               </div>
 
               <div class="top-subtitle">
@@ -58,6 +61,7 @@ session_start();
         </div>
       </div>
     </div>
+
 
     <!-- navbar -->
    
@@ -270,7 +274,7 @@ session_start();
                 </h6>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
-                <h6>ROLL:
+                <h6>ROLL: <?php echo $code ?>
                    
                 </h6>
                 <?php } ?>
@@ -297,11 +301,10 @@ session_start();
             </div>
             <div class="col-lg-2 col-md-12 col-sm-12 termsection">
                 <div class="container-fluid">
+                  
                     <div class="termslist ">
-                        <div class="row title">
-                            <h4>TERMS</h4>
-                        </div>
-                        <div class="row selected" id="first"><a href="#" type="button" onclick="load_on_term(1)">First term </a></div>
+                        <div id="first"><h4 style="color: Blue; text-align: center;">Terms</h4></div>
+                        <div class="row selected" id="first"><a  href="#" type="button" onclick="load_on_term(1)">First term </a></div>
                         <div class="row " id="second"><a href="#" onclick="load_on_term(2)">Second term</a></div>
                         <div class="row " id="third"><a href="#" onclick="load_on_term(3)">Third term</a></div>
                         <div class="row " id="fourth"><a href="#" onclick="load_on_term(4)">Forth term</a></div>

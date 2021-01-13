@@ -9,12 +9,8 @@ include('../include/connection.php');
 	$class=$_POST['class'];
 	$subject=$_POST['subject'];
 	 
-        if($_POST['management']=='Yes'){
-         $management=1;
-        }
-        else{
-         $management=0;
-        }
+    $management=1;
+        
        
 	
 

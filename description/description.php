@@ -13,45 +13,14 @@ session_start();
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="./description.css">
+       <link rel="stylesheet" href="../frontpage/css/style.css" />
+
 </head>
 <body>
   
 
 <!-- top banner -->
-    <div class="container-fluid ">
-      <div class="row top-banner p-2">
-        <div class="col-lg-8 col-md-8 col-sm-12">
-          <div class="row">
-            <div class="col-lg-2 col-sm-6 col-md-4">
-              <div class="logo">
-                <img src="../frontpage/images/logo.jpg" alt="Not Available!" />
-              </div>
-            </div>
-            <div class="col-sm-8">
-              <div class="top-title">
-                <h1>BUDHANILKANTHA TECHNICAL SCHOOL</h1>
-              </div>
-
-              <div class="top-subtitle">
-                <h5>A BETTER LEARNING FUTURE STARTS</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
-          <div class="quick-contact">
-            <ul>
-              <li><i class="fa fa-phone"></i>&nbsp;01-4372300</li>
-              <li><i class="fa fa-envelope"></i>bnktechschool@gmail.com</li>
-              <li>
-                <i class="fa fa-map-marker"></i>&nbsp;&nbsp;Budhanilkantha-3,
-                Kathmandu, Nepal
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php include"../include/banner.php";?>
 
     <!-- navbar -->
      <?php
@@ -161,7 +130,7 @@ session_start();
               <a class="nav-link" href="../contact/contact.php">Contact Us</a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
+          <form class="form-inline my-2 my-lg-0" style="margin-right: 35px;">
             <ul class="navbar-nav mr-5" >
               <li class="nav-item dropdown" >
                 <a class="nav-link right-link dropdown-toggle"
@@ -171,8 +140,8 @@ session_start();
                 aria-haspopup="true"
                 aria-expanded="false" >Login</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="../login/login.php">Student</a>
-                <a class="dropdown-item" href="../login/teacherlogin.php">Teacher</a>
+                <a class="dropdown-item" href="../login/login.php" style="background-color: white;">Student</a>
+                <a class="dropdown-item" href="../login/teacherlogin.php" style="background-color: white;">Teacher</a>
                 
               </div>
               </li>
@@ -197,8 +166,8 @@ session_start();
 
     <!-- message section -->
     <div class="container-fluid">
-      <div class="row message p-5">
-        <div class="col-lg-6 col-sm-12 col-md-6">
+      <div class="row message p-1">
+        <div class="col-lg-6 col-sm-12 col-md-6 ">
           <div class="row p-2">
             
              <div class="introduction">

@@ -13,8 +13,9 @@
 <style>
 .error{
   color: red;
-  </style>
+  
 }
+</style>
 <body>
 
 <?php  

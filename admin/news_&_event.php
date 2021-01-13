@@ -84,14 +84,14 @@ include('include/check_login.php');
        <?php }?>
 
           <div class="row">
-            <div class="col-5" style="margin-right: 50px;"> 
-              <label for="vehicle1">TITLE</label>
+            <div class="col">
+              <label for="vehicle1">TITLE</label><br>
               <input type="text" name="title" style=" border-radius: 5px; background-color: #DEDBD5; border : 1px #DEDBD5; height: 40px; width: 250px;" value="<?php if(isset($edit)){ echo htmlentities($news_and_event['post']); } ?>"></div>
-              <div class="col-4"> 
-              <label for="vehicle1">DATE</label>
-              <input type="date" name="date" style=" border-radius: 5px; background-color: #DEDBD5; border : 1px #DEDBD5; height: 40px; width: 250px;"value="<?php if(isset($edit)){ echo htmlentities($news_and_event['date']); } ?>" ></div>
+              </div>
+              <label for="vehicle1">DATE</label><br>
+              <input type="date" name="date" style=" border-radius: 5px; background-color: #DEDBD5; border : 1px #DEDBD5; height: 40px; width: 250px;"value="<?php if(isset($edit)){ echo htmlentities($news_and_event['date']); } ?>" >
              <textarea name="NewsAndEvent" placeholder="description">  <?php if(isset($edit)){ echo htmlentities($news_and_event['post']); } ?></textarea>
-          </div>
+         
           
              
           <div class="row">

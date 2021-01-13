@@ -59,6 +59,10 @@ function input_data($data) {
 </body>
 
 <div class="container">
+  <div style="margin-left: 0px;
+  margin-bottom: 5px; 
+  ">
+  <button type="button" class="btn btn-primary btn-lg"><a href="../index.php" style="color: black; text-decoration: none;">Home <i class="fa fa-arrow-circle-o-left"></i></a></button></div>
     <div class="row formtitle">
       <h5>STUDENTS LOGIN FORM FOR COLLEGE</h5>
     </div>
