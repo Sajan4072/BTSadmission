@@ -1,5 +1,5 @@
 <?php 
-$db = mysqli_connect("localhost","root", "", "bts" );  
+include('../include/connection.php');
 $search=$_GET['search'];
 $sql="select * from college where uniquecode LIKE '%$search%' or firstname LIKE '%$search%' or lastname LIKE '%$search%'  ";   $result=mysqli_query($db,$sql);
    $fetch_result=array();

@@ -2,12 +2,9 @@
 session_start();
 include('include/connection.php');
 
-$sql="select *from school  order by id desc ";
+$sql="select *from school  order by id desc limit 20 ";
 $result=mysqli_query($db,$sql);
 $students='set';
-
-// $date=now();
-// echo $date;
 
 
 ?>
@@ -102,8 +99,10 @@ include('include/check_login.php');
                                 <thead class="blue ">
                                     <tr>
                                         <TH>SN</TH>
-                                        <th>UNIQUECODE</th>
                                         <th>Name</th>
+                                        <th>UNIQUECODE</th>
+                                        <th>payment</th>
+                                        
                                         <th>ACTION</th>
                                     </tr>
                                 </thead>
@@ -118,12 +117,22 @@ include('include/check_login.php');
                                         <td>
                                             <?php echo htmlentities($x); ?>
                                         </td>
+                                           <td>
+                                            <?php echo  htmlentities($student['firstname']); echo " ";  echo  htmlentities($student['lastname']);?>
+                                        </td>
                                         <td>
                                             <?php echo htmlentities($student['uniquecode']); ?>
                                         </td>
                                         <td>
-                                            <?php echo  htmlentities($student['firstname']);  echo  htmlentities($student['lastname']);?>
+                                            <?php if($student['payment']=='yes'){ ?>
+                                                 <a class="btn btn-success" id="payment<?php echo $student['id']; ?>" style="color:white" onclick="changes(<?php echo $student['id']; ?>)">paid</a>
+                                            <?php }else{ ?>
+                                                 <a class="btn btn-danger" id="payment<?php echo $student['id']; ?>" style="color:white" onclick="changes(<?php echo $student['id']; ?>)">unpaid</a>
+
+                                            <?php } ?>
+
                                         </td>
+                                     
                                         
                                         <td>
                                             <a href="school_stu_registration.php?type=edit&&id=<?php echo htmlentities($student['uniquecode']); ?>"><i class="fa fa-edit"> </i></a>
@@ -230,6 +239,36 @@ $('#search').keyup(function() {
     call_data(search);
 });
 
+
+function changes(id)
+{
+      if($('#payment'+id).hasClass('btn-success'))
+      {
+        $('#payment'+id).removeClass('btn-success');
+        $('#payment'+id).addClass('btn-danger');
+        $('#payment'+id).html('unpaid');
+      }
+       else
+      {
+        $('#payment'+id).removeClass('btn-danger');
+        $('#payment'+id).addClass('btn-success');
+        $('#payment'+id).html('paid');
+      }
+     
+       $.ajax({
+
+
+        type: 'get',
+        url: 'ajax_fetch_data/payment_school.php',
+        data: { id: id },
+        dataType: "json",
+        success: function(response) {
+
+    }
+    });
+   
+}
+
 function call_data(search) {
     $.ajax({
 
@@ -269,12 +308,23 @@ function filltable() {
 
         var x = 1;
         for (var i = 0; i < student.length; i++) {
-
+            
+              if(student[i].payment=='yes')
+           {
+              var  class_btn='btn-success';
+              var paid='paid';
+           }
+           else
+           {
+             var class_btn='btn-danger';
+             var paid='unpaid';
+           }
 
             var tr_str = "<tr>" +
                 "<td scope='row' >" + x + "</td>" +
+                   "<td >" + student[i].firstname + " " + student[i].lastname + "</td>" +
                 "<td >" + student[i].uniquecode + "</td>" +
-                "<td >" + student[i].firstname + " " + student[i].lastname + "</td>" +
+                 "<td >" + "<a class='btn "+class_btn+"' id='payment"+student[i].id+"' style='color:white' onclick='changes("+student[i].id+")'>"+paid+"</a>"+ "</td>" +
                 "<td >" +
                 "<a href='school_stu_registration.php?type=edit&&id=" + student[i].uniquecode + " '><i class='fa fa-edit'></i></a> " + " " +
 

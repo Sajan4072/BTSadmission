@@ -1,5 +1,5 @@
 <?php 
-$db = mysqli_connect("localhost","root", "", "bts" );  
+include('../include/connection.php');
 $search=$_GET['search'];
 
 

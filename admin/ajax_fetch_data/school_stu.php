@@ -1,12 +1,12 @@
 <?php 
-$db = mysqli_connect("localhost","root", "", "bts" );  
+include('../include/connection.php');
 $search=$_GET['search'];
 
 
 
 
 
-  $sql="select * from school where uniquecode LIKE '%$search%' or firstname LIKE '%$search%' or lastname LIKE '%$search%'  ";
+  $sql="select * from school where uniquecode LIKE '%$search%' or firstname LIKE '%$search%' or lastname LIKE '%$search%' or concat(firstname,' ',lastname) LIKE '%$search%' order by id desc  ";
     
    $result=mysqli_query($db,$sql);
    $fetch_result=array();

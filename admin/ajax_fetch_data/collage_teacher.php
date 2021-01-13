@@ -1,5 +1,5 @@
 <?php 
-$db = mysqli_connect("localhost","root", "", "bts" );  
+include('../include/connection.php');
 $search=$_GET['search'];
 
   $sql="select * from college_teacher where email LIKE '%$search%' or firstname LIKE '%$search%' or lastname LIKE '%$search%'  ";

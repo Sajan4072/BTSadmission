@@ -121,9 +121,9 @@
        include('school_student_registration/old_data.php');
        include('school_student_registration/validate.php');
 
+        $class=$_POST['class'];
 
-
-       if(mysqli_query($db,"INSERT INTO school(firstname,lastname,address,fathername,contact,password,uniquecode,dob) VALUES('$fname', '$lname', '$address', '$fathername', '$contact', '$password','$uniquecodeS','$dob')"))
+       if(mysqli_query($db,"INSERT INTO school(firstname,lastname,address,fathername,contact,password,uniquecode,dob,class) VALUES('$fname', '$lname', '$address', '$fathername', '$contact', '$password','$uniquecodeS','$dob','$class')"))
        {
          include('school_student_registration/clear_old_data.php');
         $_SESSION['success']="you have successfully insert student data";  
@@ -150,8 +150,9 @@
        $dob=$_POST['dob'];
       $contact=$_POST['contact'];
       $fathername=$_POST['fathername'];
+         $class=$_POST['class'];
 
-      $sql="update school set firstname='$fname', lastname='$lname' ,address='$address',fathername='$fathername',contact='$contact',password='$password',dob='$dob'   where uniquecode='$uniquecode' ";
+      $sql="update school set firstname='$fname', lastname='$lname' ,address='$address',fathername='$fathername',contact='$contact',password='$password',dob='$dob',class='$class'   where uniquecode='$uniquecode' ";
 
       if(mysqli_query($db,$sql))
       {
