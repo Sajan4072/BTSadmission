@@ -1,9 +1,29 @@
 <?php
 session_start();
 include('include/connection.php');
-$sql="select *from college order by id desc ";
-$result=mysqli_query($db,$sql);
+
 $students='set';
+ $sql1="select distinct batch from college where batch IS NOT NULL AND batch <> ''";
+$batch=[];
+$query1=mysqli_query($db,$sql1);
+ while($row=mysqli_fetch_array($query1))
+                      {
+                         $batch[]=$row['batch'];
+                         
+                      }
+if(isset($_GET['class']) && isset($_GET['batch']))
+{
+     $class=$_GET['class'];
+     $batchs=$_GET['batch'];
+  $sql="select *from college where class='$class' and batch='$batchs' order by id desc ";
+ $result=mysqli_query($db,$sql);
+}
+else
+{
+ $sql="select *from college order by id desc limit 20 ";
+$result=mysqli_query($db,$sql);   
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -89,6 +109,26 @@ include('include/check_login.php');
                     <p style="display: inline-flex;">
                         <a href="collage_student_registration.php" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; float: right;  margin-left: 20px;">register</a>
                     </p>
+                       <br>
+                         <form action="collage_student_registration_table.php">
+                       <p style="display: inline-flex;">
+                       
+                         <select name="batch" class="form-control" style="margin-right: 10px;">
+                            <option selected disabled>batch</option>
+               
+                             <?php foreach ($batch as  $value) { ?>
+                             <option value="<?php echo $value ?>" <?php if(isset($_GET['batch'])){if($_GET['batch']==$value) echo "selected"; } ?>><?php echo $value; ?></option>
+                           <?php } ?>
+                        </select>
+                         <select name="class" class="form-control">
+                            <option selected disabled>class</option>
+                             <option <?php if(isset($_GET['class'])) {if($_GET['class']==11) echo "selected";} ?>>11</option>
+                             <option <?php if(isset($_GET['class'])) {if($_GET['class']==12) echo "selected";} ?>>12</option>
+                            
+                        </select>
+                        <input type="submit" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; float: right;  margin-left: 20px;" value="GO">
+                       
+                    </p>
                     <div class="col-12">
                         <div class="row justify-content-center">
                             <table class="table">
@@ -96,8 +136,8 @@ include('include/check_login.php');
                                     <tr>
                                         <TH>SN</TH>
                                          <th>Name</th>
-                                        <th>UNIQUECODE</th>
-                                       
+                                        <th>BATCH/CLASS/CODE</th>
+                                        <th>PAYMENT</th>
                                         <th>ACTION</th>
                                     </tr>
                                 </thead>
@@ -113,10 +153,19 @@ include('include/check_login.php');
                                             <?php echo htmlentities($x); ?>
                                         </td>
                                         <td>
-                                            <?php echo  htmlentities($student['firstname']);  echo  htmlentities($student['lastname']);?>
+                                            <?php echo  htmlentities($student['firstname']); echo " ";  echo  htmlentities($student['lastname']);?>
                                         </td>
                                         <td>
-                                            <?php echo htmlentities($student['uniquecode']); ?>
+                                            <?php echo htmlentities($student['batch']." [class-".$student['class']."] [".$student['uniquecode']."]"); ?>
+                                        </td>
+                                        <td>
+                                             
+                                            <?php if($student['payment']=='yes'){ ?>
+                                                 <a class="btn btn-success" id="payment<?php echo $student['id']; ?>" style="color:white" onclick="changes(<?php echo $student['id']; ?>)">paid</a>
+                                            <?php }else{ ?>
+                                                 <a class="btn btn-danger" id="payment<?php echo $student['id']; ?>" style="color:white" onclick="changes(<?php echo $student['id']; ?>)">unpaid</a>
+
+                                            <?php } ?>
                                         </td>
                                         <td>
                                             <a href="collage_student_registration.php?type=edit&&id=<?php echo htmlentities($student['uniquecode']); ?>"><i class="fa fa-edit"> </i></a>
@@ -240,6 +289,36 @@ function call_data(search) {
 
 }
 
+function changes(id)
+{
+      if($('#payment'+id).hasClass('btn-success'))
+      {
+        $('#payment'+id).removeClass('btn-success');
+        $('#payment'+id).addClass('btn-danger');
+        $('#payment'+id).html('unpaid');
+      }
+       else
+      {
+        $('#payment'+id).removeClass('btn-danger');
+        $('#payment'+id).addClass('btn-success');
+        $('#payment'+id).html('paid');
+      }
+     
+       $.ajax({
+
+
+        type: 'get',
+        url: 'ajax_fetch_data/payment_collage.php',
+        data: { id: id },
+        dataType: "json",
+        success: function(response) {
+
+    }
+    });
+   
+}
+
+
 
 
 function filltable() {
@@ -261,12 +340,23 @@ function filltable() {
         var x = 1;
         for (var i = 0; i < student.length; i++) {
 
+                 if(student[i].payment=='yes')
+           {
+              var  class_btn='btn-success';
+              var paid='paid';
+           }
+           else
+           {
+             var class_btn='btn-danger';
+             var paid='unpaid';
+           }
 
             var tr_str = "<tr>" +
                 "<td scope='row' >" + x + "</td>" +
                
                 "<td >" + student[i].firstname + " " + student[i].lastname + "</td>" +
-                 "<td >" + student[i].uniquecode + "</td>" +
+                 "<td >" + student[i].batch+" [class-"+student[i].class+"] ["+student[i].uniquecode+"]</td>" +
+                 "<td >" + "<a class='btn "+class_btn+"' id='payment"+student[i].id+"' style='color:white' onclick='changes("+student[i].id+")'>"+paid+"</a>"+ "</td>" +
                 "<td >" +
                 "<a href='collage_student_registration.php?type=edit&&id=" + student[i].uniquecode + " '><i class='fa fa-edit'></i></a> " + " " +
 

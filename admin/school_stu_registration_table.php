@@ -2,8 +2,18 @@
 session_start();
 include('include/connection.php');
 
-$sql="select *from school  order by id desc limit 20 ";
+if(isset($_GET['class']))
+{
+    $class=$_GET['class'];
+  $sql="select *from school where class='$class' order by firstname asc ";
+  $result=mysqli_query($db,$sql);
+}
+else
+{
+  $sql="select *from school  order by firstname asc limit 20 ";
 $result=mysqli_query($db,$sql);
+}
+
 $students='set';
 
 
@@ -93,6 +103,29 @@ include('include/check_login.php');
                     <p style="display: inline-flex;">
                         <a href="school_stu_registration.php" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; margin-left: 20px; float: ">register</a>
                     </p>
+                      <br>
+                         <form action="school_stu_registration_table.php">
+                       <p style="display: inline-flex;">
+                       
+                         <select name="class" class="form-control">
+                            <option selected disabled>class</option>
+                       <option <?php if(isset($_GET['class'])){if($_GET['class']==1) echo "selected"; } ?> >1</option>
+                       <option <?php if(isset($_GET['class'])){if($_GET['class']==2) echo "selected"; } ?>>2</option>
+                       <option <?php if(isset($_GET['class'])){if($_GET['class']==3) echo "selected"; } ?>>3</option>
+                       <option <?php if(isset($_GET['class'])){if($_GET['class']==4) echo "selected"; } ?>>4</option>
+                       <option <?php if(isset($_GET['class'])){if($_GET['class']==5) echo "selected"; } ?>>5</option>
+                       <option <?php if(isset($_GET['class'])){if($_GET['class']==6) echo "selected"; } ?>>6</option>
+                       <option <?php if(isset($_GET['class'])){if($_GET['class']==7) echo "selected"; } ?>>7</option>
+                       <option <?php if(isset($_GET['class'])){if($_GET['class']==8) echo "selected"; } ?>>8</option>
+                       <option <?php if(isset($_GET['class'])){if($_GET['class']==9) echo "selected"; } ?>>9</option>
+                       <option <?php if(isset($_GET['class'])){if($_GET['class']==10) echo "selected"; } ?>>10</option>
+                             
+                           
+                        </select>
+                        <input type="submit" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; float: right;  margin-left: 20px;" value="GO">
+                       
+                    </p>
+                </form>
                     <div class="col-12">
                         <div class="row justify-content-center">
                             <table class="table">
@@ -100,7 +133,7 @@ include('include/check_login.php');
                                     <tr>
                                         <TH>SN</TH>
                                         <th>Name</th>
-                                        <th>UNIQUECODE</th>
+                                        <th>CODE/CLASS</th>
                                         <th>payment</th>
                                         
                                         <th>ACTION</th>
@@ -118,10 +151,10 @@ include('include/check_login.php');
                                             <?php echo htmlentities($x); ?>
                                         </td>
                                            <td>
-                                            <?php echo  htmlentities($student['firstname']); echo " ";  echo  htmlentities($student['lastname']);?>
+                                            <?php echo  htmlentities($student['firstname']); echo " ";  echo  htmlentities($student['lastname']); ?>
                                         </td>
                                         <td>
-                                            <?php echo htmlentities($student['uniquecode']); ?>
+                                            <?php echo htmlentities("[".$student['uniquecode']."] [class-".$student['class']."]"); ?>
                                         </td>
                                         <td>
                                             <?php if($student['payment']=='yes'){ ?>
@@ -322,8 +355,8 @@ function filltable() {
 
             var tr_str = "<tr>" +
                 "<td scope='row' >" + x + "</td>" +
-                   "<td >" + student[i].firstname + " " + student[i].lastname + "</td>" +
-                "<td >" + student[i].uniquecode + "</td>" +
+                   "<td >" + student[i].firstname + " " + student[i].lastname +"</td>" +
+                "<td >[" + student[i].uniquecode+"] [class-"+student[i].class+ "]</td>" +
                  "<td >" + "<a class='btn "+class_btn+"' id='payment"+student[i].id+"' style='color:white' onclick='changes("+student[i].id+")'>"+paid+"</a>"+ "</td>" +
                 "<td >" +
                 "<a href='school_stu_registration.php?type=edit&&id=" + student[i].uniquecode + " '><i class='fa fa-edit'></i></a> " + " " +
