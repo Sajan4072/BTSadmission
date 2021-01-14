@@ -228,10 +228,8 @@
  {
     include('engineering_student_registration/old_data.php');
     include('engineering_student_registration/validate.php');
-     $faculty=$_POST['faculty'];
-     $batch=$_POST['batch'];
 
-     if(mysqli_query($db,"INSERT INTO engineering(firstname,lastname,address,fathername,phone,password,uniquecode,dob,faculty,batch) VALUES('$fname', '$lname', '$address', '$fathername', '$contact', '$password','$uniquecodeS','$dob','$faculty','$batch')"))
+     if(mysqli_query($db,"INSERT INTO engineering(firstname,lastname,address,fathername,phone,password,uniquecode,dob) VALUES('$fname', '$lname', '$address', '$fathername', '$contact', '$password','$uniquecodeS','$dob')"))
        {
          include('engineering_student_registration/clear_old_data.php');
         $_SESSION['success']="you have successfully insert student data";  
@@ -250,13 +248,11 @@
 {
      $uniquecode=$_POST['uniquecode'];
      $edit='set';
-     $faculty=$_POST['faculty'];
-     $batch=$_POST['batch'];
     include('engineering_student_registration/validate.php');
 
   
    
-   $sql="update engineering set firstname='$fname', lastname='$lname' ,address='$address',fathername='$fathername',phone='$contact',password='$password',dob='$dob',faculty='$faculty',batch='$batch'  where uniquecode='$uniquecode' ";
+   $sql="update engineering set firstname='$fname', lastname='$lname' ,address='$address',fathername='$fathername',phone='$contact',password='$password',dob='$dob'   where uniquecode='$uniquecode' ";
 
       if(mysqli_query($db,$sql))
       {
@@ -334,10 +330,9 @@ if(isset($_POST['engineering_teacher_insert']))
      include('collage_student_registration/old_data.php');
      include('collage_student_registration/global_validate.php');
      include('collage_student_registration/validate.php');
-         $class=$_POST['class'];
-         $batch=$_POST['batch'];
 
-       if(mysqli_query($db,"INSERT INTO  college(firstname,lastname,address,fathername,phone,password,uniquecode,dob,class,batch) VALUES('$fname', '$lname', '$address', '$fathername', '$contact', '$password','$uniquecode','$dob','$class','$batch')"))
+
+       if(mysqli_query($db,"INSERT INTO  college(firstname,lastname,address,fathername,phone,password,uniquecode,dob) VALUES('$fname', '$lname', '$address', '$fathername', '$contact', '$password','$uniquecode','$dob')"))
        {
          include('collage_student_registration/clear_old_data.php');
         $_SESSION['success']="you have successfully insert student data";  
@@ -358,10 +353,8 @@ if(isset($_POST['engineering_teacher_insert']))
     include('collage_student_registration/old_data.php');
      include('collage_student_registration/global_validate.php');
      include('collage_student_registration/validate.php');
-       $class=$_POST['class'];
-         $batch=$_POST['batch'];
 
-     $sql="update college set firstname='$fname', lastname='$lname' ,address='$address',fathername='$fathername',phone='$contact',password='$password',dob='$dob',class='$class',batch='$batch'  where uniquecode='$id' ";
+     $sql="update college set firstname='$fname', lastname='$lname' ,address='$address',fathername='$fathername',phone='$contact',password='$password',dob='$dob'   where uniquecode='$id' ";
 
       if(mysqli_query($db,$sql))
       {

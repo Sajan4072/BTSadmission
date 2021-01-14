@@ -50,6 +50,11 @@ if(!is_dir($dir1)){
  	 $dir1="pdf/".$pdf;
  	 move_uploaded_file($temp1, $dir1);
 	
+          $name= $_SESSION['teacher_user'];
+         $result = mysqli_query($db, "SELECT * FROM engineering_teacher WHERE  firstname = '$name'");
+      $row= mysqli_fetch_assoc($result);
+      $id = $row['id'];
+    
 	 $sql ="insert into engineering_resource(image,pdf,year,subject,semister,faculty,posted_by) values('$image','$pdf','$year','$subject','$semister','$faculty','$name')";
 	 $query= mysqli_query($db,$sql);
 

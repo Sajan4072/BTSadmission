@@ -8,7 +8,7 @@ include('../../include/connection.php');
 	$caption=$_POST['caption'];
 	$class=$_POST['class'];
 	$subject = $_POST['subject'];
-	$name = $_SESSION['teacher_user'];
+	$id= $_SESSION['id'];
 
 	 
 	
@@ -49,10 +49,16 @@ $dir="photo/".$image;
  	 $dir1="pdf/".$pdf;
  	 move_uploaded_file($temp1, $dir1);
 	
-	 
+	  
+        
+          $name= $_SESSION['teacher_user'];
+         $result = mysqli_query($db, "SELECT * FROM school_teacher WHERE  firstname = '$name'");
+      $row= mysqli_fetch_assoc($result);
+      $id = $row['id'];
+    
 
 	 $sql="insert into school_resource(image,pdf,subject,class,caption,posted_by)
-	    values('$image','$pdf','$subject',$class,'$caption','$name')";
+	    values('$image','$pdf','$subject',$class,'$caption','$id')";
 	    $query=mysqli_query($db,$sql);
 
 if(!$query){
