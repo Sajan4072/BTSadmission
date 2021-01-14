@@ -140,8 +140,9 @@ if(isset($_SESSION['lname'])){ echo $_SESSION['lname']; unset($_SESSION['lname']
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label for="inputEmail">PASSWORD</label> <a href="#" class="show-password"><i class="fa fa-eye-slash" id="font-eye"></i></a>
-                            <input type="password" required name="password" class="form-control" id="password" placeholder=" Password" autocomplete="off" value="<?php
+                            <label for="inputEmail">PASSWORD</label>  <a href="#" class="show-password" ><i class="fa fa-eye-slash" id="font-eye"></i></a>
+                            <input type="password"
+                             required name="password" class="form-control" id="password" placeholder=" Password" autocomplete="off" value="<?php
          if(isset($edit))
       {
         echo($student['password']);
@@ -164,11 +165,11 @@ if(isset($_SESSION['lname'])){ echo $_SESSION['lname']; unset($_SESSION['lname']
              echo($student['uniquecode']);
          }
 
-             ?>" <?php if(isset($edit)) { echo "disabled" ; } ?> >
+             ?>" <?php  if(isset($edit)) { echo "disabled" ; } ?> >
+                            
                             <span class="error"><small>
                                     <?php if(isset($_SESSION['uniquecodeErr'])) echo $_SESSION['uniquecodeErr']; unset($_SESSION['uniquecodeErr']); ?> </small></span>
                         </div>
-
                         <div class="form-group col-md-6">
                             <label for="inputEmail">DATE OF BIRTH</label>
                             <input type="date" name="dob" required class="form-control" id="inputEmail" placeholder=" Password" autocomplete="off" value="<?php 
@@ -181,18 +182,6 @@ if(isset($_SESSION['lname'])){ echo $_SESSION['lname']; unset($_SESSION['lname']
         }
        ?>">
                         </div>
-                          <div class="form-group col-md-6">
-                            <label for="inputEmail"> BATCH</label>
-                            <input type="text" name="batch" required class="form-control" id="inputEmail" placeholder="Eg 2020/2021" autocomplete="off" value="">
-                 </div>
-                  <div class="form-group col-md-6">
-                       <label for="inputEmail"> CLASS</label>
-                   <select name="class" class="form-control">
-                    <option>11</option>
-                    <option>12</option>
-                     
-                   </select>         
-                 </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12" style="text-align: center;">
@@ -233,21 +222,28 @@ if(isset($_SESSION['lname'])){ echo $_SESSION['lname']; unset($_SESSION['lname']
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script>
-    $('.show-password').click(function() {
+    <script >
 
-        if ($('#font-eye').hasClass('fa-eye-slash')) {
 
-            $('#font-eye').removeClass('fa-eye-slash');
-            $('#font-eye').addClass('fa-eye');
-            $('#password').attr('type', 'text');
-        } else {
-            $('#font-eye').removeClass('fa-eye');
-            $('#font-eye').addClass('fa-eye-slash');
-            $('#password').attr('type', 'password');
-        }
+      $('.show-password').click(function(){
+
+      if($('#font-eye').hasClass('fa-eye-slash'))
+      {
+          
+      $('#font-eye').removeClass('fa-eye-slash');
+      $('#font-eye').addClass('fa-eye');
+      $('#password').attr('type','text');
+      }
+
+      else
+      {
+        $('#font-eye').removeClass('fa-eye');
+        $('#font-eye').addClass('fa-eye-slash');
+         $('#password').attr('type','password');
+      }
 
     });
+
     </script>
 </body>
 

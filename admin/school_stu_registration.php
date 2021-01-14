@@ -187,16 +187,16 @@ if(isset($_SESSION['lname'])){ echo $_SESSION['lname']; unset($_SESSION['lname']
     <div class="form-group col-md-6">
       <label for="inputEmail">CLASS</label>
       <select name="class" class="form-control">
-        <option <?php if(isset($edit)) {if($student['class']==1) echo "selected";} else{if(isset($_SESSION['class'])){if($_SESSION['class']==1)echo "selected"; unset($_SESSION['class']);} }  ?> >1</option>
-        <option <?php if(isset($edit)) {if($student['class']==2) echo "selected";} else{if(isset($_SESSION['class'])){if($_SESSION['class']==2)echo "selected"; unset($_SESSION['class']);} }  ?>>2</option>
-        <option <?php if(isset($edit)) {if($student['class']==3) echo "selected";} else{if(isset($_SESSION['class'])){if($_SESSION['class']==3)echo "selected"; unset($_SESSION['class']);} }  ?>>3</option>
-        <option <?php if(isset($edit)) {if($student['class']==4) echo "selected";} else{if(isset($_SESSION['class'])){if($_SESSION['class']==4)echo "selected"; unset($_SESSION['class']);} }  ?>>4</option>
-        <option <?php if(isset($edit)) {if($student['class']==5) echo "selected";} else{if(isset($_SESSION['class'])){if($_SESSION['class']==5)echo "selected"; unset($_SESSION['class']);} }  ?>>5</option>
-        <option <?php if(isset($edit)) {if($student['class']==6) echo "selected";} else{if(isset($_SESSION['class'])){if($_SESSION['class']==6)echo "selected"; unset($_SESSION['class']);} }  ?>>6</option>
-        <option <?php if(isset($edit)) {if($student['class']==7) echo "selected";} else{if(isset($_SESSION['class'])){if($_SESSION['class']==7)echo "selected"; unset($_SESSION['class']);} }  ?>>7</option>
-        <option <?php if(isset($edit)) {if($student['class']==8) echo "selected";} else{if(isset($_SESSION['class'])){if($_SESSION['class']==8)echo "selected"; unset($_SESSION['class']);} }  ?>>8</option>
-        <option <?php if(isset($edit)) {if($student['class']==9) echo "selected";} else{if(isset($_SESSION['class'])){if($_SESSION['class']==9)echo "selected"; unset($_SESSION['class']);} }  ?>>9</option>
-        <option <?php if(isset($edit)) {if($student['class']==10) echo "selected";} else{if(isset($_SESSION['class'])){if($_SESSION['class']==10)echo "selected"; unset($_SESSION['class']);} }  ?>>10</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
       </select>
       </div>
     

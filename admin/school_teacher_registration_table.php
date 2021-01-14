@@ -94,7 +94,6 @@ include('include/check_login.php');
                     <p style="display: inline-flex;">
                         <a href="school_teacher_registration.php" class="btn btn-primary" style="background-color: #224a8f; border: none; border-radius: 20px; margin-bottom: 5px; margin-left: 20px; float: ">register</a>
                     </p>
-                    
                     <div class="col-12">
                         <div class="row justify-content-center">
                             <table class="table">
