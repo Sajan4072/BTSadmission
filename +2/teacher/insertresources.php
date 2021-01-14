@@ -55,9 +55,14 @@ if(!is_dir($dir1)){
  	 move_uploaded_file($temp1, $dir1);
 	
 	 
+          $name= $_SESSION['teacher_user'];
+         $result = mysqli_query($db, "SELECT * FROM college_teacher WHERE  firstname = '$name'");
+      $row= mysqli_fetch_assoc($result);
+      $id = $row['id'];
+    
 
 	 $sql="insert into college_resource(image,pdf,class,caption,subject,management,posted_by)
-	    values('$image','$pdf',$class,'$caption','$subject','$management','$name')";
+	    values('$image','$pdf',$class,'$caption','$subject','$management','$id')";
 	    $query=mysqli_query($db,$sql);
 	   if(!$query){
 			

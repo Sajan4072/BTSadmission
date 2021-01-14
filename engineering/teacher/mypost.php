@@ -2,8 +2,10 @@
 session_start();
 
 include('../../include/connection.php');
-$id=$_SESSION['teacher_user'];
-$sql="select *from engineering_resource where posted_by='$id' order by id desc ";
+$name= $_SESSION['teacher_user'];
+$result = mysqli_query($db, "SELECT * FROM engineering_teacher WHERE  firstname = '$name'");
+$row= mysqli_fetch_assoc($result);
+$id = $row['id'];$sql="select *from engineering_resource where posted_by='$id' order by id desc ";
 $result=mysqli_query($db,$sql);
 $mypost='set';
 ?>
