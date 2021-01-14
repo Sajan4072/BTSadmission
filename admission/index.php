@@ -46,7 +46,41 @@
  <?php } ?>
     
     <!-- course structure -->
-   
+     <!-- top banner -->
+   <div class="container-fluid " style="background-color: #d5d8de;">
+      <div class="row top-banner p-2">
+        <div class="col-lg-8 col-md-8 col-sm-12">
+          <div class="row">
+            <div class="col-lg-2 col-sm-4 col-md-4 col-4 mt-">
+              <div class="logo">
+                <img src="../frontpage/images/logo.jpg" style="margin-top: 20px;" alt="Not Available!" />
+              </div>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-8 ">
+              <div class="top-title">
+                <h4>BUDHANILKANTHA TECHNICAL SCHOOL</h4>
+              </div>
+
+              <div class="top-subtitle">
+                <h5>A BETTER LEARNING FUTURE STARTS</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+          <div class="quick-contact">
+            <ul>
+              <li><i class="fa fa-phone"></i>&nbsp;01-4372300</li>
+              <li><i class="fa fa-envelope"></i>bnktechschool@gmail.com</li>
+              <li>
+                <i class="fa fa-map-marker"></i>&nbsp;&nbsp;Budhanilkantha-3,
+                Kathmandu, Nepal
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 <div class="container-fluid" style="margin: 0px; padding: 0px;">
@@ -1144,7 +1178,22 @@
                 </div>
                 
               </div>
-              
+                  <div class="col-lg-6 col-md-6 col-sm-6">
+                  <label for="firstName">CLASS APPLYING FOR</label>
+                  <select name="class" class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                  </select>
+                  
+                </div>
              
              <h5>Previous school details</h5>
 
@@ -1174,6 +1223,7 @@
                     value="<?php  if(isset($_SESSION['health_issues'])) { echo $_SESSION['health_issues']; } unset($_SESSION['health_issues']) ?>"
                   />
                 </div>
+            
               
               <h5>Important Documents</h5>
               <div class="form-row">
@@ -1228,7 +1278,7 @@
                   </p>
                 </div>
               </div>
-              <div class="text-center">
+              <div class=" ml-8 text-center">
                 <button type="Submit" class="btn btn-warning" name="school_form" id="submit">Submit</button>
               </div>
             </form>

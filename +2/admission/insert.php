@@ -53,6 +53,10 @@
  $science=$_POST['science'];
  $math=$_POST['math'];
  $eph=$_POST['eph'];
+ if(!is_dir("photo"))
+ {
+   mkdir("photo");
+ }
  
 $slcgrade=$_FILES['slcgrade']['name'];
   

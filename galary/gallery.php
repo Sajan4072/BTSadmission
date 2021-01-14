@@ -231,7 +231,7 @@ $start_from = ($page-1) * $limit;
       </li>
     <li class="page-item">
       <?php  
-$result_db = mysqli_query($db,"SELECT COUNT(id) FROM college_resource"); 
+$result_db = mysqli_query($db,"SELECT COUNT(id) FROM photos"); 
 $row_db = mysqli_fetch_row($result_db);  
 $total_records = $row_db[0];  
 $total_pages = ceil($total_records / $limit); 

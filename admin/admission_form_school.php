@@ -971,7 +971,27 @@ $admission=mysqli_fetch_assoc($result);
                   <textarea name="prev_school_details" class="form-control" row="6" col="5" disabled><?php echo $admission['health_issues']; ?></textarea>
                   
                 </div>
+                   <div class="col-lg-6 col-md-6 col-sm-6">
+                    <br>
+                    <br>
+                  <label for="firstName">CLASS APPLYING FOR</label>
+                  <select name="class" class="form-control">
+                    <option <?php if($admission['class']==1) echo "selected"; else echo "disabled"; ?> >1</option>
+                    <option <?php if($admission['class']==2) echo "selected"; else echo "disabled"; ?> >2</option>
+                    <option <?php if($admission['class']==3) echo "selected"; else echo "disabled"; ?> >3</option>
+                    <option <?php if($admission['class']==4) echo "selected"; else echo "disabled"; ?> >4</option>
+                    <option <?php if($admission['class']==5) echo "selected"; else echo "disabled"; ?> >5</option>
+                    <option <?php if($admission['class']==6) echo "selected"; else echo "disabled"; ?> >6</option>
+                    <option <?php if($admission['class']==7) echo "selected"; else echo "disabled"; ?> >7</option>
+                    <option <?php if($admission['class']==8) echo "selected"; else echo "disabled"; ?> >8</option>
+                    <option <?php if($admission['class']==9) echo "selected"; else echo "disabled"; ?> >9</option>
+                    <option <?php if($admission['class']==10) echo "selected"; else echo "disabled"; ?> >10</option>
+                   
+                  </select>
+                  
+                </div>
               </div>
+
               
               <h5>Important Documents</h5>
               <div class="form-row">

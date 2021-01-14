@@ -28,7 +28,7 @@
 </head>
     <!-- title icon -->
    
-
+  <?php include('../include/banner.php'); ?>
     <!-- form -->
     
 <div class="container-fluid" style="margin: 0px; padding: 0px;">
@@ -292,10 +292,10 @@
                   />
                 </div>
               </div>
-
+       
               <h5>Temporary Address</h5>
-               same as permanent
-              <input type="checkbox" id="check_as_permanent">
+               <input type="checkbox" id="check_as_permanent">same as permanent
+             
               <div class="form-row">
                 <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="dob">Zone</label>
@@ -626,6 +626,15 @@
                   <label for="middleName">Maths</label>
                   <input type="text" class="form-control" placeholder="Maths" name="math1" />
                 </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                      <br>
+                      <br>
+                  <label for="middleName">FACULTY APPLYING FOR</label>
+                   <select name="faculty" class="form-control">
+                      <option>Civil</option>
+                      <option>Computer</option>
+                   </select>
+                </div>
               </div>
 
              
@@ -662,8 +671,8 @@
                   <input type="file" class="form-control file-upload"  name="recommendation" required />
                 </div>
                  <div class="col-lg-4 col-md-4 col-sm-12">
-                  <label for="file" class="file-label"
-                    >Result Copy</label>
+                  <label for="file" class="file-label">
+                    Result Copy</label>
                   >
                   <input required type="file" class="form-control file-upload" name="resultcopy" />
                 </div>

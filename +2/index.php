@@ -155,19 +155,10 @@ session_start();
             <li class="nav-item center-menu">
               <a class="nav-link" href="ourteam/ourteam.php">Our Team</a>
             </li>
-            <li class="nav-item center-menu dropdown" >
-                <a class="nav-link right-link dropdown-toggle"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false" >Admission Form</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="admission/adform.php">Management</a>
-                
-                
-              </div>
-              </li>
+                <li class="nav-item center-menu">
+              <a class="nav-link" href="admission/adform.php">Admission Form</a>
+            </li>
+         
              
             <li class="nav-item center-menu">
               <a class="nav-link" href="contact/contact.php">Contact Us</a>

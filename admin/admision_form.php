@@ -958,6 +958,16 @@ $engineering='set';
                   <label for="middleName">Maths</label>
                   <input disabled type="text" class="form-control" placeholder="Maths" name="math1" value="<?php echo htmlentities($admission['math1']); ?>"/>
                 </div>
+                 <div class="col-lg-6 col-md-6 col-sm-6">
+                      <br>
+                      <br>
+                  <label for="middleName">FACULTY APPLYING FOR</label>
+                   <select name="faculty" class="form-control">
+                      <option <?php if($admission['faculty']=='Civil') echo "selected"; else echo "disabled"; ?>>Civil</option>
+                      <option <?php if($admission['faculty']=='Computer') echo "selected"; else echo "disabled"; ?>>Computer</option>
+                      
+                   </select>
+                </div>
               </div>
 
               <?php } ?> 

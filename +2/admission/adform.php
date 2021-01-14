@@ -32,7 +32,7 @@
   <body>
 
 
-
+<?php include('../include/banner.php'); ?>
 
 <div class="container-fluid" style="margin: 0px; padding: 0px;">
       <nav class="navbar navbar-expand-xl navbar-light py-0 " >
@@ -210,9 +210,7 @@
     </div>
 
     <!-- form -->
-    <div class="title">
-      <h4>Amission Form for XI XII</h4>
-    </div>
+
     <div class="container">
       <div class="form-container">
         <div class="row">

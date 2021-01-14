@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2021 at 08:19 AM
+-- Generation Time: Jan 14, 2021 at 04:51 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.25
 
@@ -150,8 +150,7 @@ CREATE TABLE `admission_school` (
   `health_issues` longtext DEFAULT NULL,
   `prev_class_gradesheet` varchar(255) NOT NULL,
   `birth_certificate` varchar(255) NOT NULL,
-  `pp` varchar(255) NOT NULL,
-  `class` varchar(10) DEFAULT NULL
+  `pp` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -320,8 +319,7 @@ CREATE TABLE `engineeringadmission` (
   `entrance` varchar(255) NOT NULL,
   `resultcopy` varchar(255) NOT NULL,
   `pp` varchar(255) NOT NULL,
-  `recommendation` varchar(20) NOT NULL,
-  `faculty` varchar(20) NOT NULL
+  `recommendation` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
