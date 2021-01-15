@@ -2,6 +2,8 @@
 <!DOCTYPE html><?php
 include "include/connection.php";
 
+
+
 session_start();
  
  
@@ -236,7 +238,7 @@ session_start();
 
             <li class="nav-item">
               <a class="nav-link" href="#"
-                ><i class="fa fa-circle"></i><?php echo $row['post']; ?></a
+                ><i class="fa fa-circle"></i><?php echo $row['post']; ?>   <span style="margin-left:5px;font-weight:bold ;color:red; font-style: italic;">new</span></a
               >
             </li>
             <?php }?>

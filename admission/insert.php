@@ -86,7 +86,10 @@
          include('validate.php');
          
         
-
+   if(!is_dir("file"))
+   {
+    mkdir("file");
+   }
 
         $name=$_FILES['prev_class_gradesheet']['name'];
         $prev_class_gradesheet=time().$name;
@@ -108,11 +111,14 @@
         $temp=$_FILES['pp']['tmp_name'];
         $dir="file/".$pp;
         move_uploaded_file($temp, $dir);
+        $class=$_POST['class'];
+
+      
 
        
         $sql=" insert into admission_school 
-               (f_name,m_name,l_name,dob,gender,caste,nationality,religion,mobile_no,email,facebook_account,check_computer,check_connection,check_mobile,check_connectivity,check_tv,check_cable,check_radio,per_zone,per_province,per_district,per_municipality,per_wardno,temp_zone,temp_province, temp_district,temp_municipality,temp_wardno,father_name,father_contact,father_occupation,mother_name,mother_contact,mother_occupation,guardian_name,guardian_contact,guardian_occupation,bro_sis_name1,bro_sis_class1,bro_sis_name2,bro_sis_class2,bro_sis_name3,bro_sis_class3,prev_school_details,health_issues,prev_class_gradesheet,birth_certificate,pp)
-              values('$f_name','$m_name','$l_name','$dob','$gender','$caste','$nationality','$religion','$mobile_no','$email','$facebook_account','$check_computer','$check_connection','$check_mobile','$check_connectivity','$check_tv','$check_cable','$check_radio','$per_zone','$per_province','$per_district','$per_municipality','$per_wardno','$temp_zone','$temp_province','$temp_district','$temp_municipality','$temp_wardno','$father_name','$father_contact','$father_occupation','$mother_name','$mother_contact','$mother_occupation','$guardian_name','$guardian_contact','$guardian_occupation','$bro_sis_name1','$bro_sis_class1','$bro_sis_name2','$bro_sis_class2','$bro_sis_name3','$bro_sis_class3','$prev_school_details','$health_issues','$prev_class_gradesheet','$birth_certificate','$pp')";
+               (f_name,m_name,l_name,dob,gender,caste,nationality,religion,mobile_no,email,facebook_account,check_computer,check_connection,check_mobile,check_connectivity,check_tv,check_cable,check_radio,per_zone,per_province,per_district,per_municipality,per_wardno,temp_zone,temp_province, temp_district,temp_municipality,temp_wardno,father_name,father_contact,father_occupation,mother_name,mother_contact,mother_occupation,guardian_name,guardian_contact,guardian_occupation,bro_sis_name1,bro_sis_class1,bro_sis_name2,bro_sis_class2,bro_sis_name3,bro_sis_class3,prev_school_details,health_issues,prev_class_gradesheet,birth_certificate,pp,class)
+              values('$f_name','$m_name','$l_name','$dob','$gender','$caste','$nationality','$religion','$mobile_no','$email','$facebook_account','$check_computer','$check_connection','$check_mobile','$check_connectivity','$check_tv','$check_cable','$check_radio','$per_zone','$per_province','$per_district','$per_municipality','$per_wardno','$temp_zone','$temp_province','$temp_district','$temp_municipality','$temp_wardno','$father_name','$father_contact','$father_occupation','$mother_name','$mother_contact','$mother_occupation','$guardian_name','$guardian_contact','$guardian_occupation','$bro_sis_name1','$bro_sis_class1','$bro_sis_name2','$bro_sis_class2','$bro_sis_name3','$bro_sis_class3','$prev_school_details','$health_issues','$prev_class_gradesheet','$birth_certificate','$pp','$class')";
 
       if(mysqli_query($db,$sql))
       {

@@ -49,7 +49,10 @@ include('include/connection.php');
 
 	$caption=$_POST['caption'];
 	
-
+if(!is_dir("photo"))
+{
+  mkdir("photo");
+}
 	 
 	 $image=$_FILES['image']['name'];
 	
@@ -157,10 +160,17 @@ include('include/connection.php');
   if(isset($_GET['delete']))
   {
   	 $id=$_GET['id'];
+    
+     $result=mysqli_fetch_assoc(mysqli_query($db,"select *from photos where id='$id' "));
+      if(file_exists("photo/".$result['photo']))
+      {
+        unlink("photo/".$result['photo']);
+      }
+
   	 $sql="DELETE from photos where id='$id'";
 	   
 
-
+    
 	    if( $query=mysqli_query($db,$sql))
 	   {
 	   	  $_SESSION['success']='image has been deleted successfuly';
