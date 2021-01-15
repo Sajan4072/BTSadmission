@@ -1,7 +1,7 @@
 <?php
 session_start();
   $code=$_SESSION['code']; 
-
+include "../include/connection.php";
 
 ?>
 <!DOCTYPE html>
@@ -215,6 +215,13 @@ session_start();
 
 
     <!-- message section -->
+    <?php 
+
+          $name= $_SESSION['login_user'];
+         $result = mysqli_query($db, "SELECT * FROM school WHERE  firstname = '$name'");
+         $row= mysqli_fetch_assoc($result);
+      if( $row['payment'] == 'yes'){
+      ?>
     <div class="area-to-print">
     <div class="container-fluid">
       
@@ -331,6 +338,21 @@ session_start();
         </div>
       </div>
     </div>
+    <?php
+  }
+    else{
+      ?>
+      <div class="area-to-print">
+    <div class="container-fluid">
+      <h4 style=" color: blue; font-size: 60px; margin-bottom: 150px; text-align: center;">Please Pay School Fee</h4>
+              
+        
+  </div>
+</div>
+      <?php
+
+    }
+    ?>
         <!-- footer -->
 
        <?php include('../include/footer.php'); ?>

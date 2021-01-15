@@ -46,7 +46,7 @@ if (empty($uname)) {
         </div>
           <div class="title">
             
-                <h4 style=" color: blue; font-size: 100px; margin-bottom: 150px;">WELCOME</h4></a>
+                <h4 style=" color: blue; font-size: 100px; margin-bottom: 150px;">WELCOME</h4>
               
           </div>
   </div>

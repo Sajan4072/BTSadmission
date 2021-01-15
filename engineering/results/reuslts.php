@@ -178,6 +178,13 @@ $code=$_SESSION['code'];
 
     
     <!-- message section -->
+    <?php 
+
+          $name= $_SESSION['login_user'];
+         $result = mysqli_query($db, "SELECT * FROM engineering WHERE  firstname = '$name'");
+         $row= mysqli_fetch_assoc($result);
+      if( $row['payment'] == 'yes'){
+      ?>
     <div class="area-to-print">
     <div class="container-fluid">
       
@@ -301,6 +308,21 @@ $code=$_SESSION['code'];
     </div>
   </div>
   </div>
+  <?php
+  }
+    else{
+      ?>
+      <div class="area-to-print">
+    <div class="container-fluid">
+      <h4 style=" color: blue; font-size: 60px; margin-bottom: 150px; text-align: center;">Please Pay Engineering Fee</h4>
+              
+        
+  </div>
+</div>
+      <?php
+
+    }
+    ?>
         <!-- footer -->
 <?php include('../../include/footer.php'); ?>
         <input type="hidden" id="uniquecode" value="<?php echo $code; ?>">

@@ -57,16 +57,10 @@
             <li class="nav-item center-menu">
               <a class="nav-link active" href="">Our Team</a>
             </li>
-            <?php 
-
-          $name= $_SESSION['login_user'];
-         $result = mysqli_query($db, "SELECT * FROM engineering WHERE  firstname = '$name'");
-         $row= mysqli_fetch_assoc($result);
-      if( $row['payment'] == '1'){
-      ?><li class="nav-item center-menu">
+            <li class="nav-item center-menu">
               <a class="nav-link" href="../results/results.php">Results</a>
                </li>
-            <?php }?>
+            
             <li class="nav-item center-menu">
               <a class="nav-link " href="../contact/contact.php">Contact Us</a>
             </li>

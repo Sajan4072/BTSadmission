@@ -124,17 +124,11 @@ function input_data($data) {
             <li class="nav-item center-menu">
               <a class="nav-link" href="../ourteam/ourteam.php">Our Team</a>
             </li>
-           <?php 
-
-          $name= $_SESSION['login_user'];
-         $result = mysqli_query($db, "SELECT * FROM school WHERE  firstname = '$name'");
-         $row= mysqli_fetch_assoc($result);
-      if( $row['payment'] == '1'){
-      ?>
+           
       <li class="nav-item center-menu">
               <a class="nav-link" href="../results/results.php">Results</a>
               </li>
-            <?php }?>
+            
             <li class="nav-item center-menu">
               <a class="nav-link active" href="">Contact Us</a>
             </li>
